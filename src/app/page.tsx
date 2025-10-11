@@ -18,17 +18,17 @@ export default function Home() {
     <div className="w-full">
       {/* Hero Section with Typing Animation */}
       <motion.section 
-        className="py-16 sm:py-20 text-center"
+        className="py-16 sm:py-20 text-center flex flex-col items-center justify-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 heading-primary">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col items-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 heading-primary text-center">
             <TypingAnimation texts={typingTexts} />
           </h1>
           <motion.p 
-            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}

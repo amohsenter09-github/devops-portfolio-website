@@ -36,6 +36,10 @@ body {
   line-height: 1.6;
   background: #f8fafc;
   transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
 }
 
 html.dark body {
@@ -122,6 +126,9 @@ html.dark .section-gradient {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .heading-secondary {
@@ -130,6 +137,16 @@ html.dark .section-gradient {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 600;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improved text rendering for all text elements */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Professional Code Blocks */

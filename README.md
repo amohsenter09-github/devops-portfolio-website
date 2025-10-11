@@ -1,9 +1,38 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DevOps Portfolio Website
 
-## Getting Started
+A modern, professional portfolio website showcasing DevOps expertise, cloud infrastructure, and automation skills. Built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
+
+- **Modern Design**: Dark theme with purple gradients and glassmorphism effects
+- **Responsive Layout**: Fully responsive across all devices
+- **Smooth Animations**: Custom CSS animations and transitions
+- **DevOps Focus**: Content tailored for DevOps engineers and cloud professionals
+- **Professional Sections**: Hero, About, Skills, Projects, and Contact sections
+- **TypeScript**: Full type safety and better development experience
+- **Tailwind CSS**: Utility-first CSS framework for rapid styling
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Fonts**: Geist Sans & Geist Mono
+- **Linting**: ESLint with Next.js config
+
+## 🏃‍♂️ Getting Started
+
+First, install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -17,25 +46,62 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── globals.css      # Global styles and custom CSS
+│   ├── layout.tsx       # Root layout component
+│   └── page.tsx         # Homepage component
+├── components/           # Reusable components (to be added)
+└── lib/                 # Utility functions (to be added)
+```
 
-## Learn More
+## 🎨 Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Updating Content
+- Edit `src/app/page.tsx` to modify the homepage content
+- Update the metadata in `src/app/layout.tsx` for SEO
+- Customize colors and styling in `src/app/globals.css`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Adding Sections
+- Add new sections to the homepage component
+- Create reusable components in the `src/components/` directory
+- Use Tailwind CSS classes for consistent styling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Deployment
 
-## Deploy on Vercel
+### Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# devops-portfolio-website
-Personal portfolio showcasing my DevOps, AWS, Kubernetes, and AI infrastructure work.
->>>>>>> 1e3fddd378c47f33bcb3978472466d01a208a193
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### Other Platforms
+
+This Next.js app can be deployed on any platform that supports Node.js:
+- AWS Amplify
+- Netlify
+- Railway
+- DigitalOcean App Platform
+
+## 📚 Learn More
+
+To learn more about the technologies used:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - learn about Tailwind CSS
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/) - learn about TypeScript
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](../../issues).
+
+---
+
+**Personal portfolio showcasing DevOps, AWS, Kubernetes, and AI infrastructure work.**
