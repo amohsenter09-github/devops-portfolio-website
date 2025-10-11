@@ -20,16 +20,16 @@ export default function Home() {
     <Container>
       {/* Hero Section with Typing Animation */}
       <motion.section 
-        className="py-12"
+        className="py-8 sm:py-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
           <TypingAnimation texts={typingTexts} />
         </h1>
         <motion.p 
-          className="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl"
+          className="mt-3 text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
@@ -37,7 +37,7 @@ export default function Home() {
           {site.hero.subtitle}
         </motion.p>
         <motion.div 
-          className="mt-8 flex gap-3"
+          className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
@@ -57,13 +57,13 @@ export default function Home() {
 
       {/* Experience Stats with Animated Counters */}
       <motion.section 
-        className="py-12 border-t border-gray-200 dark:border-gray-700"
+        className="py-8 sm:py-12 border-t border-gray-200 dark:border-gray-700"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
@@ -113,14 +113,14 @@ export default function Home() {
 
       {/* Skills Overview with Hover Effects */}
       <motion.section 
-        className="py-12 border-t border-gray-200 dark:border-gray-700"
+        className="py-8 sm:py-12 border-t border-gray-200 dark:border-gray-700"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Core Technologies</h2>
-        <div className="grid md:grid-cols-3 gap-6">
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white">Core Technologies</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <motion.div 
             className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow"
             whileHover={{ y: -5 }}
@@ -189,14 +189,14 @@ export default function Home() {
 
       {/* Recent Work with Staggered Animation */}
       <motion.section 
-        className="py-12 border-t border-gray-200 dark:border-gray-700"
+        className="py-8 sm:py-12 border-t border-gray-200 dark:border-gray-700"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Recent Work</h2>
-        <div className="grid md:grid-cols-2 gap-6">
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white">Recent Work</h2>
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
           <motion.div 
             className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow"
             initial={{ opacity: 0, x: -20 }}

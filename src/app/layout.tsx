@@ -13,9 +13,9 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-white text-gray-800 antialiased`}>
+      <body className={`${inter.className} bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-100 antialiased`}>
         <Nav />
-        <main className="mx-auto max-w-6xl px-5 py-10">{children}</main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

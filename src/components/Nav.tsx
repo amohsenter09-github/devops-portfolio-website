@@ -15,7 +15,7 @@ const links = [
 export default function Nav() {
   return (
     <header className="border-b bg-white dark:bg-slate-800 transition-colors">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+      <nav className="mx-auto flex max-w-4xl items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -25,8 +25,8 @@ export default function Nav() {
           </Link>
         </motion.div>
         
-        <div className="flex items-center gap-4">
-          <ul className="flex gap-4 text-sm text-gray-700 dark:text-gray-300">
+        <div className="flex items-center gap-2 sm:gap-4">
+          <ul className="hidden sm:flex gap-3 lg:gap-4 text-sm text-gray-700 dark:text-gray-300">
             {links.map((l) => (
               <motion.li 
                 key={l.href}
