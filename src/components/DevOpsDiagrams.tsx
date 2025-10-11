@@ -24,9 +24,275 @@ function Diagram({ title, children }: DiagramProps) {
 }
 
 export default function DevOpsDiagrams() {
-  const [activeDiagram, setActiveDiagram] = useState("argocd");
+  const [activeDiagram, setActiveDiagram] = useState("app-of-apps");
 
   const diagrams = {
+    "app-of-apps": (
+      <Diagram title="App of Apps Pattern - Multicluster GitOps">
+        <div className="w-full max-w-6xl">
+          {/* Git Repository */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
+              <div className="w-16 h-16 bg-gray-600 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <span className="text-white font-bold text-xl">Git</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Git Repository</h4>
+              <p className="text-white/80 text-sm">app-of-apps-chart/<br/>values.yaml</p>
+            </div>
+          </div>
+
+          {/* Arrow Down */}
+          <div className="flex justify-center mb-8">
+            <div className="w-1 h-8 bg-white/40"></div>
+          </div>
+
+          {/* ArgoCD App of Apps */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <span className="text-white font-bold text-xl">A</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">ArgoCD</h4>
+              <p className="text-white/80 text-sm">App of Apps Controller<br/>Multicluster Management</p>
+            </div>
+          </div>
+
+          {/* Arrow Down */}
+          <div className="flex justify-center mb-8">
+            <div className="w-1 h-8 bg-white/40"></div>
+          </div>
+
+          {/* Clusters */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Minikube Cluster */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <h4 className="font-semibold text-white mb-4 text-center">Minikube Cluster</h4>
+              <div className="space-y-4">
+                {/* Prometheus */}
+                <div className="bg-white/5 border border-white/10 rounded p-3">
+                  <div className="flex items-center mb-2">
+                    <div className="w-8 h-8 bg-orange-500/30 rounded flex items-center justify-center mr-3">
+                      <span className="text-orange-300 text-xs font-bold">P</span>
+                    </div>
+                    <div>
+                      <h6 className="font-semibold text-white text-sm">Prometheus</h6>
+                      <p className="text-white/70 text-xs">v9.7.4</p>
+                    </div>
+                  </div>
+                  <div className="text-white/60 text-xs">
+                    • Metrics Collection<br/>
+                    • Service Discovery<br/>
+                    • Alerting Rules
+                  </div>
+                </div>
+
+                {/* Sample App */}
+                <div className="bg-white/5 border border-white/10 rounded p-3">
+                  <div className="flex items-center mb-2">
+                    <div className="w-8 h-8 bg-green-500/30 rounded flex items-center justify-center mr-3">
+                      <span className="text-green-300 text-xs font-bold">N</span>
+                    </div>
+                    <div>
+                      <h6 className="font-semibold text-white text-sm">Sample App</h6>
+                      <p className="text-white/70 text-xs">nginx-chart</p>
+                    </div>
+                  </div>
+                  <div className="text-white/60 text-xs">
+                    • Web Application<br/>
+                    • Load Balancer<br/>
+                    • Health Checks
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* GKE Cluster */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <h4 className="font-semibold text-white mb-4 text-center">GKE Cluster</h4>
+              <div className="space-y-4">
+                {/* Prometheus */}
+                <div className="bg-white/5 border border-white/10 rounded p-3">
+                  <div className="flex items-center mb-2">
+                    <div className="w-8 h-8 bg-orange-500/30 rounded flex items-center justify-center mr-3">
+                      <span className="text-orange-300 text-xs font-bold">P</span>
+                    </div>
+                    <div>
+                      <h6 className="font-semibold text-white text-sm">Prometheus</h6>
+                      <p className="text-white/70 text-xs">v9.7.4</p>
+                    </div>
+                  </div>
+                  <div className="text-white/60 text-xs">
+                    • Metrics Collection<br/>
+                    • Service Discovery<br/>
+                    • Alerting Rules
+                  </div>
+                </div>
+
+                {/* Sample App */}
+                <div className="bg-white/5 border border-white/10 rounded p-3">
+                  <div className="flex items-center mb-2">
+                    <div className="w-8 h-8 bg-green-500/30 rounded flex items-center justify-center mr-3">
+                      <span className="text-green-300 text-xs font-bold">N</span>
+                    </div>
+                    <div>
+                      <h6 className="font-semibold text-white text-sm">Sample App</h6>
+                      <p className="text-white/70 text-xs">nginx-chart</p>
+                    </div>
+                  </div>
+                  <div className="text-white/60 text-xs">
+                    • Web Application<br/>
+                    • Load Balancer<br/>
+                    • Health Checks
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Values.yaml Configuration */}
+          <div className="mt-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4">
+            <h5 className="font-semibold text-white mb-3 text-center">values.yaml Configuration</h5>
+            <div className="bg-black/20 rounded p-3 text-xs font-mono text-white/80">
+              <div className="text-green-400">clusters:</div>
+              <div className="ml-4 text-blue-400">- name: minikube</div>
+              <div className="ml-8 text-yellow-400">destinationServer: https://kubernetes.default.svc</div>
+              <div className="ml-8 text-blue-400">apps:</div>
+              <div className="ml-12 text-purple-400">prometheus: enabled: true, version: &quot;9.7.4&quot;</div>
+              <div className="ml-12 text-purple-400">sampleApp: enabled: true, branch: HEAD</div>
+              <div className="ml-4 text-blue-400">- name: gke</div>
+              <div className="ml-8 text-yellow-400">destinationServer: https://[KUBERNETES_MASTER_IP]</div>
+              <div className="ml-8 text-blue-400">apps:</div>
+              <div className="ml-12 text-purple-400">prometheus: enabled: true, version: &quot;9.7.4&quot;</div>
+              <div className="ml-12 text-purple-400">sampleApp: enabled: true, branch: HEAD</div>
+            </div>
+          </div>
+        </div>
+      </Diagram>
+    ),
+
+    "multicluster": (
+      <Diagram title="Multicluster GitOps Architecture">
+        <div className="w-full max-w-6xl">
+          {/* Central ArgoCD */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
+              <div className="w-20 h-20 bg-blue-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <span className="text-white font-bold text-2xl">A</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">ArgoCD Hub</h4>
+              <p className="text-white/80 text-sm">Central GitOps Controller<br/>Multicluster Management<br/>RBAC & Security</p>
+            </div>
+          </div>
+
+          {/* Clusters Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Development Cluster */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <div className="text-center mb-4">
+                <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-blue-400 font-bold text-sm">DEV</span>
+                </div>
+                <h5 className="font-semibold text-white">Development</h5>
+                <p className="text-white/70 text-xs">Local/Minikube</p>
+              </div>
+              
+              <div className="space-y-2">
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">Prometheus</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">Sample App</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">Dev Tools</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Staging Cluster */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <div className="text-center mb-4">
+                <div className="w-12 h-12 bg-yellow-500/20 border border-yellow-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-yellow-400 font-bold text-sm">STG</span>
+                </div>
+                <h5 className="font-semibold text-white">Staging</h5>
+                <p className="text-white/70 text-xs">GKE Regional</p>
+              </div>
+              
+              <div className="space-y-2">
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">Prometheus</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">Sample App</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">Testing Tools</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Production Cluster */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <div className="text-center mb-4">
+                <div className="w-12 h-12 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-green-400 font-bold text-sm">PROD</span>
+                </div>
+                <h5 className="font-semibold text-white">Production</h5>
+                <p className="text-white/70 text-xs">GKE Multi-Zone</p>
+              </div>
+              
+              <div className="space-y-2">
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">Prometheus</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">Sample App</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">Monitoring</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RBAC & Security */}
+          <div className="mt-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+            <h5 className="font-semibold text-white mb-4 text-center">RBAC & Security</h5>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-purple-400 font-bold text-sm">SA</span>
+                </div>
+                <p className="text-white/80 text-xs">ServiceAccount</p>
+                <p className="text-white/60 text-xs">argocd-manager</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-red-400 font-bold text-sm">CR</span>
+                </div>
+                <p className="text-white/80 text-xs">ClusterRole</p>
+                <p className="text-white/60 text-xs">argocd-manager-role</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-orange-400 font-bold text-sm">CRB</span>
+                </div>
+                <p className="text-white/80 text-xs">ClusterRoleBinding</p>
+                <p className="text-white/60 text-xs">argocd-manager-role-binding</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-blue-400 font-bold text-sm">TLS</span>
+                </div>
+                <p className="text-white/80 text-xs">TLS Certificates</p>
+                <p className="text-white/60 text-xs">Secure Communication</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Diagram>
+    ),
     argocd: (
       <Diagram title="ArgoCD GitOps Implementation">
         <div className="w-full max-w-5xl">
@@ -461,7 +727,9 @@ export default function DevOpsDiagrams() {
                   : 'text-white/70 hover:text-white'
               }`}
             >
-              {key === 'argocd' ? 'ArgoCD' : 
+              {key === 'app-of-apps' ? 'App of Apps' : 
+               key === 'multicluster' ? 'Multicluster' :
+               key === 'argocd' ? 'ArgoCD' : 
                key === 'microservices' ? 'Microservices' :
                key === 'gitops' ? 'GitOps Flow' :
                key === 'monitoring' ? 'Monitoring' : key}
