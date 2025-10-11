@@ -7,7 +7,7 @@ export const site = {
     email: "amohsenter09@outlook.com",
     phone: "+49 176 281 366 89",
     location: "Leipzig, Germany",
-    linkedin: "https://linkedin.com/in/amrfathy",
+    linkedin: "https://linkedin.com/in/amr-fathy-4a826a77",
   },
   experience: {
     years: "15+",
