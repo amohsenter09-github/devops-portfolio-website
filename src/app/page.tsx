@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import TypingAnimation from "@/components/TypingAnimation";
+import Recommendations from "@/components/Recommendations";
 import { site } from "@/lib/siteConfig";
 
 export default function Home() {
@@ -271,6 +272,9 @@ export default function Home() {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* LinkedIn Recommendations */}
+      <Recommendations />
     </div>
   );
 }
