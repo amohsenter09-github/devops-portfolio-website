@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
-import FigmaImage from "@/components/FigmaImage";
+import { ASCIIArtDiagrams, SVGDiagrams } from "@/components/DevOpsDiagrams";
 
 export default function Designs() {
   return (
@@ -17,136 +17,32 @@ export default function Designs() {
         </h1>
         <p className="text-gray-600 dark:text-gray-300 max-w-3xl mb-8">
           Visual representations of my DevOps processes, infrastructure designs, and system architectures. 
-          These designs showcase my approach to cloud infrastructure, automation, and observability.
+          These designs showcase my approach to cloud infrastructure, automation, and observability using 
+          professional ASCII art and SVG diagrams.
         </p>
 
-        {/* AWS Infrastructure Design */}
+        {/* ASCII Art Diagrams */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-            AWS Infrastructure Architecture
-          </h2>
-          <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Multi-Account AWS Architecture
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Comprehensive AWS infrastructure design showing multi-account setup, VPC configurations, security groups, and service integrations.
-              </p>
-              <div className="text-sm text-gray-500 dark:text-gray-400">
-                📝 <strong>To add your Figma design:</strong><br/>
-                1. Create your AWS architecture diagram in Figma<br/>
-                2. Copy the Figma file URL<br/>
-                3. Replace &quot;YOUR_FILE_ID&quot; in the code
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Kubernetes Microservices with ArgoCD */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-            Kubernetes Microservices with ArgoCD
+            Architecture Diagrams (ASCII Art)
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Comprehensive microservices architecture showing GitOps deployment with ArgoCD, 
-            service mesh integration, and observability stack.
+            Professional ASCII art diagrams showing system architecture, data flow, and component relationships. 
+            These diagrams are lightweight, version-controllable, and display perfectly in any environment.
           </p>
-          
-          <div className="grid lg:grid-cols-2 gap-6 mb-8">
-            <FigmaImage
-              src="/images/k8s-microservices-overview.png"
-              alt="Kubernetes Microservices Overview"
-              caption="Complete microservices ecosystem with ArgoCD GitOps workflow"
-              width={600}
-              height={400}
-              priority={true}
-            />
-            <FigmaImage
-              src="/images/argocd-gitops-flow.png"
-              alt="ArgoCD GitOps Flow"
-              caption="GitOps deployment flow showing automated CI/CD with ArgoCD"
-              width={600}
-              height={400}
-            />
-          </div>
-
-          <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Interactive Kubernetes Architecture
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Click to explore the interactive microservices architecture with ArgoCD deployment flows
-              </p>
-              <div className="text-sm text-gray-500 dark:text-gray-400">
-                📝 <strong>To add your Figma design:</strong><br/>
-                1. Create your Kubernetes microservices diagram in Figma<br/>
-                2. Copy the Figma file URL<br/>
-                3. Replace &quot;YOUR_K8S_FILE_ID&quot; in the code
-              </div>
-            </div>
-          </div>
+          <ASCIIArtDiagrams />
         </section>
 
-        {/* CI/CD Pipeline Flow */}
+        {/* SVG Graphics */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-            CI/CD Pipeline Design
+            Interactive Architecture (SVG Graphics)
           </h2>
-          <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Automated CI/CD Pipeline
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                End-to-end CI/CD pipeline design showing GitHub Actions, Docker builds, security scanning, and deployment processes.
-              </p>
-              <div className="text-sm text-gray-500 dark:text-gray-400">
-                📝 <strong>To add your Figma design:</strong><br/>
-                1. Create your CI/CD pipeline diagram in Figma<br/>
-                2. Copy the Figma file URL<br/>
-                3. Replace &quot;YOUR_FILE_ID&quot; in the code
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Monitoring Dashboard Mockup */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-            Observability Dashboard
-          </h2>
-          <FigmaImage
-            src="/images/monitoring-dashboard.png"
-            alt="Monitoring Dashboard Design"
-            caption="Custom Grafana dashboard design for comprehensive system monitoring and alerting"
-            width={1000}
-            height={600}
-          />
-        </section>
-
-        {/* Process Flow Diagrams */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-            Process Flow Diagrams
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <FigmaImage
-              src="/images/gitops-workflow.png"
-              alt="GitOps Workflow"
-              caption="GitOps workflow showing automated deployment processes"
-              width={400}
-              height={300}
-            />
-            <FigmaImage
-              src="/images/disaster-recovery.png"
-              alt="Disaster Recovery Process"
-              caption="Disaster recovery and backup automation process"
-              width={400}
-              height={300}
-            />
-          </div>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            Scalable vector graphics showing detailed system architecture with visual components, 
+            connection flows, and interactive elements. Perfect for presentations and documentation.
+          </p>
+          <SVGDiagrams />
         </section>
 
         {/* Design Process */}
@@ -172,6 +68,37 @@ export default function Designs() {
               <p className="text-gray-600 dark:text-gray-300">
                 Detailed implementation roadmaps with clear milestones and success metrics.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits of This Approach */}
+        <section className="mb-12 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
+          <h2 className="text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-4">
+            Why ASCII Art & SVG Instead of Figma?
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">✅ Advantages</h3>
+              <ul className="text-blue-800 dark:text-blue-200 space-y-1">
+                <li>• No external dependencies</li>
+                <li>• Version controllable with Git</li>
+                <li>• Lightweight and fast loading</li>
+                <li>• Works in any environment</li>
+                <li>• Professional appearance</li>
+                <li>• Easy to maintain and update</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">🎯 Perfect for DevOps</h3>
+              <ul className="text-blue-800 dark:text-blue-200 space-y-1">
+                <li>• Shows technical expertise</li>
+                <li>• Demonstrates documentation skills</li>
+                <li>• Easy to share in presentations</li>
+                <li>• Can be embedded in documentation</li>
+                <li>• No licensing or account issues</li>
+                <li>• Works offline and in CI/CD</li>
+              </ul>
             </div>
           </div>
         </section>
