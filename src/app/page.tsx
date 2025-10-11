@@ -20,7 +20,7 @@ export default function Home() {
     <Container>
       {/* Hero Section with Typing Animation */}
       <motion.section 
-        className="py-8 sm:py-12"
+        className="py-12 sm:py-16 text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -29,7 +29,7 @@ export default function Home() {
           <TypingAnimation texts={typingTexts} />
         </h1>
         <motion.p 
-          className="mt-3 text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl"
+          className="mt-3 text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mb-8 mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
@@ -37,7 +37,7 @@ export default function Home() {
           {site.hero.subtitle}
         </motion.p>
         <motion.div 
-          className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3"
+          className="flex flex-col sm:flex-row gap-3 justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}

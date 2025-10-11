@@ -14,9 +14,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-100 antialiased`}>
-        <Nav />
-        <main className="min-h-screen w-full">{children}</main>
-        <Footer />
+        <div className="min-h-screen flex flex-col">
+          <Nav />
+          <main className="flex-1 w-full">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              {children}
+            </div>
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
