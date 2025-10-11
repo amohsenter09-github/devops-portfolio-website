@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import TypingAnimation from "@/components/TypingAnimation";
-import HeroTabs from "@/components/HeroTabs";
 import { site } from "@/lib/siteConfig";
 
 export default function Home() {
@@ -36,19 +35,36 @@ export default function Home() {
           >
             {site.hero.subtitle}
           </motion.p>
-          <motion.div
+          
+          {/* Simple Button Group */}
+          <motion.div 
+            className="mt-8 flex flex-wrap items-center justify-center gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
           >
-            <HeroTabs />
+            <Link 
+              href="/projects"
+              className="rounded-full bg-cyan-600/90 px-5 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-500 transition-colors"
+            >
+              View Projects
+            </Link>
+            <Link 
+              href="/about"
+              className="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white/90 hover:bg-white/10 transition-colors"
+            >
+              About
+            </Link>
           </motion.div>
+
+          {/* Breathing room before stats */}
+          <div className="pb-4 md:pb-6" />
         </div>
       </motion.section>
 
       {/* Experience Stats with Animated Counters */}
       <motion.section 
-        className="py-12 sm:py-16"
+        className="mt-10 md:mt-12 py-12 sm:py-16"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
