@@ -70,3 +70,40 @@ export function generateFigmaShareUrl(fileId: string, nodeId?: string): string {
   const baseUrl = `https://www.figma.com/file/${fileId}`;
   return nodeId ? `${baseUrl}?node-id=${nodeId}&t=share` : `${baseUrl}?t=share`;
 }
+
+// Kubernetes-specific Figma configurations
+export const kubernetesFigmaConfigs = {
+  microservices: {
+    fileId: "YOUR_MICROSERVICES_FILE_ID",
+    title: "Kubernetes Microservices Architecture",
+    description: "Complete microservices ecosystem with ArgoCD GitOps workflow",
+    nodeIds: ["microservices-overview", "service-mesh", "argocd-flow"]
+  },
+  argocd: {
+    fileId: "YOUR_ARGOCD_FILE_ID", 
+    title: "ArgoCD GitOps Implementation",
+    description: "Automated GitOps deployment flow with ArgoCD",
+    nodeIds: ["argocd-apps", "gitops-workflow", "sync-status"]
+  },
+  observability: {
+    fileId: "YOUR_OBSERVABILITY_FILE_ID",
+    title: "Observability Stack",
+    description: "Comprehensive monitoring with Prometheus, Grafana, and Jaeger",
+    nodeIds: ["prometheus-setup", "grafana-dashboards", "jaeger-tracing"]
+  }
+};
+
+// Helper function to get Kubernetes diagram data
+export async function getKubernetesDiagram(type: keyof typeof kubernetesFigmaConfigs) {
+  const config = kubernetesFigmaConfigs[type];
+  const [fileData, imageData] = await Promise.all([
+    getFigmaFile(config.fileId),
+    config.nodeIds.length > 0 ? getFigmaImages(config.fileId, config.nodeIds) : Promise.resolve({})
+  ]);
+  
+  return {
+    ...config,
+    fileData,
+    images: imageData
+  };
+}

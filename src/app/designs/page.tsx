@@ -34,16 +34,38 @@ export default function Designs() {
           />
         </section>
 
-        {/* Kubernetes Cluster Design */}
+        {/* Kubernetes Microservices with ArgoCD */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-            Kubernetes Cluster Design
+            Kubernetes Microservices with ArgoCD
           </h2>
-          <FigmaImage
-            src="/images/kubernetes-cluster-design.png"
-            alt="Kubernetes Cluster Architecture"
-            caption="EKS cluster design with Bottlerocket nodes, ArgoCD GitOps, and comprehensive monitoring stack"
-            width={800}
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
+            Comprehensive microservices architecture showing GitOps deployment with ArgoCD, 
+            service mesh integration, and observability stack.
+          </p>
+          
+          <div className="grid lg:grid-cols-2 gap-6 mb-8">
+            <FigmaImage
+              src="/images/k8s-microservices-overview.png"
+              alt="Kubernetes Microservices Overview"
+              caption="Complete microservices ecosystem with ArgoCD GitOps workflow"
+              width={600}
+              height={400}
+              priority={true}
+            />
+            <FigmaImage
+              src="/images/argocd-gitops-flow.png"
+              alt="ArgoCD GitOps Flow"
+              caption="GitOps deployment flow showing automated CI/CD with ArgoCD"
+              width={600}
+              height={400}
+            />
+          </div>
+
+          <FigmaEmbed
+            url="https://www.figma.com/file/YOUR_K8S_FILE_ID/Kubernetes-Microservices-Architecture"
+            title="Interactive Kubernetes Architecture"
+            description="Click to explore the interactive microservices architecture with ArgoCD deployment flows"
             height={600}
           />
         </section>
