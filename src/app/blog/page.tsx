@@ -28,12 +28,32 @@ export default function Blog() {
     },
     {
       id: 3,
-      title: "Complete Observability Stack: Prometheus + Grafana + Jaeger Setup",
-      excerpt: "Step-by-step guide: How I built a production-ready observability stack that reduced MTTR by 80% and provided full visibility into microservices architecture.",
-      date: "2023-11-10",
+      title: "Building Production-Ready MLOps Pipelines with Kubernetes",
+      excerpt: "Learn how to design and implement comprehensive MLOps pipelines using Kubernetes, MLflow, and AWS SageMaker for automated model training, deployment, and monitoring.",
+      date: "2024-01-20",
+      readTime: "8 min read",
+      tags: ["MLOps", "Kubernetes", "MLflow", "SageMaker", "AWS"],
+      slug: "mlops-kubernetes-pipeline",
+      featured: true
+    },
+    {
+      id: 4,
+      title: "Building a Unified Observability Stack: Prometheus, Grafana & Jaeger",
+      excerpt: "Complete guide to implementing comprehensive observability with Prometheus, Grafana, and Jaeger. Learn how to reduce MTTR by 80% and achieve 99.9% uptime.",
+      date: "2024-01-25",
       readTime: "10 min read",
-      tags: ["Prometheus", "Grafana", "Jaeger", "Observability", "Monitoring"],
+      tags: ["Observability", "Prometheus", "Grafana", "Jaeger", "Monitoring"],
       slug: "observability-stack-prometheus-grafana",
+      featured: false
+    },
+    {
+      id: 5,
+      title: "Multi-Account AWS Architecture: Security & Compliance Best Practices",
+      excerpt: "Learn how to design secure multi-account AWS architectures with proper isolation, compliance, and governance for enterprise environments.",
+      date: "2024-01-05",
+      readTime: "9 min read",
+      tags: ["AWS", "Security", "Compliance", "Multi-Account", "Governance"],
+      slug: "multi-account-aws-security",
       featured: false
     }
   ];
