@@ -6,13 +6,14 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import TypingAnimation from "@/components/TypingAnimation";
 import Recommendations from "@/components/Recommendations";
 import { site } from "@/lib/siteConfig";
+import { Linkedin } from "lucide-react";
 
 export default function Home() {
   const typingTexts = [
-    "Enterprise Infrastructure Solutions",
-    "AWS & Kubernetes Specialists", 
-    "Infrastructure Automation Experts",
-    "DevOps & Terraform Consultants"
+    "DevOps & MLOps Consulting",
+    "AWS & Kubernetes Expert", 
+    "ML Infrastructure Specialist",
+    "Infrastructure Automation Consultant"
   ];
 
   return (
@@ -33,7 +34,7 @@ export default function Home() {
           >
             <div className="flex items-center justify-center mb-6">
               <span className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></span>
-              <span className="text-sm font-medium">Professional Infrastructure Services</span>
+              <span className="text-sm font-medium">Available for DevOps & MLOps Projects</span>
             </div>
             
             <h1 className="text-5xl sm:text-6xl font-bold mb-8 leading-tight">
@@ -56,14 +57,23 @@ export default function Home() {
               href="/projects"
               className="btn-accent"
             >
-              View Our Solutions
+              View My Work
             </Link>
             <Link 
               href="/contact"
               className="btn-glass"
             >
-              Get Started
+              Get In Touch
             </Link>
+            <a 
+              href={site.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+            >
+              <Linkedin size={20} className="mr-2" />
+              Connect on LinkedIn
+            </a>
           </motion.div>
         </div>
       </motion.section>
@@ -78,9 +88,9 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Track Record</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">My Expertise</h2>
             <p className="text-lg opacity-80 max-w-2xl mx-auto">
-              Proven expertise in delivering enterprise-grade infrastructure solutions
+              Specialized in DevOps and MLOps solutions for enterprise-scale infrastructure
             </p>
           </div>
           
@@ -270,7 +280,7 @@ export default function Home() {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">InfraCore Multi-Account AWS</h3>
+              <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">InfraCore AWS Architecture</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                 Architected secure multi-account AWS infrastructure with EKS (Bottlerocket), 
                 GitOps (ArgoCD), and comprehensive observability stack.

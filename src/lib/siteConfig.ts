@@ -1,13 +1,13 @@
 export const site = {
   hero: {
-    title: "InfraCore — Enterprise Infrastructure Solutions",
-    subtitle: "Professional DevOps and infrastructure automation services specializing in AWS, Kubernetes, Terraform, and GitOps. We design, implement, and maintain scalable, secure infrastructure solutions for modern enterprises.",
+    title: "InfraCore — DevOps & MLOps Consulting",
+    subtitle: "I specialize in DevOps and MLOps consulting, helping companies build scalable infrastructure and machine learning pipelines. Expert in AWS, Kubernetes, Terraform, GitOps, and ML infrastructure automation.",
   },
   contact: {
     email: "contact@infracore.com",
     phone: "+49 176 281 366 89",
     location: "Leipzig, Germany",
-    linkedin: "https://linkedin.com/company/infracore",
+    linkedin: "https://linkedin.com/in/amr-fathy-4a826a77",
   },
   experience: {
     years: "15+",
