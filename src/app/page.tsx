@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import TypingAnimation from "@/components/TypingAnimation";
+import HeroTabs from "@/components/HeroTabs";
 import { site } from "@/lib/siteConfig";
 
 export default function Home() {
@@ -28,29 +29,19 @@ export default function Home() {
             <TypingAnimation texts={typingTexts} />
           </h1>
           <motion.p 
-            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-16 leading-relaxed"
+            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
             {site.hero.subtitle}
           </motion.p>
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link className="btn-primary text-lg px-8 py-4" href="/projects">
-                View Projects
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link className="btn-secondary text-lg px-8 py-4" href="/about">
-                About
-              </Link>
-            </motion.div>
+            <HeroTabs />
           </motion.div>
         </div>
       </motion.section>
