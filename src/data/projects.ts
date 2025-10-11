@@ -2,32 +2,45 @@ import type { Project } from "@/components/ProjectCard";
 
 export const projects: Project[] = [
   {
-    slug: "immowelt-aws-replatforming",
-    title: "Immowelt / Immonet Replatforming to AWS",
+    slug: "aviv-group-replatforming",
+    title: "AVIV Group - Immowelt/Immonet AWS Replatforming",
     summary:
-      "Led migration to AWS EKS with Terraform and GitOps; CI/CD via CircleCI/GitHub Actions; Datadog + Prometheus observability.",
-    tags: ["AWS", "EKS", "Terraform", "GitOps", "Datadog"],
+      "Led complete migration from on-prem to AWS EKS with Terraform modules and AWS CDK. Built automated CI/CD pipelines with CircleCI & GitHub Actions, implemented GitOps workflows, and deployed comprehensive observability stacks.",
+    tags: ["AWS", "EKS", "Terraform", "CDK", "GitOps", "Datadog", "CircleCI"],
   },
   {
-    slug: "eks-cost-optimization",
-    title: "EKS Cost Optimization (45–50% mem util)",
+    slug: "cybrid-multi-account-aws",
+    title: "Cybrid - Multi-Account AWS Infrastructure",
     summary:
-      "Right-sized memory requests/limits via Grafana metrics and workload profiling; achieved ~45–50% utilization without incidents.",
-    tags: ["EKS", "Grafana", "Optimization"],
+      "Architected secure multi-account AWS infrastructure with EKS (Bottlerocket), GitOps (ArgoCD), and full observability. Integrated OIDC, Secrets Manager, and achieved 99.9% uptime with rapid provisioning.",
+    tags: ["AWS", "EKS", "Bottlerocket", "ArgoCD", "OIDC", "Prometheus", "Grafana"],
   },
   {
-    slug: "multi-account-aws-revolutiones",
-    title: "Multi-Account AWS Architecture (RevolutionES)",
+    slug: "revolutiones-cpa-platform",
+    title: "RevolutionES - CPA/PA Cloud Platform",
     summary:
-      "ARM64 EKS, ExternalDNS, CSI Secrets Store; RDS v16 with monitoring; GitHub Actions pipelines; DR with S3 backups.",
-    tags: ["AWS", "EKS", "RDS", "GitHub Actions"],
+      "Designed multi-account AWS architecture for CPA/PA applications. Deployed ARM64 EKS clusters with ExternalDNS, VPA, CSI Secrets Store, PostgreSQL RDS v16, and GitHub Actions pipelines.",
+    tags: ["AWS", "EKS", "ARM64", "RDS", "GitHub Actions", "PostgreSQL"],
   },
   {
-    slug: "observability-cybrid",
-    title: "Unified Observability (Cybrid)",
+    slug: "epam-cicd-automation",
+    title: "EPAM Systems - CI/CD & Kubernetes Automation",
     summary:
-      "Prometheus, Grafana, Loki, Tempo with Slack/PagerDuty alerts; OIDC, KMS, Secrets Manager; achieved 99.9% uptime.",
-    tags: ["Observability", "Prometheus", "Loki", "Tempo", "OIDC"],
-    link: "https://github.com/YOUR_USERNAME/your-observability-repo",
+      "Delivered CI/CD automation and Kubernetes containerization for Schneider Electric, Bose, and Knab. Provisioned AWS infrastructure with Terraform, optimized performance, and reduced incidents by 30%.",
+    tags: ["Kubernetes", "Jenkins", "Terraform", "AWS", "CI/CD", "Microservices"],
+  },
+  {
+    slug: "aurea-edi-automation",
+    title: "Aurea Software - EDI & B2B Integration Automation",
+    summary:
+      "Managed IBM Sterling B2B integrator operations, processed $300M+ monthly transactions, and automated PGP-secured EDI workflows. Integrated EDI processes into CI/CD pipelines using Jenkins and Git.",
+    tags: ["EDI", "IBM Sterling", "Jenkins", "PGP", "B2B Integration", "Automation"],
+  },
+  {
+    slug: "observability-stack-implementation",
+    title: "Unified Observability Stack Implementation",
+    summary:
+      "Implemented comprehensive monitoring solutions with Prometheus, Grafana, Loki, Tempo, and Datadog. Built custom dashboards, alerts, and achieved 99.9% uptime across multiple environments.",
+    tags: ["Prometheus", "Grafana", "Loki", "Tempo", "Datadog", "Monitoring"],
   },
 ];
