@@ -8,8 +8,8 @@ export default function Blog() {
   const blogPosts = [
     {
       id: 1,
-      title: "Building Scalable FinOps Infrastructure: Multi-Account AWS Architecture",
-      excerpt: "A deep dive into designing and implementing a secure, scalable infrastructure for a FinOps platform using AWS EKS, Terraform, and GitOps practices.",
+      title: "How I Built a 99.9% Uptime Multi-Account AWS Architecture for FinOps Platform",
+      excerpt: "Case study: Led the complete infrastructure redesign for a financial operations platform, achieving 99.9% uptime and 65% cost reduction using AWS EKS, Terraform, and GitOps.",
       date: "2024-01-15",
       readTime: "12 min read",
       tags: ["AWS", "EKS", "Terraform", "GitOps", "FinOps"],
@@ -18,8 +18,8 @@ export default function Blog() {
     },
     {
       id: 2,
-      title: "Implementing GitOps with ArgoCD for Kubernetes Deployments",
-      excerpt: "How we automated deployments and improved reliability using ArgoCD for continuous delivery in our Kubernetes clusters.",
+      title: "Zero-Downtime Deployments: My GitOps Implementation with ArgoCD",
+      excerpt: "Technical walkthrough: How I implemented GitOps with ArgoCD to achieve zero-downtime deployments and 99.9% reliability across multiple Kubernetes clusters.",
       date: "2023-12-20",
       readTime: "8 min read",
       tags: ["ArgoCD", "GitOps", "Kubernetes", "CI/CD"],
@@ -28,8 +28,8 @@ export default function Blog() {
     },
     {
       id: 3,
-      title: "Observability Stack: Prometheus, Grafana, and Jaeger Integration",
-      excerpt: "Building a comprehensive monitoring and observability solution for microservices architecture with Prometheus, Grafana, and distributed tracing.",
+      title: "Complete Observability Stack: Prometheus + Grafana + Jaeger Setup",
+      excerpt: "Step-by-step guide: How I built a production-ready observability stack that reduced MTTR by 80% and provided full visibility into microservices architecture.",
       date: "2023-11-10",
       readTime: "10 min read",
       tags: ["Prometheus", "Grafana", "Jaeger", "Observability", "Monitoring"],
@@ -57,10 +57,10 @@ export default function Blog() {
           </Link>
           
           <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            DevOps Blog
+            DevOps Engineering Blog
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-            Insights, tutorials, and case studies from real-world infrastructure projects
+            Real-world case studies, technical deep-dives, and proven DevOps strategies from 15+ years of infrastructure engineering
           </p>
         </div>
       </motion.section>

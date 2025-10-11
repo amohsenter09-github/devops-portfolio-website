@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
-import { ASCIIArtDiagrams, SVGDiagrams } from "@/components/DevOpsDiagrams";
+import DevOpsDiagrams from "@/components/DevOpsDiagrams";
 
 export default function Designs() {
   return (
@@ -30,7 +30,7 @@ export default function Designs() {
             Professional ASCII art diagrams showing system architecture, data flow, and component relationships. 
             These diagrams are lightweight, version-controllable, and display perfectly in any environment.
           </p>
-          <ASCIIArtDiagrams />
+          <DevOpsDiagrams />
         </section>
 
         {/* SVG Graphics */}
@@ -42,7 +42,7 @@ export default function Designs() {
             Scalable vector graphics showing detailed system architecture with visual components, 
             connection flows, and interactive elements. Perfect for presentations and documentation.
           </p>
-          <SVGDiagrams />
+          <DevOpsDiagrams />
         </section>
 
         {/* Design Process */}
