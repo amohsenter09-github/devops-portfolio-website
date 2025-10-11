@@ -5,7 +5,7 @@ export function ASCIIArtDiagrams() {
   return (
     <div className="space-y-6">
       {/* AWS Multi-Account Architecture */}
-      <div className="bg-gray-900 text-green-400 p-6 rounded-lg font-mono text-sm overflow-x-auto">
+      <div className="code-block">
         <h3 className="text-green-300 mb-4 font-bold">AWS Multi-Account Architecture</h3>
         <pre>{`
 ┌─────────────────────────────────────────────────────────────────┐
@@ -31,7 +31,7 @@ export function ASCIIArtDiagrams() {
       </div>
 
       {/* Kubernetes Microservices */}
-      <div className="bg-gray-900 text-blue-400 p-6 rounded-lg font-mono text-sm overflow-x-auto">
+      <div className="code-block">
         <h3 className="text-blue-300 mb-4 font-bold">Kubernetes Microservices with ArgoCD</h3>
         <pre>{`
 ┌─────────────────────────────────────────────────────────────────┐
@@ -67,7 +67,7 @@ export function ASCIIArtDiagrams() {
       </div>
 
       {/* CI/CD Pipeline */}
-      <div className="bg-gray-900 text-yellow-400 p-6 rounded-lg font-mono text-sm overflow-x-auto">
+      <div className="code-block">
         <h3 className="text-yellow-300 mb-4 font-bold">CI/CD Pipeline Flow</h3>
         <pre>{`
 ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐
@@ -85,7 +85,7 @@ export function ASCIIArtDiagrams() {
       </div>
 
       {/* Observability Stack */}
-      <div className="bg-gray-900 text-purple-400 p-6 rounded-lg font-mono text-sm overflow-x-auto">
+      <div className="code-block">
         <h3 className="text-purple-300 mb-4 font-bold">Observability Stack</h3>
         <pre>{`
 ┌─────────────────────────────────────────────────────────────────┐
@@ -115,7 +115,7 @@ export function SVGDiagrams() {
   return (
     <div className="space-y-8">
       {/* AWS Architecture SVG */}
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+      <div className="professional-card">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">AWS Multi-Account Architecture</h3>
         <svg viewBox="0 0 800 400" className="w-full h-auto">
           {/* Management Account */}
@@ -162,7 +162,7 @@ export function SVGDiagrams() {
       </div>
 
       {/* Kubernetes Architecture SVG */}
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+      <div className="professional-card">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Kubernetes Microservices</h3>
         <svg viewBox="0 0 800 500" className="w-full h-auto">
           {/* Git Repository */}
@@ -234,7 +234,7 @@ export function SVGDiagrams() {
       </div>
 
       {/* CI/CD Pipeline SVG */}
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+      <div className="professional-card">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">CI/CD Pipeline Flow</h3>
         <svg viewBox="0 0 800 200" className="w-full h-auto">
           {/* Pipeline Steps */}

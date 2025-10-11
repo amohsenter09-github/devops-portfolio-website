@@ -12,7 +12,7 @@ export default function Designs() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-3xl font-semibold text-gray-900 dark:text-white mb-4">
+        <h1 className="text-3xl font-semibold text-gray-900 dark:text-white mb-4 heading-primary">
           DevOps Designs & Architecture
         </h1>
         <p className="text-gray-600 dark:text-gray-300 max-w-3xl mb-8">
@@ -23,7 +23,7 @@ export default function Designs() {
 
         {/* ASCII Art Diagrams */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 heading-secondary">
             Architecture Diagrams (ASCII Art)
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
@@ -35,7 +35,7 @@ export default function Designs() {
 
         {/* SVG Graphics */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 heading-secondary">
             Interactive Architecture (SVG Graphics)
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-6">

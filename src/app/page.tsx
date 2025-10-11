@@ -25,7 +25,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 heading-primary">
           <TypingAnimation texts={typingTexts} />
         </h1>
         <motion.p 
@@ -42,22 +42,22 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link className="rounded-lg bg-black dark:bg-white text-white dark:text-black px-5 py-3 font-medium" href="/projects">
-              View Projects
-            </Link>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link className="rounded-lg border border-gray-300 dark:border-gray-600 px-5 py-3 font-medium" href="/about">
-              About
-            </Link>
-          </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link className="btn-primary" href="/projects">
+                    View Projects
+                  </Link>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link className="btn-secondary" href="/about">
+                    About
+                  </Link>
+                </motion.div>
         </motion.div>
       </motion.section>
 
       {/* Experience Stats with Animated Counters */}
       <motion.section 
-        className="py-8 sm:py-12 border-t border-gray-200 dark:border-gray-700"
+        className="py-8 sm:py-12 section-gradient rounded-2xl"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -65,45 +65,49 @@ export default function Home() {
       >
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
           <motion.div
+            className="professional-card"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ delay: 0.1, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
               <AnimatedCounter end={15} suffix="+" />
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
           </motion.div>
           <motion.div
+            className="professional-card"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-green-600 dark:text-green-400">
               <AnimatedCounter end={site.experience.companies.length} />
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Companies</div>
           </motion.div>
           <motion.div
+            className="professional-card"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">
               <AnimatedCounter end={50} suffix="+" />
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Projects</div>
           </motion.div>
           <motion.div
+            className="professional-card"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">
               <AnimatedCounter end={99.9} suffix="%" />
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Uptime</div>
@@ -113,16 +117,16 @@ export default function Home() {
 
       {/* Skills Overview with Hover Effects */}
       <motion.section 
-        className="py-8 sm:py-12 border-t border-gray-200 dark:border-gray-700"
+        className="py-8 sm:py-12"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white">Core Technologies</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white heading-secondary">Core Technologies</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <motion.div 
-            className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow"
+            className="professional-card"
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
           >
@@ -143,7 +147,7 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.div 
-            className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow"
+            className="professional-card"
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
           >
@@ -164,7 +168,7 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.div 
-            className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow"
+            className="professional-card"
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
           >
