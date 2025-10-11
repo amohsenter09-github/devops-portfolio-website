@@ -16,146 +16,139 @@ export default function Home() {
   ];
 
   return (
-    <div className="w-full">
-      {/* Professional Hero Section */}
+    <div className="w-full min-h-screen">
+      {/* macOS Glass Hero Section */}
       <motion.section 
-        className="py-20 sm:py-24"
+        className="py-32 sm:py-40 flex items-center justify-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <motion.div
-              className="inline-flex items-center px-4 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-full text-blue-700 dark:text-blue-300 text-sm font-medium mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
-              Available for Consulting & Full-time Opportunities
-            </motion.div>
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <motion.div
+            className="glass-card mb-12"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            <div className="flex items-center justify-center mb-6">
+              <span className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></span>
+              <span className="text-sm font-medium">Available for Opportunities</span>
+            </div>
             
-            <h1 className="heading-primary mb-6">
+            <h1 className="text-5xl sm:text-6xl font-bold mb-8 leading-tight">
               <TypingAnimation texts={typingTexts} />
             </h1>
             
-            <motion.p 
-              className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
+            <p className="text-xl leading-relaxed opacity-90 max-w-2xl mx-auto">
               {site.hero.subtitle}
-            </motion.p>
-            
-            {/* Professional CTA Buttons */}
-            <motion.div 
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
+            </p>
+          </motion.div>
+          
+          {/* Glass CTA Buttons */}
+          <motion.div 
+            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+          >
+            <Link 
+              href="/projects"
+              className="btn-accent"
             >
-              <Link 
-                href="/projects"
-                className="btn-primary"
-              >
-                View My Work
-              </Link>
-              <Link 
-                href="/contact"
-                className="btn-secondary"
-              >
-                Get In Touch
-              </Link>
-            </motion.div>
-          </div>
+              View My Work
+            </Link>
+            <Link 
+              href="/contact"
+              className="btn-glass"
+            >
+              Get In Touch
+            </Link>
+          </motion.div>
         </div>
       </motion.section>
 
-      {/* Professional Stats Section */}
+      {/* Glass Stats Section */}
       <motion.section 
-        className="py-16"
+        className="py-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
         <div className="max-w-6xl mx-auto px-4">
-          <div className="section-gradient">
-            <div className="text-center mb-12">
-              <h2 className="heading-secondary mb-4">Proven Track Record</h2>
-              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Delivering enterprise-grade infrastructure solutions with measurable results
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Experience & Results</h2>
+            <p className="text-lg opacity-80 max-w-2xl mx-auto">
+              Proven track record of delivering enterprise-grade infrastructure solutions
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <motion.div 
-                className="text-center"
+                className="glass-card text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                <div className="text-4xl font-bold text-white mb-2">
                   <AnimatedCounter end={15} duration={2} />
                   <span className="text-3xl">+</span>
                 </div>
-                <div className="text-gray-600 dark:text-gray-400 font-medium">
+                <div className="opacity-80 font-medium">
                   Years Experience
                 </div>
               </motion.div>
               
               <motion.div 
-                className="text-center"
+                className="glass-card text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">
+                <div className="text-4xl font-bold text-white mb-2">
                   <AnimatedCounter end={50} duration={2} />
                   <span className="text-3xl">+</span>
                 </div>
-                <div className="text-gray-600 dark:text-gray-400 font-medium">
+                <div className="opacity-80 font-medium">
                   Projects Delivered
                 </div>
               </motion.div>
               
               <motion.div 
-                className="text-center"
+                className="glass-card text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">
+                <div className="text-4xl font-bold text-white mb-2">
                   <AnimatedCounter end={99} duration={2} />
                   <span className="text-3xl">%</span>
                 </div>
-                <div className="text-gray-600 dark:text-gray-400 font-medium">
+                <div className="opacity-80 font-medium">
                   Uptime Achieved
                 </div>
               </motion.div>
               
               <motion.div 
-                className="text-center"
+                className="glass-card text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">
+                <div className="text-4xl font-bold text-white mb-2">
                   <AnimatedCounter end={24} duration={2} />
                   <span className="text-3xl">/7</span>
                 </div>
-                <div className="text-gray-600 dark:text-gray-400 font-medium">
+                <div className="opacity-80 font-medium">
                   Support Available
                 </div>
               </motion.div>
             </div>
-          </div>
         </div>
       </motion.section>
 

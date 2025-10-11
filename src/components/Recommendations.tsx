@@ -23,13 +23,13 @@ interface RecommendationCardProps {
 function RecommendationCard({ recommendation, index }: RecommendationCardProps) {
   return (
     <motion.div
-      className="recommendation-card-clean"
+      className="glass-card h-full"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       viewport={{ once: true }}
       whileHover={{ 
-        y: -2,
+        y: -4,
         transition: { duration: 0.2 }
       }}
     >
@@ -46,23 +46,23 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         </div>
         
         {/* Recommendation Text */}
-        <blockquote className="text-slate-700 dark:text-slate-200 mb-8 flex-grow leading-relaxed text-lg">
+        <blockquote className="text-white mb-8 flex-grow leading-relaxed text-lg opacity-90">
           &ldquo;{recommendation.recommendation}&rdquo;
         </blockquote>
         
         {/* Author Info */}
         <div className="flex items-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 shadow-lg">
-            {recommendation.name.split(' ').map(n => n[0]).join('')}
+          <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 border border-white/30">
+            {recommendation.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
           </div>
           <div>
-            <div className="font-semibold text-slate-900 dark:text-white text-lg">
+            <div className="font-semibold text-white text-lg">
               {recommendation.name}
             </div>
-            <div className="text-slate-600 dark:text-slate-400 font-medium">
+            <div className="text-white/80 font-medium">
               {recommendation.position}
             </div>
-            <div className="text-blue-600 dark:text-blue-400 font-semibold">
+            <div className="text-white/90 font-semibold">
               {recommendation.company}
             </div>
           </div>
@@ -90,12 +90,12 @@ export default function Recommendations() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            Client Recommendations
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            What industry leaders say about working with me
-          </p>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
+                Client Recommendations
+              </h2>
+              <p className="text-lg text-white/80 max-w-2xl mx-auto">
+                What industry leaders say about working with me
+              </p>
         </motion.div>
 
         {/* Recommendations Grid */}

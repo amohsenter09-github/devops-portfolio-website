@@ -1,25 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --radius: 8px;
+  --radius: 16px;
   
-  /* Professional Corporate Color Palette */
-  --primary: 15 23 42; /* Slate-900 - Deep professional blue */
-  --primary-light: 51 65 85; /* Slate-700 */
-  --secondary: 71 85 105; /* Slate-600 */
-  --accent: 59 130 246; /* Blue-500 - Trust and reliability */
-  --accent-dark: 37 99 235; /* Blue-600 */
-  --success: 34 197 94; /* Green-500 */
-  --warning: 245 158 11; /* Amber-500 */
-  --error: 239 68 68; /* Red-500 */
-  --neutral: 148 163 184; /* Slate-400 */
-  --neutral-dark: 100 116 139; /* Slate-500 */
+  /* macOS-inspired Glass Morphism Colors */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.1);
+  --glass-text: rgba(255, 255, 255, 0.9);
+  --glass-text-secondary: rgba(255, 255, 255, 0.7);
   
-  /* Professional Gradients */
-  --gradient-primary: linear-gradient(135deg, rgb(15 23 42), rgb(51 65 85));
-  --gradient-accent: linear-gradient(135deg, rgb(59 130 246), rgb(37 99 235));
-  --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  --gradient-surface-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  /* Dark mode glass */
+  --glass-bg-dark: rgba(0, 0, 0, 0.2);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+  --glass-shadow-dark: rgba(0, 0, 0, 0.3);
+  --glass-text-dark: rgba(255, 255, 255, 0.95);
+  --glass-text-secondary-dark: rgba(255, 255, 255, 0.8);
+  
+  /* Accent colors */
+  --accent-blue: #007AFF;
+  --accent-blue-hover: #0056CC;
+  --accent-green: #30D158;
+  --accent-orange: #FF9500;
+  --accent-red: #FF3B30;
 }
 
 * {
@@ -35,19 +38,20 @@ html {
 body {
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
-  background: #ffffff;
-  color: rgb(var(--primary));
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--glass-text);
+  transition: all 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" 1;
   font-size: 16px;
+  min-height: 100vh;
 }
 
 html.dark body {
-  background: #0f172a;
-  color: #f1f5f9;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: var(--glass-text-dark);
 }
 
 /* Professional Typography */
@@ -98,54 +102,70 @@ html.dark .heading-tertiary {
   transform: translateY(-2px);
 }
 
-/* Modern Professional Button Styles */
-.btn-primary {
-  background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+/* macOS-style Glass Buttons */
+.btn-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  color: var(--glass-text);
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 8px 32px var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+html.dark .btn-glass {
+  background: var(--glass-bg-dark);
+  border: 1px solid var(--glass-border-dark);
+  color: var(--glass-text-dark);
+  box-shadow: 0 8px 32px var(--glass-shadow-dark);
+}
+
+.btn-glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px var(--glass-shadow);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+html.dark .btn-glass:hover {
+  box-shadow: 0 12px 40px var(--glass-shadow-dark);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.btn-glass:active {
+  transform: translateY(0);
+}
+
+.btn-accent {
+  background: var(--accent-blue);
   color: white;
   padding: 1rem 2rem;
-  border-radius: 0.75rem;
+  border-radius: var(--radius);
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 122, 255, 0.3);
   position: relative;
   overflow: hidden;
 }
 
-.btn-primary:hover {
+.btn-accent:hover {
+  background: var(--accent-blue-hover);
   transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
-  background: linear-gradient(135deg, #2563EB 0%, #059669 100%);
+  box-shadow: 0 12px 40px rgba(0, 122, 255, 0.4);
 }
 
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #3B82F6;
-  padding: 1rem 2rem;
-  border-radius: 0.75rem;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  border: 2px solid #3B82F6;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-secondary:hover {
-  background: #3B82F6;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
-}
-
-.btn-secondary:active {
+.btn-accent:active {
   transform: translateY(0);
 }
 
@@ -210,32 +230,34 @@ h1, h2, h3, h4, h5, h6, p, span, div {
   line-height: 1.5;
 }
 
-/* Professional Cards - Corporate Style */
-.professional-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+/* macOS Glass Morphism Cards */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
   padding: 2rem;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 8px 32px var(--glass-shadow);
   transition: all 0.3s ease;
   position: relative;
 }
 
-html.dark .professional-card {
-  background: #1e293b;
-  border: 1px solid #334155;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+html.dark .glass-card {
+  background: var(--glass-bg-dark);
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: 0 8px 32px var(--glass-shadow-dark);
 }
 
-.professional-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15);
-  border-color: rgb(var(--accent));
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px var(--glass-shadow);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-html.dark .professional-card:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  border-color: rgb(var(--accent));
+html.dark .glass-card:hover {
+  box-shadow: 0 12px 40px var(--glass-shadow-dark);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Dark mode styles */
