@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
-import FigmaEmbed from "@/components/FigmaEmbed";
 import FigmaImage from "@/components/FigmaImage";
 
 export default function Designs() {
@@ -26,12 +25,22 @@ export default function Designs() {
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
             AWS Infrastructure Architecture
           </h2>
-          <FigmaEmbed
-            url="https://www.figma.com/file/YOUR_FILE_ID/AWS-Infrastructure-Design"
-            title="Multi-Account AWS Architecture"
-            description="Comprehensive AWS infrastructure design showing multi-account setup, VPC configurations, security groups, and service integrations."
-            height={500}
-          />
+          <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Multi-Account AWS Architecture
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Comprehensive AWS infrastructure design showing multi-account setup, VPC configurations, security groups, and service integrations.
+              </p>
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                📝 <strong>To add your Figma design:</strong><br/>
+                1. Create your AWS architecture diagram in Figma<br/>
+                2. Copy the Figma file URL<br/>
+                3. Replace &quot;YOUR_FILE_ID&quot; in the code
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Kubernetes Microservices with ArgoCD */}
@@ -62,12 +71,22 @@ export default function Designs() {
             />
           </div>
 
-          <FigmaEmbed
-            url="https://www.figma.com/file/YOUR_K8S_FILE_ID/Kubernetes-Microservices-Architecture"
-            title="Interactive Kubernetes Architecture"
-            description="Click to explore the interactive microservices architecture with ArgoCD deployment flows"
-            height={600}
-          />
+          <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Interactive Kubernetes Architecture
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Click to explore the interactive microservices architecture with ArgoCD deployment flows
+              </p>
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                📝 <strong>To add your Figma design:</strong><br/>
+                1. Create your Kubernetes microservices diagram in Figma<br/>
+                2. Copy the Figma file URL<br/>
+                3. Replace &quot;YOUR_K8S_FILE_ID&quot; in the code
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* CI/CD Pipeline Flow */}
@@ -75,12 +94,22 @@ export default function Designs() {
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
             CI/CD Pipeline Design
           </h2>
-          <FigmaEmbed
-            url="https://www.figma.com/file/YOUR_FILE_ID/CI-CD-Pipeline"
-            title="Automated CI/CD Pipeline"
-            description="End-to-end CI/CD pipeline design showing GitHub Actions, Docker builds, security scanning, and deployment processes."
-            height={400}
-          />
+          <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Automated CI/CD Pipeline
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                End-to-end CI/CD pipeline design showing GitHub Actions, Docker builds, security scanning, and deployment processes.
+              </p>
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                📝 <strong>To add your Figma design:</strong><br/>
+                1. Create your CI/CD pipeline diagram in Figma<br/>
+                2. Copy the Figma file URL<br/>
+                3. Replace &quot;YOUR_FILE_ID&quot; in the code
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Monitoring Dashboard Mockup */}
