@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
-import Image from "next/image";
+import { Star } from "lucide-react";
 import { site } from "@/lib/siteConfig";
 
 interface Recommendation {
@@ -24,55 +23,46 @@ interface RecommendationCardProps {
 function RecommendationCard({ recommendation, index }: RecommendationCardProps) {
   return (
     <motion.div
-      className="recommendation-card"
-      initial={{ opacity: 0, y: 30 }}
+      className="recommendation-card-clean"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.6 }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
       viewport={{ once: true }}
       whileHover={{ 
-        y: -8,
-        transition: { duration: 0.3 }
+        y: -2,
+        transition: { duration: 0.2 }
       }}
     >
-      <div className="relative p-6 h-full flex flex-col">
-        {/* Quote Icon */}
-        <div className="absolute top-4 right-4 opacity-10">
-          <Quote size={32} className="text-blue-600 dark:text-blue-400" />
-        </div>
-        
+      <div className="p-8 h-full flex flex-col">
         {/* Rating Stars */}
-        <div className="flex mb-4">
+        <div className="flex mb-6">
           {[...Array(recommendation.rating)].map((_, i) => (
             <Star 
               key={i} 
-              size={16} 
-              className="text-yellow-400 fill-current" 
+              size={18} 
+              className="text-amber-400 fill-current" 
             />
           ))}
         </div>
         
         {/* Recommendation Text */}
-        <blockquote className="text-gray-700 dark:text-gray-300 mb-6 flex-grow leading-relaxed">
+        <blockquote className="text-gray-700 dark:text-gray-200 mb-8 flex-grow leading-relaxed text-lg">
           &ldquo;{recommendation.recommendation}&rdquo;
         </blockquote>
         
         {/* Author Info */}
-        <div className="flex items-center mt-auto">
-          <Image
-            src={recommendation.avatar}
-            alt={recommendation.name}
-            width={48}
-            height={48}
-            className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-blue-200 dark:border-blue-700"
-          />
+        <div className="flex items-center">
+          <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+            {recommendation.name.split(' ').map(n => n[0]).join('')}
+          </div>
           <div>
-            <div className="font-semibold text-gray-900 dark:text-white">
+            <div className="font-semibold text-gray-900 dark:text-white text-lg">
               {recommendation.name}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-gray-600 dark:text-gray-400">
               {recommendation.position}
             </div>
-            <div className="text-sm font-medium text-blue-600 dark:text-blue-400">
+            <div className="text-blue-600 dark:text-blue-400 font-medium">
               {recommendation.company}
             </div>
           </div>
@@ -94,16 +84,16 @@ export default function Recommendations() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 heading-secondary">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
             Client Recommendations
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             What industry leaders say about working with me
           </p>
         </motion.div>
@@ -121,17 +111,17 @@ export default function Recommendations() {
 
         {/* LinkedIn CTA */}
         <motion.div 
-          className="text-center mt-12"
+          className="text-center mt-16"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
           viewport={{ once: true }}
         >
           <a
             href={site.contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
           >
             View More on LinkedIn
             <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
