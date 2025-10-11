@@ -24,7 +24,7 @@ function Diagram({ title, children }: DiagramProps) {
 }
 
 export default function DevOpsDiagrams() {
-  const [activeDiagram, setActiveDiagram] = useState("app-of-apps");
+  const [activeDiagram, setActiveDiagram] = useState("cybrid-gitops");
 
   const diagrams = {
     "app-of-apps": (
@@ -658,6 +658,252 @@ export default function DevOpsDiagrams() {
       </Diagram>
     ),
 
+    "cybrid-gitops": (
+      <Diagram title="Cybrid GitOps Architecture - Kustomize + ArgoCD">
+        <div className="w-full max-w-7xl">
+          {/* Git Repository Section */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
+              <div className="w-16 h-16 bg-gray-600 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <span className="text-white font-bold text-xl">Git</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">k8s-applications Repository</h4>
+              <p className="text-white/80 text-sm">Kustomize Base + Overlays<br/>Cybrid-app/k8s-applications.git</p>
+            </div>
+          </div>
+
+          {/* Arrow Down */}
+          <div className="flex justify-center mb-8">
+            <div className="w-1 h-8 bg-white/40"></div>
+          </div>
+
+          {/* ArgoCD Hub */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
+              <div className="w-20 h-20 bg-blue-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <span className="text-white font-bold text-2xl">A</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">ArgoCD Hub</h4>
+              <p className="text-white/80 text-sm">Operations Environment<br/>argocd.cybrid.build<br/>Image Updater Enabled</p>
+            </div>
+          </div>
+
+          {/* Arrow Down */}
+          <div className="flex justify-center mb-8">
+            <div className="w-1 h-8 bg-white/40"></div>
+          </div>
+
+          {/* AWS Accounts & EKS Clusters */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* Sandbox */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <div className="text-center mb-4">
+                <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-blue-400 font-bold text-sm">SB</span>
+                </div>
+                <h5 className="font-semibold text-white">Sandbox</h5>
+                <p className="text-white/70 text-xs">ca-central-1</p>
+                <p className="text-white/60 text-xs">EKS Cluster</p>
+              </div>
+              
+              <div className="space-y-2">
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-idp</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-platform-bank</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">portal-organization</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">+ 9 more services</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Staging */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <div className="text-center mb-4">
+                <div className="w-12 h-12 bg-yellow-500/20 border border-yellow-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-yellow-400 font-bold text-sm">STG</span>
+                </div>
+                <h5 className="font-semibold text-white">Staging</h5>
+                <p className="text-white/70 text-xs">ca-central-1</p>
+                <p className="text-white/60 text-xs">EKS Cluster</p>
+              </div>
+              
+              <div className="space-y-2">
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-idp</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-platform-bank</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">portal-organization</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">+ 9 more services</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Production */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+              <div className="text-center mb-4">
+                <div className="w-12 h-12 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-green-400 font-bold text-sm">PROD</span>
+                </div>
+                <h5 className="font-semibold text-white">Production</h5>
+                <p className="text-white/70 text-xs">ca-central-1</p>
+                <p className="text-white/60 text-xs">EKS Cluster</p>
+              </div>
+              
+              <div className="space-y-2">
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-idp</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-platform-bank</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">portal-organization</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">+ 9 more services</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Microservices Architecture */}
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 mb-6">
+            <h5 className="font-semibold text-white mb-4 text-center">Cybrid Microservices Architecture</h5>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {/* API Services */}
+              <div className="space-y-2">
+                <h6 className="font-semibold text-white text-sm text-center mb-2">API Services</h6>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-idp</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-platform-bank</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-platform-organization</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-platform-webevent</span>
+                </div>
+              </div>
+
+              {/* Internal Services */}
+              <div className="space-y-2">
+                <h6 className="font-semibold text-white text-sm text-center mb-2">Internal Services</h6>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-internal-accounts</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-internal-identity</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-internal-key</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-internal-files</span>
+                </div>
+              </div>
+
+              {/* Integration Services */}
+              <div className="space-y-2">
+                <h6 className="font-semibold text-white text-sm text-center mb-2">Integration Services</h6>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-integration-exchange</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">api-integration-transfers</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">internal-orchestrator</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">internal-processor-notifications</span>
+                </div>
+              </div>
+
+              {/* Portal Services */}
+              <div className="space-y-2">
+                <h6 className="font-semibold text-white text-sm text-center mb-2">Portal Services</h6>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">portal-organization</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">portal-payments</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
+                  <span className="text-white/80 text-xs">ingress</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* AWS Infrastructure */}
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+            <h5 className="font-semibold text-white mb-4 text-center">AWS Infrastructure (Terraform)</h5>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-orange-400 font-bold text-sm">EKS</span>
+                </div>
+                <p className="text-white/80 text-xs">EKS Clusters</p>
+                <p className="text-white/60 text-xs">ca-central-1</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-blue-400 font-bold text-sm">RDS</span>
+                </div>
+                <p className="text-white/80 text-xs">Aurora PostgreSQL</p>
+                <p className="text-white/60 text-xs">Multi-AZ</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-red-400 font-bold text-sm">ECR</span>
+                </div>
+                <p className="text-white/80 text-xs">Container Registry</p>
+                <p className="text-white/60 text-xs">803339463453.dkr.ecr.ca-central-1</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-green-400 font-bold text-sm">ALB</span>
+                </div>
+                <p className="text-white/80 text-xs">Application Load Balancer</p>
+                <p className="text-white/60 text-xs">External DNS</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Kustomize Configuration */}
+          <div className="mt-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4">
+            <h5 className="font-semibold text-white mb-3 text-center">Kustomize Configuration Structure</h5>
+            <div className="bg-black/20 rounded p-3 text-xs font-mono text-white/80">
+              <div className="text-green-400">k8s-applications/</div>
+              <div className="ml-4 text-blue-400">api-idp/</div>
+              <div className="ml-8 text-yellow-400">base/</div>
+              <div className="ml-12 text-purple-400">├── kustomization.yaml</div>
+              <div className="ml-12 text-purple-400">├── api-idp-deployment.yaml</div>
+              <div className="ml-12 text-purple-400">└── api-idp-service.yaml</div>
+              <div className="ml-8 text-yellow-400">overlays/</div>
+              <div className="ml-12 text-purple-400">├── staging/kustomization.yaml</div>
+              <div className="ml-12 text-purple-400">├── production/kustomization.yaml</div>
+              <div className="ml-12 text-purple-400">└── sandbox/kustomization.yaml</div>
+            </div>
+          </div>
+        </div>
+      </Diagram>
+    ),
     monitoring: (
       <Diagram title="Observability Stack">
         <div className="w-full max-w-4xl">
@@ -727,7 +973,8 @@ export default function DevOpsDiagrams() {
                   : 'text-white/70 hover:text-white'
               }`}
             >
-              {key === 'app-of-apps' ? 'App of Apps' : 
+              {key === 'cybrid-gitops' ? 'Cybrid GitOps' :
+               key === 'app-of-apps' ? 'App of Apps' : 
                key === 'multicluster' ? 'Multicluster' :
                key === 'argocd' ? 'ArgoCD' : 
                key === 'microservices' ? 'Microservices' :
