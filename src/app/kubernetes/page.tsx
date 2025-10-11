@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
-import KubernetesDiagram from "@/components/KubernetesDiagram";
 import FigmaImage from "@/components/FigmaImage";
 import FigmaEmbed from "@/components/FigmaEmbed";
 
@@ -50,7 +49,7 @@ export default function KubernetesMicroservices() {
           </div>
 
           <FigmaEmbed
-            url="https://www.figma.com/file/YOUR_K8S_FILE_ID/Kubernetes-Microservices-Architecture"
+            url="https://www.figma.com/file/placeholder/Kubernetes-Microservices-Architecture"
             title="Interactive Microservices Architecture"
             description="Explore the interactive microservices architecture with ArgoCD deployment flows and service interactions"
             height={600}
@@ -63,12 +62,22 @@ export default function KubernetesMicroservices() {
             Service Mesh & Communication
           </h2>
           
-          <KubernetesDiagram
-            fileId="YOUR_SERVICE_MESH_FILE_ID"
-            title="Istio Service Mesh Architecture"
-            description="Service mesh implementation with Istio showing traffic management, security, and observability"
-            nodeIds={["node-1", "node-2"]}
-          />
+          <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Istio Service Mesh Architecture
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Service mesh implementation with Istio showing traffic management, security, and observability
+              </p>
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                📝 <strong>To add your Figma design:</strong><br/>
+                1. Create your Istio service mesh diagram in Figma<br/>
+                2. Copy the Figma file URL<br/>
+                3. Replace &quot;YOUR_SERVICE_MESH_FILE_ID&quot; in the code
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* ArgoCD GitOps Flow */}
@@ -94,12 +103,22 @@ export default function KubernetesMicroservices() {
             />
           </div>
 
-          <FigmaEmbed
-            url="https://www.figma.com/file/YOUR_GITOPS_FILE_ID/ArgoCD-GitOps-Workflow"
-            title="Interactive GitOps Workflow"
-            description="Step-by-step GitOps workflow showing automated deployment processes"
-            height={500}
-          />
+          <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Interactive GitOps Workflow
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Step-by-step GitOps workflow showing automated deployment processes
+              </p>
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                📝 <strong>To add your Figma design:</strong><br/>
+                1. Create your ArgoCD GitOps workflow in Figma<br/>
+                2. Copy the Figma file URL<br/>
+                3. Replace &quot;YOUR_GITOPS_FILE_ID&quot; in the code
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Observability Stack */}
@@ -108,12 +127,22 @@ export default function KubernetesMicroservices() {
             Observability & Monitoring
           </h2>
           
-          <KubernetesDiagram
-            fileId="YOUR_OBSERVABILITY_FILE_ID"
-            title="Comprehensive Observability Stack"
-            description="Full observability implementation with Prometheus, Grafana, Jaeger, and ELK stack"
-            nodeIds={["obs-1", "obs-2", "obs-3"]}
-          />
+          <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                Comprehensive Observability Stack
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Full observability implementation with Prometheus, Grafana, Jaeger, and ELK stack
+              </p>
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                📝 <strong>To add your Figma design:</strong><br/>
+                1. Create your observability stack diagram in Figma<br/>
+                2. Copy the Figma file URL<br/>
+                3. Replace &quot;YOUR_OBSERVABILITY_FILE_ID&quot; in the code
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Security & RBAC */}
