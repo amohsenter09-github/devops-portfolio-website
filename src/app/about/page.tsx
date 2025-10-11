@@ -14,7 +14,7 @@ export default function About() {
         
         <p className="text-gray-700 leading-7 mb-6">
           Throughout my career, I&apos;ve led major replatforming initiatives for companies like AVIV Group, EPAM Systems, 
-          and Cybrid Technology. I&apos;ve successfully migrated legacy systems to cloud-native architectures, implemented 
+          and Enterprise Technology Solutions. I&apos;ve successfully migrated legacy systems to cloud-native architectures, implemented 
           comprehensive CI/CD pipelines, and achieved 99.9% uptime across multiple production environments.
         </p>
 

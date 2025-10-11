@@ -8,12 +8,12 @@ export default function Blog() {
   const blogPosts = [
     {
       id: 1,
-      title: "How I Built a 99.9% Uptime Multi-Account AWS Architecture for FinOps Platform",
-      excerpt: "Case study: Led the complete infrastructure redesign for a financial operations platform, achieving 99.9% uptime and 65% cost reduction using AWS EKS, Terraform, and GitOps.",
+      title: "Deploy Your Apps on K8s the GitOps Way: Using ArgoCD and Image Updater",
+      excerpt: "Complete guide to implementing GitOps with ArgoCD and Image Updater for automated Kubernetes deployments. Learn how to achieve zero-downtime deployments and automated image updates.",
       date: "2024-01-15",
       readTime: "12 min read",
-      tags: ["AWS", "EKS", "Terraform", "GitOps", "FinOps"],
-      slug: "cybrid-multi-account-aws-architecture",
+      tags: ["Kubernetes", "ArgoCD", "GitOps", "Image Updater", "AWS EKS"],
+      slug: "enterprise-gitops-architecture",
       featured: true
     },
     {

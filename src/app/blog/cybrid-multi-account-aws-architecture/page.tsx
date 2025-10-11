@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, Tag, Code, Server, Shield, Zap } from "lucide-react";
 
-export default function CybridArchitecturePost() {
+export default function GitOpsArchitecturePost() {
   return (
     <div className="w-full">
       {/* Header */}
@@ -31,11 +31,11 @@ export default function CybridArchitecturePost() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            How I Built a 99.9% Uptime Multi-Account AWS Architecture for FinOps Platform
+            Deploy Your Apps on K8s the GitOps Way: Using ArgoCD and Image Updater
           </h1>
           
           <div className="flex flex-wrap gap-2 mb-8">
-            {["AWS", "EKS", "Terraform", "GitOps", "FinOps"].map((tag) => (
+            {["Kubernetes", "ArgoCD", "GitOps", "Image Updater", "AWS EKS"].map((tag) => (
               <span 
                 key={tag}
                 className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full"
@@ -63,29 +63,29 @@ export default function CybridArchitecturePost() {
             <div className="p-8">
               <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">The Challenge</h2>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                <strong>Problem:</strong> A leading FinOps platform needed to scale their infrastructure to support rapid growth while maintaining 
-                99.9% uptime and reducing operational costs. Their existing setup couldn&apos;t handle the load and lacked proper monitoring.
+                <strong>Problem:</strong> Managing deployments across multiple Kubernetes environments was becoming increasingly complex. 
+                Manual deployments, inconsistent configurations, and lack of automated image updates were causing deployment delays and operational overhead.
               </p>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                <strong>My Solution:</strong> As the lead DevOps engineer, I architected and implemented a complete multi-account AWS infrastructure 
-                redesign using modern DevOps practices. This case study shows exactly how I achieved these results.
+                <strong>My Solution:</strong> I implemented a complete GitOps workflow using ArgoCD and Image Updater to automate deployments 
+                and image updates across multiple Kubernetes clusters. This approach eliminated manual processes and ensured consistency.
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">3</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">AWS Accounts</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">K8s Clusters</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-green-600 dark:text-green-400">15+</div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">Microservices</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">99.9%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Uptime</div>
+                  <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">100%</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Automated</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">65%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Cost Reduction</div>
+                  <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">Zero</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Downtime</div>
                 </div>
               </div>
             </div>
@@ -94,26 +94,26 @@ export default function CybridArchitecturePost() {
           {/* My Approach */}
           <div className="professional-card mb-8">
             <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">My DevOps Approach</h2>
+              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">GitOps Implementation Strategy</h2>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Infrastructure as Code</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">ArgoCD Configuration</h3>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• Terraform modules for consistent deployments</li>
-                    <li>• Version-controlled infrastructure</li>
-                    <li>• Automated provisioning and updates</li>
-                    <li>• Environment parity across accounts</li>
+                    <li>• Application of Applications pattern</li>
+                    <li>• Multi-cluster management</li>
+                    <li>• Automated sync policies</li>
+                    <li>• RBAC and security controls</li>
                   </ul>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">GitOps & Automation</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Image Updater Integration</h3>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• ArgoCD for continuous deployment</li>
-                    <li>• Kustomize for environment management</li>
-                    <li>• Automated rollbacks on failure</li>
-                    <li>• Zero-downtime deployments</li>
+                    <li>• Automated image tag updates</li>
+                    <li>• Registry polling configuration</li>
+                    <li>• Update strategies and policies</li>
+                    <li>• Rollback capabilities</li>
                   </ul>
                 </div>
               </div>
@@ -125,33 +125,33 @@ export default function CybridArchitecturePost() {
             <div className="p-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
                 <Server className="mr-3 text-blue-600" />
-                Multi-Account Architecture
+                GitOps Architecture Overview
               </h2>
               
               <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Account Structure</h3>
+                <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Multi-Cluster Setup</h3>
                 <div className="space-y-3">
                   <div className="flex items-center">
                     <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Production Account</span>
+                    <span className="font-medium">Production Cluster</span>
                     <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">Live customer traffic</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Staging Account</span>
+                    <span className="font-medium">Staging Cluster</span>
                     <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">Pre-production testing</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Sandbox Account</span>
+                    <span className="font-medium">Development Cluster</span>
                     <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">Development & experimentation</span>
                   </div>
                 </div>
               </div>
 
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Each account is isolated with its own VPC, security groups, and IAM roles, ensuring complete separation 
-                of environments while maintaining consistent infrastructure patterns through Terraform modules.
+                Each cluster is managed by ArgoCD with Kustomize overlays for environment-specific configurations. 
+                The Image Updater automatically polls container registries and updates image tags when new versions are available.
               </p>
             </div>
           </div>
@@ -161,31 +161,31 @@ export default function CybridArchitecturePost() {
             <div className="p-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
                 <Code className="mr-3 text-green-600" />
-                Infrastructure Components
+                GitOps Components
               </h2>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Compute & Orchestration</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">ArgoCD Setup</h3>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• AWS EKS clusters with managed node groups</li>
-                    <li>• Bottlerocket OS for enhanced security</li>
-                    <li>• AWS Load Balancer Controller</li>
-                    <li>• External DNS for automatic DNS management</li>
-                    <li>• External Secrets Operator</li>
-                    <li>• FinOps cost monitoring microservices</li>
+                    <li>• Application of Applications pattern</li>
+                    <li>• Multi-cluster management</li>
+                    <li>• Automated sync policies</li>
+                    <li>• RBAC and security controls</li>
+                    <li>• Webhook integration</li>
+                    <li>• Health checks and monitoring</li>
                   </ul>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Data & Storage</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Image Updater Configuration</h3>
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• Amazon RDS PostgreSQL clusters</li>
-                    <li>• ElastiCache Redis for caching</li>
-                    <li>• S3 buckets for static assets</li>
-                    <li>• EBS volumes with encryption</li>
-                    <li>• AWS Secrets Manager integration</li>
-                    <li>• Cost analytics data warehouse</li>
+                    <li>• Registry polling configuration</li>
+                    <li>• Update strategies (semver, latest)</li>
+                    <li>• Automated PR creation</li>
+                    <li>• Rollback capabilities</li>
+                    <li>• Multi-registry support</li>
+                    <li>• Update policies and filters</li>
                   </ul>
                 </div>
               </div>
@@ -197,29 +197,28 @@ export default function CybridArchitecturePost() {
             <div className="p-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
                 <Shield className="mr-3 text-red-600" />
-                Security & Compliance
+                Security & Best Practices
               </h2>
               
               <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-red-800 dark:text-red-200">FinOps Security & Compliance</h3>
+                <h3 className="text-lg font-semibold mb-3 text-red-800 dark:text-red-200">GitOps Security Implementation</h3>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div>
-                    <h4 className="font-medium text-red-700 dark:text-red-300 mb-2">Network Security</h4>
+                    <h4 className="font-medium text-red-700 dark:text-red-300 mb-2">Access Control</h4>
                     <ul className="space-y-1 text-red-600 dark:text-red-400">
-                      <li>• VPC with private subnets only</li>
-                      <li>• Security groups with least privilege</li>
-                      <li>• AWS WAF for application protection</li>
-                      <li>• GuardDuty for threat detection</li>
+                      <li>• RBAC policies for ArgoCD</li>
+                      <li>• Service account permissions</li>
+                      <li>• Cluster role bindings</li>
+                      <li>• Namespace isolation</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-medium text-red-700 dark:text-red-300 mb-2">Data Protection</h4>
+                    <h4 className="font-medium text-red-700 dark:text-red-300 mb-2">Image Security</h4>
                     <ul className="space-y-1 text-red-600 dark:text-red-400">
-                      <li>• Encryption at rest and in transit</li>
-                      <li>• KMS key management</li>
-                      <li>• Secrets rotation policies</li>
-                      <li>• Audit logging with CloudTrail</li>
-                      <li>• Cost data anonymization</li>
+                      <li>• Container image scanning</li>
+                      <li>• Vulnerability assessments</li>
+                      <li>• Signed image verification</li>
+                      <li>• Registry access controls</li>
                     </ul>
                   </div>
                 </div>
@@ -232,42 +231,48 @@ export default function CybridArchitecturePost() {
             <div className="p-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
                 <Zap className="mr-3 text-purple-600" />
-                GitOps & Automation
+                Complete GitOps Workflow
               </h2>
               
               <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-purple-800 dark:text-purple-200">Deployment Pipeline</h3>
+                <h3 className="text-lg font-semibold mb-3 text-purple-800 dark:text-purple-200">Automated Deployment Pipeline</h3>
                 <div className="space-y-3">
                   <div className="flex items-center">
                     <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
                       <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">1</span>
                     </div>
-                    <span className="text-purple-700 dark:text-purple-300">Code pushed to GitHub repository</span>
+                    <span className="text-purple-700 dark:text-purple-300">Code pushed to Git repository</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
                       <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">2</span>
                     </div>
-                    <span className="text-purple-700 dark:text-purple-300">GitHub Actions builds and pushes Docker images</span>
+                    <span className="text-purple-700 dark:text-purple-300">CI/CD pipeline builds and pushes Docker images</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
                       <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">3</span>
                     </div>
-                    <span className="text-purple-700 dark:text-purple-300">ArgoCD detects changes and syncs to cluster</span>
+                    <span className="text-purple-700 dark:text-purple-300">Image Updater detects new images and creates PR</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
                       <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">4</span>
                     </div>
-                    <span className="text-purple-700 dark:text-purple-300">Health checks and rollback on failure</span>
+                    <span className="text-purple-700 dark:text-purple-300">ArgoCD syncs changes to target clusters</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">5</span>
+                    </div>
+                    <span className="text-purple-700 dark:text-purple-300">Health checks and automatic rollback on failure</span>
                   </div>
                 </div>
               </div>
 
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Using Kustomize for environment-specific configurations and ArgoCD for continuous deployment, 
-                we achieved zero-downtime deployments with automatic rollback capabilities.
+                Using Kustomize for environment-specific configurations and ArgoCD Image Updater for automated image updates, 
+                we achieved a fully automated deployment pipeline with zero manual intervention required.
               </p>
             </div>
           </div>
@@ -312,22 +317,22 @@ export default function CybridArchitecturePost() {
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-3 text-green-800 dark:text-green-200">Performance Improvements</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-green-800 dark:text-green-200">Deployment Improvements</h3>
                   <ul className="space-y-2 text-green-700 dark:text-green-300">
-                    <li>• <strong>99.9% Uptime</strong> - Multi-AZ deployments with automated failover</li>
-                    <li>• <strong>Zero-Downtime Deployments</strong> - Rolling updates with health checks</li>
-                    <li>• <strong>80% Faster Deployments</strong> - GitOps automation</li>
-                    <li>• <strong>50% Reduced MTTR</strong> - Comprehensive monitoring</li>
+                    <li>• <strong>100% Automated Deployments</strong> - Zero manual intervention</li>
+                    <li>• <strong>Zero-Downtime Updates</strong> - Rolling updates with health checks</li>
+                    <li>• <strong>90% Faster Deployments</strong> - GitOps automation</li>
+                    <li>• <strong>Automatic Image Updates</strong> - Image Updater integration</li>
                   </ul>
                 </div>
                 
                 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-3 text-blue-800 dark:text-blue-200">Cost & Efficiency</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-blue-800 dark:text-blue-200">Operational Excellence</h3>
                   <ul className="space-y-2 text-blue-700 dark:text-blue-300">
-                    <li>• <strong>65% Cost Reduction</strong> - FinOps practices and optimization</li>
-                    <li>• <strong>90% Automation</strong> - Infrastructure as Code</li>
-                    <li>• <strong>100% Compliance</strong> - Security and audit requirements</li>
-                    <li>• <strong>3x Faster Scaling</strong> - Auto-scaling groups</li>
+                    <li>• <strong>Consistent Environments</strong> - Kustomize overlays</li>
+                    <li>• <strong>Multi-Cluster Management</strong> - Single ArgoCD instance</li>
+                    <li>• <strong>Audit Trail</strong> - Git-based deployment history</li>
+                    <li>• <strong>Easy Rollbacks</strong> - Git revert capabilities</li>
                   </ul>
                 </div>
               </div>
@@ -341,9 +346,9 @@ export default function CybridArchitecturePost() {
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Infrastructure</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">GitOps Tools</h3>
                   <div className="flex flex-wrap gap-2">
-                    {["Terraform", "AWS EKS", "Bottlerocket", "ArgoCD", "Kustomize", "Helm"].map((tech) => (
+                    {["ArgoCD", "Image Updater", "Kustomize", "Helm", "Git", "Docker"].map((tech) => (
                       <span key={tech} className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded">
                         {tech}
                       </span>
@@ -352,9 +357,9 @@ export default function CybridArchitecturePost() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Monitoring</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Infrastructure</h3>
                   <div className="flex flex-wrap gap-2">
-                    {["Prometheus", "Grafana", "Jaeger", "Datadog", "PagerDuty"].map((tech) => (
+                    {["Kubernetes", "AWS EKS", "ECR", "Terraform", "Prometheus", "Grafana"].map((tech) => (
                       <span key={tech} className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded">
                         {tech}
                       </span>
@@ -372,26 +377,26 @@ export default function CybridArchitecturePost() {
               
               <div className="space-y-6">
                 <div className="border-l-4 border-blue-500 pl-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">FinOps Integration is Critical</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Image Updater is Game-Changing</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Implementing cost monitoring from day one prevents budget overruns. I learned that FinOps practices 
-                    should be built into the infrastructure design, not added as an afterthought.
+                    The ArgoCD Image Updater eliminates the need for manual image tag updates. It automatically detects new images 
+                    and creates pull requests, making the entire deployment process truly automated.
                   </p>
                 </div>
                 
                 <div className="border-l-4 border-green-500 pl-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Multi-Account Strategy Scales</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Kustomize Simplifies Multi-Environment Management</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Separating environments into dedicated AWS accounts provides better security isolation and 
-                    makes compliance auditing much easier. This approach scales better than single-account designs.
+                    Using Kustomize overlays for different environments (dev, staging, prod) provides consistency while allowing 
+                    environment-specific customizations. This approach scales much better than maintaining separate manifests.
                   </p>
                 </div>
                 
                 <div className="border-l-4 border-purple-500 pl-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">GitOps Reduces Operational Overhead</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">GitOps Reduces Operational Complexity</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    ArgoCD with Kustomize eliminated manual deployment processes and reduced human error. 
-                    The declarative approach made rollbacks and environment management much more reliable.
+                    ArgoCD with GitOps principles eliminated manual deployment processes and reduced human error. 
+                    The declarative approach made rollbacks and environment management much more reliable and auditable.
                   </p>
                 </div>
               </div>
@@ -401,10 +406,10 @@ export default function CybridArchitecturePost() {
           {/* Call to Action */}
           <div className="professional-card mb-8">
             <div className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Ready to Transform Your Infrastructure?</h2>
+              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Ready to Implement GitOps?</h2>
               <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                I help companies build scalable, reliable, and cost-effective infrastructure using modern DevOps practices. 
-                Let&apos;s discuss how I can help optimize your AWS environment.
+                I help companies implement modern GitOps workflows using ArgoCD and Image Updater to achieve 
+                fully automated deployments. Let&apos;s discuss how I can help optimize your Kubernetes deployment process.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
@@ -441,21 +446,21 @@ export default function CybridArchitecturePost() {
             <Link href="/blog/gitops-argocd-kubernetes" className="professional-card hover:transform hover:-translate-y-1 transition-all duration-200">
               <div className="p-6">
                 <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                  Zero-Downtime Deployments: My GitOps Implementation
+                  Advanced ArgoCD Configuration Patterns
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Learn how I implemented GitOps with ArgoCD to achieve zero-downtime deployments and 99.9% reliability.
+                  Learn advanced ArgoCD patterns including Application of Applications and multi-cluster management strategies.
                 </p>
               </div>
             </Link>
             
-            <Link href="/blog/observability-stack-prometheus-grafana" className="professional-card hover:transform hover:-translate-y-1 transition-all duration-200">
+            <Link href="/blog/kubernetes-image-updater-setup" className="professional-card hover:transform hover:-translate-y-1 transition-all duration-200">
               <div className="p-6">
                 <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                  Complete Observability Stack Implementation
+                  Complete Image Updater Setup Guide
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Step-by-step guide: How I built a production-ready observability stack that reduced MTTR by 80%.
+                  Step-by-step guide: How to configure ArgoCD Image Updater for automated container image updates.
                 </p>
               </div>
             </Link>

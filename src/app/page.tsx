@@ -270,7 +270,7 @@ export default function Home() {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">Cybrid Multi-Account AWS</h3>
+              <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">Enterprise Multi-Account AWS</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                 Architected secure multi-account AWS infrastructure with EKS (Bottlerocket), 
                 GitOps (ArgoCD), and comprehensive observability stack.
