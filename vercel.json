@@ -4,7 +4,7 @@
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "rewrites": [
+  "redirects": [
     {
       "source": "/home",
       "destination": "/",
