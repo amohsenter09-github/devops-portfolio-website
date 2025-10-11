@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --radius: 14px;
+  --radius: 8px;
   
-  /* Professional Color Palette */
-  --primary: 59 130 246; /* Blue-500 */
-  --primary-dark: 37 99 235; /* Blue-600 */
-  --secondary: 16 185 129; /* Emerald-500 */
-  --secondary-dark: 5 150 105; /* Emerald-600 */
-  --accent: 139 92 246; /* Violet-500 */
-  --accent-dark: 124 58 237; /* Violet-600 */
-  --neutral: 100 116 139; /* Slate-500 */
-  --neutral-dark: 71 85 105; /* Slate-600 */
+  /* Professional Corporate Color Palette */
+  --primary: 15 23 42; /* Slate-900 - Deep professional blue */
+  --primary-light: 51 65 85; /* Slate-700 */
+  --secondary: 71 85 105; /* Slate-600 */
+  --accent: 59 130 246; /* Blue-500 - Trust and reliability */
+  --accent-dark: 37 99 235; /* Blue-600 */
+  --success: 34 197 94; /* Green-500 */
+  --warning: 245 158 11; /* Amber-500 */
+  --error: 239 68 68; /* Red-500 */
+  --neutral: 148 163 184; /* Slate-400 */
+  --neutral-dark: 100 116 139; /* Slate-500 */
   
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, rgb(59 130 246), rgb(16 185 129));
-  --gradient-secondary: linear-gradient(135deg, rgb(139 92 246), rgb(59 130 246));
-  --gradient-accent: linear-gradient(135deg, rgb(245 158 11), rgb(239 68 68));
-  --gradient-surface: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  /* Professional Gradients */
+  --gradient-primary: linear-gradient(135deg, rgb(15 23 42), rgb(51 65 85));
+  --gradient-accent: linear-gradient(135deg, rgb(59 130 246), rgb(37 99 235));
+  --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   --gradient-surface-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
 
@@ -32,18 +33,58 @@ html {
 }
 
 body {
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
-  background: #f8fafc;
+  background: #ffffff;
+  color: rgb(var(--primary));
   transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" 1;
+  font-size: 16px;
 }
 
 html.dark body {
   background: #0f172a;
+  color: #f1f5f9;
+}
+
+/* Professional Typography */
+.heading-primary {
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: rgb(var(--primary));
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.heading-secondary {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: rgb(var(--primary));
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.heading-tertiary {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: rgb(var(--primary));
+}
+
+html.dark .heading-primary,
+html.dark .heading-secondary,
+html.dark .heading-tertiary {
+  color: #f1f5f9;
 }
 
 .card {
@@ -108,10 +149,12 @@ html.dark body {
   transform: translateY(0);
 }
 
-/* Professional Section Styling - Cleaner */
+/* Professional Section Styling - Corporate */
 .section-gradient {
-  background: #f8fafc;
+  background: #ffffff;
   border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 3rem 2rem;
 }
 
 html.dark .section-gradient {
@@ -167,29 +210,32 @@ h1, h2, h3, h4, h5, h6, p, span, div {
   line-height: 1.5;
 }
 
-/* Professional Cards - Cleaner Version */
+/* Professional Cards - Corporate Style */
 .professional-card {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 html.dark .professional-card {
-  background: #1f2937;
-  border: 1px solid #374151;
+  background: #1e293b;
+  border: 1px solid #334155;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .professional-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15);
+  border-color: rgb(var(--accent));
 }
 
 html.dark .professional-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border-color: rgb(var(--accent));
 }
 
 /* Dark mode styles */

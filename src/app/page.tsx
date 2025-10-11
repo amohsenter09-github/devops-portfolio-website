@@ -17,110 +17,142 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      {/* Hero Section with Typing Animation */}
+      {/* Professional Hero Section */}
       <motion.section 
-        className="py-16 sm:py-20 text-center flex flex-col items-center justify-center"
+        className="py-20 sm:py-24"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="max-w-4xl mx-auto px-4 flex flex-col items-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 heading-primary text-center">
-            <TypingAnimation texts={typingTexts} />
-          </h1>
-          <motion.p 
-            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            {site.hero.subtitle}
-          </motion.p>
-          
-          {/* Simple Button Group */}
-          <motion.div 
-            className="mt-8 flex flex-wrap items-center justify-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-          >
-            <Link 
-              href="/projects"
-              className="rounded-full bg-cyan-600/90 px-5 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-500 transition-colors"
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <motion.div
+              className="inline-flex items-center px-4 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-full text-blue-700 dark:text-blue-300 text-sm font-medium mb-6"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
             >
-              View Projects
-            </Link>
-            <Link 
-              href="/about"
-              className="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white/90 hover:bg-white/10 transition-colors"
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+              Available for Consulting & Full-time Opportunities
+            </motion.div>
+            
+            <h1 className="heading-primary mb-6">
+              <TypingAnimation texts={typingTexts} />
+            </h1>
+            
+            <motion.p 
+              className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
             >
-              About
-            </Link>
-          </motion.div>
-
-          {/* Breathing room before stats */}
-          <div className="pb-4 md:pb-6" />
+              {site.hero.subtitle}
+            </motion.p>
+            
+            {/* Professional CTA Buttons */}
+            <motion.div 
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+            >
+              <Link 
+                href="/projects"
+                className="btn-primary"
+              >
+                View My Work
+              </Link>
+              <Link 
+                href="/contact"
+                className="btn-secondary"
+              >
+                Get In Touch
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 
-      {/* Experience Stats with Animated Counters */}
+      {/* Professional Stats Section */}
       <motion.section 
-        className="mt-10 md:mt-12 py-12 sm:py-16"
+        className="py-16"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
         <div className="max-w-6xl mx-auto px-4">
-          <div className="section-gradient rounded-2xl p-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 text-center">
-              <motion.div
-                className="professional-card"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
+          <div className="section-gradient">
+            <div className="text-center mb-12">
+              <h2 className="heading-secondary mb-4">Proven Track Record</h2>
+              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Delivering enterprise-grade infrastructure solutions with measurable results
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
-                  <AnimatedCounter end={15} suffix="+" />
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                  <AnimatedCounter end={15} duration={2} />
+                  <span className="text-3xl">+</span>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
+                <div className="text-gray-600 dark:text-gray-400 font-medium">
+                  Years Experience
+                </div>
               </motion.div>
-              <motion.div
-                className="professional-card"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
+              
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400">
-                  <AnimatedCounter end={site.experience.companies.length} />
+                <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">
+                  <AnimatedCounter end={50} duration={2} />
+                  <span className="text-3xl">+</span>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Companies</div>
+                <div className="text-gray-600 dark:text-gray-400 font-medium">
+                  Projects Delivered
+                </div>
               </motion.div>
-              <motion.div
-                className="professional-card"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
+              
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">
-                  <AnimatedCounter end={50} suffix="+" />
+                <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">
+                  <AnimatedCounter end={99} duration={2} />
+                  <span className="text-3xl">%</span>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Projects</div>
+                <div className="text-gray-600 dark:text-gray-400 font-medium">
+                  Uptime Achieved
+                </div>
               </motion.div>
-              <motion.div
-                className="professional-card"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
+              
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">
-                  <AnimatedCounter end={99.9} suffix="%" />
+                <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">
+                  <AnimatedCounter end={24} duration={2} />
+                  <span className="text-3xl">/7</span>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Uptime</div>
+                <div className="text-gray-600 dark:text-gray-400 font-medium">
+                  Support Available
+                </div>
               </motion.div>
             </div>
           </div>

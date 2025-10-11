@@ -39,30 +39,30 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
           {[...Array(recommendation.rating)].map((_, i) => (
             <Star 
               key={i} 
-              size={18} 
-              className="text-amber-400 fill-current" 
+              size={20} 
+              className="text-amber-500 fill-current" 
             />
           ))}
         </div>
         
         {/* Recommendation Text */}
-        <blockquote className="text-gray-700 dark:text-gray-200 mb-8 flex-grow leading-relaxed text-lg">
+        <blockquote className="text-slate-700 dark:text-slate-200 mb-8 flex-grow leading-relaxed text-lg">
           &ldquo;{recommendation.recommendation}&rdquo;
         </blockquote>
         
         {/* Author Info */}
         <div className="flex items-center">
-          <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+          <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 shadow-lg">
             {recommendation.name.split(' ').map(n => n[0]).join('')}
           </div>
           <div>
-            <div className="font-semibold text-gray-900 dark:text-white text-lg">
+            <div className="font-semibold text-slate-900 dark:text-white text-lg">
               {recommendation.name}
             </div>
-            <div className="text-gray-600 dark:text-gray-400">
+            <div className="text-slate-600 dark:text-slate-400 font-medium">
               {recommendation.position}
             </div>
-            <div className="text-blue-600 dark:text-blue-400 font-medium">
+            <div className="text-blue-600 dark:text-blue-400 font-semibold">
               {recommendation.company}
             </div>
           </div>

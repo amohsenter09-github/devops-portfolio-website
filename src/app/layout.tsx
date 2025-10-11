@@ -17,7 +17,7 @@ const inter = Inter({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} ${inter.variable} bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-100 antialiased`}>
+            <body className={`${inter.className} ${inter.variable} bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Nav />
           <main className="flex-1 flex items-center justify-center w-full">
