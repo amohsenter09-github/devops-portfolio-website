@@ -16,8 +16,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-100 antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Nav />
-          <main className="flex-1 w-full">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <main className="flex-1 flex items-center justify-center w-full">
+            <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               {children}
             </div>
           </main>
