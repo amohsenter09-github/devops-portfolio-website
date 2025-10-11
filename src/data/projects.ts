@@ -9,8 +9,8 @@ export const projects: Project[] = [
     tags: ["AWS", "EKS", "Terraform", "CDK", "GitOps", "Datadog", "CircleCI"],
   },
   {
-    slug: "enterprise-multi-account-aws",
-    title: "Enterprise - Multi-Account AWS Infrastructure",
+    slug: "infracore-multi-account-aws",
+    title: "InfraCore - Multi-Account AWS Infrastructure",
     summary:
       "Architected secure multi-account AWS infrastructure with EKS (Bottlerocket), GitOps (ArgoCD), and full observability. Integrated OIDC, Secrets Manager, and achieved 99.9% uptime with rapid provisioning.",
     tags: ["AWS", "EKS", "Bottlerocket", "ArgoCD", "OIDC", "Prometheus", "Grafana"],

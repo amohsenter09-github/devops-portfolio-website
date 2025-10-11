@@ -13,7 +13,7 @@ export default function Blog() {
       date: "2024-01-15",
       readTime: "12 min read",
       tags: ["Kubernetes", "ArgoCD", "GitOps", "Image Updater", "AWS EKS"],
-      slug: "enterprise-gitops-architecture",
+      slug: "infracore-gitops-architecture",
       featured: true
     },
     {

@@ -9,10 +9,10 @@ import { site } from "@/lib/siteConfig";
 
 export default function Home() {
   const typingTexts = [
-    "Senior DevOps Engineer",
-    "AWS Solutions Architect", 
-    "Kubernetes Expert",
-    "Infrastructure Automation Specialist"
+    "Enterprise Infrastructure Solutions",
+    "AWS & Kubernetes Specialists", 
+    "Infrastructure Automation Experts",
+    "DevOps & Terraform Consultants"
   ];
 
   return (
@@ -33,7 +33,7 @@ export default function Home() {
           >
             <div className="flex items-center justify-center mb-6">
               <span className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></span>
-              <span className="text-sm font-medium">Available for Opportunities</span>
+              <span className="text-sm font-medium">Professional Infrastructure Services</span>
             </div>
             
             <h1 className="text-5xl sm:text-6xl font-bold mb-8 leading-tight">
@@ -56,13 +56,13 @@ export default function Home() {
               href="/projects"
               className="btn-accent"
             >
-              View My Work
+              View Our Solutions
             </Link>
             <Link 
               href="/contact"
               className="btn-glass"
             >
-              Get In Touch
+              Get Started
             </Link>
           </motion.div>
         </div>
@@ -78,9 +78,9 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Experience & Results</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Track Record</h2>
             <p className="text-lg opacity-80 max-w-2xl mx-auto">
-              Proven track record of delivering enterprise-grade infrastructure solutions
+              Proven expertise in delivering enterprise-grade infrastructure solutions
             </p>
           </div>
           
@@ -270,7 +270,7 @@ export default function Home() {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">Enterprise Multi-Account AWS</h3>
+              <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">InfraCore Multi-Account AWS</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                 Architected secure multi-account AWS infrastructure with EKS (Bottlerocket), 
                 GitOps (ArgoCD), and comprehensive observability stack.

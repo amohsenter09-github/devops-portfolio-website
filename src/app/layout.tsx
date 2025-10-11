@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Amr Fathy — DevOps Portfolio",
-  description: "AI-driven DevOps, AWS, Kubernetes, Terraform, GitOps, Observability",
+  title: "InfraCore — Enterprise Infrastructure Solutions",
+  description: "Professional DevOps and infrastructure automation services. AWS, Kubernetes, Terraform, GitOps, and Infrastructure as Code solutions.",
 };
 
 import "./globals.css";
