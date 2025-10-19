@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import TypingAnimation from "@/components/TypingAnimation";
 import Recommendations from "@/components/Recommendations";
+import ProfileBanner from "@/components/ProfileBanner";
 import { site } from "@/lib/siteConfig";
 import { Linkedin } from "lucide-react";
+import Container from "@/components/Container";
 
 export default function Home() {
   const typingTexts = [
@@ -20,64 +22,73 @@ export default function Home() {
 
   return (
     <div className="w-full min-h-screen">
+      {/* Profile Banner Section */}
+      <section className="py-8">
+        <Container maxWidth="7xl" padding="md">
+          <ProfileBanner />
+        </Container>
+      </section>
+
       {/* macOS Glass Hero Section */}
       <motion.section 
-        className="py-32 sm:py-40 flex items-center justify-center"
+        className="py-16 sm:py-24 flex items-center justify-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <motion.div
-            className="glass-card mb-12"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <div className="flex items-center justify-center mb-6">
-              <span className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></span>
-              <span className="text-sm font-medium">Available for DevOps & MLOps Projects</span>
-            </div>
+        <Container maxWidth="4xl" padding="md">
+          <div className="text-center">
+            <motion.div
+              className="glass-card mb-12"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <div className="flex items-center justify-center mb-6">
+                <span className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></span>
+                <span className="text-sm font-medium">Available for DevOps & MLOps Projects</span>
+              </div>
+              
+              <h1 className="text-5xl sm:text-6xl font-bold mb-8 leading-tight">
+                <TypingAnimation texts={typingTexts} />
+              </h1>
+              
+              <p className="text-xl leading-relaxed opacity-90 max-w-2xl mx-auto">
+                {site.hero.subtitle}
+              </p>
+            </motion.div>
             
-            <h1 className="text-5xl sm:text-6xl font-bold mb-8 leading-tight">
-              <TypingAnimation texts={typingTexts} />
-            </h1>
-            
-            <p className="text-xl leading-relaxed opacity-90 max-w-2xl mx-auto">
-              {site.hero.subtitle}
-            </p>
-          </motion.div>
-          
-          {/* Glass CTA Buttons */}
-          <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-          >
-            <Link 
-              href="/projects"
-              className="btn-accent"
+            {/* Glass CTA Buttons */}
+            <motion.div 
+              className="flex flex-col sm:flex-row items-center justify-center gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
             >
-              View My Work
-            </Link>
-            <Link 
-              href="/contact"
-              className="btn-glass"
-            >
-              Get In Touch
-            </Link>
-            <a 
-              href={site.contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
-            >
-              <Linkedin size={20} className="mr-2" />
-              Connect on LinkedIn
-            </a>
-          </motion.div>
-        </div>
+              <Link 
+                href="/projects"
+                className="btn-accent"
+              >
+                View My Work
+              </Link>
+              <Link 
+                href="/contact"
+                className="btn-glass"
+              >
+                Get In Touch
+              </Link>
+              <a 
+                href={site.contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+              >
+                <Linkedin size={20} className="mr-2" />
+                Connect on LinkedIn
+              </a>
+            </motion.div>
+          </div>
+        </Container>
       </motion.section>
 
       {/* Glass Stats Section */}
@@ -88,7 +99,7 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <div className="max-w-6xl mx-auto px-4">
+        <Container maxWidth="6xl" padding="md">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">My Expertise</h2>
             <p className="text-lg opacity-80 max-w-2xl mx-auto">
@@ -161,7 +172,7 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
-        </div>
+        </Container>
       </motion.section>
 
       {/* Skills Overview with Hover Effects */}
@@ -172,7 +183,7 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <div className="max-w-6xl mx-auto px-4">
+        <Container maxWidth="6xl" padding="md">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-8 text-center text-gray-900 dark:text-white heading-secondary">Core Technologies</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <motion.div 
@@ -239,7 +250,7 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-        </div>
+        </Container>
       </motion.section>
 
       {/* Recent Work with Staggered Animation */}
@@ -250,7 +261,7 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <div className="max-w-6xl mx-auto px-4">
+        <Container maxWidth="6xl" padding="md">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-8 text-center text-gray-900 dark:text-white heading-secondary">Recent Work</h2>
           <div className="grid sm:grid-cols-2 gap-6">
             <motion.div 
@@ -307,7 +318,7 @@ export default function Home() {
               View All Projects →
             </Link>
           </motion.div>
-        </div>
+        </Container>
       </motion.section>
 
       {/* LinkedIn Recommendations */}
