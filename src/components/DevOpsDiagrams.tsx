@@ -1031,7 +1031,10 @@ export default function DevOpsDiagrams() {
                   <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
                     <span className="text-sm font-medium">CI/CD</span>
                   </div>
-                  <div className="w-16 h-1 bg-gradient-to-r from-red-400/40 to-orange-400/40 rounded"></div>
+                  <div className="relative">
+                    <div className="w-16 h-1 bg-gradient-to-r from-red-400/40 to-orange-400/40 rounded"></div>
+                    <div className="absolute -right-1 top-0 w-0 h-0 border-l-4 border-l-orange-400/40 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                  </div>
                 </div>
                 
                 <div className="text-center">
@@ -1046,7 +1049,10 @@ export default function DevOpsDiagrams() {
                   <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
                     <span className="text-sm font-medium">GitOps</span>
                   </div>
-                  <div className="w-16 h-1 bg-gradient-to-r from-orange-400/40 to-orange-400/40 rounded"></div>
+                  <div className="relative">
+                    <div className="w-16 h-1 bg-gradient-to-r from-orange-400/40 to-orange-400/40 rounded"></div>
+                    <div className="absolute -right-1 top-0 w-0 h-0 border-l-4 border-l-orange-400/40 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                  </div>
                 </div>
                 
                 <div className="text-center">
@@ -1075,7 +1081,10 @@ export default function DevOpsDiagrams() {
                   <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
                     <span className="text-sm font-medium">→</span>
                   </div>
-                  <div className="w-20 h-1 bg-gradient-to-r from-green-400/40 to-blue-400/40 rounded"></div>
+                  <div className="relative">
+                    <div className="w-20 h-1 bg-gradient-to-r from-green-400/40 to-blue-400/40 rounded"></div>
+                    <div className="absolute -right-1 top-0 w-0 h-0 border-l-4 border-l-blue-400/40 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                  </div>
                 </div>
                 
                 <div className="text-center">
@@ -1094,7 +1103,10 @@ export default function DevOpsDiagrams() {
               
               {/* Arrow from Ingress to Clusters */}
               <div className="flex justify-center mb-6">
-                <div className="w-1 h-8 bg-gradient-to-b from-blue-400/40 to-blue-400/20"></div>
+                <div className="relative">
+                  <div className="w-1 h-8 bg-gradient-to-b from-blue-400/40 to-blue-400/20"></div>
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-blue-400/40 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                </div>
               </div>
               
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1130,7 +1142,10 @@ export default function DevOpsDiagrams() {
               
               {/* Arrow from Clusters to Microservices */}
               <div className="flex justify-center mt-6">
-                <div className="w-1 h-8 bg-gradient-to-b from-blue-400/20 to-blue-400/40"></div>
+                <div className="relative">
+                  <div className="w-1 h-8 bg-gradient-to-b from-blue-400/20 to-blue-400/40"></div>
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-t-4 border-t-blue-400/40 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                </div>
               </div>
             </div>
 
@@ -1213,7 +1228,11 @@ export default function DevOpsDiagrams() {
                   <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
                     <span className="text-sm font-medium">↔</span>
                   </div>
-                  <div className="w-16 h-1 bg-gradient-to-r from-blue-400/40 to-red-400/40 rounded"></div>
+                  <div className="relative">
+                    <div className="w-16 h-1 bg-gradient-to-r from-blue-400/40 to-red-400/40 rounded"></div>
+                    <div className="absolute -right-1 top-0 w-0 h-0 border-l-4 border-l-red-400/40 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                    <div className="absolute -left-1 top-0 w-0 h-0 border-r-4 border-r-blue-400/40 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                  </div>
                 </div>
                 
                 <div className="text-center">
