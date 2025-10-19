@@ -4,11 +4,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { 
   SiKubernetes, 
-  SiAmazonaws, 
+  SiAmazon, 
   SiDocker, 
   SiGithub, 
-  SiJenkins,
-  SiTerraform,
   SiPrometheus,
   SiGrafana,
   SiArgo,
@@ -892,7 +890,7 @@ export default function DevOpsDiagrams() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="text-center">
                 <div className="w-12 h-12 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <SiAmazonaws className="w-8 h-8 text-green-400" />
+                  <SiAmazon className="w-8 h-8 text-green-400" />
                 </div>
                 <p className="text-white/80 text-xs">Application Load Balancer</p>
                 <p className="text-white/60 text-xs">External DNS</p>
