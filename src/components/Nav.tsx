@@ -23,7 +23,7 @@ export default function Nav() {
         >
           <Link href="/" className="font-bold text-2xl text-white flex items-center">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-              InfraCore
+              Amr Fathy
             </span>
           </Link>
         </motion.div>
