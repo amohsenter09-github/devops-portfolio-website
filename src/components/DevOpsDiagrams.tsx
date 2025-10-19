@@ -708,13 +708,13 @@ export default function DevOpsDiagrams() {
               
               <div className="space-y-2">
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">auth-service</span>
+                  <span className="text-white/80 text-xs">identity-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">banking-service</span>
+                  <span className="text-white/80 text-xs">finance-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">portal-service</span>
+                  <span className="text-white/80 text-xs">dashboard-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
                   <span className="text-white/80 text-xs">+ 9 more services</span>
@@ -735,13 +735,13 @@ export default function DevOpsDiagrams() {
               
               <div className="space-y-2">
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">auth-service</span>
+                  <span className="text-white/80 text-xs">identity-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">banking-service</span>
+                  <span className="text-white/80 text-xs">finance-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">portal-service</span>
+                  <span className="text-white/80 text-xs">dashboard-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
                   <span className="text-white/80 text-xs">+ 9 more services</span>
@@ -762,13 +762,13 @@ export default function DevOpsDiagrams() {
               
               <div className="space-y-2">
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">auth-service</span>
+                  <span className="text-white/80 text-xs">identity-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">banking-service</span>
+                  <span className="text-white/80 text-xs">finance-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">portal-service</span>
+                  <span className="text-white/80 text-xs">dashboard-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
                   <span className="text-white/80 text-xs">+ 9 more services</span>
@@ -786,16 +786,16 @@ export default function DevOpsDiagrams() {
               <div className="space-y-2">
                 <h6 className="font-semibold text-white text-sm text-center mb-2">API Services</h6>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">auth-service</span>
+                  <span className="text-white/80 text-xs">identity-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">banking-service</span>
+                  <span className="text-white/80 text-xs">finance-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">organization-service</span>
+                  <span className="text-white/80 text-xs">org-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">event-service</span>
+                  <span className="text-white/80 text-xs">events-service</span>
                 </div>
               </div>
 
@@ -803,16 +803,16 @@ export default function DevOpsDiagrams() {
               <div className="space-y-2">
                 <h6 className="font-semibold text-white text-sm text-center mb-2">Internal Services</h6>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">account-service</span>
+                  <span className="text-white/80 text-xs">accounts-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
                   <span className="text-white/80 text-xs">identity-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">key-service</span>
+                  <span className="text-white/80 text-xs">keys-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">file-service</span>
+                  <span className="text-white/80 text-xs">files-service</span>
                 </div>
               </div>
 
@@ -823,13 +823,13 @@ export default function DevOpsDiagrams() {
                   <span className="text-white/80 text-xs">exchange-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">transfer-service</span>
+                  <span className="text-white/80 text-xs">transfers-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
                   <span className="text-white/80 text-xs">orchestrator-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">notification-service</span>
+                  <span className="text-white/80 text-xs">notifications-service</span>
                 </div>
               </div>
 
@@ -837,10 +837,10 @@ export default function DevOpsDiagrams() {
               <div className="space-y-2">
                 <h6 className="font-semibold text-white text-sm text-center mb-2">Portal Services</h6>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">portal-service</span>
+                  <span className="text-white/80 text-xs">dashboard-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">payment-service</span>
+                  <span className="text-white/80 text-xs">payments-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
                   <span className="text-white/80 text-xs">ingress</span>
@@ -885,22 +885,6 @@ export default function DevOpsDiagrams() {
             </div>
           </div>
 
-          {/* Kustomize Configuration */}
-          <div className="mt-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-            <h5 className="font-semibold text-white mb-3 text-center">Kustomize Configuration Structure</h5>
-            <div className="bg-black/20 rounded p-3 text-xs font-mono text-white/80">
-              <div className="text-green-400">k8s-applications/</div>
-              <div className="ml-4 text-blue-400">auth-service/</div>
-              <div className="ml-8 text-yellow-400">base/</div>
-              <div className="ml-12 text-purple-400">├── kustomization.yaml</div>
-              <div className="ml-12 text-purple-400">├── auth-service-deployment.yaml</div>
-              <div className="ml-12 text-purple-400">└── auth-service-service.yaml</div>
-              <div className="ml-8 text-yellow-400">overlays/</div>
-              <div className="ml-12 text-purple-400">├── staging/kustomization.yaml</div>
-              <div className="ml-12 text-purple-400">├── production/kustomization.yaml</div>
-              <div className="ml-12 text-purple-400">└── sandbox/kustomization.yaml</div>
-            </div>
-          </div>
         </div>
       </Diagram>
     ),
