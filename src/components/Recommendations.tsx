@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { site } from "@/lib/siteConfig";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Container from "@/components/Container";
 
 interface Recommendation {
   id: number;
@@ -23,7 +26,6 @@ interface RecommendationCardProps {
 function RecommendationCard({ recommendation, index }: RecommendationCardProps) {
   return (
     <motion.div
-      className="glass-card h-full"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -33,41 +35,43 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         transition: { duration: 0.2 }
       }}
     >
-      <div className="p-8 h-full flex flex-col">
-        {/* Rating Stars */}
-        <div className="flex mb-6">
-          {[...Array(recommendation.rating)].map((_, i) => (
-            <Star 
-              key={i} 
-              size={20} 
-              className="text-amber-500 fill-current" 
-            />
-          ))}
-        </div>
-        
-        {/* Recommendation Text */}
-        <blockquote className="text-white mb-8 flex-grow leading-relaxed text-lg opacity-90">
-          &ldquo;{recommendation.recommendation}&rdquo;
-        </blockquote>
-        
-        {/* Author Info */}
-        <div className="flex items-center">
-          <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 border border-white/30">
-            {recommendation.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+      <Card className="h-full border-0 shadow-lg bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20">
+        <CardHeader className="pb-4">
+          {/* Rating Stars */}
+          <div className="flex mb-4">
+            {[...Array(recommendation.rating)].map((_, i) => (
+              <Star 
+                key={i} 
+                size={20} 
+                className="text-amber-500 fill-current" 
+              />
+            ))}
           </div>
-          <div>
-            <div className="font-semibold text-white text-lg">
-              {recommendation.name}
+          
+          {/* Recommendation Text */}
+          <CardDescription className="text-base leading-relaxed">
+            &ldquo;{recommendation.recommendation}&rdquo;
+          </CardDescription>
+        </CardHeader>
+        
+        <CardContent className="pt-0">
+          {/* Author Info */}
+          <div className="flex items-center">
+            <div className="w-12 h-12 bg-primary/10 backdrop-blur-sm rounded-full flex items-center justify-center text-primary font-bold text-lg mr-4 border border-primary/20">
+              {recommendation.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
             </div>
-            <div className="text-white/80 font-medium">
-              {recommendation.position}
-            </div>
-            <div className="text-white/90 font-semibold">
-              {recommendation.company}
+            <div className="flex-1">
+              <CardTitle className="text-lg mb-1">{recommendation.name}</CardTitle>
+              <p className="text-sm text-muted-foreground font-medium mb-1">
+                {recommendation.position}
+              </p>
+              <Badge variant="secondary" className="text-xs">
+                {recommendation.company}
+              </Badge>
             </div>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 }
@@ -81,7 +85,7 @@ export default function Recommendations() {
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <Container maxWidth="6xl" padding="md">
         {/* Section Header */}
         <motion.div 
           className="text-center mb-16"
@@ -90,12 +94,12 @@ export default function Recommendations() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-                Client Recommendations
-              </h2>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                What industry leaders say about working with me
-              </p>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Client Recommendations
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            What industry leaders say about working with me
+          </p>
         </motion.div>
 
         {/* Recommendations Grid */}
@@ -121,7 +125,7 @@ export default function Recommendations() {
             href={site.contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+            className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
             View More on LinkedIn
             <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -129,7 +133,7 @@ export default function Recommendations() {
             </svg>
           </a>
         </motion.div>
-      </div>
+      </Container>
     </motion.section>
   );
 }

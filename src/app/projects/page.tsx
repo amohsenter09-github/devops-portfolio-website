@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Container from "@/components/Container";
 import { projects } from "@/data/projects";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Building2, 
   Cloud, 
@@ -13,8 +16,13 @@ import {
   Monitor, 
   Settings,
   CheckCircle,
-  TrendingUp,
-  Shield
+  Shield,
+  Calendar,
+  Users,
+  DollarSign,
+  Target,
+  Lightbulb,
+  Award
 } from "lucide-react";
 
 interface ProjectDetails {
@@ -40,12 +48,12 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState(0);
 
   const projectIcons: Record<string, React.ReactElement> = {
-    "aviv-group-replatforming": <Building2 className="w-6 h-6" />,
-    "infracore-multi-account-aws": <Cloud className="w-6 h-6" />,
-    "revolutiones-cpa-platform": <Database className="w-6 h-6" />,
-    "epam-cicd-automation": <GitBranch className="w-6 h-6" />,
-    "aurea-edi-automation": <Settings className="w-6 h-6" />,
-    "observability-stack-implementation": <Monitor className="w-6 h-6" />
+    "aviv-group-replatforming": <Building2 className="w-5 h-5" />,
+    "infracore-multi-account-aws": <Cloud className="w-5 h-5" />,
+    "revolutiones-cpa-platform": <Database className="w-5 h-5" />,
+    "epam-cicd-automation": <GitBranch className="w-5 h-5" />,
+    "aurea-edi-automation": <Settings className="w-5 h-5" />,
+    "observability-stack-implementation": <Monitor className="w-5 h-5" />
   };
 
   const getProjectDetails = (project: Project): ProjectDetails | Record<string, never> => {
@@ -212,165 +220,204 @@ export default function Projects() {
   };
 
   return (
-    <Container>
+    <Container maxWidth="7xl" padding="lg">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        className="space-y-8"
       >
-        <h1 className="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Enterprise Projects</h1>
-        <p className="text-gray-600 dark:text-gray-300 max-w-3xl mb-8">
-          High-value DevOps projects delivering measurable business results. Each project showcases 
-          proven strategies for enterprise infrastructure transformation, cost optimization, and reliability improvement.
-        </p>
-
-        {/* Project Tabs */}
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-2 mb-6">
-            {projects.map((project, index) => (
-              <button
-                key={project.slug}
-                onClick={() => setActiveProject(index)}
-                className={`flex items-center px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
-                  activeProject === index
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                }`}
-              >
-                {projectIcons[project.slug]}
-                <span className="ml-2 text-sm">{project.title.split(' - ')[0]}</span>
-              </button>
-            ))}
-          </div>
+        {/* Header Section */}
+        <div className="text-center space-y-4">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            Project Portfolio
+          </motion.h1>
+          <motion.p 
+            className="text-lg text-muted-foreground max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Comprehensive case studies showcasing enterprise-scale DevOps transformations, 
+            infrastructure automation, and measurable business impact across diverse industries.
+          </motion.p>
         </div>
 
-        {/* Active Project Details */}
-        <motion.div
-          key={activeProject}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8"
-        >
-          {(() => {
-            const project = projects[activeProject];
-            const details = getProjectDetails(project);
-            
-            return (
-              <>
-                {/* Project Header */}
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-8">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                        {project.title}
-                      </h2>
-                      <p className="text-gray-600 dark:text-gray-300 mb-6">
-                        {project.summary}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 text-center">
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Client</div>
-                        <div className="font-semibold text-gray-900 dark:text-white">{details.client}</div>
-                      </div>
-                      <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 text-center">
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Duration</div>
-                        <div className="font-semibold text-gray-900 dark:text-white">{details.duration}</div>
-                      </div>
-                      <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 text-center">
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Team Size</div>
-                        <div className="font-semibold text-gray-900 dark:text-white">{details.teamSize}</div>
-                      </div>
-                      <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 text-center">
-                        <div className="text-sm text-gray-600 dark:text-gray-300">Budget</div>
-                        <div className="font-semibold text-gray-900 dark:text-white">{details.budget}</div>
-                      </div>
-                    </div>
-                  </div>
+        {/* Project Tabs */}
+        <Tabs value={activeProject.toString()} onValueChange={(value) => setActiveProject(parseInt(value))} className="w-full">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-8">
+            {projects.map((project, index) => (
+              <TabsTrigger 
+                key={project.slug} 
+                value={index.toString()}
+                className="flex flex-col items-center gap-2 p-4 h-auto"
+              >
+                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary">
+                  {projectIcons[project.slug]}
                 </div>
+                <span className="text-xs font-medium text-center leading-tight">
+                  {project.title.split(' ').slice(0, 2).join(' ')}
+                </span>
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {projects.map((project, index) => {
+            const details = getProjectDetails(project);
+            return (
+              <TabsContent key={project.slug} value={index.toString()} className="space-y-6">
+                {/* Project Header */}
+                <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20">
+                  <CardHeader className="text-center">
+                    <div className="flex items-center justify-center mb-4">
+                      <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-primary/10 text-primary">
+                        {projectIcons[project.slug]}
+                      </div>
+                    </div>
+                    <CardTitle className="text-2xl md:text-3xl">{project.title}</CardTitle>
+                    <CardDescription className="text-base mt-2">{project.summary}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {project.tags.map((tag) => (
+                        <Badge key={tag} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
 
                 {/* Project Details Grid */}
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {/* Project Info */}
+                  <Card>
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <Target className="w-5 h-5 text-blue-600" />
+                        Project Info
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <Building2 className="w-4 h-4 text-muted-foreground" />
+                        <div>
+                          <p className="text-sm font-medium">{details.client}</p>
+                          <p className="text-xs text-muted-foreground">{details.industry}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Calendar className="w-4 h-4 text-muted-foreground" />
+                        <div>
+                          <p className="text-sm font-medium">{details.duration}</p>
+                          <p className="text-xs text-muted-foreground">Duration</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Users className="w-4 h-4 text-muted-foreground" />
+                        <div>
+                          <p className="text-sm font-medium">{details.teamSize}</p>
+                          <p className="text-xs text-muted-foreground">Team Size</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <DollarSign className="w-4 h-4 text-muted-foreground" />
+                        <div>
+                          <p className="text-sm font-medium">{details.budget}</p>
+                          <p className="text-xs text-muted-foreground">Budget</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
                   {/* Challenges */}
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-                      <Shield className="w-5 h-5 text-red-500 mr-2" />
-                      Challenges
-                    </h3>
-                    <ul className="space-y-2">
-                      {details.challenges?.map((challenge, idx) => (
-                        <li key={idx} className="flex items-start text-sm text-gray-600 dark:text-gray-300">
-                          <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                          {challenge}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <Card>
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <Shield className="w-5 h-5 text-red-600" />
+                        Challenges
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {details.challenges?.map((challenge, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-sm">
+                            <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0" />
+                            <span>{challenge}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
 
                   {/* Solutions */}
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-                      <Settings className="w-5 h-5 text-blue-500 mr-2" />
-                      Solutions
-                    </h3>
-                    <ul className="space-y-2">
-                      {details.solutions?.map((solution, idx) => (
-                        <li key={idx} className="flex items-start text-sm text-gray-600 dark:text-gray-300">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                          {solution}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <Card>
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <Lightbulb className="w-5 h-5 text-blue-600" />
+                        Solutions
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {details.solutions?.map((solution, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-sm">
+                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
+                            <span>{solution}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
 
                   {/* Results */}
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-                      <TrendingUp className="w-5 h-5 text-green-500 mr-2" />
-                      Results
-                    </h3>
-                    <ul className="space-y-2">
-                      {details.results?.map((result, idx) => (
-                        <li key={idx} className="flex items-start text-sm text-gray-600 dark:text-gray-300">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                          {result}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <Card>
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <Award className="w-5 h-5 text-green-600" />
+                        Results
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {details.results?.map((result, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-sm">
+                            <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                            <span>{result}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
                 </div>
 
-                {/* Technologies Used */}
-                <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Technologies & Tools
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {details.technologies?.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </>
+                {/* Technologies */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Settings className="w-5 h-5 text-purple-600" />
+                      Technologies Used
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {details.technologies?.map((tech) => (
+                        <Badge key={tech} variant="outline" className="text-sm">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
             );
-          })()}
-        </motion.div>
+          })}
+        </Tabs>
       </motion.div>
     </Container>
   );
