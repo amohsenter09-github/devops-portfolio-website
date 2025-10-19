@@ -11,7 +11,10 @@ import {
   SiGrafana,
   SiArgo,
   SiPostgresql,
-  SiTerraform
+  SiTerraform,
+  SiRedis,
+  SiAmazoncloudwatch,
+  SiTemporal
 } from "react-icons/si";
 
 interface DiagramProps {
@@ -851,13 +854,13 @@ export default function DevOpsDiagrams() {
                   <span className="text-white/80 text-xs">identity-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">finance-service</span>
+                  <span className="text-white/80 text-xs">banking-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">org-service</span>
+                  <span className="text-white/80 text-xs">organization-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">events-service</span>
+                  <span className="text-white/80 text-xs">webevent-service</span>
                 </div>
               </div>
 
@@ -871,7 +874,7 @@ export default function DevOpsDiagrams() {
                   <span className="text-white/80 text-xs">identity-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">keys-service</span>
+                  <span className="text-white/80 text-xs">key-service</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
                   <span className="text-white/80 text-xs">files-service</span>
@@ -899,13 +902,13 @@ export default function DevOpsDiagrams() {
               <div className="space-y-2">
                 <h6 className="font-semibold text-white text-sm text-center mb-2">Portal Services</h6>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">dashboard-service</span>
+                  <span className="text-white/80 text-xs">organization-portal</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">payments-service</span>
+                  <span className="text-white/80 text-xs">payments-portal</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                  <span className="text-white/80 text-xs">ingress</span>
+                  <span className="text-white/80 text-xs">ingress-controller</span>
                 </div>
               </div>
             </div>
@@ -934,15 +937,22 @@ export default function DevOpsDiagrams() {
                 <p className="text-white/60 text-xs">Multi-AZ</p>
               </div>
               <div className="text-center">
+                <div className="w-12 h-12 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <SiRedis className="w-8 h-8 text-red-400" />
+                </div>
+                <p className="text-white/80 text-xs">ElastiCache Redis</p>
+                <p className="text-white/60 text-xs">High Availability</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+              <div className="text-center">
                 <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
                   <SiDocker className="w-8 h-8 text-orange-400" />
                 </div>
                 <p className="text-white/80 text-xs">Container Registry</p>
                 <p className="text-white/60 text-xs">AWS ECR Registry</p>
               </div>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="text-center">
                 <div className="w-12 h-12 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
                   <SiAmazon className="w-8 h-8 text-green-400" />
@@ -951,18 +961,35 @@ export default function DevOpsDiagrams() {
                 <p className="text-white/60 text-xs">External DNS</p>
               </div>
               <div className="text-center">
+                <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <SiAmazon className="w-8 h-8 text-purple-400" />
+                </div>
+                <p className="text-white/80 text-xs">Secrets Manager</p>
+                <p className="text-white/60 text-xs">External Secrets</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-yellow-500/20 border border-yellow-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <SiAmazoncloudwatch className="w-8 h-8 text-yellow-400" />
+                </div>
+                <p className="text-white/80 text-xs">CloudWatch</p>
+                <p className="text-white/60 text-xs">Logs & Metrics</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-cyan-500/20 border border-cyan-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <SiTemporal className="w-8 h-8 text-cyan-400" />
+                </div>
+                <p className="text-white/80 text-xs">Temporal Workflows</p>
+                <p className="text-white/60 text-xs">Distributed Tasks</p>
+              </div>
+              <div className="text-center">
                 <div className="w-12 h-12 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
                   <SiGithub className="w-8 h-8 text-red-400" />
                 </div>
                 <p className="text-white/80 text-xs">Git Repository</p>
                 <p className="text-white/60 text-xs">GitHub/GitLab</p>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <SiArgo className="w-8 h-8 text-orange-400" />
-                </div>
-                <p className="text-white/80 text-xs">GitOps Controller</p>
-                <p className="text-white/60 text-xs">Image Updater</p>
               </div>
             </div>
           </div>
