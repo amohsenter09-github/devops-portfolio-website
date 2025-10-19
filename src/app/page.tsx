@@ -13,7 +13,9 @@ export default function Home() {
     "DevOps & MLOps Consulting",
     "AWS & Kubernetes Expert", 
     "ML Infrastructure Specialist",
-    "Infrastructure Automation Consultant"
+    "Infrastructure Automation Consultant",
+    "Business Impact Specialist",
+    "ROI-Focused DevOps Expert"
   ];
 
   return (

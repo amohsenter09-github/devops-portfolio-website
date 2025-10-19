@@ -999,7 +999,7 @@ export default function DevOpsDiagrams() {
     ),
     comprehensiveArchitecture: (
       <Diagram title="Comprehensive Enterprise Architecture">
-        <div className="space-y-8">
+        <div className="w-full max-w-none space-y-8">
           
           {/* Top Level - Terraform Infrastructure */}
           <div className="flex justify-center mb-8">
@@ -1016,232 +1016,291 @@ export default function DevOpsDiagrams() {
           <div className="space-y-6">
             
             {/* Layer 1: Source & CI/CD */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-              <h5 className="font-semibold text-white mb-4 text-center">Source & CI/CD Pipeline</h5>
-              <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-8">
+              <h5 className="font-semibold text-white mb-6 text-center text-lg">Source & CI/CD Pipeline</h5>
+              <div className="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 lg:space-x-8">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiGithub className="w-10 h-10 text-red-400" />
+                  <div className="w-20 h-20 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiGithub className="w-12 h-12 text-red-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Git Repository</p>
-                  <p className="text-white/60 text-xs">Source of Truth</p>
+                  <p className="text-white/80 text-base font-medium">Git Repository</p>
+                  <p className="text-white/60 text-sm">Source of Truth</p>
                 </div>
                 
                 <div className="text-center text-white/60">
-                  <div className="w-8 h-8 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto">
-                    <span className="text-xs">CI/CD</span>
+                  <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <span className="text-sm font-medium">CI/CD</span>
                   </div>
+                  <div className="w-16 h-1 bg-gradient-to-r from-red-400/40 to-orange-400/40 rounded"></div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiDocker className="w-10 h-10 text-orange-400" />
+                  <div className="w-20 h-20 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiDocker className="w-12 h-12 text-orange-400" />
                   </div>
-                  <p className="text-white/80 text-sm">ECR Registry</p>
-                  <p className="text-white/60 text-xs">Container Images</p>
+                  <p className="text-white/80 text-base font-medium">ECR Registry</p>
+                  <p className="text-white/60 text-sm">Container Images</p>
                 </div>
                 
                 <div className="text-center text-white/60">
-                  <div className="w-8 h-8 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto">
-                    <span className="text-xs">GitOps</span>
+                  <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <span className="text-sm font-medium">GitOps</span>
                   </div>
+                  <div className="w-16 h-1 bg-gradient-to-r from-orange-400/40 to-orange-400/40 rounded"></div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiArgo className="w-10 h-10 text-orange-400" />
+                  <div className="w-20 h-20 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiArgo className="w-12 h-12 text-orange-400" />
                   </div>
-                  <p className="text-white/80 text-sm">ArgoCD</p>
-                  <p className="text-white/60 text-xs">GitOps Controller</p>
+                  <p className="text-white/80 text-base font-medium">ArgoCD</p>
+                  <p className="text-white/60 text-sm">GitOps Controller</p>
                 </div>
               </div>
             </div>
 
             {/* Layer 2: Load Balancer & Ingress */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-              <h5 className="font-semibold text-white mb-4 text-center">Load Balancing & Ingress</h5>
-              <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-8">
+              <h5 className="font-semibold text-white mb-6 text-center text-lg">Load Balancing & Ingress</h5>
+              <div className="flex flex-col lg:flex-row items-center justify-center space-y-6 lg:space-y-0 lg:space-x-12">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiAmazon className="w-10 h-10 text-green-400" />
+                  <div className="w-20 h-20 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiAmazon className="w-12 h-12 text-green-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Application Load Balancer</p>
-                  <p className="text-white/60 text-xs">External Traffic</p>
+                  <p className="text-white/80 text-base font-medium">Application Load Balancer</p>
+                  <p className="text-white/60 text-sm">External Traffic</p>
                 </div>
                 
                 <div className="text-center text-white/60">
-                  <div className="w-8 h-8 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto">
-                    <span className="text-xs">→</span>
+                  <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <span className="text-sm font-medium">→</span>
                   </div>
+                  <div className="w-20 h-1 bg-gradient-to-r from-green-400/40 to-blue-400/40 rounded"></div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiKubernetes className="w-10 h-10 text-blue-400" />
+                  <div className="w-20 h-20 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiKubernetes className="w-12 h-12 text-blue-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Ingress Controller</p>
-                  <p className="text-white/60 text-xs">NGINX/ALB</p>
+                  <p className="text-white/80 text-base font-medium">Ingress Controller</p>
+                  <p className="text-white/60 text-sm">NGINX/ALB</p>
                 </div>
               </div>
             </div>
 
             {/* Layer 3: Kubernetes Clusters */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-              <h5 className="font-semibold text-white mb-4 text-center">Kubernetes Clusters</h5>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-8">
+              <h5 className="font-semibold text-white mb-6 text-center text-lg">Kubernetes Clusters</h5>
+              
+              {/* Arrow from Ingress to Clusters */}
+              <div className="flex justify-center mb-6">
+                <div className="w-1 h-8 bg-gradient-to-b from-blue-400/40 to-blue-400/20"></div>
+              </div>
+              
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiKubernetes className="w-10 h-10 text-blue-400" />
+                  <div className="w-20 h-20 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiKubernetes className="w-12 h-12 text-blue-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Production</p>
-                  <p className="text-white/60 text-xs">ca-central-1</p>
+                  <p className="text-white/80 text-base font-medium">Production</p>
+                  <p className="text-white/60 text-sm">ca-central-1</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-yellow-500/20 border border-yellow-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiKubernetes className="w-10 h-10 text-yellow-400" />
+                  <div className="w-20 h-20 bg-yellow-500/20 border border-yellow-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiKubernetes className="w-12 h-12 text-yellow-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Staging</p>
-                  <p className="text-white/60 text-xs">ca-central-1</p>
+                  <p className="text-white/80 text-base font-medium">Staging</p>
+                  <p className="text-white/60 text-sm">ca-central-1</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiKubernetes className="w-10 h-10 text-green-400" />
+                  <div className="w-20 h-20 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiKubernetes className="w-12 h-12 text-green-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Sandbox</p>
-                  <p className="text-white/60 text-xs">ca-central-1</p>
+                  <p className="text-white/80 text-base font-medium">Sandbox</p>
+                  <p className="text-white/60 text-sm">ca-central-1</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-500/20 border border-purple-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiKubernetes className="w-10 h-10 text-purple-400" />
+                  <div className="w-20 h-20 bg-purple-500/20 border border-purple-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiKubernetes className="w-12 h-12 text-purple-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Operations</p>
-                  <p className="text-white/60 text-xs">ca-central-1</p>
+                  <p className="text-white/80 text-base font-medium">Operations</p>
+                  <p className="text-white/60 text-sm">ca-central-1</p>
                 </div>
+              </div>
+              
+              {/* Arrow from Clusters to Microservices */}
+              <div className="flex justify-center mt-6">
+                <div className="w-1 h-8 bg-gradient-to-b from-blue-400/20 to-blue-400/40"></div>
               </div>
             </div>
 
             {/* Layer 4: Microservices */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-              <h5 className="font-semibold text-white mb-4 text-center">Microservices Architecture</h5>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="space-y-2">
-                  <h6 className="font-semibold text-white text-sm text-center mb-2">API Services</h6>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">identity-service</span>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-8">
+              <h5 className="font-semibold text-white mb-6 text-center text-lg">Microservices Architecture</h5>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="space-y-3">
+                  <h6 className="font-semibold text-white text-base text-center mb-3 bg-blue-500/20 rounded-lg py-2">API Services</h6>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">identity-service</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">banking-service</span>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">banking-service</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">organization-service</span>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <h6 className="font-semibold text-white text-sm text-center mb-2">Internal Services</h6>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">accounts-service</span>
-                  </div>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">key-service</span>
-                  </div>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">files-service</span>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">organization-service</span>
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <h6 className="font-semibold text-white text-sm text-center mb-2">Integration Services</h6>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">exchange-service</span>
+                <div className="space-y-3">
+                  <h6 className="font-semibold text-white text-base text-center mb-3 bg-green-500/20 rounded-lg py-2">Internal Services</h6>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">accounts-service</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">transfers-service</span>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">key-service</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">orchestrator-service</span>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">files-service</span>
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <h6 className="font-semibold text-white text-sm text-center mb-2">Portal Services</h6>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">organization-portal</span>
+                <div className="space-y-3">
+                  <h6 className="font-semibold text-white text-base text-center mb-3 bg-purple-500/20 rounded-lg py-2">Integration Services</h6>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">exchange-service</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">payments-portal</span>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">transfers-service</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded p-2 text-center">
-                    <span className="text-white/80 text-xs">ingress-controller</span>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">orchestrator-service</span>
                   </div>
                 </div>
+
+                <div className="space-y-3">
+                  <h6 className="font-semibold text-white text-base text-center mb-3 bg-orange-500/20 rounded-lg py-2">Portal Services</h6>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">organization-portal</span>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">payments-portal</span>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-center">
+                    <span className="text-white/80 text-sm font-medium">ingress-controller</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Arrow from Microservices to Data Layer */}
+              <div className="flex justify-center mt-6">
+                <div className="w-1 h-8 bg-gradient-to-b from-blue-400/20 to-blue-400/40"></div>
               </div>
             </div>
 
             {/* Layer 5: Data Layer */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-              <h5 className="font-semibold text-white mb-4 text-center">Data & Storage Layer</h5>
-              <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-8">
+              <h5 className="font-semibold text-white mb-6 text-center text-lg">Data & Storage Layer</h5>
+              <div className="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 lg:space-x-8">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiPostgresql className="w-10 h-10 text-blue-400" />
+                  <div className="w-20 h-20 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiPostgresql className="w-12 h-12 text-blue-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Aurora PostgreSQL</p>
-                  <p className="text-white/60 text-xs">Multi-AZ Database</p>
+                  <p className="text-white/80 text-base font-medium">Aurora PostgreSQL</p>
+                  <p className="text-white/60 text-sm">Multi-AZ Database</p>
+                </div>
+                
+                <div className="text-center text-white/60">
+                  <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <span className="text-sm font-medium">↔</span>
+                  </div>
+                  <div className="w-16 h-1 bg-gradient-to-r from-blue-400/40 to-red-400/40 rounded"></div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiRedis className="w-10 h-10 text-red-400" />
+                  <div className="w-20 h-20 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiRedis className="w-12 h-12 text-red-400" />
                   </div>
-                  <p className="text-white/80 text-sm">ElastiCache Redis</p>
-                  <p className="text-white/60 text-xs">High Availability Cache</p>
+                  <p className="text-white/80 text-base font-medium">ElastiCache Redis</p>
+                  <p className="text-white/60 text-sm">High Availability Cache</p>
+                </div>
+                
+                <div className="text-center text-white/60">
+                  <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <span className="text-sm font-medium">↔</span>
+                  </div>
+                  <div className="w-16 h-1 bg-gradient-to-r from-red-400/40 to-cyan-400/40 rounded"></div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-cyan-500/20 border border-cyan-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiTemporal className="w-10 h-10 text-cyan-400" />
+                  <div className="w-20 h-20 bg-cyan-500/20 border border-cyan-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiTemporal className="w-12 h-12 text-cyan-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Temporal Workflows</p>
-                  <p className="text-white/60 text-xs">Distributed Tasks</p>
+                  <p className="text-white/80 text-base font-medium">Temporal Workflows</p>
+                  <p className="text-white/60 text-sm">Distributed Tasks</p>
+                </div>
+                
+                <div className="text-center text-white/60">
+                  <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <span className="text-sm font-medium">↔</span>
+                  </div>
+                  <div className="w-16 h-1 bg-gradient-to-r from-cyan-400/40 to-purple-400/40 rounded"></div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-500/20 border border-purple-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiAmazon className="w-10 h-10 text-purple-400" />
+                  <div className="w-20 h-20 bg-purple-500/20 border border-purple-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiAmazon className="w-12 h-12 text-purple-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Secrets Manager</p>
-                  <p className="text-white/60 text-xs">External Secrets</p>
+                  <p className="text-white/80 text-base font-medium">Secrets Manager</p>
+                  <p className="text-white/60 text-sm">External Secrets</p>
                 </div>
+              </div>
+              
+              {/* Arrow from Data Layer to Monitoring */}
+              <div className="flex justify-center mt-6">
+                <div className="w-1 h-8 bg-gradient-to-b from-blue-400/20 to-blue-400/40"></div>
               </div>
             </div>
 
             {/* Layer 6: Monitoring & Observability */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-              <h5 className="font-semibold text-white mb-4 text-center">Monitoring & Observability</h5>
-              <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-8">
+              <h5 className="font-semibold text-white mb-6 text-center text-lg">Monitoring & Observability</h5>
+              <div className="flex flex-col lg:flex-row items-center justify-center space-y-6 lg:space-y-0 lg:space-x-12">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiPrometheus className="w-10 h-10 text-red-400" />
+                  <div className="w-20 h-20 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiPrometheus className="w-12 h-12 text-red-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Prometheus</p>
-                  <p className="text-white/60 text-xs">Metrics Collection</p>
+                  <p className="text-white/80 text-base font-medium">Prometheus</p>
+                  <p className="text-white/60 text-sm">Metrics Collection</p>
+                </div>
+                
+                <div className="text-center text-white/60">
+                  <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <span className="text-sm font-medium">→</span>
+                  </div>
+                  <div className="w-20 h-1 bg-gradient-to-r from-red-400/40 to-orange-400/40 rounded"></div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiGrafana className="w-10 h-10 text-orange-400" />
+                  <div className="w-20 h-20 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiGrafana className="w-12 h-12 text-orange-400" />
                   </div>
-                  <p className="text-white/80 text-sm">Grafana</p>
-                  <p className="text-white/60 text-xs">Dashboards & Visualization</p>
+                  <p className="text-white/80 text-base font-medium">Grafana</p>
+                  <p className="text-white/60 text-sm">Dashboards & Visualization</p>
+                </div>
+                
+                <div className="text-center text-white/60">
+                  <div className="w-12 h-12 border-2 border-dashed border-white/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <span className="text-sm font-medium">→</span>
+                  </div>
+                  <div className="w-20 h-1 bg-gradient-to-r from-orange-400/40 to-yellow-400/40 rounded"></div>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-yellow-500/20 border border-yellow-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <SiAmazoncloudwatch className="w-10 h-10 text-yellow-400" />
+                  <div className="w-20 h-20 bg-yellow-500/20 border border-yellow-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <SiAmazoncloudwatch className="w-12 h-12 text-yellow-400" />
                   </div>
-                  <p className="text-white/80 text-sm">CloudWatch</p>
-                  <p className="text-white/60 text-xs">Logs & Metrics</p>
+                  <p className="text-white/80 text-base font-medium">CloudWatch</p>
+                  <p className="text-white/60 text-sm">Logs & Metrics</p>
                 </div>
               </div>
             </div>
