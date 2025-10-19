@@ -857,9 +857,9 @@ export default function DevOpsDiagrams() {
             
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
               <div className="text-center">
-                <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <svg className="w-8 h-8 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
                   </svg>
                 </div>
                 <p className="text-white/80 text-xs">EKS Clusters</p>
@@ -875,8 +875,8 @@ export default function DevOpsDiagrams() {
                 <p className="text-white/60 text-xs">Multi-AZ</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-red-400" viewBox="0 0 24 24" fill="currentColor">
+                <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <svg className="w-8 h-8 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
                 </div>
@@ -889,24 +889,24 @@ export default function DevOpsDiagrams() {
               <div className="text-center">
                 <div className="w-12 h-12 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
                   <svg className="w-8 h-8 text-green-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
                   </svg>
                 </div>
                 <p className="text-white/80 text-xs">Application Load Balancer</p>
                 <p className="text-white/60 text-xs">External DNS</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-purple-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                <div className="w-12 h-12 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <svg className="w-8 h-8 text-red-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
                   </svg>
                 </div>
                 <p className="text-white/80 text-xs">Git Repository</p>
                 <p className="text-white/60 text-xs">GitHub/GitLab</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-cyan-500/20 border border-cyan-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
+                <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <svg className="w-8 h-8 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                   </svg>
                 </div>
