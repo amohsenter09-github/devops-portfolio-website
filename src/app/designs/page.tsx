@@ -17,30 +17,19 @@ export default function Designs() {
         </h1>
         <p className="text-gray-600 dark:text-gray-300 max-w-3xl mb-8">
           Visual representations of my DevOps processes, infrastructure designs, and system architectures. 
-          These designs showcase my approach to cloud infrastructure, automation, and observability using 
-          professional ASCII art and SVG diagrams.
+          These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
+          using professional brand icons and scalable vector graphics.
         </p>
 
-        {/* ASCII Art Diagrams */}
+        {/* Architecture Diagrams */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 heading-secondary">
-            Architecture Diagrams (ASCII Art)
+            Interactive Architecture Diagrams
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Professional ASCII art diagrams showing system architecture, data flow, and component relationships. 
-            These diagrams are lightweight, version-controllable, and display perfectly in any environment.
-          </p>
-          <DevOpsDiagrams />
-        </section>
-
-        {/* SVG Graphics */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 heading-secondary">
-            Interactive Architecture (SVG Graphics)
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Scalable vector graphics showing detailed system architecture with visual components, 
-            connection flows, and interactive elements. Perfect for presentations and documentation.
+            Professional architecture diagrams showing system design, data flow, and component relationships. 
+            These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
+            using scalable vector graphics and professional brand icons.
           </p>
           <DevOpsDiagrams />
         </section>
