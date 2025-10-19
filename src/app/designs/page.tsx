@@ -71,37 +71,6 @@ export default function Designs() {
             </div>
           </div>
         </section>
-
-        {/* Benefits of This Approach */}
-        <section className="mb-12 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
-          <h2 className="text-2xl font-semibold text-blue-900 dark:text-blue-100 mb-4">
-            Why ASCII Art & SVG Instead of Figma?
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6 text-sm">
-            <div>
-              <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">✅ Advantages</h3>
-              <ul className="text-blue-800 dark:text-blue-200 space-y-1">
-                <li>• No external dependencies</li>
-                <li>• Version controllable with Git</li>
-                <li>• Lightweight and fast loading</li>
-                <li>• Works in any environment</li>
-                <li>• Professional appearance</li>
-                <li>• Easy to maintain and update</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">🎯 Perfect for DevOps</h3>
-              <ul className="text-blue-800 dark:text-blue-200 space-y-1">
-                <li>• Shows technical expertise</li>
-                <li>• Demonstrates documentation skills</li>
-                <li>• Easy to share in presentations</li>
-                <li>• Can be embedded in documentation</li>
-                <li>• No licensing or account issues</li>
-                <li>• Works offline and in CI/CD</li>
-              </ul>
-            </div>
-          </div>
-        </section>
       </motion.div>
     </Container>
   );

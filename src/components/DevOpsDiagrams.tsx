@@ -10,7 +10,8 @@ import {
   SiPrometheus,
   SiGrafana,
   SiArgo,
-  SiPostgresql
+  SiPostgresql,
+  SiTerraform
 } from "react-icons/si";
 
 interface DiagramProps {
@@ -306,8 +307,19 @@ export default function DevOpsDiagrams() {
     argocd: (
       <Diagram title="ArgoCD GitOps Implementation">
         <div className="w-full max-w-5xl">
+          {/* Terraform Infrastructure Management */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-400/30 rounded-lg p-6 text-center">
+              <div className="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <SiTerraform className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="font-semibold text-white mb-2">Infrastructure as Code</h4>
+              <p className="text-white/80 text-sm">All Infrastructure Deployed by Terraform<br/>EKS, RDS, ECR, ALB, Route53, VPC</p>
+            </div>
+          </div>
+
           {/* GitOps Flow */}
-    <div className="space-y-8">
+     <div className="space-y-8">
             {/* Git Repository */}
             <div className="flex justify-center">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
@@ -402,6 +414,17 @@ export default function DevOpsDiagrams() {
     microservices: (
       <Diagram title="Microservices Architecture on EKS">
         <div className="w-full max-w-6xl">
+          {/* Terraform Infrastructure Management */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-400/30 rounded-lg p-6 text-center">
+              <div className="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <SiTerraform className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="font-semibold text-white mb-2">Infrastructure as Code</h4>
+              <p className="text-white/80 text-sm">All Infrastructure Deployed by Terraform<br/>EKS, RDS, ECR, ALB, Route53, VPC</p>
+            </div>
+          </div>
+
           {/* EKS Cluster Overview */}
           <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 mb-6">
             <h4 className="font-semibold text-white mb-4 text-center">AWS EKS Cluster Architecture</h4>
@@ -584,6 +607,17 @@ export default function DevOpsDiagrams() {
     gitops: (
       <Diagram title="Complete GitOps Workflow">
         <div className="w-full max-w-4xl">
+          {/* Terraform Infrastructure Management */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-400/30 rounded-lg p-6 text-center">
+              <div className="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <SiTerraform className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="font-semibold text-white mb-2">Infrastructure as Code</h4>
+              <p className="text-white/80 text-sm">All Infrastructure Deployed by Terraform<br/>EKS, RDS, ECR, ALB, Route53, VPC</p>
+            </div>
+          </div>
+
           <div className="space-y-6">
             {/* Step 1 - Developer */}
             <div className="flex items-center">
@@ -606,21 +640,24 @@ export default function DevOpsDiagrams() {
               <div className="w-1 h-6 bg-white/40"></div>
             </div>
             
-            {/* Step 2 - CI/CD */}
-            <div className="flex items-center">
-              <div className="w-12 h-12 bg-green-500/30 border border-green-500/50 rounded-full flex items-center justify-center mr-4">
-                <span className="text-green-300 font-bold">2</span>
-              </div>
-              <div className="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
-                <h4 className="font-semibold text-white">CI/CD Pipeline</h4>
-                <p className="text-sm text-white/80">GitHub Actions builds and tests</p>
-                <div className="mt-2 text-xs text-white/60">
-                  • Docker image build<br/>
-                  • Security scanning<br/>
-                  • Push to ECR
-                </div>
-              </div>
-            </div>
+             {/* Step 2 - CI/CD */}
+             <div className="flex items-center">
+               <div className="w-12 h-12 bg-green-500/30 border border-green-500/50 rounded-full flex items-center justify-center mr-4">
+                 <span className="text-green-300 font-bold">2</span>
+               </div>
+               <div className="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+                 <div className="flex items-center mb-2">
+                   <SiTerraform className="w-5 h-5 text-purple-400 mr-2" />
+                   <h4 className="font-semibold text-white">CI/CD Pipeline</h4>
+                 </div>
+                 <p className="text-sm text-white/80">GitHub Actions builds and tests</p>
+                 <div className="mt-2 text-xs text-white/60">
+                   • Docker image build<br/>
+                   • Security scanning<br/>
+                   • Push to ECR
+                 </div>
+               </div>
+             </div>
             
             {/* Arrow */}
             <div className="flex justify-center">
@@ -671,6 +708,17 @@ export default function DevOpsDiagrams() {
     "enterprise-gitops": (
       <Diagram title="Enterprise GitOps Architecture - Kustomize + ArgoCD">
         <div className="w-full max-w-7xl">
+          {/* Terraform Infrastructure Management */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-400/30 rounded-lg p-6 text-center">
+              <div className="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <SiTerraform className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="font-semibold text-white mb-2">Infrastructure as Code</h4>
+              <p className="text-white/80 text-sm">Entire Infrastructure Deployed by Terraform<br/>EKS, RDS, ECR, ALB, Route53, VPC</p>
+            </div>
+          </div>
+
           {/* Git Repository Section */}
           <div className="flex justify-center mb-8">
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
@@ -695,6 +743,10 @@ export default function DevOpsDiagrams() {
               </div>
               <h4 className="font-semibold text-white mb-2">ArgoCD Hub</h4>
               <p className="text-white/80 text-sm">Operations Environment<br/>argocd.enterprise.build<br/>Image Updater Enabled</p>
+              <div className="mt-2 flex items-center justify-center">
+                <SiTerraform className="w-4 h-4 text-purple-400 mr-1" />
+                <span className="text-white/60 text-xs">Infrastructure as Code</span>
+              </div>
             </div>
           </div>
 
@@ -861,7 +913,10 @@ export default function DevOpsDiagrams() {
 
           {/* AWS Infrastructure with Logging */}
           <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-            <h5 className="font-semibold text-white mb-4 text-center">AWS Infrastructure (Terraform)</h5>
+            <div className="flex items-center justify-center mb-4">
+              <SiTerraform className="w-6 h-6 text-purple-400 mr-2" />
+              <h5 className="font-semibold text-white text-center">AWS Infrastructure (Deployed by Terraform)</h5>
+            </div>
             
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
               <div className="text-center">
