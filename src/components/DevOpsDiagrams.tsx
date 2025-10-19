@@ -2,6 +2,18 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { 
+  SiKubernetes, 
+  SiAmazonaws, 
+  SiDocker, 
+  SiGithub, 
+  SiJenkins,
+  SiTerraform,
+  SiPrometheus,
+  SiGrafana,
+  SiArgo,
+  SiPostgresql
+} from "react-icons/si";
 
 interface DiagramProps {
   title: string;
@@ -681,9 +693,7 @@ export default function DevOpsDiagrams() {
           <div className="flex justify-center mb-8">
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
               <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center mx-auto mb-3 shadow-lg">
-                <svg className="w-12 h-12 text-white" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
+                <SiArgo className="w-12 h-12 text-white" />
               </div>
               <h4 className="font-semibold text-white mb-2">ArgoCD Hub</h4>
               <p className="text-white/80 text-sm">Operations Environment<br/>argocd.enterprise.build<br/>Image Updater Enabled</p>
@@ -858,27 +868,21 @@ export default function DevOpsDiagrams() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
               <div className="text-center">
                 <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                  </svg>
+                  <SiKubernetes className="w-8 h-8 text-blue-400" />
                 </div>
                 <p className="text-white/80 text-xs">EKS Clusters</p>
                 <p className="text-white/60 text-xs">ca-central-1</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
+                  <SiPostgresql className="w-8 h-8 text-blue-400" />
                 </div>
                 <p className="text-white/80 text-xs">Aurora PostgreSQL</p>
                 <p className="text-white/60 text-xs">Multi-AZ</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
+                  <SiDocker className="w-8 h-8 text-orange-400" />
                 </div>
                 <p className="text-white/80 text-xs">Container Registry</p>
                 <p className="text-white/60 text-xs">AWS ECR Registry</p>
@@ -888,27 +892,21 @@ export default function DevOpsDiagrams() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="text-center">
                 <div className="w-12 h-12 bg-green-500/20 border border-green-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-green-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                  </svg>
+                  <SiAmazonaws className="w-8 h-8 text-green-400" />
                 </div>
                 <p className="text-white/80 text-xs">Application Load Balancer</p>
                 <p className="text-white/60 text-xs">External DNS</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-red-500/20 border border-red-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-red-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                  </svg>
+                  <SiGithub className="w-8 h-8 text-red-400" />
                 </div>
                 <p className="text-white/80 text-xs">Git Repository</p>
                 <p className="text-white/60 text-xs">GitHub/GitLab</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-8 h-8 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                  </svg>
+                  <SiArgo className="w-8 h-8 text-orange-400" />
                 </div>
                 <p className="text-white/80 text-xs">GitOps Controller</p>
                 <p className="text-white/60 text-xs">Image Updater</p>
@@ -926,7 +924,7 @@ export default function DevOpsDiagrams() {
             {/* Prometheus */}
             <div className="text-center">
               <div className="w-20 h-20 bg-orange-500/20 border border-orange-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
-                <span className="text-orange-300 font-bold text-2xl">P</span>
+                <SiPrometheus className="w-10 h-10 text-orange-300" />
               </div>
               <h4 className="font-semibold text-white mb-2">Prometheus</h4>
               <p className="text-sm text-white/80">Metrics Collection</p>
@@ -941,7 +939,7 @@ export default function DevOpsDiagrams() {
             {/* Grafana */}
             <div className="text-center">
               <div className="w-20 h-20 bg-blue-500/20 border border-blue-500/40 rounded-lg flex items-center justify-center mx-auto mb-3">
-                <span className="text-blue-300 font-bold text-2xl">G</span>
+                <SiGrafana className="w-10 h-10 text-blue-300" />
               </div>
               <h4 className="font-semibold text-white mb-2">Grafana</h4>
               <p className="text-sm text-white/80">Dashboards</p>
