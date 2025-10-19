@@ -225,10 +225,10 @@ export default function Projects() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="space-y-8"
+        className="space-y-12"
       >
-        {/* Header Section */}
-        <div className="text-center space-y-4">
+        {/* Header Section - Centered */}
+        <div className="text-center space-y-6">
           <motion.h1 
             className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
@@ -238,7 +238,7 @@ export default function Projects() {
             Project Portfolio
           </motion.h1>
           <motion.p 
-            className="text-lg text-muted-foreground max-w-3xl mx-auto"
+            className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -248,44 +248,46 @@ export default function Projects() {
           </motion.p>
         </div>
 
-        {/* Project Tabs */}
+        {/* Project Tabs - Centered */}
         <Tabs value={activeProject.toString()} onValueChange={(value) => setActiveProject(parseInt(value))} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-8">
-            {projects.map((project, index) => (
-              <TabsTrigger 
-                key={project.slug} 
-                value={index.toString()}
-                className="flex flex-col items-center gap-2 p-4 h-auto"
-              >
-                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary">
-                  {projectIcons[project.slug]}
-                </div>
-                <span className="text-xs font-medium text-center leading-tight">
-                  {project.title.split(' ').slice(0, 2).join(' ')}
-                </span>
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          <div className="flex justify-center mb-8">
+            <TabsList className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 w-fit">
+              {projects.map((project, index) => (
+                <TabsTrigger 
+                  key={project.slug} 
+                  value={index.toString()}
+                  className="flex flex-col items-center gap-2 p-4 h-auto min-w-[120px]"
+                >
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary">
+                    {projectIcons[project.slug]}
+                  </div>
+                  <span className="text-xs font-medium text-center leading-tight">
+                    {project.title.split(' ').slice(0, 2).join(' ')}
+                  </span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
           {projects.map((project, index) => {
             const details = getProjectDetails(project);
             return (
-              <TabsContent key={project.slug} value={index.toString()} className="space-y-6">
-                {/* Project Header */}
+              <TabsContent key={project.slug} value={index.toString()} className="space-y-8">
+                {/* Project Header - Centered */}
                 <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20">
                   <CardHeader className="text-center">
-                    <div className="flex items-center justify-center mb-4">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-primary/10 text-primary">
+                    <div className="flex items-center justify-center mb-6">
+                      <div className="flex items-center justify-center w-20 h-20 rounded-xl bg-primary/10 text-primary">
                         {projectIcons[project.slug]}
                       </div>
                     </div>
-                    <CardTitle className="text-2xl md:text-3xl">{project.title}</CardTitle>
-                    <CardDescription className="text-base mt-2">{project.summary}</CardDescription>
+                    <CardTitle className="text-3xl md:text-4xl mb-4">{project.title}</CardTitle>
+                    <CardDescription className="text-lg max-w-4xl mx-auto leading-relaxed">{project.summary}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap justify-center gap-2">
+                    <div className="flex flex-wrap justify-center gap-3">
                       {project.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
+                        <Badge key={tag} variant="secondary" className="text-sm px-4 py-2">
                           {tag}
                         </Badge>
                       ))}
@@ -293,40 +295,40 @@ export default function Projects() {
                   </CardContent>
                 </Card>
 
-                {/* Project Details Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Project Details Grid - Centered */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                   {/* Project Info */}
                   <Card>
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg flex items-center gap-2">
+                    <CardHeader className="pb-4 text-center">
+                      <CardTitle className="text-lg flex items-center justify-center gap-2">
                         <Target className="w-5 h-5 text-blue-600" />
                         Project Info
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-3">
+                    <CardContent className="space-y-4">
                       <div className="flex items-center gap-3">
-                        <Building2 className="w-4 h-4 text-muted-foreground" />
+                        <Building2 className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                         <div>
                           <p className="text-sm font-medium">{details.client}</p>
                           <p className="text-xs text-muted-foreground">{details.industry}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Calendar className="w-4 h-4 text-muted-foreground" />
+                        <Calendar className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                         <div>
                           <p className="text-sm font-medium">{details.duration}</p>
                           <p className="text-xs text-muted-foreground">Duration</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Users className="w-4 h-4 text-muted-foreground" />
+                        <Users className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                         <div>
                           <p className="text-sm font-medium">{details.teamSize}</p>
                           <p className="text-xs text-muted-foreground">Team Size</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <DollarSign className="w-4 h-4 text-muted-foreground" />
+                        <DollarSign className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                         <div>
                           <p className="text-sm font-medium">{details.budget}</p>
                           <p className="text-xs text-muted-foreground">Budget</p>
@@ -337,16 +339,16 @@ export default function Projects() {
 
                   {/* Challenges */}
                   <Card>
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg flex items-center gap-2">
+                    <CardHeader className="pb-4 text-center">
+                      <CardTitle className="text-lg flex items-center justify-center gap-2">
                         <Shield className="w-5 h-5 text-red-600" />
                         Challenges
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2">
+                      <ul className="space-y-3">
                         {details.challenges?.map((challenge, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm">
+                          <li key={idx} className="flex items-start gap-2 text-sm leading-relaxed">
                             <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0" />
                             <span>{challenge}</span>
                           </li>
@@ -357,16 +359,16 @@ export default function Projects() {
 
                   {/* Solutions */}
                   <Card>
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg flex items-center gap-2">
+                    <CardHeader className="pb-4 text-center">
+                      <CardTitle className="text-lg flex items-center justify-center gap-2">
                         <Lightbulb className="w-5 h-5 text-blue-600" />
                         Solutions
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2">
+                      <ul className="space-y-3">
                         {details.solutions?.map((solution, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm">
+                          <li key={idx} className="flex items-start gap-2 text-sm leading-relaxed">
                             <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
                             <span>{solution}</span>
                           </li>
@@ -377,16 +379,16 @@ export default function Projects() {
 
                   {/* Results */}
                   <Card>
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg flex items-center gap-2">
+                    <CardHeader className="pb-4 text-center">
+                      <CardTitle className="text-lg flex items-center justify-center gap-2">
                         <Award className="w-5 h-5 text-green-600" />
                         Results
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2">
+                      <ul className="space-y-3">
                         {details.results?.map((result, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm">
+                          <li key={idx} className="flex items-start gap-2 text-sm leading-relaxed">
                             <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                             <span>{result}</span>
                           </li>
@@ -396,18 +398,18 @@ export default function Projects() {
                   </Card>
                 </div>
 
-                {/* Technologies */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <Settings className="w-5 h-5 text-purple-600" />
+                {/* Technologies - Centered */}
+                <Card className="max-w-4xl mx-auto">
+                  <CardHeader className="text-center">
+                    <CardTitle className="text-xl flex items-center justify-center gap-2">
+                      <Settings className="w-6 h-6 text-purple-600" />
                       Technologies Used
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap justify-center gap-3">
                       {details.technologies?.map((tech) => (
-                        <Badge key={tech} variant="outline" className="text-sm">
+                        <Badge key={tech} variant="outline" className="text-sm px-4 py-2">
                           {tech}
                         </Badge>
                       ))}
