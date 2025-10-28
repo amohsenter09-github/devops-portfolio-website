@@ -21,7 +21,7 @@ export default function Designs() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <div className="max-w-3xl mx-auto space-y-6 text-center px-4">
+          <div className="max-w-3xl mx-auto space-y-6 text-center">
             <h1 className="text-3xl font-semibold text-white">
               DevOps Designs & Architecture
             </h1>
