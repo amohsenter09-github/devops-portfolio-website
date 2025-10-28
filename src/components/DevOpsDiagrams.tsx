@@ -1388,13 +1388,13 @@ export default function DevOpsDiagrams() {
   return (
     <div className="w-full">
       {/* Diagram Selector */}
-      <div className="flex justify-center mb-8">
-        <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-1">
+      <div className="flex justify-center mb-8 px-4">
+        <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-1.5 flex flex-wrap gap-2 justify-center w-full md:w-auto">
           {Object.keys(diagrams).map((key) => (
             <button
               key={key}
               onClick={() => setActiveDiagram(key)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                 activeDiagram === key
                   ? 'bg-white/20 text-white shadow-sm'
                   : 'text-white/70 hover:text-white'

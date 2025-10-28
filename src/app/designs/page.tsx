@@ -16,12 +16,12 @@ export default function Designs() {
       >
         {/* Header Section - Centered */}
         <motion.section 
-          className="w-full text-center px-6 py-20 bg-transparent"
+          className="w-full py-20 bg-transparent"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div className="max-w-3xl mx-auto space-y-6 text-center px-4">
             <h1 className="text-3xl font-semibold text-white">
               DevOps Designs & Architecture
             </h1>
