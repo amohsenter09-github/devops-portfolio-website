@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Container from "@/components/Container";
 import DevOpsDiagrams from "@/components/DevOpsDiagrams";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Designs() {
   return (
-    <Container maxWidth="7xl" padding="lg">
+    <div className="w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -16,12 +15,12 @@ export default function Designs() {
       >
         {/* Header Section - Centered */}
         <motion.section 
-          className="w-full py-20 bg-transparent"
+          className="py-20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <div className="max-w-3xl mx-auto space-y-6 text-center">
+          <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
             <h1 className="text-3xl font-semibold text-white">
               DevOps Designs & Architecture
             </h1>
@@ -46,53 +45,55 @@ export default function Designs() {
         </motion.section>
 
         {/* Architecture Diagrams */}
-        <div className="border-0 shadow-lg">
-          <div className="px-0">
-            <DevOpsDiagrams />
-          </div>
+        <div className="px-4">
+          <DevOpsDiagrams />
         </div>
 
         {/* Design Process - Centered */}
-        <Card>
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl md:text-3xl mb-4">Design Process & Methodology</CardTitle>
-            <CardDescription className="text-base max-w-3xl mx-auto">
-              My systematic approach to creating robust, scalable infrastructure solutions
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mx-auto">
-                  <span className="text-3xl font-bold text-blue-600">1</span>
+        <section className="py-12">
+          <div className="max-w-6xl mx-auto px-4">
+            <Card>
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl md:text-3xl mb-4">Design Process & Methodology</CardTitle>
+                <CardDescription className="text-base max-w-3xl mx-auto">
+                  My systematic approach to creating robust, scalable infrastructure solutions
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                  <div className="text-center space-y-4">
+                    <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mx-auto">
+                      <span className="text-3xl font-bold text-blue-600">1</span>
+                    </div>
+                    <h3 className="font-semibold text-xl">Research & Analysis</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Understanding requirements, constraints, and existing systems before designing solutions.
+                    </p>
+                  </div>
+                  <div className="text-center space-y-4">
+                    <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mx-auto">
+                      <span className="text-3xl font-bold text-purple-600">2</span>
+                    </div>
+                    <h3 className="font-semibold text-xl">Architecture Design</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Creating scalable, secure, and maintainable infrastructure designs using industry best practices.
+                    </p>
+                  </div>
+                  <div className="text-center space-y-4">
+                    <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mx-auto">
+                      <span className="text-3xl font-bold text-green-600">3</span>
+                    </div>
+                    <h3 className="font-semibold text-xl">Implementation Planning</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Detailed implementation roadmaps with clear milestones and success metrics.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-xl">Research & Analysis</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Understanding requirements, constraints, and existing systems before designing solutions.
-                </p>
-              </div>
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mx-auto">
-                  <span className="text-3xl font-bold text-purple-600">2</span>
-                </div>
-                <h3 className="font-semibold text-xl">Architecture Design</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Creating scalable, secure, and maintainable infrastructure designs using industry best practices.
-                </p>
-              </div>
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mx-auto">
-                  <span className="text-3xl font-bold text-green-600">3</span>
-                </div>
-                <h3 className="font-semibold text-xl">Implementation Planning</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Detailed implementation roadmaps with clear milestones and success metrics.
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
       </motion.div>
-    </Container>
+    </div>
   );
 }
