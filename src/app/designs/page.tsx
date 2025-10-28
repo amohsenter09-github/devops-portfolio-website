@@ -24,32 +24,38 @@ export default function Designs() {
           >
             DevOps Designs & Architecture
           </motion.h1>
-          <motion.p 
-            className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+          <motion.div 
+            className="text-center px-6 py-8 bg-gradient-to-b from-transparent to-white/5 rounded-2xl max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Visual representations of my DevOps processes, infrastructure designs, and system architectures. 
-            These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
-            using professional brand icons and scalable vector graphics.
-          </motion.p>
+            <p className="text-white/80 text-lg leading-relaxed">
+              Visual representations of my DevOps processes, infrastructure designs, and system architectures. 
+              These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
+              using professional brand icons and scalable vector graphics.
+            </p>
+          </motion.div>
         </div>
 
         {/* Architecture Diagrams - Centered */}
-        <Card className="border-0 shadow-lg">
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl md:text-3xl mb-4">Interactive Architecture Diagrams</CardTitle>
-            <CardDescription className="text-base max-w-4xl mx-auto leading-relaxed">
-              Professional architecture diagrams showing system design, data flow, and component relationships. 
-              These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
-              using scalable vector graphics and professional brand icons.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="px-0">
+        <div className="border-0 shadow-lg">
+          <div className="text-center px-6 py-8 bg-gradient-to-b from-transparent to-white/5 rounded-2xl mb-8">
+            <div className="max-w-3xl mx-auto space-y-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-white mb-3">
+                Interactive Architecture Diagrams
+              </h2>
+              <p className="text-white/70 text-base leading-relaxed">
+                Professional architecture diagrams showing system design, data flow, and component relationships. 
+                These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
+                using scalable vector graphics and professional brand icons.
+              </p>
+            </div>
+          </div>
+          <div className="px-0">
             <DevOpsDiagrams />
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Design Process - Centered */}
         <Card>
