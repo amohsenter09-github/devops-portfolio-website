@@ -15,43 +15,38 @@ export default function Designs() {
         className="space-y-12"
       >
         {/* Header Section - Centered */}
-        <div className="text-center space-y-6">
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            DevOps Designs & Architecture
-          </motion.h1>
-          <motion.div 
-            className="text-center px-6 py-8 bg-gradient-to-b from-transparent to-white/5 rounded-2xl max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
+        <motion.section 
+          className="w-full text-center px-6 py-20 bg-transparent"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <div className="max-w-3xl mx-auto space-y-6">
+            <h1 className="text-3xl font-semibold text-white">
+              DevOps Designs & Architecture
+            </h1>
+
             <p className="text-white/80 text-lg leading-relaxed">
               Visual representations of my DevOps processes, infrastructure designs, and system architectures. 
               These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
               using professional brand icons and scalable vector graphics.
             </p>
-          </motion.div>
-        </div>
 
-        {/* Architecture Diagrams - Centered */}
-        <div className="border-0 shadow-lg">
-          <div className="text-center px-6 py-8 bg-gradient-to-b from-transparent to-white/5 rounded-2xl mb-8">
-            <div className="max-w-3xl mx-auto space-y-4">
-              <h2 className="text-2xl md:text-3xl font-semibold text-white mb-3">
-                Interactive Architecture Diagrams
-              </h2>
-              <p className="text-white/70 text-base leading-relaxed">
-                Professional architecture diagrams showing system design, data flow, and component relationships. 
-                These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
-                using scalable vector graphics and professional brand icons.
-              </p>
-            </div>
+            <div className="border-t border-white/10 my-6 mx-auto w-1/3"></div>
+
+            <h2 className="text-2xl font-semibold text-white">
+              Interactive Architecture Diagrams
+            </h2>
+
+            <p className="text-white/70 text-base leading-relaxed">
+              Professional architecture diagrams showing system design, data flow, and component relationships. 
+              These interactive diagrams highlight my approach to building scalable, observable, and automated systems.
+            </p>
           </div>
+        </motion.section>
+
+        {/* Architecture Diagrams */}
+        <div className="border-0 shadow-lg">
           <div className="px-0">
             <DevOpsDiagrams />
           </div>
