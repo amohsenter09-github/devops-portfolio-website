@@ -998,7 +998,7 @@ export default function DevOpsDiagrams() {
       </Diagram>
     ),
     comprehensiveArchitecture: (
-      <Diagram title="Comprehensive Enterprise Architecture">
+      <Diagram title="Multi-Environment AWS Cloud Platform Architecture">
         <div className="w-full max-w-none space-y-8">
           
           {/* Top Level - Terraform Infrastructure */}
