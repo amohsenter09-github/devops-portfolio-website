@@ -26,12 +26,14 @@ function Diagram({ title, children }: DiagramProps) {
   return (
     <div className="glass-card mb-8">
       <div className="p-8">
-        <h3 className="text-xl font-semibold mb-6 text-white text-center">
+        <h3 className="text-xl font-semibold mb-8 text-white text-center">
           {title}
         </h3>
         <div className="flex justify-center">
-          {children}
-      </div>
+          <div className="w-full">
+            {children}
+          </div>
+        </div>
       </div>
     </div>
   );

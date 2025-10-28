@@ -442,3 +442,28 @@ html.dark .recommendation-card-clean {
 html.dark .recommendation-card-clean:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
+
+/* Diagram-specific utility classes for consistent alignment */
+.diagram-section {
+  @apply container mx-auto px-4 space-y-8;
+}
+
+.diagram-card {
+  @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center;
+}
+
+.diagram-header {
+  @apply text-xl font-semibold text-white text-center mb-4;
+}
+
+.diagram-subheader {
+  @apply text-lg font-medium text-white text-center mb-2;
+}
+
+.diagram-text {
+  @apply text-sm text-white/80;
+}
+
+.diagram-connector {
+  @apply w-[2px] bg-white/30;
+}
