@@ -30,9 +30,9 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         duration: 0.3,
         ease: "easeOut"
       }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.25 }}
     >
-      <div className="h-full card p-6">
+      <div className="h-full rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] p-6">
         {/* Rating Stars */}
         <div className="flex gap-1 mb-4">
           {[...Array(recommendation.rating)].map((_, i) => (
@@ -50,7 +50,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         </p>
         
         {/* Author Info */}
-        <div className="flex items-center pt-4 border-t border-white/10">
+        <div className="flex items-center pt-4">
           <div className="w-10 h-10 bg-white/[0.08] rounded-full flex items-center justify-center text-slate-300 font-semibold text-sm mr-3 flex-shrink-0">
             {recommendation.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
           </div>
@@ -75,9 +75,9 @@ export default function Recommendations() {
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.25 }}
       >
-        <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">
           Client Recommendations
         </h2>
       </motion.div>
