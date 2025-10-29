@@ -26,10 +26,24 @@ export default function Home() {
     }
   };
 
+  // Project-specific achievements
+  const projectAchievements: Record<string, Array<{ text: string; icon: React.ReactNode }>> = {
+    "aviv-group-replatforming": [
+      { text: "Zero-downtime migration from on-prem to cloud", icon: <Shield className="w-4 h-4 text-gray-600" /> },
+      { text: "99.9% uptime achieved post-migration", icon: <CheckCircle2 className="w-4 h-4 text-gray-600" /> },
+      { text: "Full EU GDPR compliance maintained", icon: <Shield className="w-4 h-4 text-gray-600" /> }
+    ],
+    "infracore-multi-account-aws": [
+      { text: "Secure multi-account isolation architecture", icon: <Shield className="w-4 h-4 text-gray-600" /> },
+      { text: "99.9% platform reliability", icon: <CheckCircle2 className="w-4 h-4 text-gray-600" /> },
+      { text: "60% infrastructure cost optimization", icon: <DollarSign className="w-4 h-4 text-gray-600" /> }
+    ]
+  };
+
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden" style={{ maxWidth: '100vw' }}>
       {/* Hero Section */}
-      <section className="relative py-32 md:py-40 text-center w-full flex flex-col items-center justify-center border-b border-gray-200">
+      <section className="relative py-32 md:py-40 text-center w-full flex flex-col items-center justify-center">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.h1 
             className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-3 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent"
@@ -74,31 +88,31 @@ export default function Home() {
             <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 items-center w-full" role="navigation">
               <Link 
                 href="/" 
-                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
+                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
               >
                 Home
               </Link>
               <Link 
                 href="/designs" 
-                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
+                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
               >
                 Designs
               </Link>
               <Link 
                 href="/blog" 
-                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
+                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
               >
                 Blog
               </Link>
               <Link 
                 href="/about" 
-                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
+                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
               >
                 About
               </Link>
               <Link 
                 href="/contact" 
-                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
+                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
               >
                 Contact
               </Link>
@@ -126,8 +140,8 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center border border-cyan-200 group-hover:bg-cyan-100 transition-colors">
-                <DollarSign className="w-5 h-5 text-cyan-600" />
+              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-gray-200 transition-colors">
+                <DollarSign className="w-5 h-5 text-gray-600" />
               </div>
               <div className="text-left">
                 <div className="text-lg font-bold text-gray-900">$2M+</div>
@@ -139,8 +153,8 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center border border-cyan-200 group-hover:bg-cyan-100 transition-colors">
-                <Shield className="w-5 h-5 text-cyan-600" />
+              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-gray-200 transition-colors">
+                <Shield className="w-5 h-5 text-gray-600" />
               </div>
               <div className="text-left">
                 <div className="text-lg font-bold text-gray-900">99.9%</div>
@@ -152,8 +166,8 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center border border-cyan-200 group-hover:bg-cyan-100 transition-colors">
-                <Zap className="w-5 h-5 text-cyan-600" />
+              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-gray-200 transition-colors">
+                <Zap className="w-5 h-5 text-gray-600" />
               </div>
               <div className="text-left">
                 <div className="text-lg font-bold text-gray-900">80%</div>
@@ -176,19 +190,10 @@ export default function Home() {
             >
               <Link 
                 href="/contact"
-                className="inline-flex items-center gap-3 rounded-full bg-cyan-600 px-8 py-4 text-base font-semibold text-white hover:bg-cyan-500 transition-all duration-300 shadow-lg hover:shadow-xl shadow-cyan-600/25 hover:shadow-cyan-600/40 group relative overflow-hidden"
+                className="inline-flex items-center gap-2 rounded-full bg-cyan-700 px-8 py-4 text-base font-semibold text-white hover:bg-cyan-600 transition-colors duration-200 shadow-md hover:shadow-lg"
               >
-                <span className="relative z-10">Schedule Consultation</span>
-                <motion.div
-                  className="w-9 h-9 rounded-full bg-cyan-700 flex items-center justify-center group-hover:bg-cyan-400 transition-colors relative z-10 ml-1"
-                  whileHover={{ 
-                    rotate: [0, -10, 10, 0],
-                    scale: 1.1
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </motion.div>
+                <span>Schedule Consultation</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
           </motion.div>
@@ -196,7 +201,7 @@ export default function Home() {
       </section>
 
       {/* Metrics Section */}
-      <section className="py-28 md:py-36 w-full flex items-center justify-center border-b border-gray-200">
+      <section className="py-32 md:py-40 w-full flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="mt-12 flex flex-wrap items-start justify-center gap-12 md:gap-16">
             <motion.div 
@@ -207,7 +212,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.3 }}
             >
               <div className="flex items-center justify-center gap-2 mb-2">
-                <Clock className="w-5 h-5 text-cyan-600" />
+                <Clock className="w-5 h-5 text-gray-600" />
               </div>
               <div className="text-4xl md:text-5xl font-bold text-gray-900">
                 <AnimatedCounter end={15} duration={2} />+
@@ -224,7 +229,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.3 }}
             >
               <div className="flex items-center justify-center gap-2 mb-2">
-                <TrendingUp className="w-5 h-5 text-cyan-600" />
+                <TrendingUp className="w-5 h-5 text-gray-600" />
               </div>
               <div className="text-4xl md:text-5xl font-bold text-gray-900">Enterprise</div>
               <div className="mt-2 text-sm text-gray-600">Cloud Delivery</div>
@@ -239,7 +244,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.3 }}
             >
               <div className="flex items-center justify-center gap-2 mb-2">
-                <Shield className="w-5 h-5 text-cyan-600" />
+                <Shield className="w-5 h-5 text-gray-600" />
               </div>
               <div className="text-4xl md:text-5xl font-bold text-gray-900">99.9%</div>
               <div className="mt-2 text-sm text-gray-600">Platform Reliability</div>
@@ -255,31 +260,19 @@ export default function Home() {
       </section>
 
       {/* Credentials & Trust Signals */}
-      <section className="py-20 md:py-24 w-full flex items-center justify-center border-b border-gray-200">
+      <section className="py-24 md:py-28 w-full flex items-center justify-center">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-10 text-sm">
-            <div className="flex items-center gap-2 text-gray-700">
-              <Award className="w-4 h-4 text-cyan-600" />
-              <span>AWS Certified</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-700">
-              <CheckCircle2 className="w-4 h-4 text-cyan-600" />
-              <span>Kubernetes Expert</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-700">
-              <Shield className="w-4 h-4 text-cyan-600" />
-              <span>Security Best Practices</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-700">
-              <Zap className="w-4 h-4 text-cyan-600" />
-              <span>GitOps Specialist</span>
-            </div>
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+            <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">AWS Certified</span>
+            <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Kubernetes Expert</span>
+            <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Security Best Practices</span>
+            <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">GitOps Specialist</span>
           </div>
         </div>
       </section>
 
       {/* Featured Projects */}
-      <section id="featured-projects" className="py-28 md:py-36 w-full flex items-center justify-center border-b border-gray-200">
+      <section id="featured-projects" className="py-32 md:py-40 w-full flex items-center justify-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -294,12 +287,11 @@ export default function Home() {
               return (
                 <motion.div 
                   key={project.slug}
-                  className="rounded-2xl bg-white shadow-sm border border-gray-100 p-8 lg:p-10 group cursor-pointer hover:shadow-xl hover:border-cyan-300 transition-shadow transition-colors duration-300"
+                  className="rounded-2xl bg-white shadow-sm p-8 lg:p-10 group cursor-pointer hover:shadow-md hover:bg-gray-50 transition-all duration-200"
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   whileHover={{ 
-                    y: -8, 
-                    scale: 1.02,
+                    y: -4,
                     transition: { 
                       type: "spring", 
                       stiffness: 300, 
@@ -316,83 +308,64 @@ export default function Home() {
                   }}
                   viewport={{ once: true, amount: 0.25 }}
                 >
-                  <motion.div 
-                    className="flex flex-col"
-                    whileHover={{ transition: { duration: 0.2 } }}
-                  >
+                  <div className="flex flex-col">
                     {/* Project Header with Icon */}
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="flex items-center gap-4">
-                        <motion.div 
-                          className="w-12 h-12 rounded-xl bg-cyan-100 flex items-center justify-center flex-shrink-0"
-                          whileHover={{ 
-                            scale: 1.1,
-                            rotate: [0, -5, 5, 0],
-                            transition: { duration: 0.3 }
-                          }}
-                        >
-                          <Zap className="w-6 h-6 text-cyan-600" />
-                        </motion.div>
-                        <div>
-                          <h3 className="font-semibold text-xl text-gray-900 group-hover:text-cyan-600 transition-colors mb-2">
-                            {project.title}
-                          </h3>
-                          {impact && (
-                            <div className="flex items-center gap-2">
-                              {impact.icon}
-                              <span className="text-sm text-cyan-600 font-semibold">{impact.value}</span>
-                              <span className="text-sm text-gray-500">• {impact.metric}</span>
-                            </div>
-                          )}
-                        </div>
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <Zap className="w-6 h-6 text-gray-600" />
                       </div>
-                      <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full font-medium">2024</span>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-xl text-gray-900 mb-2">
+                          {project.title}
+                        </h3>
+                        {impact && (
+                          <div className="flex items-center gap-2">
+                            {impact.icon}
+                            <span className="text-sm text-gray-700 font-semibold">{impact.value}</span>
+                            <span className="text-sm text-gray-500">• {impact.metric}</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
 
                     <p className="text-gray-700 text-base mb-6 flex-grow leading-relaxed">
                       {project.summary}
                     </p>
 
-                    {/* Key Achievements */}
-                    <div className="mb-6 space-y-2.5">
-                      <div className="flex items-center gap-3 text-sm text-gray-700">
-                        <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                        <span>99.9% uptime achieved</span>
+                    {/* Key Achievements - Project Specific */}
+                    {projectAchievements[project.slug] && (
+                      <div className="mb-6 space-y-2.5">
+                        {projectAchievements[project.slug].map((achievement, idx) => (
+                          <div key={idx} className="flex items-center gap-3 text-sm text-gray-700">
+                            <div className="flex-shrink-0">
+                              {achievement.icon}
+                            </div>
+                            <span>{achievement.text}</span>
+                          </div>
+                        ))}
                       </div>
-                      <div className="flex items-center gap-3 text-sm text-gray-700">
-                        <TrendingUp className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                        <span>70% faster deployments</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-sm text-gray-700">
-                        <DollarSign className="w-4 h-4 text-green-600 flex-shrink-0" />
-                        <span>60% cost reduction</span>
-                      </div>
-                    </div>
+                    )}
 
-                    <div className="flex flex-wrap gap-2.5 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-6">
                       {project.tags.slice(0, 4).map((tag) => (
                         <span 
                           key={tag} 
-                          className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded border border-gray-200"
+                          className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full font-medium"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <motion.div
-                      className="mt-auto"
-                      whileHover={{ x: 4 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                    >
+                    <div className="mt-auto">
                       <Link 
                         href={`/projects#${project.slug}`}
-                        className="text-cyan-600 hover:text-cyan-500 text-sm font-medium transition-colors inline-flex items-center gap-1 group-hover:gap-2"
+                        className="text-gray-700 hover:text-cyan-700 text-sm font-medium transition-colors inline-flex items-center gap-2"
                       >
                         View Full Case Study
                         <ArrowRight className="w-4 h-4" />
                       </Link>
-                    </motion.div>
-                  </motion.div>
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
@@ -401,7 +374,7 @@ export default function Home() {
           <div className="text-center mt-16">
             <Link 
               href="/projects" 
-              className="inline-flex items-center gap-2 rounded-full bg-cyan-600 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors shadow-sm hover:shadow-md"
+              className="inline-flex items-center gap-2 rounded-full bg-cyan-700 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg"
             >
               View All Projects
               <ArrowRight className="w-4 h-4" />
@@ -411,7 +384,7 @@ export default function Home() {
       </section>
 
       {/* Client Recommendations */}
-      <section className="py-28 md:py-36 w-full flex items-center justify-center border-b border-gray-200">
+      <section className="py-32 md:py-40 w-full flex items-center justify-center">
         <Recommendations />
       </section>
 
@@ -434,7 +407,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link 
                 href="/contact" 
-                className="inline-flex items-center gap-2 rounded-full bg-cyan-600 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors shadow-sm hover:shadow-md"
+                className="inline-flex items-center gap-2 rounded-full bg-cyan-700 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg"
               >
                 Schedule Consultation
                 <ArrowRight className="w-4 h-4" />
@@ -451,7 +424,7 @@ export default function Home() {
                 href={site.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-cyan-600 transition-colors underline underline-offset-4"
+                className="hover:text-cyan-700 transition-colors underline underline-offset-4"
               >
                 Connect on LinkedIn
               </Link>
