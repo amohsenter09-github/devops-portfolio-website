@@ -61,7 +61,7 @@ export default function Home() {
             </motion.span>
           </motion.h1>
           <motion.h2 
-            className="text-xl sm:text-2xl font-bold text-gray-800 mb-6"
+            className="text-xl sm:text-2xl font-bold text-gray-800 mb-4"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
@@ -70,50 +70,40 @@ export default function Home() {
           </motion.h2>
 
           {/* Navigation Tabs under Amr Fathy */}
-          <nav className="mb-8 mt-6">
-            <ul className="flex flex-wrap justify-center gap-6 lg:gap-8 text-sm font-semibold items-center">
-              <li>
-                <Link 
-                  href="/" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/designs" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
-                >
-                  Designs
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/blog" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/about" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/contact" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          <div className="w-full mb-8 mt-6">
+            <nav className="flex flex-wrap justify-center gap-6 lg:gap-8 items-center w-full">
+              <Link 
+                href="/" 
+                className="text-base font-semibold text-gray-800 hover:text-cyan-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50"
+              >
+                Home
+              </Link>
+              <Link 
+                href="/designs" 
+                className="text-base font-semibold text-gray-800 hover:text-cyan-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50"
+              >
+                Designs
+              </Link>
+              <Link 
+                href="/blog" 
+                className="text-base font-semibold text-gray-800 hover:text-cyan-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50"
+              >
+                Blog
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-base font-semibold text-gray-800 hover:text-cyan-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50"
+              >
+                About
+              </Link>
+              <Link 
+                href="/contact" 
+                className="text-base font-semibold text-gray-800 hover:text-cyan-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50"
+              >
+                Contact
+              </Link>
+            </nav>
+          </div>
           
           <motion.p 
             className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700 mb-6 text-center"
