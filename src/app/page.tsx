@@ -77,9 +77,9 @@ export default function Home() {
       </section>
 
       {/* Metrics Section */}
-      <section className="relative z-10 py-16 md:py-20 w-full">
+      <section className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
             <motion.div 
               className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition p-8 text-center"
               initial={{ opacity: 0, y: 20 }}
@@ -132,13 +132,13 @@ export default function Home() {
       </section>
 
       {/* Core Technologies */}
-      <section className="relative z-10 py-16 md:py-20 w-full">
+      <section className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10 md:mb-12">
             Core Technologies
           </h2>
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
             {/* Cloud & Platforms */}
             <motion.div 
               className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition p-6"
@@ -212,13 +212,13 @@ export default function Home() {
       </section>
 
       {/* Recent Work */}
-      <section className="relative z-10 py-16 md:py-20 w-full">
+      <section className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10 md:mb-12">
             Recent Work
           </h2>
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
             {/* AVIV Group */}
             <motion.div 
               className="rounded-xl border border-gray-200 bg-white p-6 hover:bg-gray-50 transition"
@@ -275,12 +275,12 @@ export default function Home() {
       </section>
 
       {/* Client Recommendations */}
-      <section className="relative z-10 py-16 md:py-20 w-full">
+      <section className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center">
         <Recommendations />
       </section>
 
       {/* Highlighted Case Studies */}
-      <section className="relative z-10 py-16 md:py-20 w-full">
+      <section className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">
             Highlighted Case Studies
