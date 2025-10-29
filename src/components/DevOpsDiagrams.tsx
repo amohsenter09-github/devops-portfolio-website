@@ -30,7 +30,7 @@ function Diagram({ title, children }: DiagramProps) {
           {title}
         </h3>
         <div className="flex justify-center">
-          <div className="w-full">
+          <div className="w-full mx-auto">
             {children}
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function DevOpsDiagrams() {
   const diagrams = {
     "app-of-apps": (
       <Diagram title="App of Apps Pattern - Multicluster GitOps">
-        <div className="w-full max-w-6xl">
+        <div className="w-full max-w-6xl mx-auto">
           {/* Git Repository */}
           <div className="flex justify-center mb-8">
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
@@ -188,7 +188,7 @@ export default function DevOpsDiagrams() {
 
     "multicluster": (
       <Diagram title="Multicluster GitOps Architecture">
-        <div className="w-full max-w-6xl">
+        <div className="w-full max-w-6xl mx-auto">
           {/* Central ArgoCD */}
           <div className="flex justify-center mb-8">
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
@@ -311,7 +311,7 @@ export default function DevOpsDiagrams() {
     ),
     argocd: (
       <Diagram title="ArgoCD GitOps Implementation">
-        <div className="w-full max-w-5xl">
+        <div className="w-full max-w-5xl mx-auto">
           {/* Terraform Infrastructure Management */}
           <div className="flex justify-center mb-8">
             <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-400/30 rounded-lg p-6 text-center">
@@ -418,7 +418,7 @@ export default function DevOpsDiagrams() {
 
     microservices: (
       <Diagram title="Microservices Architecture on EKS">
-        <div className="w-full max-w-6xl">
+        <div className="w-full max-w-6xl mx-auto">
           {/* Terraform Infrastructure Management */}
           <div className="flex justify-center mb-8">
             <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-400/30 rounded-lg p-6 text-center">
@@ -611,7 +611,7 @@ export default function DevOpsDiagrams() {
 
     gitops: (
       <Diagram title="Complete GitOps Workflow">
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-4xl mx-auto">
           {/* Terraform Infrastructure Management */}
           <div className="flex justify-center mb-8">
             <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-400/30 rounded-lg p-6 text-center">
@@ -712,7 +712,7 @@ export default function DevOpsDiagrams() {
 
     "enterprise-gitops": (
       <Diagram title="Enterprise GitOps Architecture - Kustomize + ArgoCD">
-        <div className="w-full max-w-7xl">
+        <div className="w-full max-w-7xl mx-auto">
           {/* Terraform Infrastructure Management */}
           <div className="flex justify-center mb-8">
             <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-400/30 rounded-lg p-6 text-center">
@@ -1333,7 +1333,7 @@ export default function DevOpsDiagrams() {
 
     monitoring: (
       <Diagram title="Observability Stack">
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-4xl mx-auto">
           <div className="grid grid-cols-3 gap-6">
             {/* Prometheus */}
             <div className="text-center">
@@ -1386,9 +1386,9 @@ export default function DevOpsDiagrams() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full mx-auto">
       {/* Diagram Selector */}
-      <div className="flex justify-center mb-8 px-4">
+      <div className="flex justify-center mb-10 md:mb-12">
         <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-1.5 flex flex-wrap gap-2 justify-center w-full md:w-auto">
           {Object.keys(diagrams).map((key) => (
             <button
@@ -1419,8 +1419,11 @@ export default function DevOpsDiagrams() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        className="w-full flex justify-center"
       >
-        {diagrams[activeDiagram as keyof typeof diagrams]}
+        <div className="w-full mx-auto">
+          {diagrams[activeDiagram as keyof typeof diagrams]}
+        </div>
       </motion.div>
     </div>
   );

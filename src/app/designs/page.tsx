@@ -41,8 +41,8 @@ export default function Designs() {
       </section>
 
       {/* Architecture Diagrams */}
-      <section className="py-12 md:py-16 w-full">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-16 w-full flex items-center justify-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <DevOpsDiagrams />
         </div>
       </section>
