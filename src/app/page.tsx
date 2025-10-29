@@ -68,6 +68,57 @@ export default function Home() {
           >
             Senior DevOps & Cloud Platform Engineer
           </motion.h2>
+
+          {/* Navigation Tabs under Amr Fathy */}
+          <motion.nav
+            className="mb-8"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
+          >
+            <ul className="flex flex-wrap justify-center gap-6 lg:gap-8 text-sm font-medium">
+              <li>
+                <Link 
+                  href="/" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/designs" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  Designs
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/blog" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/about" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/contact" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </motion.nav>
           
           <motion.p 
             className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700 mb-6 text-center"
