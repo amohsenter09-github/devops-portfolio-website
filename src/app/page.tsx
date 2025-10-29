@@ -4,22 +4,27 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Recommendations from "@/components/Recommendations";
-import Marquee from "@/components/Marquee";
-import { site } from "@/lib/siteConfig";
+import BrandLogo from "@/components/BrandLogo";
+import { projects } from "@/data/projects";
+import { brands } from "@/lib/brands";
 
 export default function Home() {
-  return (
-    <div className="w-full min-h-screen bg-slate-950 text-slate-100 overflow-x-hidden" style={{ maxWidth: '100vw' }}>
-      {/* Subtle Radial Gradient for Depth */}
-      <div className="fixed inset-0 pointer-events-none z-0" style={{
-        background: 'radial-gradient(circle at 30% 20%, rgba(6,182,212,0.05), transparent 50%), radial-gradient(circle at 70% 80%, rgba(6,182,212,0.03), transparent 50%)'
-      }} />
+  const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById("featured-projects");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
 
+  // Take first 3 projects for featured section
+  const featuredProjects = projects.slice(0, 3);
+
+  return (
+    <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative z-10 bg-slate-950 py-24 md:py-32 text-center w-full flex flex-col items-center justify-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
+      <section className="relative py-32 text-center w-full">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <motion.h1 
-            className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight text-slate-100 mb-3"
+            className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 mb-4"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -27,7 +32,7 @@ export default function Home() {
             Amr Fathy
           </motion.h1>
           <motion.h2 
-            className="text-xl sm:text-2xl text-slate-400 mb-8"
+            className="text-xl sm:text-2xl font-bold text-gray-800 mb-6"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
@@ -36,40 +41,34 @@ export default function Home() {
           </motion.h2>
           
           <motion.p 
-            className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-slate-300"
+            className="mx-auto max-w-3xl text-lg text-gray-700 leading-relaxed mb-8"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
           >
-            I design, build, and scale reliable infrastructure that powers products millions use daily — combining automation, observability, and precision engineering.
+            Building intelligent, automated infrastructure that scales with precision.
           </motion.p>
           
-          {/* CTA Buttons */}
-          <motion.div 
-            className="mt-8 flex justify-center gap-3"
+          {/* Single CTA */}
+          <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
           >
-            <Link 
-              href="/projects"
-              className="rounded-full bg-cyan-600 px-5 py-2 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
+            <a 
+              href="#featured-projects"
+              onClick={handleScrollToProjects}
+              className="inline-flex items-center rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
             >
-              View Projects
-            </Link>
-            <Link 
-              href="/about"
-              className="rounded-full bg-white/5 px-5 py-2 text-sm text-white/90 hover:bg-white/10 transition-colors"
-            >
-              About
-            </Link>
+              Explore My Work
+            </a>
           </motion.div>
         </div>
       </section>
 
       {/* Metrics Section */}
-      <section className="relative z-10 bg-slate-900 py-20 md:py-24 w-full flex items-center justify-center">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full">
+      <section className="py-20 w-full">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="mt-10 flex flex-wrap items-start justify-center gap-8">
             <motion.div 
               className="text-center px-4"
@@ -78,10 +77,10 @@ export default function Home() {
               transition={{ delay: 0.1, duration: 0.3, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="text-4xl md:text-5xl font-bold text-cyan-300">
+              <div className="text-4xl md:text-5xl font-bold text-gray-900">
                 <AnimatedCounter end={15} duration={2} />+
               </div>
-              <div className="mt-2 text-sm text-slate-400">Years Experience</div>
+              <div className="mt-2 text-sm text-gray-600">Years Experience</div>
             </motion.div>
             
             <motion.div 
@@ -91,8 +90,8 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.3, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="text-4xl md:text-5xl font-bold text-cyan-300">Enterprise</div>
-              <div className="mt-2 text-sm text-slate-400">Cloud Delivery</div>
+              <div className="text-4xl md:text-5xl font-bold text-gray-900">Enterprise</div>
+              <div className="mt-2 text-sm text-gray-600">Cloud Delivery</div>
             </motion.div>
             
             <motion.div 
@@ -102,23 +101,32 @@ export default function Home() {
               transition={{ delay: 0.3, duration: 0.3, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="text-4xl md:text-5xl font-bold text-cyan-300">99.9%</div>
-              <div className="mt-2 text-sm text-slate-400">Platform Reliability</div>
+              <div className="text-4xl md:text-5xl font-bold text-gray-900">99.9%</div>
+              <div className="mt-2 text-sm text-gray-600">Platform Reliability</div>
             </motion.div>
           </div>
 
-          {/* Trusted by Section - After Metrics */}
-          <div className="mt-10">
-            <Marquee />
+          {/* Trusted by Logos - Static */}
+          <div className="mt-16">
+            <p className="text-center text-xs uppercase tracking-widest text-gray-500 mb-8">
+              Trusted by
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-10 opacity-50 grayscale">
+              {brands.slice(0, 8).map((brand, index) => (
+                <div key={index}>
+                  <BrandLogo brand={brand} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Core Competencies */}
-      <section className="relative z-10 bg-slate-950 py-20 md:py-24 w-full flex items-center justify-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
+      <section className="py-20 w-full">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.h2 
-            className="text-2xl sm:text-3xl font-bold text-slate-100 text-center"
+            className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8"
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
@@ -137,7 +145,7 @@ export default function Home() {
             {["AWS", "EKS", "Kubernetes", "Docker", "RDS", "Terraform", "CDK", "ArgoCD", "GitHub Actions", "Jenkins", "Prometheus", "Grafana", "Datadog", "IAM", "OIDC"].map((tech) => (
               <span 
                 key={tech}
-                className="px-3 py-1 rounded-full bg-white/5 text-slate-300 text-sm"
+                className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-sm border border-gray-200"
               >
                 {tech}
               </span>
@@ -146,125 +154,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Recent Work */}
-      <section className="relative z-10 bg-slate-900 py-20 md:py-24 w-full flex items-center justify-center">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 text-center mb-8">
-            Recent Work
+      {/* Featured Projects */}
+      <section id="featured-projects" className="py-20 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-center text-2xl font-semibold text-gray-800 mb-10">
+            Featured Projects
           </h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-auto mt-8">
-            {/* AVIV Group */}
-            <motion.div 
-              className="rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-colors p-6"
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.3, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.25 }}
-            >
-              <div className="md:min-h-[220px] flex flex-col">
-                <h3 className="font-semibold text-lg text-slate-100 mb-2">
-                  AVIV Group Replatforming
-                </h3>
-                <p className="text-slate-400 text-sm mb-4 flex-grow">
-                  Led complete migration from on-prem to AWS EKS with Terraform modules, achieving 99.9% uptime.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {["AWS", "EKS", "Terraform"].map((tag) => (
+          <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+            {featuredProjects.map((project, index) => (
+              <motion.div
+                key={project.slug}
+                className="rounded-2xl bg-white shadow-sm border border-gray-100 p-6 hover:shadow-md transition"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.3, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.25 }}
+              >
+                <h3 className="font-semibold text-gray-900 mb-2">{project.title}</h3>
+                <p className="text-gray-600 text-sm mb-3 leading-relaxed">{project.summary}</p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {project.tags.slice(0, 4).map((tag) => (
                     <span 
                       key={tag} 
-                      className="px-2 py-1 bg-white/[0.04] text-slate-300 text-xs rounded"
+                      className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded border border-gray-200"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
                 <Link 
-                  href="/projects"
-                  className="text-cyan-300 hover:text-cyan-200 text-sm font-medium transition-colors inline-flex items-center gap-1"
+                  href={`/projects#${project.slug}`}
+                  className="mt-4 inline-block text-sm text-cyan-600 hover:text-cyan-500 font-medium transition-colors"
                 >
-                  View Full Case Study →
+                  View Case Study →
                 </Link>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
+          </div>
 
-            {/* InfraCore */}
-            <motion.div 
-              className="rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-colors p-6"
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.3, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.25 }}
+          <div className="text-center mt-10">
+            <Link 
+              href="/projects" 
+              className="inline-flex items-center rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
             >
-              <div className="md:min-h-[220px] flex flex-col">
-                <h3 className="font-semibold text-lg text-slate-100 mb-2">
-                  InfraCore AWS Architecture
-                </h3>
-                <p className="text-slate-400 text-sm mb-4 flex-grow">
-                  Architected secure multi-account AWS infrastructure with EKS, GitOps, and comprehensive observability.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {["AWS", "ArgoCD", "Bottlerocket"].map((tag) => (
-                    <span 
-                      key={tag} 
-                      className="px-2 py-1 bg-white/[0.04] text-slate-300 text-xs rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <Link 
-                  href="/projects"
-                  className="text-cyan-300 hover:text-cyan-200 text-sm font-medium transition-colors inline-flex items-center gap-1"
-                >
-                  View Full Case Study →
-                </Link>
-              </div>
-            </motion.div>
+              View All Projects →
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Client Recommendations */}
-      <section className="relative z-10 bg-slate-950 py-20 md:py-24 w-full flex items-center justify-center">
+      <section className="py-20 w-full">
         <Recommendations />
       </section>
 
-      {/* Highlighted Case Studies */}
-      <section className="relative z-10 bg-slate-900 py-20 md:py-24 w-full flex items-center justify-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center w-full">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-8">
-            Highlighted Case Studies
+      {/* CTA Section */}
+      <section className="py-20 w-full">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            Ready to Transform Your Infrastructure?
           </h2>
-          <motion.div
-            className="mt-8"
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.25 }}
-          >
-            <Link 
-              href="/projects" 
-              className="inline-flex items-center rounded-full bg-cyan-600 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors mb-6"
-            >
-              View All Case Studies →
-            </Link>
-          </motion.div>
-          
-          {/* Subtle LinkedIn Link */}
-          <p className="text-sm text-slate-400">
-            <a
-              href={site.contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-300 transition-colors underline underline-offset-4"
-            >
-              Read recommendations on LinkedIn →
-            </a>
+          <p className="text-gray-600 mb-8">
+            Let&apos;s discuss how we can scale your platform with precision engineering.
           </p>
+          <Link 
+            href="/contact" 
+            className="inline-flex items-center rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
+          >
+            Get in Touch →
+          </Link>
         </div>
       </section>
-
     </div>
   );
 }
