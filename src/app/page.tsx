@@ -69,7 +69,7 @@ export default function Home() {
       {/* Metrics Section */}
       <section className="py-20 w-full">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="mt-10 flex flex-wrap items-start justify-center gap-8">
+          <div className="flex flex-wrap items-start justify-center gap-8 mb-16">
             <motion.div 
               className="text-center px-4"
               initial={{ opacity: 0, y: 8 }}
@@ -107,13 +107,13 @@ export default function Home() {
           </div>
 
           {/* Trusted by Logos - Static */}
-          <div className="mt-16">
+          <div className="w-full">
             <p className="text-center text-xs uppercase tracking-widest text-gray-500 mb-8">
               Trusted by
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-10 opacity-50 grayscale">
-              {brands.slice(0, 8).map((brand, index) => (
-                <div key={index}>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 grayscale w-full">
+              {brands.map((brand, index) => (
+                <div key={`${brand.name}-${index}`} className="flex items-center justify-center">
                   <BrandLogo brand={brand} />
                 </div>
               ))}
@@ -124,7 +124,7 @@ export default function Home() {
 
       {/* Core Competencies */}
       <section className="py-20 w-full">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
           <motion.h2 
             className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8"
             initial={{ opacity: 0, y: 8 }}
@@ -156,16 +156,16 @@ export default function Home() {
 
       {/* Featured Projects */}
       <section id="featured-projects" className="py-20 w-full">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
           <h2 className="text-center text-2xl font-semibold text-gray-800 mb-10">
             Featured Projects
           </h2>
           
-          <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid gap-6 md:grid-cols-3 w-full">
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.slug}
-                className="rounded-2xl bg-white shadow-sm border border-gray-100 p-6 hover:shadow-md transition"
+                className="rounded-2xl bg-white shadow-sm border border-gray-100 p-6 hover:shadow-md transition w-full"
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.3, ease: "easeOut" }}
@@ -206,12 +206,14 @@ export default function Home() {
 
       {/* Client Recommendations */}
       <section className="py-20 w-full">
-        <Recommendations />
+        <div className="w-full">
+          <Recommendations />
+        </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-20 w-full">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center w-full">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Ready to Transform Your Infrastructure?
           </h2>

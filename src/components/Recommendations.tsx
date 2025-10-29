@@ -64,7 +64,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
 
 export default function Recommendations() {
   return (
-    <div className="max-w-6xl mx-auto px-6">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
       {/* Section Header */}
       <motion.div 
         className="text-center mb-10"
@@ -82,9 +82,9 @@ export default function Recommendations() {
       </motion.div>
 
       {/* Recommendations Grid - Desktop, Horizontal Scroll on Mobile */}
-      <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+      <div className="w-full">
         {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6">
+        <div className="hidden md:grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {site.recommendations.map((recommendation, index) => (
             <RecommendationCard
               key={recommendation.id}
@@ -95,10 +95,10 @@ export default function Recommendations() {
         </div>
 
         {/* Mobile Horizontal Scroll */}
-        <div className="overflow-x-auto snap-x snap-mandatory scroll-smooth md:hidden -mx-6 px-6">
+        <div className="overflow-x-auto snap-x snap-mandatory scroll-smooth md:hidden -mx-4 sm:-mx-6 px-4 sm:px-6">
           <div className="flex gap-6" style={{ width: 'max-content' }}>
             {site.recommendations.map((recommendation, index) => (
-              <div key={recommendation.id} className="snap-start" style={{ width: 'calc(100vw - 3rem)' }}>
+              <div key={recommendation.id} className="snap-start" style={{ width: 'calc(100vw - 2rem)' }}>
                 <RecommendationCard
                   recommendation={recommendation}
                   index={index}

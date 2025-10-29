@@ -10,7 +10,7 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   // 1) Try Iconify brand icon first (SVG)
   if (brand.icon) {
     return (
-      <div className="flex h-8 items-center justify-center">
+      <div className="flex h-8 items-center justify-center min-w-[120px]">
         <Icon icon={brand.icon} width="120" height="24" className="text-gray-600" />
       </div>
     );
@@ -19,12 +19,12 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   // 2) Then try Clearbit by domain
   if (brand.domain && !imageError) {
     return (
-      <div className="relative h-8 w-[120px]">
+      <div className="relative h-8 w-[120px] min-w-[120px] flex items-center justify-center">
         <Image
           src={`https://logo.clearbit.com/${brand.domain}`}
           alt={brand.name}
           fill
-          className="object-contain grayscale opacity-50"
+          className="object-contain grayscale"
           sizes="120px"
           onError={() => setImageError(true)}
         />
@@ -34,7 +34,7 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   
   // 3) Text fallback (if no icon, or image failed to load)
   return (
-    <div className="flex h-8 items-center justify-center px-3 text-sm text-gray-600 font-medium whitespace-nowrap opacity-50">
+    <div className="flex h-8 items-center justify-center px-3 text-sm text-gray-600 font-medium whitespace-nowrap min-w-[120px]">
       {brand.name}
     </div>
   );
