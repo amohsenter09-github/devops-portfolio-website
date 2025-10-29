@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import Container from "@/components/Container";
 import { projects } from "@/data/projects";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -220,13 +219,15 @@ export default function Projects() {
   };
 
   return (
-    <Container maxWidth="7xl" padding="lg">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="space-y-12"
-      >
+    <div className="w-full min-h-screen bg-white">
+      <section className="py-16 md:py-20 w-full flex items-center justify-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-12"
+          >
         {/* Header Section - Centered */}
         <div className="text-center space-y-6">
           <motion.h1 
@@ -274,7 +275,7 @@ export default function Projects() {
             return (
               <TabsContent key={project.slug} value={index.toString()} className="space-y-8">
                 {/* Project Header - Centered */}
-                <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20">
+                <Card className="border border-gray-200 bg-white shadow-lg">
                   <CardHeader className="text-center">
                     <div className="flex items-center justify-center mb-6">
                       <div className="flex items-center justify-center w-20 h-20 rounded-xl bg-primary/10 text-primary">
@@ -420,7 +421,9 @@ export default function Projects() {
             );
           })}
         </Tabs>
-      </motion.div>
-    </Container>
+          </motion.div>
+        </div>
+      </section>
+    </div>
   );
 }

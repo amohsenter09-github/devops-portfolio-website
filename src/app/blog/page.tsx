@@ -49,54 +49,49 @@ export default function Blog() {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen bg-white">
       {/* Header */}
-      <motion.section 
-        className="py-16 sm:py-20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="max-w-4xl mx-auto px-4">
-          <Link 
-            href="/"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-8"
+      <section className="py-16 md:py-20 w-full flex items-center justify-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <ArrowLeft size={20} className="mr-2" />
-            Back to Home
-          </Link>
-          
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            DevOps Engineering Blog
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-            Real-world case studies, technical deep-dives, and proven DevOps strategies from 15+ years of infrastructure engineering
-          </p>
+            <Link 
+              href="/"
+              className="inline-flex items-center text-blue-600 hover:underline mb-8"
+            >
+              <ArrowLeft size={20} className="mr-2" />
+              Back to Home
+            </Link>
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 text-center">
+              DevOps Engineering Blog
+            </h1>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed text-center">
+              Real-world case studies, technical deep-dives, and proven DevOps strategies from 15+ years of infrastructure engineering
+            </p>
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Featured Post */}
-      <motion.section 
-        className="py-12"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-white">Featured Article</h2>
+      <section className="py-12 md:py-16 w-full flex items-center justify-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <h2 className="text-2xl md:text-3xl font-bold mb-10 text-gray-900 text-center">Featured Article</h2>
           
           {blogPosts.filter(post => post.featured).map((post, index) => (
             <motion.article
               key={post.id}
-              className="professional-card mb-8"
+              className="rounded-xl border border-gray-200 bg-white p-8 mb-8 shadow-sm hover:shadow-lg transition"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
             >
               <div className="p-8">
-                <div className="flex items-center mb-4 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center mb-4 text-sm text-gray-500">
                   <Calendar size={16} className="mr-2" />
                   {new Date(post.date).toLocaleDateString('en-US', { 
                     year: 'numeric', 
@@ -107,11 +102,11 @@ export default function Blog() {
                   {post.readTime}
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900">
                   {post.title}
                 </h3>
                 
-                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   {post.excerpt}
                 </p>
                 
@@ -119,7 +114,7 @@ export default function Blog() {
                   {post.tags.map((tag) => (
                     <span 
                       key={tag}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full"
+                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-lg"
                     >
                       <Tag size={12} className="inline mr-1" />
                       {tag}
@@ -129,7 +124,7 @@ export default function Blog() {
                 
                 <Link 
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+                  className="inline-flex items-center px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white font-medium rounded-full transition-colors duration-200"
                 >
                   Read Full Article
                 </Link>
@@ -137,31 +132,25 @@ export default function Blog() {
             </motion.article>
           ))}
         </div>
-      </motion.section>
+      </section>
 
       {/* All Posts */}
-      <motion.section 
-        className="py-12"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-white">All Articles</h2>
+      <section className="py-12 md:py-16 w-full flex items-center justify-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <h2 className="text-2xl md:text-3xl font-bold mb-10 text-gray-900 text-center">All Articles</h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 mx-auto">
             {blogPosts.map((post, index) => (
               <motion.article
                 key={post.id}
-                className="professional-card"
+                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg transition"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
               >
                 <div className="p-6">
-                  <div className="flex items-center mb-3 text-sm text-gray-500 dark:text-gray-400">
+                  <div className="flex items-center mb-3 text-sm text-gray-500">
                     <Calendar size={14} className="mr-2" />
                     {new Date(post.date).toLocaleDateString('en-US', { 
                       year: 'numeric', 
@@ -172,11 +161,11 @@ export default function Blog() {
                     {post.readTime}
                   </div>
                   
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900">
                     {post.title}
                   </h3>
                   
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                     {post.excerpt}
                   </p>
                   
@@ -184,13 +173,13 @@ export default function Blog() {
                     {post.tags.slice(0, 3).map((tag) => (
                       <span 
                         key={tag}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded"
+                        className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
                       >
                         {tag}
                       </span>
                     ))}
                     {post.tags.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded">
+                      <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
                         +{post.tags.length - 3} more
                       </span>
                     )}
@@ -198,7 +187,7 @@ export default function Blog() {
                   
                   <Link 
                     href={`/blog/${post.slug}`}
-                    className="text-blue-600 dark:text-blue-400 hover:underline font-medium text-sm"
+                    className="text-gray-900 hover:text-gray-700 font-medium text-sm"
                   >
                     Read More →
                   </Link>
@@ -207,7 +196,7 @@ export default function Blog() {
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }
