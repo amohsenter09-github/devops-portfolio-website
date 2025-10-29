@@ -7,6 +7,7 @@ import { TrendingUp, DollarSign, Clock, Shield, Zap, Award, ArrowRight, CheckCir
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Recommendations from "@/components/Recommendations";
 import Marquee from "@/components/Marquee";
+import CredlyBadge from "@/components/CredlyBadge";
 import { projects } from "@/data/projects";
 import { site } from "@/lib/siteConfig";
 
@@ -271,16 +272,8 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200"
             >
-              <div className="relative w-40 h-40 flex items-center justify-center">
-                <img
-                  src="https://images.credly.com/images/39c47fe2-5546-402f-aa92-339bfac3067d/image"
-                  alt="Certified Kubernetes Administrator (CKA)"
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    // Fallback to badge URL endpoint which serves the image
-                    e.currentTarget.src = `https://www.credly.com/badges/39c47fe2-5546-402f-aa92-339bfac3067d/image`;
-                  }}
-                />
+              <div className="w-40 h-40 flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
+                <CredlyBadge badgeId="39c47fe2-5546-402f-aa92-339bfac3067d" width={160} height={160} />
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold text-gray-900">Certified Kubernetes</div>
@@ -295,16 +288,11 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200"
             >
-              <div className="relative w-40 h-40 flex items-center justify-center">
-                <img
-                  src="https://images.credly.com/images/99289602-861e-4929-8273-773e63a2aa6d/image"
-                  alt="HashiCorp Certified: Terraform Associate"
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    // Fallback - you can provide your Terraform badge ID too
-                    e.currentTarget.src = `https://www.credly.com/badges/99289602-861e-4929-8273-773e63a2aa6d/image`;
-                  }}
-                />
+              <div className="w-40 h-40 flex items-center justify-center bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg">
+                <div className="text-center p-4">
+                  <div className="text-4xl mb-2 font-bold text-purple-700">T</div>
+                  <div className="text-xs font-semibold text-purple-700">HashiCorp</div>
+                </div>
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold text-gray-900">HashiCorp Certified</div>
