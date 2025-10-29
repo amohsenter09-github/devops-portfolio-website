@@ -9,7 +9,7 @@ import { site } from "@/lib/siteConfig";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen bg-white mx-auto">
+    <div className="w-full min-h-screen bg-white overflow-x-hidden">
       {/* Subtle Grid Pattern - Very Light */}
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-0">
         <div 
@@ -25,8 +25,8 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative z-10 py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 py-16 md:py-24 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center">
             <motion.h1 
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6"
@@ -76,8 +76,8 @@ export default function Home() {
       </section>
 
       {/* Metrics Section */}
-      <section className="relative z-10 py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 py-16 md:py-20 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div 
               className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition p-8 text-center"
@@ -131,8 +131,8 @@ export default function Home() {
       </section>
 
       {/* Core Technologies */}
-      <section className="relative z-10 py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 py-16 md:py-20 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10 md:mb-12">
             Core Technologies
           </h2>
@@ -211,8 +211,8 @@ export default function Home() {
       </section>
 
       {/* Recent Work */}
-      <section className="relative z-10 py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 py-16 md:py-20 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10 md:mb-12">
             Recent Work
           </h2>
@@ -274,13 +274,13 @@ export default function Home() {
       </section>
 
       {/* Client Recommendations */}
-      <section className="relative z-10 py-16 md:py-20">
+      <section className="relative z-10 py-16 md:py-20 w-full">
         <Recommendations />
       </section>
 
       {/* Highlighted Case Studies */}
-      <section className="relative z-10 py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative z-10 py-16 md:py-20 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">
             Highlighted Case Studies
           </h2>

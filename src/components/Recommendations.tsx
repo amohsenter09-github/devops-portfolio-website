@@ -71,7 +71,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
 
 export default function Recommendations() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       {/* Section Header */}
       <motion.div 
         className="text-center mb-10 md:mb-12"
