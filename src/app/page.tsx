@@ -25,9 +25,9 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative z-10 py-16 md:py-24 w-full">
+      <section className="relative z-10 py-20 md:py-24 w-full flex flex-col items-center justify-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center">
+          <div className="text-center flex flex-col items-center">
             <motion.h1 
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6"
               initial={{ opacity: 0, y: 20 }}
