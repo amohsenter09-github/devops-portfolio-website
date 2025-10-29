@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { site } from "@/lib/siteConfig";
@@ -208,6 +209,34 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
 }
 
 export default function Recommendations() {
+  const [activeTab, setActiveTab] = useState<string | null>(null);
+  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+
+  // Organize recommendations by year (newest to oldest)
+  const organizedRecommendations = {
+    "2025": site.recommendations.filter(r => r.date.startsWith("2025")),
+    "2023-2024": site.recommendations.filter(r => r.date.startsWith("2023") || r.date.startsWith("2024")),
+    "2020-2022": site.recommendations.filter(r => {
+      const year = parseInt(r.date.substring(0, 4));
+      return year >= 2020 && year <= 2022;
+    }),
+    "2016-2019": site.recommendations.filter(r => {
+      const year = parseInt(r.date.substring(0, 4));
+      return year >= 2016 && year <= 2019;
+    }),
+  };
+
+  const tabLabels = [
+    { key: "2025", label: "2025", count: organizedRecommendations["2025"].length },
+    { key: "2023-2024", label: "2023-2024", count: organizedRecommendations["2023-2024"].length },
+    { key: "2020-2022", label: "2020-2022", count: organizedRecommendations["2020-2022"].length },
+    { key: "2016-2019", label: "2016-2019", count: organizedRecommendations["2016-2019"].length },
+  ];
+
+  // Determine which tab content to show (hovered takes priority, then active, then first)
+  const displayTab = hoveredTab || activeTab || tabLabels[0].key;
+  const currentRecommendations = organizedRecommendations[displayTab as keyof typeof organizedRecommendations];
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       {/* Section Header */}
@@ -246,15 +275,85 @@ export default function Recommendations() {
         </motion.p>
       </motion.div>
 
-      {/* Recommendations Grid - Medium cards, responsive layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 mx-auto">
-        {site.recommendations.map((recommendation, index) => (
-          <RecommendationCard
-            key={recommendation.id}
-            recommendation={recommendation}
-            index={index}
-          />
-        ))}
+      {/* Vertical Tab Layout: Left Panel + Right Content */}
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 min-h-[600px]">
+        {/* Left Sidebar - Vertical Tabs */}
+        <div className="flex-shrink-0 w-full lg:w-64">
+          <div className="flex lg:flex-col gap-2 lg:gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 lg:sticky lg:top-24">
+            {tabLabels.map((tab, index) => {
+              const isActive = displayTab === tab.key;
+              return (
+                <motion.button
+                  key={tab.key}
+                  onMouseEnter={() => setHoveredTab(tab.key)}
+                  onMouseLeave={() => setHoveredTab(null)}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`
+                    relative flex items-center justify-between lg:justify-start w-full lg:w-auto
+                    px-4 lg:px-5 py-3 lg:py-4 rounded-lg lg:rounded-r-lg lg:rounded-l-none
+                    text-sm font-semibold transition-all duration-300 whitespace-nowrap
+                    ${isActive 
+                      ? "bg-cyan-600 text-white shadow-lg shadow-cyan-600/30 lg:translate-x-2" 
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 lg:hover:translate-x-1"
+                    }
+                  `}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ 
+                    scale: 1.02,
+                    x: isActive ? 8 : 4
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ delay: index * 0.08, duration: 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="relative z-10 font-medium">
+                      {tab.label}
+                    </span>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${
+                      isActive 
+                        ? "bg-white/20 text-white/90" 
+                        : "bg-gray-200 text-gray-600"
+                    }`}>
+                      {tab.count}
+                    </span>
+                  </div>
+                  
+                  {/* Active indicator line on left */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTabIndicator"
+                      className="absolute left-0 top-0 bottom-0 w-1 bg-cyan-400 rounded-r-full lg:block"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                </motion.button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Right Content Area - Recommendations Grid */}
+        <div className="flex-1 min-w-0">
+          <motion.div
+            key={displayTab}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 lg:gap-8"
+          >
+            {currentRecommendations.map((recommendation, index) => (
+              <RecommendationCard
+                key={recommendation.id}
+                recommendation={recommendation}
+                index={index}
+              />
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       {/* View More Link */}
@@ -263,7 +362,7 @@ export default function Recommendations() {
           className="text-center mt-12"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: site.recommendations.length * 0.08 + 0.3, duration: 0.4 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
           viewport={{ once: true }}
         >
           <a
