@@ -34,7 +34,8 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Best DevOps Engineers to hire in 2025
+              Building Scalable Infrastructure
+              <span className="block mt-2 text-gray-700">with DevOps Precision</span>
             </motion.h1>
             
             <motion.p 
@@ -43,7 +44,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
             >
-              Looking to hire Platform Engineers for your next project? Browse the world&apos;s best freelance DevOps Engineers.
+              Designing and automating resilient AWS and Kubernetes platforms using Terraform, GitOps, and Observability best practices.
             </motion.p>
             
             {/* CTA Buttons */}
