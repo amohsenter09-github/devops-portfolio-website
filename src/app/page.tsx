@@ -8,12 +8,6 @@ import Marquee from "@/components/Marquee";
 import { projects } from "@/data/projects";
 
 export default function Home() {
-  const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const element = document.getElementById("featured-projects");
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
-
   // Take first 3 projects for featured section
   const featuredProjects = projects.slice(0, 3);
 
@@ -47,22 +41,6 @@ export default function Home() {
           >
             Building intelligent, automated infrastructure that scales with precision.
           </motion.p>
-          
-          {/* Single CTA */}
-          <motion.div 
-            className="mt-8 flex justify-center gap-3"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-          >
-            <a 
-              href="#featured-projects"
-              onClick={handleScrollToProjects}
-              className="rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
-            >
-              Explore My Work
-            </a>
-          </motion.div>
         </div>
       </section>
 
@@ -107,41 +85,9 @@ export default function Home() {
           </div>
 
           {/* Trusted by Section - After Metrics */}
-          <div className="mt-10">
+          <div className="mt-20">
             <Marquee />
           </div>
-        </div>
-      </section>
-
-      {/* Core Competencies */}
-      <section className="py-20 md:py-24 w-full flex items-center justify-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
-          <motion.h2 
-            className="text-2xl sm:text-3xl font-bold text-gray-900 text-center"
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            Core Competencies
-          </motion.h2>
-          
-          <motion.div 
-            className="flex flex-wrap justify-center gap-3 mt-6"
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.3, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {["AWS", "EKS", "Kubernetes", "Docker", "RDS", "Terraform", "CDK", "ArgoCD", "GitHub Actions", "Jenkins", "Prometheus", "Grafana", "Datadog", "IAM", "OIDC"].map((tech) => (
-              <span 
-                key={tech}
-                className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-sm border border-gray-200"
-              >
-                {tech}
-              </span>
-            ))}
-          </motion.div>
         </div>
       </section>
 
