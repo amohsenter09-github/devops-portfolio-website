@@ -10,7 +10,6 @@ import {
   Cloud,
   Shield,
   Database,
-  Server,
   Network,
   Lock
 } from "lucide-react";
@@ -42,19 +41,9 @@ const bg = {
   label: "rgb(203 213 225)", // slate-300
 };
 
-const title = (t: string, x: number, y: number) => (
-  <text key={`title-${t}`} fill="rgb(203,213,225)" fontSize={12} fontWeight={600} x={x} y={y}>{t}</text>
-);
-
 // Animated arrow along a path
 function AnimatedArrow({ edge, index }: { edge: Edge; index: number }) {
   const { from, to, color = "#22d3ee", dash = "8 8", speed = 2 } = edge;
-  
-  // Calculate path
-  const dx = to[0] - from[0];
-  const dy = to[1] - from[1];
-  const length = Math.sqrt(dx * dx + dy * dy);
-  const angle = Math.atan2(dy, dx) * (180 / Math.PI);
   
   const markerId = `arrowhead-${edge.id}`;
   
@@ -278,8 +267,8 @@ export default function AnimatedAwsInfra() {
         {/* Icon */}
         {node.icon && (
           <foreignObject x={node.x + 6} y={node.y + (node.h - 16) / 2} width={16} height={16}>
-            <div className="text-gray-300">
-              {React.cloneElement(node.icon as React.ReactElement, { className: "w-4 h-4" })}
+            <div className="text-gray-300 flex items-center justify-center">
+              {node.icon}
             </div>
           </foreignObject>
         )}

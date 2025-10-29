@@ -1,17 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { Linkedin } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { site } from "@/lib/siteConfig";
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/designs", label: "Designs" },
-  { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
 
 export default function Nav() {
   return (

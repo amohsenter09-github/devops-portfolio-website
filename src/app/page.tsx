@@ -1,14 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { TrendingUp, DollarSign, Clock, Shield, Zap, Award, ArrowRight, CheckCircle2 } from "lucide-react";
+import { TrendingUp, DollarSign, Clock, Shield, Zap, ArrowRight, CheckCircle2 } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Recommendations from "@/components/Recommendations";
 import Marquee from "@/components/Marquee";
 import { projects } from "@/data/projects";
-import { site } from "@/lib/siteConfig";
 
 export default function Home() {
   const featuredProjects = projects.slice(0, 2);
