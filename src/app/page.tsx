@@ -7,7 +7,6 @@ import { TrendingUp, DollarSign, Clock, Shield, Zap, Award, ArrowRight, CheckCir
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Recommendations from "@/components/Recommendations";
 import Marquee from "@/components/Marquee";
-import CredlyBadge from "@/components/CredlyBadge";
 import { projects } from "@/data/projects";
 import { site } from "@/lib/siteConfig";
 
@@ -266,39 +265,40 @@ export default function Home() {
           
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
             {/* CKA Certification */}
-            <a
-              href="https://www.credly.com/badges/39c47fe2-5546-402f-aa92-339bfac3067d"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200"
-            >
+            <div className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200">
               <div className="w-40 h-40 flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
-                <CredlyBadge badgeId="39c47fe2-5546-402f-aa92-339bfac3067d" width={160} height={160} />
+                <Image
+                  src="https://images.credly.com/size/340x340/images/8b8ed108-e77c-41ac-bdc1-9c600d3dd63d/Certified-Kubernetes-Administrator-Program.png"
+                  alt="Certified Kubernetes Administrator (CKA)"
+                  width={160}
+                  height={160}
+                  className="object-contain"
+                  unoptimized
+                />
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold text-gray-900">Certified Kubernetes</div>
                 <div className="text-xs text-gray-600">Administrator</div>
               </div>
-            </a>
+            </div>
 
             {/* Terraform Associate Certification */}
-            <a
-              href="https://www.credly.com/users/amr-fathy/badges"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200"
-            >
-              <div className="w-40 h-40 flex items-center justify-center bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg">
-                <div className="text-center p-4">
-                  <div className="text-4xl mb-2 font-bold text-purple-700">T</div>
-                  <div className="text-xs font-semibold text-purple-700">HashiCorp</div>
-                </div>
+            <div className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200">
+              <div className="w-40 h-40 flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
+                <Image
+                  src="https://images.credly.com/size/340x340/images/99289602-861e-4929-8273-773e63a2aa6d/HashiCorp-Certified-Terraform-Associate-Badge.png"
+                  alt="HashiCorp Certified: Terraform Associate"
+                  width={160}
+                  height={160}
+                  className="object-contain"
+                  unoptimized
+                />
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold text-gray-900">HashiCorp Certified</div>
                 <div className="text-xs text-gray-600">Terraform Associate</div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </section>
