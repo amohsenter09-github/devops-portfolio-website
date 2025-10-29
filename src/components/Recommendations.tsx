@@ -35,9 +35,9 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         transition: { duration: 0.2 }
       }}
     >
-      <div className="h-full rounded-xl border border-gray-200 bg-white hover:bg-gray-50 hover:shadow-md transition p-6">
+      <div className="h-full rounded-xl border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 p-6">
         {/* Rating Stars */}
-        <div className="flex mb-4">
+        <div className="flex gap-1 mb-4">
           {[...Array(recommendation.rating)].map((_, i) => (
             <Star 
               key={i} 
@@ -53,13 +53,13 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         </p>
         
         {/* Author Info */}
-        <div className="flex items-center pt-4 border-t border-gray-200">
-          <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold text-sm mr-3">
+        <div className="flex items-center pt-4 border-t border-gray-100">
+          <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold text-sm mr-3 flex-shrink-0">
             {recommendation.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
           </div>
-          <div className="flex-1">
-            <h4 className="text-base font-semibold text-gray-900 mb-1">{recommendation.name}</h4>
-            <p className="text-sm text-gray-500">
+          <div className="flex-1 min-w-0">
+            <h4 className="text-base font-semibold text-gray-900 mb-1 truncate">{recommendation.name}</h4>
+            <p className="text-sm text-gray-500 truncate">
               {recommendation.position} <span className="text-gray-400">· {recommendation.company}</span>
             </p>
           </div>
@@ -71,10 +71,10 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
 
 export default function Recommendations() {
   return (
-    <div className="max-w-6xl mx-auto px-6">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <motion.div 
-        className="text-center mb-8 md:mb-12"
+        className="text-center mb-10 md:mb-12"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
@@ -83,7 +83,7 @@ export default function Recommendations() {
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
           Client Recommendations
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-base text-gray-600 max-w-2xl mx-auto">
           Feedback from industry leaders on infrastructure solutions delivered
         </p>
       </motion.div>
