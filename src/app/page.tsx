@@ -118,15 +118,6 @@ export default function Home() {
               </Link>
             </nav>
           </div>
-          
-          <motion.p 
-            className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700 mb-6 text-center"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
-          >
-            Building intelligent, automated infrastructure that scales with precision.
-          </motion.p>
 
           {/* Quantified Outcomes */}
           <motion.div 
@@ -262,11 +253,51 @@ export default function Home() {
       {/* Credentials & Trust Signals */}
       <section className="py-24 md:py-28 w-full flex items-center justify-center">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 mb-8">
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">AWS Certified</span>
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Kubernetes Expert</span>
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Security Best Practices</span>
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">GitOps Specialist</span>
+          </div>
+          
+          {/* Professional Certifications */}
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <h3 className="text-center text-sm font-semibold text-gray-600 uppercase tracking-wide mb-6">
+              Professional Certifications
+            </h3>
+            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+              {/* CKA Certification */}
+              <a
+                href="https://www.credly.com/users/amr-fathy/badges"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-3 p-4 rounded-xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200"
+              >
+                <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-sm">
+                  <span className="text-white font-bold text-xs text-center leading-tight">CKA</span>
+                </div>
+                <div className="text-center">
+                  <div className="text-sm font-semibold text-gray-900">Certified Kubernetes</div>
+                  <div className="text-xs text-gray-600">Administrator</div>
+                </div>
+              </a>
+
+              {/* Terraform Certification */}
+              <a
+                href="https://www.credly.com/users/amr-fathy/badges"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-3 p-4 rounded-xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200"
+              >
+                <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-sm">
+                  <span className="text-white font-bold text-xs text-center leading-tight">Terraform</span>
+                </div>
+                <div className="text-center">
+                  <div className="text-sm font-semibold text-gray-900">HashiCorp Certified</div>
+                  <div className="text-xs text-gray-600">Terraform Associate</div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -386,51 +417,6 @@ export default function Home() {
       {/* Client Recommendations */}
       <section className="py-32 md:py-40 w-full flex items-center justify-center">
         <Recommendations />
-      </section>
-
-      {/* Enhanced CTA Section */}
-      <section className="py-32 md:py-40 w-full flex items-center justify-center bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.25 }}
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
-              Ready to Transform Your Infrastructure?
-            </h2>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Let&apos;s discuss how we can scale your platform with precision engineering. 
-              Past projects range from $300K to $500K with measurable ROI.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center gap-2 rounded-full bg-cyan-700 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-600 transition-colors shadow-md hover:shadow-lg"
-              >
-                Schedule Consultation
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link 
-                href="/projects" 
-                className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-8 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-              >
-                View Case Studies
-              </Link>
-            </div>
-            <p className="text-xs text-gray-500 mt-6">
-              <Link
-                href={site.contact.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-cyan-700 transition-colors underline underline-offset-4"
-              >
-                Connect on LinkedIn
-              </Link>
-            </p>
-          </motion.div>
-        </div>
       </section>
     </div>
   );
