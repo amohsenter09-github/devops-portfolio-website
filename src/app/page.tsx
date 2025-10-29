@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Recommendations from "@/components/Recommendations";
+import Marquee from "@/components/Marquee";
 import { site } from "@/lib/siteConfig";
 
 export default function Home() {
@@ -252,6 +253,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Brand Marquee */}
+      <Marquee />
 
       {/* Client Recommendations */}
       <Recommendations />
