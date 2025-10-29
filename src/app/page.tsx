@@ -216,19 +216,45 @@ export default function Home() {
               return (
                 <motion.div 
                   key={project.slug}
-                  className="rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-lg hover:border-cyan-200 transition-all p-6 group"
-                  initial={{ opacity: 0, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.1, duration: 0.3, ease: "easeOut" }}
+                  className="rounded-2xl bg-white shadow-sm border border-gray-100 p-6 group cursor-pointer hover:shadow-xl hover:border-cyan-300 transition-shadow transition-colors duration-300"
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  whileHover={{ 
+                    y: -8, 
+                    scale: 1.02,
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 300, 
+                      damping: 20,
+                      duration: 0.3
+                    }
+                  }}
+                  transition={{ 
+                    delay: index * 0.15, 
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15,
+                    duration: 0.5
+                  }}
                   viewport={{ once: true, amount: 0.25 }}
                 >
-                  <div className="md:min-h-[280px] flex flex-col">
+                  <motion.div 
+                    className="md:min-h-[280px] flex flex-col"
+                    whileHover={{ transition: { duration: 0.2 } }}
+                  >
                     {/* Project Header with Icon */}
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-cyan-100 flex items-center justify-center">
+                        <motion.div 
+                          className="w-10 h-10 rounded-lg bg-cyan-100 flex items-center justify-center"
+                          whileHover={{ 
+                            scale: 1.1,
+                            rotate: [0, -5, 5, 0],
+                            transition: { duration: 0.3 }
+                          }}
+                        >
                           <Zap className="w-5 h-5 text-cyan-600" />
-                        </div>
+                        </motion.div>
                         <div>
                           <h3 className="font-semibold text-lg text-gray-900 group-hover:text-cyan-600 transition-colors">
                             {project.title}
@@ -275,14 +301,20 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
-                    <Link 
-                      href={`/projects#${project.slug}`}
-                      className="mt-auto text-cyan-600 hover:text-cyan-500 text-sm font-medium transition-colors inline-flex items-center gap-1 group-hover:gap-2"
+                    <motion.div
+                      className="mt-auto"
+                      whileHover={{ x: 4 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
-                      View Full Case Study
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
+                      <Link 
+                        href={`/projects#${project.slug}`}
+                        className="text-cyan-600 hover:text-cyan-500 text-sm font-medium transition-colors inline-flex items-center gap-1 group-hover:gap-2"
+                      >
+                        View Full Case Study
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </motion.div>
+                  </motion.div>
                 </motion.div>
               );
             })}
