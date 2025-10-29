@@ -23,19 +23,16 @@ interface RecommendationCardProps {
 function RecommendationCard({ recommendation, index }: RecommendationCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ 
-        delay: index * 0.08, 
-        duration: 0.4
+        delay: index * 0.05, 
+        duration: 0.3,
+        ease: "easeOut"
       }}
-      viewport={{ once: true, margin: "-50px" }}
-      whileHover={{ 
-        y: -4,
-        transition: { duration: 0.2 }
-      }}
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="h-full rounded-lg border border-white/10 bg-slate-900/50 hover:bg-slate-800/50 hover:border-white/20 transition-all duration-300 p-6">
+      <div className="h-full card p-6">
         {/* Rating Stars */}
         <div className="flex gap-1 mb-4">
           {[...Array(recommendation.rating)].map((_, i) => (
@@ -53,12 +50,12 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         </p>
         
         {/* Author Info */}
-        <div className="flex items-center pt-4 border-t border-slate-700">
-          <div className="w-10 h-10 bg-cyan-600 rounded-full flex items-center justify-center text-white font-semibold text-sm mr-3 flex-shrink-0">
+        <div className="flex items-center pt-4 border-t border-white/10">
+          <div className="w-10 h-10 bg-white/[0.08] rounded-full flex items-center justify-center text-slate-300 font-semibold text-sm mr-3 flex-shrink-0">
             {recommendation.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
           </div>
           <div className="flex-1 min-w-0">
-            <h4 className="text-base font-semibold text-slate-50 mb-1 truncate">{recommendation.name}</h4>
+            <h4 className="text-base font-semibold text-slate-100 mb-1 truncate">{recommendation.name}</h4>
             <p className="text-sm text-slate-400 truncate">
               {recommendation.position} <span className="text-slate-500">· {recommendation.company}</span>
             </p>
@@ -74,13 +71,13 @@ export default function Recommendations() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
       {/* Section Header */}
       <motion.div 
-        className="text-center mb-12"
-        initial={{ opacity: 0, y: 20 }}
+        className="text-center mb-8"
+        initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
       >
-        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
           Client Recommendations
         </h2>
       </motion.div>

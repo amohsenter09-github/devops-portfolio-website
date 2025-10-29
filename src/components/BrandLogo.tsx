@@ -19,13 +19,13 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   // 2) Then try Clearbit by domain
   if (brand.domain && !imageError) {
     return (
-      <div className="relative h-10 w-[120px] opacity-70 hover:opacity-90 transition-opacity bg-white/10 rounded px-2 flex items-center justify-center">
+      <div className="relative h-10 w-[140px] opacity-70 hover:opacity-100 transition">
         <Image
           src={`https://logo.clearbit.com/${brand.domain}`}
           alt={brand.name}
           fill
-          className="object-contain p-1"
-          sizes="120px"
+          className="object-contain grayscale"
+          sizes="140px"
           onError={() => setImageError(true)}
         />
       </div>
