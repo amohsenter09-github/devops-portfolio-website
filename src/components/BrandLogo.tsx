@@ -11,7 +11,7 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   if (brand.icon) {
     return (
       <div className="flex h-10 items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-        <Icon icon={brand.icon} width="120" height="28" className="text-white" />
+        <Icon icon={brand.icon} width="120" height="28" className="text-gray-700" />
       </div>
     );
   }
@@ -34,9 +34,8 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   
   // 3) Text fallback (if no icon, or image failed to load)
   return (
-    <div className="flex h-10 items-center justify-center rounded bg-white/5 px-3 text-sm text-slate-200">
+    <div className="flex h-10 items-center justify-center rounded bg-gray-100 px-3 text-sm text-gray-700 font-medium">
       {brand.name}
     </div>
   );
 }
-

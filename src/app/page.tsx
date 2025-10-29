@@ -9,27 +9,44 @@ import { site } from "@/lib/siteConfig";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-950">
+    <div className="w-full min-h-screen bg-white relative overflow-hidden">
+      {/* Subtle Grid Pattern Background */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px',
+            backgroundPosition: '0 0',
+            maskImage: 'radial-gradient(circle, transparent 20%, black 100%)',
+            WebkitMaskImage: 'radial-gradient(circle, transparent 20%, black 100%)',
+          }}
+        />
+      </div>
+
       {/* Hero Section */}
-      <section className="py-16 md:py-20">
+      <section className="relative py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center">
             <motion.h1 
-              className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-50"
+              className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Building Scalable Infrastructure with DevOps Precision
+              Best DevOps Engineers to hire in 2025
             </motion.h1>
             
             <motion.p 
-              className="mt-4 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto"
+              className="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
             >
-              Designing and automating resilient AWS and Kubernetes platforms using Terraform, GitOps, and Observability best practices.
+              Looking to hire Platform Engineers for your next project? Browse the world&apos;s best freelance DevOps Engineers.
             </motion.p>
             
             {/* CTA Buttons */}
@@ -41,13 +58,13 @@ export default function Home() {
             >
               <Link 
                 href="/projects"
-                className="rounded-full bg-cyan-600/90 px-5 py-2 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
+                className="rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
               >
                 View Projects
               </Link>
               <Link 
                 href="/about"
-                className="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white/90 hover:bg-white/10 transition-colors"
+                className="rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors"
               >
                 About
               </Link>
@@ -56,54 +73,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trusted by Section - Before Metrics */}
+      <Marquee />
+
       {/* Metrics Section */}
-      <section className="mt-10 md:mt-12 py-16 md:py-20">
+      <section className="relative mt-10 md:mt-12 py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div 
-              className="rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition p-6 text-center"
+              className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition p-8 text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05, duration: 0.4 }}
               viewport={{ once: true }}
             >
-              <div className="text-5xl font-bold text-white mb-2">
+              <div className="text-5xl font-bold text-gray-900 mb-2">
                 <AnimatedCounter end={15} duration={2} />
                 <span className="text-4xl">+</span>
               </div>
-              <div className="text-slate-400 font-medium">
+              <div className="text-gray-600 font-medium">
                 Years Experience
               </div>
             </motion.div>
             
             <motion.div 
-              className="rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition p-6 text-center"
+              className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition p-8 text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.4 }}
               viewport={{ once: true }}
             >
-              <div className="text-5xl font-bold text-white mb-2">
+              <div className="text-5xl font-bold text-gray-900 mb-2">
                 <AnimatedCounter end={50} duration={2} />
                 <span className="text-4xl">+</span>
               </div>
-              <div className="text-slate-400 font-medium">
+              <div className="text-gray-600 font-medium">
                 Projects Delivered
               </div>
             </motion.div>
             
             <motion.div 
-              className="rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition p-6 text-center"
+              className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition p-8 text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.4 }}
               viewport={{ once: true }}
             >
-              <div className="text-5xl font-bold text-white mb-2">
+              <div className="text-5xl font-bold text-gray-900 mb-2">
                 <AnimatedCounter end={99} duration={2} />
                 <span className="text-4xl">%</span>
               </div>
-              <div className="text-slate-400 font-medium">
+              <div className="text-gray-600 font-medium">
                 Uptime Achieved
               </div>
             </motion.div>
@@ -112,29 +132,29 @@ export default function Home() {
       </section>
 
       {/* Core Technologies */}
-      <section className="py-16 md:py-20">
+      <section className="relative py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-100 text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-8 md:mb-12">
             Core Technologies
           </h2>
           
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* Cloud & Platforms */}
             <motion.div 
-              className="rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition p-6"
+              className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition p-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05, duration: 0.4 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xs font-semibold tracking-wide text-cyan-400 uppercase mb-4">
+              <h3 className="text-xs font-semibold tracking-wide text-gray-500 uppercase mb-4">
                 Cloud & Platforms
               </h3>
               <div className="flex flex-wrap gap-2">
                 {["AWS", "EKS", "Kubernetes", "Docker", "RDS"].map((tech) => (
                   <span 
                     key={tech}
-                    className="px-3 py-1.5 bg-white/5 border border-white/10 text-slate-300 text-sm rounded-lg"
+                    className="px-3 py-1.5 bg-gray-100 border border-gray-200 text-gray-700 text-sm rounded-lg"
                   >
                     {tech}
                   </span>
@@ -144,20 +164,20 @@ export default function Home() {
 
             {/* Automation & IaC */}
             <motion.div 
-              className="rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition p-6"
+              className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition p-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.4 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xs font-semibold tracking-wide text-cyan-400 uppercase mb-4">
+              <h3 className="text-xs font-semibold tracking-wide text-gray-500 uppercase mb-4">
                 Automation & IaC
               </h3>
               <div className="flex flex-wrap gap-2">
                 {["Terraform", "CDK", "ArgoCD", "GitHub Actions", "Jenkins"].map((tech) => (
                   <span 
                     key={tech}
-                    className="px-3 py-1.5 bg-white/5 border border-white/10 text-slate-300 text-sm rounded-lg"
+                    className="px-3 py-1.5 bg-gray-100 border border-gray-200 text-gray-700 text-sm rounded-lg"
                   >
                     {tech}
                   </span>
@@ -167,20 +187,20 @@ export default function Home() {
 
             {/* Monitoring & Security */}
             <motion.div 
-              className="rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition p-6"
+              className="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition p-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.4 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xs font-semibold tracking-wide text-cyan-400 uppercase mb-4">
+              <h3 className="text-xs font-semibold tracking-wide text-gray-500 uppercase mb-4">
                 Monitoring & Security
               </h3>
               <div className="flex flex-wrap gap-2">
                 {["Prometheus", "Grafana", "Datadog", "IAM", "OIDC"].map((tech) => (
                   <span 
                     key={tech}
-                    className="px-3 py-1.5 bg-white/5 border border-white/10 text-slate-300 text-sm rounded-lg"
+                    className="px-3 py-1.5 bg-gray-100 border border-gray-200 text-gray-700 text-sm rounded-lg"
                   >
                     {tech}
                   </span>
@@ -192,32 +212,32 @@ export default function Home() {
       </section>
 
       {/* Recent Work */}
-      <section className="py-16 md:py-20">
+      <section className="relative py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-100 text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-8 md:mb-12">
             Recent Work
           </h2>
           
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
             {/* AVIV Group */}
             <motion.div 
-              className="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition"
+              className="rounded-xl border border-gray-200 bg-white p-6 hover:bg-gray-50 hover:shadow-md transition"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.05, duration: 0.4 }}
               viewport={{ once: true }}
             >
-              <h3 className="font-semibold text-lg text-slate-50 mb-3">
+              <h3 className="font-semibold text-lg text-gray-900 mb-3">
                 AVIV Group Replatforming
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
                 Led complete migration from on-prem to AWS EKS with Terraform modules, achieving 99.9% uptime.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["AWS", "EKS", "Terraform"].map((tag) => (
                   <span 
                     key={tag} 
-                    className="px-2 py-1 bg-white/5 border border-white/10 text-slate-400 text-xs rounded"
+                    className="px-2 py-1 bg-gray-100 border border-gray-200 text-gray-600 text-xs rounded"
                   >
                     {tag}
                   </span>
@@ -227,23 +247,23 @@ export default function Home() {
 
             {/* InfraCore */}
             <motion.div 
-              className="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition"
+              className="rounded-xl border border-gray-200 bg-white p-6 hover:bg-gray-50 hover:shadow-md transition"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1, duration: 0.4 }}
               viewport={{ once: true }}
             >
-              <h3 className="font-semibold text-lg text-slate-50 mb-3">
+              <h3 className="font-semibold text-lg text-gray-900 mb-3">
                 InfraCore AWS Architecture
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
                 Architected secure multi-account AWS infrastructure with EKS, GitOps, and comprehensive observability.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["AWS", "ArgoCD", "Bottlerocket"].map((tag) => (
                   <span 
                     key={tag} 
-                    className="px-2 py-1 bg-white/5 border border-white/10 text-slate-400 text-xs rounded"
+                    className="px-2 py-1 bg-gray-100 border border-gray-200 text-gray-600 text-xs rounded"
                   >
                     {tag}
                   </span>
@@ -254,16 +274,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Brand Marquee */}
-      <Marquee />
-
       {/* Client Recommendations */}
-      <Recommendations />
+      <section className="relative py-16 md:py-20">
+        <Recommendations />
+      </section>
 
       {/* Highlighted Case Studies */}
-      <section className="py-16 md:py-20">
+      <section className="relative py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-6 md:mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">
             Highlighted Case Studies
           </h2>
           <motion.div
@@ -274,19 +293,19 @@ export default function Home() {
           >
             <Link 
               href="/projects" 
-              className="inline-flex items-center rounded-full bg-cyan-600/90 px-5 py-2 text-sm font-medium text-white hover:bg-cyan-500 transition-colors mb-6"
+              className="inline-flex items-center rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white hover:bg-gray-800 transition-colors mb-6"
             >
               View All Case Studies →
             </Link>
           </motion.div>
           
           {/* Subtle LinkedIn Link */}
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-gray-500">
             <a
               href={site.contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-slate-300 transition-colors underline underline-offset-4"
+              className="hover:text-gray-700 transition-colors underline underline-offset-4"
             >
               Read recommendations on LinkedIn →
             </a>
