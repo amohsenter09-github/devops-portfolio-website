@@ -14,13 +14,13 @@ export default function Designs() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center space-y-6"
+            className="text-center space-y-6 flex flex-col items-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-center">
               DevOps Designs & Architecture
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-center">
               Visual representations of my DevOps processes, infrastructure designs, and system architectures. 
               These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
               using professional brand icons and scalable vector graphics.
@@ -28,11 +28,11 @@ export default function Designs() {
 
             <div className="border-t border-gray-200 my-6 mx-auto w-1/3"></div>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">
               Interactive Architecture Diagrams
             </h2>
 
-            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed text-center">
               Professional architecture diagrams showing system design, data flow, and component relationships. 
               These interactive diagrams highlight my approach to building scalable, observable, and automated systems.
             </p>
