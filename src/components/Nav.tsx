@@ -18,8 +18,8 @@ export default function Nav() {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-end w-full">
-          {/* Right side icons - Far right */}
-          <div className="flex items-center gap-4 sm:gap-6">
+          {/* Right side icons - Far right with minimal right padding */}
+          <div className="flex items-center gap-4 sm:gap-6 -mr-4 sm:-mr-6 lg:-mr-8">
             {/* Colored Logo */}
             <Link 
               href="/"

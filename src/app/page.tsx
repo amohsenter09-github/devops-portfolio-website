@@ -70,17 +70,12 @@ export default function Home() {
           </motion.h2>
 
           {/* Navigation Tabs under Amr Fathy */}
-          <motion.nav
-            className="mb-8"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
-          >
-            <ul className="flex flex-wrap justify-center gap-6 lg:gap-8 text-sm font-medium items-center">
+          <nav className="mb-8 mt-6">
+            <ul className="flex flex-wrap justify-center gap-6 lg:gap-8 text-sm font-semibold items-center">
               <li>
                 <Link 
                   href="/" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
                 >
                   Home
                 </Link>
@@ -88,7 +83,7 @@ export default function Home() {
               <li>
                 <Link 
                   href="/designs" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
                 >
                   Designs
                 </Link>
@@ -96,7 +91,7 @@ export default function Home() {
               <li>
                 <Link 
                   href="/blog" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
                 >
                   Blog
                 </Link>
@@ -104,7 +99,7 @@ export default function Home() {
               <li>
                 <Link 
                   href="/about" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
                 >
                   About
                 </Link>
@@ -112,13 +107,13 @@ export default function Home() {
               <li>
                 <Link 
                   href="/contact" 
-                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium px-2 py-1"
                 >
                   Contact
                 </Link>
               </li>
             </ul>
-          </motion.nav>
+          </nav>
           
           <motion.p 
             className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700 mb-6 text-center"
