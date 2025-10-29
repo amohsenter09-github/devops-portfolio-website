@@ -266,18 +266,19 @@ export default function Home() {
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
             {/* CKA Certification */}
             <a
-              href="https://www.credly.com/users/amr-fathy/badges"
+              href="https://www.credly.com/badges/39c47fe2-5546-402f-aa92-339bfac3067d"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200"
             >
               <div className="relative w-40 h-40 flex items-center justify-center">
                 <img
-                  src="https://images.credly.com/size/680x680/images/8b8ed108-e77c-41ac-bdc1-9c600d3dd63d/Certified-Kubernetes-Administrator-Program.png"
+                  src="https://images.credly.com/images/39c47fe2-5546-402f-aa92-339bfac3067d/image"
                   alt="Certified Kubernetes Administrator (CKA)"
                   className="w-full h-full object-contain"
                   onError={(e) => {
-                    e.currentTarget.src = "https://images.credly.com/images/8b8ed108-e77c-41ac-bdc1-9c600d3dd63d/Certified-Kubernetes-Administrator-Program.png";
+                    // Fallback to badge URL endpoint which serves the image
+                    e.currentTarget.src = `https://www.credly.com/badges/39c47fe2-5546-402f-aa92-339bfac3067d/image`;
                   }}
                 />
               </div>
@@ -296,11 +297,12 @@ export default function Home() {
             >
               <div className="relative w-40 h-40 flex items-center justify-center">
                 <img
-                  src="https://images.credly.com/size/680x680/images/99289602-861e-4929-8273-773e63a2aa6d/HashiCorp-Certified-Terraform-Associate-Badge.png"
+                  src="https://images.credly.com/images/99289602-861e-4929-8273-773e63a2aa6d/image"
                   alt="HashiCorp Certified: Terraform Associate"
                   className="w-full h-full object-contain"
                   onError={(e) => {
-                    e.currentTarget.src = "https://images.credly.com/images/99289602-861e-4929-8273-773e63a2aa6d/HashiCorp-Certified-Terraform-Associate-Badge.png";
+                    // Fallback - you can provide your Terraform badge ID too
+                    e.currentTarget.src = `https://www.credly.com/badges/99289602-861e-4929-8273-773e63a2aa6d/image`;
                   }}
                 />
               </div>
