@@ -8,8 +8,6 @@ import { site } from "@/lib/siteConfig";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/business-impact", label: "ROI & Impact" },
-  { href: "/projects", label: "Projects" },
   { href: "/designs", label: "Designs" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
@@ -19,16 +17,10 @@ const links = [
 export default function Nav() {
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <nav className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between">
-          {/* Spacer for left side (balanced layout) */}
-          <div className="flex items-center gap-4 opacity-0 pointer-events-none">
-            <Linkedin size={20} />
-            <div className="w-8 h-8" />
-          </div>
-          
-          {/* Centered Navigation Links */}
-          <ul className="hidden sm:flex gap-6 lg:gap-8 text-sm font-medium items-center justify-center">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div className="flex items-center justify-between w-full relative">
+          {/* Centered Navigation Links - Absolutely centered */}
+          <ul className="hidden sm:flex gap-6 lg:gap-8 text-sm font-medium items-center justify-center absolute left-1/2 transform -translate-x-1/2">
             {links.map((l) => (
               <li key={l.href}>
                 <Link 
@@ -41,8 +33,8 @@ export default function Nav() {
             ))}
           </ul>
           
-          {/* Right side icons */}
-          <div className="flex items-center gap-4 sm:gap-6">
+          {/* Right side icons - Far right */}
+          <div className="flex items-center gap-4 sm:gap-6 ml-auto">
             {/* LinkedIn Icon */}
             <a
               href={site.contact.linkedin}
