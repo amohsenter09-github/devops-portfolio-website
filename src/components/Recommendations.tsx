@@ -35,7 +35,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         transition: { duration: 0.2 }
       }}
     >
-      <div className="h-full rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800/50 hover:border-slate-700 transition-all duration-300 p-6">
+      <div className="h-full rounded-lg border border-white/10 bg-slate-900/50 hover:bg-slate-800/50 hover:border-white/20 transition-all duration-300 p-6">
         {/* Rating Stars */}
         <div className="flex gap-1 mb-4">
           {[...Array(recommendation.rating)].map((_, i) => (
@@ -71,22 +71,22 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
 
 export default function Recommendations() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 w-full">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
       {/* Section Header */}
       <motion.div 
-        className="text-center mb-8 sm:mb-10 md:mb-12"
+        className="text-center mb-12"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-50 mb-4 px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
           Client Recommendations
         </h2>
       </motion.div>
 
-      {/* Recommendations Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mx-auto">
+      {/* Recommendations Grid - Show only 3 visible at once */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
         {site.recommendations.map((recommendation, index) => (
           <RecommendationCard
             key={recommendation.id}
