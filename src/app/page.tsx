@@ -80,39 +80,81 @@ export default function Home() {
 
           {/* Quantified Outcomes */}
           <motion.div 
-            className="flex flex-wrap justify-center gap-6 mt-8 text-sm"
+            className="flex flex-wrap justify-center items-center gap-8 mt-10 mb-8"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-2 text-gray-700">
-              <DollarSign className="w-4 h-4 text-cyan-600" />
-              <span><strong>$2M+</strong> saved annually</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-700">
-              <Shield className="w-4 h-4 text-cyan-600" />
-              <span><strong>99.9%</strong> uptime</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-700">
-              <Zap className="w-4 h-4 text-cyan-600" />
-              <span><strong>80%</strong> faster deployments</span>
-            </div>
+            <motion.div 
+              className="flex items-center gap-3 group"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <div className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center border border-cyan-200 group-hover:bg-cyan-100 transition-colors">
+                <DollarSign className="w-5 h-5 text-cyan-600" />
+              </div>
+              <div className="text-left">
+                <div className="text-lg font-bold text-gray-900">$2M+</div>
+                <div className="text-xs text-gray-600">saved annually</div>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="flex items-center gap-3 group"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <div className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center border border-cyan-200 group-hover:bg-cyan-100 transition-colors">
+                <Shield className="w-5 h-5 text-cyan-600" />
+              </div>
+              <div className="text-left">
+                <div className="text-lg font-bold text-gray-900">99.9%</div>
+                <div className="text-xs text-gray-600">uptime</div>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="flex items-center gap-3 group"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <div className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center border border-cyan-200 group-hover:bg-cyan-100 transition-colors">
+                <Zap className="w-5 h-5 text-cyan-600" />
+              </div>
+              <div className="text-left">
+                <div className="text-lg font-bold text-gray-900">80%</div>
+                <div className="text-xs text-gray-600">faster deployments</div>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Hero CTA */}
           <motion.div
-            className="mt-10"
+            className="mt-8"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
           >
-            <Link 
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              Schedule Consultation
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+              <Link 
+                href="/contact"
+                className="inline-flex items-center gap-3 rounded-full bg-cyan-600 px-8 py-4 text-base font-semibold text-white hover:bg-cyan-500 transition-all duration-300 shadow-lg hover:shadow-xl shadow-cyan-600/25 hover:shadow-cyan-600/40 group relative overflow-hidden"
+              >
+                <span className="relative z-10">Schedule Consultation</span>
+                <motion.div
+                  className="w-9 h-9 rounded-full bg-cyan-700 flex items-center justify-center group-hover:bg-cyan-400 transition-colors relative z-10 ml-1"
+                  whileHover={{ 
+                    rotate: [0, -10, 10, 0],
+                    scale: 1.1
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </motion.div>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
