@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 import { site } from "@/lib/siteConfig";
 
 interface Recommendation {
@@ -20,40 +21,43 @@ interface RecommendationCardProps {
 }
 
 function RecommendationCard({ recommendation, index }: RecommendationCardProps) {
-  const initials = recommendation.name.split(' ').map(n => n[0]).join('').slice(0, 2);
-  
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ 
-        delay: index * 0.1, 
+        delay: index * 0.05, 
         duration: 0.3,
         ease: "easeOut"
       }}
       viewport={{ once: true, amount: 0.25 }}
-      className="flex-shrink-0"
     >
-      <div className="h-full rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col">
+      <div className="h-full rounded-2xl bg-white shadow-sm border border-gray-100 p-6">
         {/* Rating Stars */}
-        <div className="flex items-center mb-3">
-          <span className="text-amber-400 text-xl">★★★★★</span>
+        <div className="flex gap-1 mb-4">
+          {[...Array(recommendation.rating)].map((_, i) => (
+            <Star 
+              key={i} 
+              size={16} 
+              className="text-amber-400 fill-current" 
+            />
+          ))}
         </div>
         
         {/* Recommendation Text */}
-        <p className="text-gray-600 leading-relaxed mb-4 flex-grow">
+        <p className="text-base text-gray-600 leading-relaxed mb-6">
           &ldquo;{recommendation.recommendation}&rdquo;
         </p>
         
         {/* Author Info */}
-        <div className="mt-auto flex items-center pt-4 border-t border-gray-100">
-          <div className="h-10 w-10 flex items-center justify-center rounded-full bg-cyan-100 text-cyan-700 font-semibold text-sm mr-3 flex-shrink-0">
-            {initials}
+        <div className="flex items-center pt-4">
+          <div className="w-10 h-10 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-700 font-semibold text-sm mr-3 flex-shrink-0">
+            {recommendation.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-gray-900">{recommendation.name}</p>
-            <p className="text-sm text-gray-500">
-              {recommendation.position} · {recommendation.company}
+            <h4 className="text-base font-semibold text-gray-900 mb-1 truncate">{recommendation.name}</h4>
+            <p className="text-sm text-gray-500 truncate">
+              {recommendation.position} <span className="text-gray-400">· {recommendation.company}</span>
             </p>
           </div>
         </div>
@@ -67,47 +71,26 @@ export default function Recommendations() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
       {/* Section Header */}
       <motion.div 
-        className="text-center mb-10"
+        className="text-center mb-8"
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.25 }}
       >
-        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-2">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
           Client Recommendations
         </h2>
-        <p className="text-xs uppercase tracking-widest text-gray-500">
-          What Clients Say
-        </p>
       </motion.div>
 
-      {/* Recommendations Grid - Desktop, Horizontal Scroll on Mobile */}
-      <div className="w-full">
-        {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {site.recommendations.map((recommendation, index) => (
-            <div key={recommendation.id} className="h-full">
-              <RecommendationCard
-                recommendation={recommendation}
-                index={index}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile Horizontal Scroll */}
-        <div className="overflow-x-auto snap-x snap-mandatory scroll-smooth md:hidden -mx-4 sm:-mx-6 px-4 sm:px-6">
-          <div className="flex gap-6" style={{ width: 'max-content' }}>
-            {site.recommendations.map((recommendation, index) => (
-              <div key={recommendation.id} className="snap-start" style={{ width: 'calc(100vw - 2rem)' }}>
-                <RecommendationCard
-                  recommendation={recommendation}
-                  index={index}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Recommendations Grid - Show only 3 visible at once */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
+        {site.recommendations.map((recommendation, index) => (
+          <RecommendationCard
+            key={recommendation.id}
+            recommendation={recommendation}
+            index={index}
+          />
+        ))}
       </div>
     </div>
   );

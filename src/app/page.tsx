@@ -4,9 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Recommendations from "@/components/Recommendations";
-import BrandLogo from "@/components/BrandLogo";
+import Marquee from "@/components/Marquee";
 import { projects } from "@/data/projects";
-import { brands } from "@/lib/brands";
 
 export default function Home() {
   const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -19,12 +18,12 @@ export default function Home() {
   const featuredProjects = projects.slice(0, 3);
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden" style={{ maxWidth: '100vw' }}>
       {/* Hero Section */}
-      <section className="relative py-32 text-center w-full">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <section className="relative py-24 md:py-32 text-center w-full flex flex-col items-center justify-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
           <motion.h1 
-            className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 mb-4"
+            className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-3"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -32,7 +31,7 @@ export default function Home() {
             Amr Fathy
           </motion.h1>
           <motion.h2 
-            className="text-xl sm:text-2xl font-bold text-gray-800 mb-6"
+            className="text-xl sm:text-2xl font-bold text-gray-800 mb-8"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
@@ -41,7 +40,7 @@ export default function Home() {
           </motion.h2>
           
           <motion.p 
-            className="mx-auto max-w-3xl text-lg text-gray-700 leading-relaxed mb-8"
+            className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-700"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
@@ -50,7 +49,8 @@ export default function Home() {
           </motion.p>
           
           {/* Single CTA */}
-          <motion.div
+          <motion.div 
+            className="mt-8 flex justify-center gap-3"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
@@ -58,7 +58,7 @@ export default function Home() {
             <a 
               href="#featured-projects"
               onClick={handleScrollToProjects}
-              className="inline-flex items-center rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
+              className="rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
             >
               Explore My Work
             </a>
@@ -67,11 +67,11 @@ export default function Home() {
       </section>
 
       {/* Metrics Section */}
-      <section className="py-20 w-full">
+      <section className="py-20 md:py-24 w-full flex items-center justify-center">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full">
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-16">
+          <div className="mt-10 flex flex-wrap items-start justify-center gap-8">
             <motion.div 
-              className="text-center"
+              className="text-center px-4"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.3, ease: "easeOut" }}
@@ -84,7 +84,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              className="text-center"
+              className="text-center px-4"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.3, ease: "easeOut" }}
@@ -95,7 +95,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              className="text-center"
+              className="text-center px-4"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.3, ease: "easeOut" }}
@@ -106,27 +106,18 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Trusted by Logos - Static */}
-          <div className="w-full">
-            <p className="text-center text-xs uppercase tracking-widest text-gray-500 mb-8">
-              Trusted by
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 grayscale w-full">
-              {brands.map((brand, index) => (
-                <div key={`${brand.name}-${index}`} className="flex items-center justify-center h-12">
-                  <BrandLogo brand={brand} />
-                </div>
-              ))}
-            </div>
+          {/* Trusted by Section - After Metrics */}
+          <div className="mt-10">
+            <Marquee />
           </div>
         </div>
       </section>
 
       {/* Core Competencies */}
-      <section className="py-20 w-full">
+      <section className="py-20 md:py-24 w-full flex items-center justify-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
           <motion.h2 
-            className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8"
+            className="text-2xl sm:text-3xl font-bold text-gray-900 text-center"
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
@@ -155,77 +146,86 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section id="featured-projects" className="py-20 w-full">
+      <section id="featured-projects" className="py-20 md:py-24 w-full flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
-          <h2 className="text-center text-2xl font-semibold text-gray-800 mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-8">
             Featured Projects
           </h2>
           
-          <div className="grid gap-6 md:grid-cols-3 w-full">
-            {featuredProjects.map((project, index) => (
-              <motion.div
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-auto mt-8">
+            {featuredProjects.slice(0, 2).map((project, index) => (
+              <motion.div 
                 key={project.slug}
-                className="rounded-2xl bg-white shadow-sm border border-gray-100 p-6 hover:shadow-md transition w-full flex flex-col h-full"
+                className="rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-md transition-colors p-6"
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.3, ease: "easeOut" }}
+                transition={{ delay: index * 0.1 + 0.1, duration: 0.3, ease: "easeOut" }}
                 viewport={{ once: true, amount: 0.25 }}
               >
-                <h3 className="font-semibold text-gray-900 mb-2">{project.title}</h3>
-                <p className="text-gray-600 text-sm mb-3 leading-relaxed flex-grow">{project.summary}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.slice(0, 4).map((tag) => (
-                    <span 
-                      key={tag} 
-                      className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded border border-gray-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="md:min-h-[220px] flex flex-col">
+                  <h3 className="font-semibold text-lg text-gray-900 mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4 flex-grow">
+                    {project.summary}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <span 
+                        key={tag} 
+                        className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded border border-gray-200"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <Link 
+                    href={`/projects#${project.slug}`}
+                    className="text-cyan-600 hover:text-cyan-500 text-sm font-medium transition-colors inline-flex items-center gap-1"
+                  >
+                    View Full Case Study →
+                  </Link>
                 </div>
-                <Link 
-                  href={`/projects#${project.slug}`}
-                  className="mt-auto inline-block text-sm text-cyan-600 hover:text-cyan-500 font-medium transition-colors"
-                >
-                  View Case Study →
-                </Link>
               </motion.div>
             ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link 
-              href="/projects" 
-              className="inline-flex items-center rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
-            >
-              View All Projects →
-            </Link>
           </div>
         </div>
       </section>
 
       {/* Client Recommendations */}
-      <section className="py-20 w-full">
-        <div className="w-full">
-          <Recommendations />
-        </div>
+      <section className="py-20 md:py-24 w-full flex items-center justify-center">
+        <Recommendations />
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 w-full">
+      <section className="py-20 md:py-24 w-full flex items-center justify-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center w-full">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Ready to Transform Your Infrastructure?
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
+            Highlighted Case Studies
           </h2>
-          <p className="text-gray-600 mb-8">
-            Let&apos;s discuss how we can scale your platform with precision engineering.
-          </p>
-          <Link 
-            href="/contact" 
-            className="inline-flex items-center rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
+          <motion.div
+            className="mt-8"
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.25 }}
           >
-            Get in Touch →
-          </Link>
+            <Link 
+              href="/projects" 
+              className="inline-flex items-center rounded-full bg-cyan-600 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors mb-6"
+            >
+              View All Case Studies →
+            </Link>
+          </motion.div>
+          
+          <p className="text-sm text-gray-600">
+            <Link
+              href="/contact"
+              className="hover:text-cyan-600 transition-colors underline underline-offset-4"
+            >
+              Get in Touch →
+            </Link>
+          </p>
         </div>
       </section>
     </div>

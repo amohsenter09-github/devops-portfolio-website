@@ -17,10 +17,10 @@ export default function Marquee() {
         transition={{ duration: 0.4 }}
         viewport={{ once: true }}
       >
-        <h3 className="text-center text-slate-400 text-sm uppercase tracking-wide mb-2">
+        <h3 className="text-center text-gray-500 text-sm uppercase tracking-wide mb-2">
           Trusted by leading organizations
         </h3>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-gray-400">
           across Europe and North America
         </p>
       </motion.div>
