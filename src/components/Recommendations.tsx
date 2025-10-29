@@ -260,7 +260,6 @@ export default function Recommendations() {
 
   const tabLabels = [
     { key: "executive", label: "Executive & C-Level", count: organizedRecommendations["executive"].length, icon: "👔" },
-    { key: "senior-leadership", label: "Senior Leadership", count: organizedRecommendations["senior-leadership"].length, icon: "🎯" },
     { key: "technical-leaders", label: "Technical Leaders", count: organizedRecommendations["technical-leaders"].length, icon: "⚡" },
     { key: "peer-colleagues", label: "Peer Colleagues", count: organizedRecommendations["peer-colleagues"].length, icon: "🤝" },
   ];
