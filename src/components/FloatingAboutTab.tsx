@@ -19,9 +19,9 @@ export default function FloatingAboutTab() {
   return (
     <button
       onClick={handleClick}
-      className={`fixed bottom-10 right-10 z-50 rounded-full px-4 py-2.5 text-sm font-medium text-white shadow-lg backdrop-blur transition-all duration-300 
+      className={`fixed bottom-10 right-10 z-50 rounded-full px-6 py-3 text-sm font-medium text-white shadow-lg backdrop-blur transition-all duration-300 
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"}
-        bg-gray-900 hover:bg-gray-800 ring-1 ring-gray-300/20`}
+        bg-cyan-600 hover:bg-cyan-500 ring-2 ring-cyan-500/30 hover:ring-cyan-400/40 shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40`}
       aria-label="Scroll to About Me section"
     >
       About Me

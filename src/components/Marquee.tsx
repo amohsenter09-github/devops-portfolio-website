@@ -17,8 +17,11 @@ export default function Marquee() {
         transition={{ duration: 0.4 }}
         viewport={{ once: true }}
       >
-        <p className="text-sm text-gray-500">
-          Trusted by 50K+ teams from creative agencies to high growth tech companies
+        <h3 className="text-center text-slate-400 text-sm uppercase tracking-wide mb-2">
+          Trusted by leading organizations
+        </h3>
+        <p className="text-xs text-slate-500">
+          across Europe and North America
         </p>
       </motion.div>
       

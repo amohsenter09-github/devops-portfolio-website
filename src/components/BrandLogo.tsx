@@ -10,8 +10,8 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   // 1) Try Iconify brand icon first (SVG)
   if (brand.icon) {
     return (
-      <div className="flex h-10 items-center justify-center opacity-60 hover:opacity-80 transition-opacity">
-        <Icon icon={brand.icon} width="120" height="28" className="text-gray-700" />
+      <div className="flex h-10 items-center justify-center opacity-40 hover:opacity-60 transition-opacity grayscale brightness-0 invert">
+        <Icon icon={brand.icon} width="120" height="28" className="text-slate-400" />
       </div>
     );
   }
@@ -19,7 +19,7 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   // 2) Try custom logo URL if provided
   if (brand.logoUrl && !imageError) {
     return (
-      <div className="relative h-10 w-[140px] opacity-60 hover:opacity-80 transition-opacity">
+      <div className="relative h-10 w-[140px] opacity-40 hover:opacity-60 transition-opacity grayscale brightness-0 invert">
         <Image
           src={brand.logoUrl}
           alt={brand.name}
@@ -35,7 +35,7 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   // 3) Then try Clearbit by domain
   if (brand.domain && !imageError) {
     return (
-      <div className="relative h-10 w-[120px] opacity-60 hover:opacity-80 transition-opacity">
+      <div className="relative h-10 w-[120px] opacity-40 hover:opacity-60 transition-opacity grayscale brightness-0 invert">
         <Image
           src={`https://logo.clearbit.com/${brand.domain}`}
           alt={brand.name}
@@ -50,7 +50,7 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
   
   // 4) Text fallback (if no icon, or image failed to load)
   return (
-    <div className="flex h-10 items-center justify-center px-3 text-sm text-gray-600 font-medium whitespace-nowrap">
+    <div className="flex h-10 items-center justify-center px-3 text-sm text-slate-400 font-medium whitespace-nowrap opacity-60">
       {brand.name}
     </div>
   );
