@@ -68,10 +68,10 @@ export default function Home() {
 
       {/* Metrics Section */}
       <section className="py-20 w-full">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap items-start justify-center gap-8 mb-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-16">
             <motion.div 
-              className="text-center px-4"
+              className="text-center"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.3, ease: "easeOut" }}
@@ -84,7 +84,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              className="text-center px-4"
+              className="text-center"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.3, ease: "easeOut" }}
@@ -95,7 +95,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              className="text-center px-4"
+              className="text-center"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.3, ease: "easeOut" }}
@@ -113,7 +113,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 grayscale w-full">
               {brands.map((brand, index) => (
-                <div key={`${brand.name}-${index}`} className="flex items-center justify-center">
+                <div key={`${brand.name}-${index}`} className="flex items-center justify-center h-12">
                   <BrandLogo brand={brand} />
                 </div>
               ))}
@@ -165,15 +165,15 @@ export default function Home() {
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.slug}
-                className="rounded-2xl bg-white shadow-sm border border-gray-100 p-6 hover:shadow-md transition w-full"
+                className="rounded-2xl bg-white shadow-sm border border-gray-100 p-6 hover:shadow-md transition w-full flex flex-col h-full"
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.3, ease: "easeOut" }}
                 viewport={{ once: true, amount: 0.25 }}
               >
                 <h3 className="font-semibold text-gray-900 mb-2">{project.title}</h3>
-                <p className="text-gray-600 text-sm mb-3 leading-relaxed">{project.summary}</p>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <p className="text-gray-600 text-sm mb-3 leading-relaxed flex-grow">{project.summary}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.slice(0, 4).map((tag) => (
                     <span 
                       key={tag} 
@@ -185,7 +185,7 @@ export default function Home() {
                 </div>
                 <Link 
                   href={`/projects#${project.slug}`}
-                  className="mt-4 inline-block text-sm text-cyan-600 hover:text-cyan-500 font-medium transition-colors"
+                  className="mt-auto inline-block text-sm text-cyan-600 hover:text-cyan-500 font-medium transition-colors"
                 >
                   View Case Study →
                 </Link>

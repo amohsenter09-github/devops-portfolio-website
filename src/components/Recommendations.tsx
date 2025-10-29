@@ -34,19 +34,19 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
       viewport={{ once: true, amount: 0.25 }}
       className="flex-shrink-0"
     >
-      <div className="h-full rounded-2xl bg-white shadow-sm border border-gray-100 p-6">
+      <div className="h-full rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col">
         {/* Rating Stars */}
         <div className="flex items-center mb-3">
           <span className="text-amber-400 text-xl">★★★★★</span>
         </div>
         
         {/* Recommendation Text */}
-        <p className="text-gray-600 leading-relaxed mb-4">
+        <p className="text-gray-600 leading-relaxed mb-4 flex-grow">
           &ldquo;{recommendation.recommendation}&rdquo;
         </p>
         
         {/* Author Info */}
-        <div className="mt-4 flex items-center">
+        <div className="mt-auto flex items-center pt-4 border-t border-gray-100">
           <div className="h-10 w-10 flex items-center justify-center rounded-full bg-cyan-100 text-cyan-700 font-semibold text-sm mr-3 flex-shrink-0">
             {initials}
           </div>
@@ -86,11 +86,12 @@ export default function Recommendations() {
         {/* Desktop Grid */}
         <div className="hidden md:grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {site.recommendations.map((recommendation, index) => (
-            <RecommendationCard
-              key={recommendation.id}
-              recommendation={recommendation}
-              index={index}
-            />
+            <div key={recommendation.id} className="h-full">
+              <RecommendationCard
+                recommendation={recommendation}
+                index={index}
+              />
+            </div>
           ))}
         </div>
 
