@@ -19,11 +19,7 @@ const links = [
 export default function Nav() {
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
-        <Link href="/" className="font-bold text-xl text-gray-900">
-          Amr Fathy
-        </Link>
-        
+      <nav className="mx-auto flex max-w-6xl items-center justify-center px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center gap-4 sm:gap-6">
           <ul className="hidden sm:flex gap-6 lg:gap-8 text-sm font-medium">
             {links.map((l) => (

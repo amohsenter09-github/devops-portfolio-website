@@ -70,7 +70,7 @@ export default function Home() {
           </motion.h2>
           
           <motion.p 
-            className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700 mb-6"
+            className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700 mb-6 text-center"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
