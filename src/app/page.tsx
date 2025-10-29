@@ -9,7 +9,7 @@ import { site } from "@/lib/siteConfig";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen bg-white">
+    <div className="w-full min-h-screen bg-white mx-auto">
       {/* Subtle Grid Pattern - Very Light */}
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-0">
         <div 
