@@ -9,7 +9,7 @@ import { site } from "@/lib/siteConfig";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 overflow-x-hidden" style={{ maxWidth: '100vw' }}>
       {/* Subtle Grid Pattern - Very Light */}
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-0">
         <div 
@@ -25,11 +25,11 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative z-10 py-24 md:py-32 w-full flex flex-col items-center justify-center">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="relative z-10 py-16 sm:py-20 md:py-24 lg:py-32 w-full flex flex-col items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 w-full">
           <div className="text-center flex flex-col items-center">
             <motion.h1 
-              className="text-5xl md:text-6xl font-extrabold leading-tight text-slate-50 mb-4"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-slate-50 mb-3 sm:mb-4 px-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -37,7 +37,7 @@ export default function Home() {
               Amr Fathy
             </motion.h1>
             <motion.h2 
-              className="text-2xl md:text-3xl font-semibold text-slate-300 mb-8"
+              className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-300 mb-6 sm:mb-8 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
@@ -46,7 +46,7 @@ export default function Home() {
             </motion.h2>
             
             <motion.p 
-              className="mt-4 max-w-3xl mx-auto text-slate-400 text-lg leading-relaxed"
+              className="mt-4 max-w-2xl sm:max-w-3xl mx-auto text-slate-400 text-base sm:text-lg leading-relaxed px-4 sm:px-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
@@ -56,20 +56,20 @@ export default function Home() {
             
             {/* CTA Buttons */}
             <motion.div 
-              className="mt-10 flex flex-wrap items-center justify-center gap-4"
+              className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
               <Link 
                 href="/projects"
-                className="rounded-full bg-cyan-600 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-all shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40"
+                className="rounded-full bg-cyan-600 px-6 sm:px-8 py-2.5 sm:py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-all shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 whitespace-nowrap"
               >
                 View Projects
               </Link>
               <Link 
                 href="/about"
-                className="rounded-full border border-slate-600 bg-slate-800/50 backdrop-blur-sm px-8 py-3 text-sm font-medium text-slate-200 hover:bg-slate-700/50 hover:border-slate-500 transition-all"
+                className="rounded-full border border-slate-600 bg-slate-800/50 backdrop-blur-sm px-6 sm:px-8 py-2.5 sm:py-3 text-sm font-medium text-slate-200 hover:bg-slate-700/50 hover:border-slate-500 transition-all whitespace-nowrap"
               >
                 About
               </Link>
@@ -79,16 +79,16 @@ export default function Home() {
       </section>
 
       {/* Trusted by Section */}
-      <section className="relative z-10 py-12 md:py-16 w-full flex items-center justify-center overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="relative z-10 py-10 sm:py-12 md:py-16 w-full flex items-center justify-center overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 w-full">
           <Marquee />
         </div>
       </section>
 
       {/* Metrics Section */}
-      <section className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
+      <section className="relative z-10 py-12 sm:py-16 md:py-20 w-full flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mx-auto">
             <motion.div 
               className="rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800/50 transition min-h-[120px] p-6 text-center"
               initial={{ opacity: 0, y: 20 }}
@@ -141,13 +141,13 @@ export default function Home() {
       </section>
 
       {/* Core Competencies */}
-      <section className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center border-t border-slate-800/50 pt-10 mt-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-50 text-center mb-10 md:mb-12">
+      <section className="relative z-10 py-12 sm:py-16 md:py-20 w-full flex items-center justify-center border-t border-slate-800/50 pt-8 sm:pt-10 mt-8 sm:mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 w-full">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-50 text-center mb-8 sm:mb-10 md:mb-12 px-4">
             Core Competencies
           </h2>
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mx-auto">
             {/* Cloud & Platforms */}
             <motion.div 
               className="rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800/50 transition p-6"
@@ -296,14 +296,14 @@ export default function Home() {
       </section>
 
       {/* Client Recommendations */}
-      <section className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center">
+      <section className="relative z-10 py-12 sm:py-16 md:py-20 w-full flex items-center justify-center">
         <Recommendations />
       </section>
 
       {/* Highlighted Case Studies */}
-      <section className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-50 mb-6 md:mb-8">
+      <section className="relative z-10 py-12 sm:py-16 md:py-20 w-full flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 text-center w-full">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-50 mb-6 sm:mb-8 px-4">
             Highlighted Case Studies
           </h2>
           <motion.div

@@ -71,22 +71,22 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
 
 export default function Recommendations() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 w-full">
       {/* Section Header */}
       <motion.div 
-        className="text-center mb-10 md:mb-12"
+        className="text-center mb-8 sm:mb-10 md:mb-12"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-2xl md:text-3xl font-bold text-slate-50 mb-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-50 mb-4 px-4">
           Client Recommendations
         </h2>
       </motion.div>
 
       {/* Recommendations Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mx-auto">
         {site.recommendations.map((recommendation, index) => (
           <RecommendationCard
             key={recommendation.id}
