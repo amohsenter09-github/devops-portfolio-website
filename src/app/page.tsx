@@ -17,18 +17,39 @@ export default function Home() {
       <section className="relative py-24 md:py-32 text-center w-full flex flex-col items-center justify-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
           <motion.h1 
-            className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-3"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-3 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0, 
+              scale: 1,
+            }}
+            transition={{ 
+              duration: 0.8, 
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            Amr Fathy
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+            >
+              Amr
+            </motion.span>
+            {" "}
+            <motion.span
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
+            >
+              Fathy
+            </motion.span>
           </motion.h1>
           <motion.h2 
             className="text-xl sm:text-2xl font-bold text-gray-800 mb-8"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
+            transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
           >
             Senior DevOps & Cloud Platform Engineer
           </motion.h2>
@@ -37,7 +58,7 @@ export default function Home() {
             className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-700"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+            transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
           >
             Building intelligent, automated infrastructure that scales with precision.
           </motion.p>
@@ -85,7 +106,7 @@ export default function Home() {
           </div>
 
           {/* Trusted by Section - After Metrics */}
-          <div className="mt-20">
+          <div className="mt-24">
             <Marquee />
           </div>
         </div>
