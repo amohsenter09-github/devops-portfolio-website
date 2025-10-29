@@ -72,8 +72,10 @@ export default function Home() {
       </section>
 
       {/* Trusted by Section */}
-      <section className="relative z-10 py-12 md:py-16">
-        <Marquee />
+      <section className="relative z-10 py-12 md:py-16 w-full flex items-center justify-center overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <Marquee />
+        </div>
       </section>
 
       {/* Metrics Section */}

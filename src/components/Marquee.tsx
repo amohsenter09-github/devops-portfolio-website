@@ -8,7 +8,7 @@ export default function Marquee() {
   const items = [...brands, ...brands];
   
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center">
       {/* Trusted by Text */}
       <motion.div
         className="text-center mb-8"
@@ -23,9 +23,13 @@ export default function Marquee() {
       </motion.div>
       
       {/* Logo Marquee */}
-      <div className="overflow-hidden w-full">
+      <div className="overflow-hidden w-full relative -mx-4 sm:-mx-6 lg:-mx-8">
         <motion.div
-          className="flex gap-12 items-center justify-center"
+          className="flex gap-12 items-center"
+          style={{ 
+            width: "max-content",
+          }}
+          initial={{ x: 0 }}
           animate={{ x: ["0%", "-50%"] }}
           transition={{ 
             repeat: Infinity, 
