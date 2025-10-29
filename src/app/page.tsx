@@ -76,11 +76,11 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
           >
-            <ul className="flex flex-wrap justify-center gap-6 lg:gap-8 text-sm font-medium">
+            <ul className="flex flex-wrap justify-center gap-6 lg:gap-8 text-sm font-medium items-center">
               <li>
                 <Link 
                   href="/" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
                 >
                   Home
                 </Link>
@@ -88,7 +88,7 @@ export default function Home() {
               <li>
                 <Link 
                   href="/designs" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
                 >
                   Designs
                 </Link>
@@ -96,7 +96,7 @@ export default function Home() {
               <li>
                 <Link 
                   href="/blog" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
                 >
                   Blog
                 </Link>
@@ -104,7 +104,7 @@ export default function Home() {
               <li>
                 <Link 
                   href="/about" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
                 >
                   About
                 </Link>
@@ -112,7 +112,7 @@ export default function Home() {
               <li>
                 <Link 
                   href="/contact" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                  className="text-gray-700 hover:text-cyan-600 transition-colors font-medium"
                 >
                   Contact
                 </Link>

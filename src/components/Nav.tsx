@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { site } from "@/lib/siteConfig";
@@ -21,6 +20,15 @@ export default function Nav() {
         <div className="flex items-center justify-end w-full">
           {/* Right side icons - Far right */}
           <div className="flex items-center gap-4 sm:gap-6">
+            {/* Colored Logo */}
+            <Link 
+              href="/"
+              className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-700 text-white font-bold text-sm hover:from-cyan-600 hover:to-cyan-800 transition-all shadow-sm hover:shadow-md"
+              aria-label="Home"
+            >
+              AF
+            </Link>
+            
             {/* LinkedIn Icon */}
             <a
               href={site.contact.linkedin}
