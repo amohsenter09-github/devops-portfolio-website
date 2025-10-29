@@ -49,7 +49,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
       className="cursor-pointer"
     >
       <motion.div 
-        className="h-full rounded-2xl bg-white border border-gray-200 p-7 flex flex-col relative overflow-hidden group"
+        className="h-full rounded-2xl bg-white border border-gray-200 p-8 lg:p-10 flex flex-col relative overflow-hidden group"
         style={{
           boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
         }}
@@ -71,7 +71,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
 
         {/* Rating Stars */}
         <motion.div 
-          className="flex gap-1.5 mb-5 relative z-10"
+          className="flex gap-1.5 mb-6 relative z-10"
           initial={{ opacity: 0, x: -10 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ delay: index * 0.08 + 0.15, duration: 0.4 }}
@@ -101,12 +101,12 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         
         {/* Recommendation Text */}
         <motion.p 
-          className="text-base text-gray-700 leading-relaxed mb-5 flex-grow relative z-10 font-medium"
+          className="text-base text-gray-700 leading-relaxed mb-6 flex-grow relative z-10 font-medium"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: index * 0.08 + 0.4, duration: 0.5 }}
           viewport={{ once: true }}
-          style={{ fontSize: '15px' }}
+          style={{ fontSize: '15px', lineHeight: '1.75' }}
         >
           <span className="text-cyan-600 text-2xl font-serif leading-none mr-1">&ldquo;</span>
           {recommendation.recommendation}
@@ -273,7 +273,7 @@ export default function Recommendations() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       {/* Section Header */}
       <motion.div 
-        className="text-center mb-12"
+        className="text-center mb-16"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -308,10 +308,10 @@ export default function Recommendations() {
       </motion.div>
 
       {/* Vertical Tab Layout: Left Panel + Right Content */}
-      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 min-h-[600px]">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 min-h-[600px]">
         {/* Left Sidebar - Vertical Tabs */}
-        <div className="flex-shrink-0 w-full lg:w-64">
-          <div className="flex lg:flex-col gap-2 lg:gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 lg:sticky lg:top-24">
+        <div className="flex-shrink-0 w-full lg:w-72">
+          <div className="flex lg:flex-col gap-3 lg:gap-4 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 lg:sticky lg:top-24">
             {tabLabels.map((tab, index) => {
               const isActive = displayTab === tab.key;
               return (
@@ -376,7 +376,7 @@ export default function Recommendations() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 lg:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
           >
             {currentRecommendations.map((recommendation, index) => (
               <RecommendationCard

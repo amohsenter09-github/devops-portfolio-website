@@ -29,8 +29,8 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden" style={{ maxWidth: '100vw' }}>
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 text-center w-full flex flex-col items-center justify-center border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
+      <section className="relative py-32 md:py-40 text-center w-full flex flex-col items-center justify-center border-b border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.h1 
             className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-3 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -80,7 +80,7 @@ export default function Home() {
 
           {/* Quantified Outcomes */}
           <motion.div 
-            className="flex flex-wrap justify-center items-center gap-8 mt-10 mb-8"
+            className="flex flex-wrap justify-center items-center gap-10 mt-16 mb-12"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
@@ -160,9 +160,9 @@ export default function Home() {
       </section>
 
       {/* Metrics Section */}
-      <section className="py-20 md:py-24 w-full flex items-center justify-center border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full">
-          <div className="mt-10 flex flex-wrap items-start justify-center gap-8">
+      <section className="py-28 md:py-36 w-full flex items-center justify-center border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="mt-12 flex flex-wrap items-start justify-center gap-12 md:gap-16">
             <motion.div 
               className="text-center px-4 group"
               initial={{ opacity: 0, y: 8 }}
@@ -212,16 +212,16 @@ export default function Home() {
           </div>
 
           {/* Trusted by Section - After Metrics */}
-          <div className="mt-24">
+          <div className="mt-32">
             <Marquee />
           </div>
         </div>
       </section>
 
       {/* Credentials & Trust Signals */}
-      <section className="py-16 w-full flex items-center justify-center border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
-          <div className="flex flex-wrap justify-center items-center gap-6 text-sm">
+      <section className="py-20 md:py-24 w-full flex items-center justify-center border-b border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-10 text-sm">
             <div className="flex items-center gap-2 text-gray-700">
               <Award className="w-4 h-4 text-cyan-600" />
               <span>AWS Certified</span>
@@ -243,22 +243,22 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section id="featured-projects" className="py-20 md:py-24 w-full flex items-center justify-center border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
+      <section id="featured-projects" className="py-28 md:py-36 w-full flex items-center justify-center border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Featured Projects
             </h2>
-            <p className="text-gray-600 text-sm">$300K - $500K project range • Enterprise scale</p>
+            <p className="text-gray-600 text-base">$300K - $500K project range • Enterprise scale</p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-auto mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mx-auto">
             {featuredProjects.slice(0, 2).map((project, index) => {
               const impact = projectImpacts[project.slug];
               return (
                 <motion.div 
                   key={project.slug}
-                  className="rounded-2xl bg-white shadow-sm border border-gray-100 p-6 group cursor-pointer hover:shadow-xl hover:border-cyan-300 transition-shadow transition-colors duration-300"
+                  className="rounded-2xl bg-white shadow-sm border border-gray-100 p-8 lg:p-10 group cursor-pointer hover:shadow-xl hover:border-cyan-300 transition-shadow transition-colors duration-300"
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   whileHover={{ 
@@ -281,59 +281,59 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.25 }}
                 >
                   <motion.div 
-                    className="md:min-h-[280px] flex flex-col"
+                    className="flex flex-col"
                     whileHover={{ transition: { duration: 0.2 } }}
                   >
                     {/* Project Header with Icon */}
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-3">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-center gap-4">
                         <motion.div 
-                          className="w-10 h-10 rounded-lg bg-cyan-100 flex items-center justify-center"
+                          className="w-12 h-12 rounded-xl bg-cyan-100 flex items-center justify-center flex-shrink-0"
                           whileHover={{ 
                             scale: 1.1,
                             rotate: [0, -5, 5, 0],
                             transition: { duration: 0.3 }
                           }}
                         >
-                          <Zap className="w-5 h-5 text-cyan-600" />
+                          <Zap className="w-6 h-6 text-cyan-600" />
                         </motion.div>
                         <div>
-                          <h3 className="font-semibold text-lg text-gray-900 group-hover:text-cyan-600 transition-colors">
+                          <h3 className="font-semibold text-xl text-gray-900 group-hover:text-cyan-600 transition-colors mb-2">
                             {project.title}
                           </h3>
                           {impact && (
-                            <div className="flex items-center gap-1 mt-1">
+                            <div className="flex items-center gap-2">
                               {impact.icon}
-                              <span className="text-xs text-cyan-600 font-medium">{impact.value}</span>
-                              <span className="text-xs text-gray-500">• {impact.metric}</span>
+                              <span className="text-sm text-cyan-600 font-semibold">{impact.value}</span>
+                              <span className="text-sm text-gray-500">• {impact.metric}</span>
                             </div>
                           )}
                         </div>
                       </div>
-                      <span className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded">2024</span>
+                      <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full font-medium">2024</span>
                     </div>
 
-                    <p className="text-gray-600 text-sm mb-4 flex-grow leading-relaxed">
+                    <p className="text-gray-700 text-base mb-6 flex-grow leading-relaxed">
                       {project.summary}
                     </p>
 
                     {/* Key Achievements */}
-                    <div className="mb-4 space-y-1">
-                      <div className="flex items-center gap-2 text-xs text-gray-600">
-                        <CheckCircle2 className="w-3 h-3 text-green-600" />
+                    <div className="mb-6 space-y-2.5">
+                      <div className="flex items-center gap-3 text-sm text-gray-700">
+                        <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
                         <span>99.9% uptime achieved</span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-gray-600">
-                        <TrendingUp className="w-3 h-3 text-blue-600" />
+                      <div className="flex items-center gap-3 text-sm text-gray-700">
+                        <TrendingUp className="w-4 h-4 text-blue-600 flex-shrink-0" />
                         <span>70% faster deployments</span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-gray-600">
-                        <DollarSign className="w-3 h-3 text-green-600" />
+                      <div className="flex items-center gap-3 text-sm text-gray-700">
+                        <DollarSign className="w-4 h-4 text-green-600 flex-shrink-0" />
                         <span>60% cost reduction</span>
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2.5 mb-6">
                       {project.tags.slice(0, 4).map((tag) => (
                         <span 
                           key={tag} 
@@ -362,10 +362,10 @@ export default function Home() {
             })}
           </div>
 
-          <div className="text-center mt-10">
+          <div className="text-center mt-16">
             <Link 
               href="/projects" 
-              className="inline-flex items-center gap-2 rounded-full bg-cyan-600 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-cyan-600 px-8 py-3 text-sm font-medium text-white hover:bg-cyan-500 transition-colors shadow-sm hover:shadow-md"
             >
               View All Projects
               <ArrowRight className="w-4 h-4" />
@@ -375,12 +375,12 @@ export default function Home() {
       </section>
 
       {/* Client Recommendations */}
-      <section className="py-20 md:py-24 w-full flex items-center justify-center border-b border-gray-200">
+      <section className="py-28 md:py-36 w-full flex items-center justify-center border-b border-gray-200">
         <Recommendations />
       </section>
 
       {/* Enhanced CTA Section */}
-      <section className="py-20 md:py-24 w-full flex items-center justify-center bg-gray-50">
+      <section className="py-32 md:py-40 w-full flex items-center justify-center bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
