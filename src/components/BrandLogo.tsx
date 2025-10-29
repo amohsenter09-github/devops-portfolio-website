@@ -16,7 +16,23 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
     );
   }
   
-  // 2) Then try Clearbit by domain
+  // 2) Try custom logo URL if provided
+  if (brand.logoUrl && !imageError) {
+    return (
+      <div className="relative h-10 w-[140px] opacity-60 hover:opacity-80 transition-opacity">
+        <Image
+          src={brand.logoUrl}
+          alt={brand.name}
+          fill
+          className="object-contain"
+          sizes="140px"
+          onError={() => setImageError(true)}
+        />
+      </div>
+    );
+  }
+  
+  // 3) Then try Clearbit by domain
   if (brand.domain && !imageError) {
     return (
       <div className="relative h-10 w-[120px] opacity-60 hover:opacity-80 transition-opacity">
@@ -32,7 +48,7 @@ export default function BrandLogo({ brand }: { brand: Brand }) {
     );
   }
   
-  // 3) Text fallback (if no icon, or image failed to load)
+  // 4) Text fallback (if no icon, or image failed to load)
   return (
     <div className="flex h-10 items-center justify-center px-3 text-sm text-gray-600 font-medium whitespace-nowrap">
       {brand.name}
