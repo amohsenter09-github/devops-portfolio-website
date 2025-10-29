@@ -106,6 +106,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
           whileInView={{ opacity: 1 }}
           transition={{ delay: index * 0.08 + 0.4, duration: 0.5 }}
           viewport={{ once: true }}
+          style={{ fontSize: '15px' }}
         >
           <span className="text-cyan-600 text-2xl font-serif leading-none mr-1">&ldquo;</span>
           {recommendation.recommendation}
@@ -212,25 +213,56 @@ export default function Recommendations() {
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
-  // Organize recommendations by year (newest to oldest)
+  // Organize recommendations by quality/tier (C-Level, Founders, Senior Leadership, Technical Leaders, Peer)
+  const isCLevelOrFounder = (position: string, company: string) => {
+    const pos = position.toLowerCase();
+    const comp = company.toLowerCase();
+    return pos.includes('ceo') || pos.includes('cto') || pos.includes('founder') || 
+           pos.includes('chief') || comp.includes('founder') || pos.includes('co-founder');
+  };
+
+  const isSeniorLeadership = (position: string) => {
+    const pos = position.toLowerCase();
+    return pos.includes('director') || pos.includes('vp') || pos.includes('vice president') ||
+           pos.includes('head of') || pos.includes('senior manager');
+  };
+
+  const isTechnicalLeader = (position: string) => {
+    const pos = position.toLowerCase();
+    return pos.includes('architect') || pos.includes('lead') || pos.includes('principal') ||
+           pos.includes('solutions architect') || pos.includes('engineering leader');
+  };
+
   const organizedRecommendations = {
-    "2025": site.recommendations.filter(r => r.date.startsWith("2025")),
-    "2023-2024": site.recommendations.filter(r => r.date.startsWith("2023") || r.date.startsWith("2024")),
-    "2020-2022": site.recommendations.filter(r => {
-      const year = parseInt(r.date.substring(0, 4));
-      return year >= 2020 && year <= 2022;
-    }),
-    "2016-2019": site.recommendations.filter(r => {
-      const year = parseInt(r.date.substring(0, 4));
-      return year >= 2016 && year <= 2019;
-    }),
+    "executive": site.recommendations.filter(r => 
+      isCLevelOrFounder(r.position, r.company) || 
+      r.name.includes("Brent Carrara") || // CTO
+      r.name.includes("Rachel Collins") || // CEO
+      r.name.includes("Ahmad Fathy") || // Founder
+      r.position.includes("CEO") ||
+      r.position.includes("CTO") ||
+      r.position.includes("Founder")
+    ),
+    "senior-leadership": site.recommendations.filter(r => 
+      isSeniorLeadership(r.position) && !isCLevelOrFounder(r.position, r.company)
+    ),
+    "technical-leaders": site.recommendations.filter(r => 
+      isTechnicalLeader(r.position) && 
+      !isCLevelOrFounder(r.position, r.company) && 
+      !isSeniorLeadership(r.position)
+    ),
+    "peer-colleagues": site.recommendations.filter(r => 
+      !isCLevelOrFounder(r.position, r.company) && 
+      !isSeniorLeadership(r.position) && 
+      !isTechnicalLeader(r.position)
+    ),
   };
 
   const tabLabels = [
-    { key: "2025", label: "2025", count: organizedRecommendations["2025"].length },
-    { key: "2023-2024", label: "2023-2024", count: organizedRecommendations["2023-2024"].length },
-    { key: "2020-2022", label: "2020-2022", count: organizedRecommendations["2020-2022"].length },
-    { key: "2016-2019", label: "2016-2019", count: organizedRecommendations["2016-2019"].length },
+    { key: "executive", label: "Executive & C-Level", count: organizedRecommendations["executive"].length, icon: "👔" },
+    { key: "senior-leadership", label: "Senior Leadership", count: organizedRecommendations["senior-leadership"].length, icon: "🎯" },
+    { key: "technical-leaders", label: "Technical Leaders", count: organizedRecommendations["technical-leaders"].length, icon: "⚡" },
+    { key: "peer-colleagues", label: "Peer Colleagues", count: organizedRecommendations["peer-colleagues"].length, icon: "🤝" },
   ];
 
   // Determine which tab content to show (hovered takes priority, then active, then first)
@@ -308,6 +340,7 @@ export default function Recommendations() {
                   viewport={{ once: true }}
                 >
                   <div className="flex items-center gap-3">
+                    <span className="text-lg">{tab.icon}</span>
                     <span className="relative z-10 font-medium">
                       {tab.label}
                     </span>
