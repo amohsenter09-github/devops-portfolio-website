@@ -69,51 +69,41 @@ export default function Home() {
             Senior DevOps & Cloud Platform Engineer
           </motion.h2>
 
-          {/* Navigation Tabs under Amr Fathy */}
-          <motion.div 
-            className="w-full mb-8 mt-6"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-          >
-            <nav className="flex flex-wrap justify-center gap-6 lg:gap-8 items-center w-full relative z-10">
+          {/* Navigation Tabs under Amr Fathy - Always Visible */}
+          <div className="w-full mb-8 mt-8 relative z-20">
+            <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 items-center w-full" role="navigation">
               <Link 
                 href="/" 
-                className="text-base font-semibold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2 rounded-lg hover:bg-gray-100 border border-transparent hover:border-gray-200"
-                style={{ color: 'rgb(17, 24, 39)' }}
+                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
               >
                 Home
               </Link>
               <Link 
                 href="/designs" 
-                className="text-base font-semibold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2 rounded-lg hover:bg-gray-100 border border-transparent hover:border-gray-200"
-                style={{ color: 'rgb(17, 24, 39)' }}
+                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
               >
                 Designs
               </Link>
               <Link 
                 href="/blog" 
-                className="text-base font-semibold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2 rounded-lg hover:bg-gray-100 border border-transparent hover:border-gray-200"
-                style={{ color: 'rgb(17, 24, 39)' }}
+                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
               >
                 Blog
               </Link>
               <Link 
                 href="/about" 
-                className="text-base font-semibold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2 rounded-lg hover:bg-gray-100 border border-transparent hover:border-gray-200"
-                style={{ color: 'rgb(17, 24, 39)' }}
+                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
               >
                 About
               </Link>
               <Link 
                 href="/contact" 
-                className="text-base font-semibold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2 rounded-lg hover:bg-gray-100 border border-transparent hover:border-gray-200"
-                style={{ color: 'rgb(17, 24, 39)' }}
+                className="text-base font-bold text-gray-900 hover:text-cyan-600 transition-colors px-4 py-2.5 rounded-lg hover:bg-gray-100 border-2 border-gray-200 hover:border-cyan-300 bg-white shadow-sm hover:shadow-md"
               >
                 Contact
               </Link>
             </nav>
-          </motion.div>
+          </div>
           
           <motion.p 
             className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700 mb-6 text-center"
