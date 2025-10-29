@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { site } from "@/lib/siteConfig";
 
 const links = [
   { href: "/", label: "Home" },
@@ -47,6 +49,20 @@ export default function Nav() {
               </motion.li>
             ))}
           </ul>
+          
+          {/* LinkedIn Icon */}
+          <motion.a
+            href={site.contact.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            className="text-white/80 hover:text-white transition-colors duration-200"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Linkedin size={24} />
+          </motion.a>
+          
           <ThemeToggle />
         </div>
       </nav>

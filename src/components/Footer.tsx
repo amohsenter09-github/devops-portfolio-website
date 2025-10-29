@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="mt-16 border-t border-white/10">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 text-center">
+      <div className="mx-auto max-w-6xl px-6 py-8 text-center">
         <p className="text-sm text-slate-400">
           © {new Date().getFullYear()} Amr Fathy — infra-ai-art.delivery
         </p>
