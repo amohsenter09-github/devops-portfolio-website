@@ -6,94 +6,93 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export default function Designs() {
   return (
-    <div className="w-full">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="space-y-12"
-      >
-        {/* Header Section - Centered */}
-        <motion.section 
-          className="py-20"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-        >
-          <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
-            <h1 className="text-3xl font-semibold text-white">
+    <div className="w-full min-h-screen bg-white">
+      {/* Header Section */}
+      <section className="py-16 md:py-20 w-full flex items-center justify-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center space-y-6"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
               DevOps Designs & Architecture
             </h1>
 
-            <p className="text-white/80 text-lg leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Visual representations of my DevOps processes, infrastructure designs, and system architectures. 
               These interactive diagrams showcase my approach to cloud infrastructure, automation, and observability 
               using professional brand icons and scalable vector graphics.
             </p>
 
-            <div className="border-t border-white/10 my-6 mx-auto w-1/3"></div>
+            <div className="border-t border-gray-200 my-6 mx-auto w-1/3"></div>
 
-            <h2 className="text-2xl font-semibold text-white">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
               Interactive Architecture Diagrams
             </h2>
 
-            <p className="text-white/70 text-base leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Professional architecture diagrams showing system design, data flow, and component relationships. 
               These interactive diagrams highlight my approach to building scalable, observable, and automated systems.
             </p>
-          </div>
-        </motion.section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Architecture Diagrams */}
-        <div className="px-4">
+      {/* Architecture Diagrams */}
+      <section className="py-12 md:py-16 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <DevOpsDiagrams />
         </div>
+      </section>
 
-        {/* Design Process - Centered */}
-        <section className="py-12">
-          <div className="max-w-6xl mx-auto px-4">
-            <Card>
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl md:text-3xl mb-4">Design Process & Methodology</CardTitle>
-                <CardDescription className="text-base max-w-3xl mx-auto">
-                  My systematic approach to creating robust, scalable infrastructure solutions
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                  <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mx-auto">
-                      <span className="text-3xl font-bold text-blue-600">1</span>
-                    </div>
-                    <h3 className="font-semibold text-xl">Research & Analysis</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Understanding requirements, constraints, and existing systems before designing solutions.
-                    </p>
+      {/* Design Process - Centered */}
+      <section className="py-16 md:py-20 w-full flex items-center justify-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <Card className="rounded-2xl border border-gray-200 bg-white hover:border-gray-300 hover:shadow-xl transition-all duration-300">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                Design Process & Methodology
+              </CardTitle>
+              <CardDescription className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+                My systematic approach to creating robust, scalable infrastructure solutions
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mt-10">
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto">
+                    <span className="text-3xl font-bold text-blue-600">1</span>
                   </div>
-                  <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mx-auto">
-                      <span className="text-3xl font-bold text-purple-600">2</span>
-                    </div>
-                    <h3 className="font-semibold text-xl">Architecture Design</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Creating scalable, secure, and maintainable infrastructure designs using industry best practices.
-                    </p>
-                  </div>
-                  <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mx-auto">
-                      <span className="text-3xl font-bold text-green-600">3</span>
-                    </div>
-                    <h3 className="font-semibold text-xl">Implementation Planning</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Detailed implementation roadmaps with clear milestones and success metrics.
-                    </p>
-                  </div>
+                  <h3 className="font-bold text-xl text-gray-900">Research & Analysis</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Understanding requirements, constraints, and existing systems before designing solutions.
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-      </motion.div>
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mx-auto">
+                    <span className="text-3xl font-bold text-purple-600">2</span>
+                  </div>
+                  <h3 className="font-bold text-xl text-gray-900">Architecture Design</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Creating scalable, secure, and maintainable infrastructure designs using industry best practices.
+                  </p>
+                </div>
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mx-auto">
+                    <span className="text-3xl font-bold text-green-600">3</span>
+                  </div>
+                  <h3 className="font-bold text-xl text-gray-900">Implementation Planning</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Detailed implementation roadmaps with clear milestones and success metrics.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
     </div>
   );
 }
