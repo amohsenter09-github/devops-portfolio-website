@@ -4,7 +4,16 @@ import { motion } from "framer-motion";
 import React from "react";
 import {
   SiAmazon,
-  SiKubernetes
+  SiAmazoncloudwatch,
+  SiKubernetes,
+  SiPrometheus,
+  SiGrafana,
+  SiArgo,
+  SiRedis,
+  SiPostgresql,
+  SiDatadog,
+  SiSlack,
+  SiPagerduty
 } from "react-icons/si";
 import {
   Cloud,
@@ -13,7 +22,8 @@ import {
   Network,
   Lock,
   Server,
-  Zap
+  Zap,
+  Globe
 } from "lucide-react";
 
 type Node = {
@@ -25,32 +35,36 @@ type Node = {
   h: number;
   type: "group" | "service";
   icon?: React.ReactNode;
-  pill?: string; // e.g., 'prod', 'staging', 'sandbox'
-  highlight?: boolean; // For important nodes like ArgoCD
-  delay?: number; // Custom animation delay
-  region?: string; // Region label
+  pill?: string;
+  highlight?: boolean;
+  delay?: number;
+  region?: string;
 };
 
 type Edge = {
   id: string;
-  from: [number, number]; // x,y start
-  to: [number, number];   // x,y end
+  from: [number, number];
+  to: [number, number];
   color?: string;
-  speed?: number;         // lower=faster, typical 1.8–3.2
-  dash?: string;          // "8 8"
+  speed?: number;
+  dash?: string;
+  label?: string; // Connection label
 };
 
 const bg = {
   panel: "rgba(255,255,255,0.05)",
   stroke: "rgba(255,255,255,0.12)",
-  label: "rgb(203 213 225)", // slate-300
+  label: "rgb(203 213 225)",
 };
 
-// Animated arrow along a path
+// Animated arrow with label
 function AnimatedArrow({ edge, index }: { edge: Edge; index: number }) {
-  const { from, to, color = "#22d3ee", dash = "8 8", speed = 2 } = edge;
-  
+  const { from, to, color = "#22d3ee", dash = "8 8", speed = 2, label } = edge;
   const markerId = `arrowhead-${edge.id}`;
+  
+  // Calculate midpoint for label
+  const midX = (from[0] + to[0]) / 2;
+  const midY = (from[1] + to[1]) / 2;
   
   return (
     <g key={`arrow-${edge.id}`}>
@@ -80,13 +94,10 @@ function AnimatedArrow({ edge, index }: { edge: Edge; index: number }) {
         opacity={0.4}
       />
       
-      {/* Animated dot moving along the line */}
+      {/* Animated dot */}
       <motion.g
         initial={{ x: from[0], y: from[1] }}
-        animate={{
-          x: to[0],
-          y: to[1],
-        }}
+        animate={{ x: to[0], y: to[1] }}
         transition={{
           duration: speed,
           repeat: Infinity,
@@ -110,7 +121,7 @@ function AnimatedArrow({ edge, index }: { edge: Edge; index: number }) {
         <circle r={6} fill={color} opacity={0.3} />
       </motion.g>
       
-      {/* Arrow line with marker */}
+      {/* Arrow line */}
       <line
         x1={from[0]}
         y1={from[1]}
@@ -121,146 +132,153 @@ function AnimatedArrow({ edge, index }: { edge: Edge; index: number }) {
         markerEnd={`url(#${markerId})`}
         opacity={0.6}
       />
+      
+      {/* Connection label */}
+      {label && (
+        <g>
+          <rect
+            x={midX - label.length * 3}
+            y={midY - 8}
+            width={label.length * 6}
+            height={14}
+            fill="rgba(15, 23, 42, 0.8)"
+            rx={3}
+            stroke={color}
+            strokeWidth={1}
+            opacity={0.9}
+          />
+          <text
+            x={midX}
+            y={midY + 3}
+            fill={bg.label}
+            fontSize={9}
+            fontWeight={500}
+            textAnchor="middle"
+          >
+            {label}
+          </text>
+        </g>
+      )}
     </g>
   );
 }
 
 export default function AnimatedAwsInfra() {
-  // Expanded canvas for better organization: 1400x900
-  // Layout:
-  // Top: External (Route53, CloudFront, S3) -> Security (WAF)
-  // Left: Operations Account (us-west-2) - ArgoCD, VPN, Ops
-  // Center-Right: Application Accounts (ca-central-1) - Prod/Staging/Sandbox
-  // Bottom: Monitoring & Alerting (CloudWatch, SNS, Lambda, Slack/PagerDuty)
-
+  // Layout matching the reference diagram more closely
   const nodes: Node[] = [
-    // Top: External Access & Security
-    { id: "ext", label: "EXTERNAL ACCESS", x: 50, y: 40, w: 320, h: 140, type: "group" },
-    { id: "route53", label: "Route53 DNS", x: 70, y: 70, w: 85, h: 36, type: "service", icon: <Network className="w-4 h-4" /> },
-    { id: "cloudfront", label: "CloudFront CDN", x: 165, y: 70, w: 110, h: 36, type: "service", icon: <Cloud className="w-4 h-4" /> },
-    { id: "s3-static", label: "S3 (Static Assets)", x: 285, y: 70, w: 75, h: 36, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
+    // Top: External AWS Services
+    { id: "ext", label: "EXTERNAL AWS SERVICES", x: 50, y: 30, w: 350, h: 160, type: "group" },
+    { id: "route53", label: "Route53", x: 70, y: 60, w: 90, h: 36, type: "service", icon: <Globe className="w-4 h-4" /> },
+    { id: "cloudfront", label: "CloudFront", x: 170, y: 60, w: 100, h: 36, type: "service", icon: <Cloud className="w-4 h-4" /> },
+    { id: "s3-static", label: "S3 (static assets)", x: 280, y: 60, w: 100, h: 36, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
+    { id: "s3-portal", label: "portal-admin-app-production", x: 70, y: 110, w: 310, h: 32, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
 
-    { id: "sec", label: "SECURITY SERVICES", x: 390, y: 40, w: 180, h: 140, type: "group" },
-    { id: "waf", label: "AWS WAF", x: 410, y: 70, w: 140, h: 36, type: "service", icon: <Shield className="w-4 h-4" /> },
-    { id: "guardduty", label: "GuardDuty", x: 410, y: 115, w: 140, h: 36, type: "service", icon: <Lock className="w-4 h-4" /> },
+    // Security Services
+    { id: "sec", label: "SECURITY SERVICES", x: 420, y: 30, w: 200, h: 160, type: "group" },
+    { id: "waf", label: "WAF", x: 440, y: 60, w: 160, h: 36, type: "service", icon: <Shield className="w-4 h-4" /> },
+    { id: "guardduty", label: "GuardDuty", x: 440, y: 110, w: 160, h: 36, type: "service", icon: <Shield className="w-4 h-4" /> },
 
-    // Left: Operations Account (us-west-2)
-    { id: "ops-account", label: "OPERATIONS ACCOUNT (us-west-2)", x: 50, y: 200, w: 300, h: 200, type: "group", region: "us-west-2" },
-    { id: "ops-vpc", label: "Operations VPC", x: 70, y: 230, w: 260, h: 140, type: "group" },
-    { id: "argocd", label: "ArgoCD (HA)", x: 90, y: 260, w: 120, h: 38, type: "service", highlight: true, icon: <SiKubernetes className="w-4 h-4" /> },
-    { id: "vpn", label: "Aviatrix VPN", x: 220, y: 260, w: 90, h: 38, type: "service", icon: <Network className="w-4 h-4" /> },
-    { id: "ops-inst", label: "Ops EC2 Instances", x: 90, y: 310, w: 220, h: 38, type: "service", icon: <Server className="w-4 h-4" /> },
+    // Left: Operations (US-WEST-2)
+    { id: "ops-account", label: "OPERATIONS (US-WEST-2)", x: 50, y: 210, w: 300, h: 220, type: "group", region: "us-west-2" },
+    { id: "argocd", label: "ArgoCD (HA)", x: 70, y: 250, w: 130, h: 38, type: "service", highlight: true, icon: <SiArgo className="w-4 h-4" /> },
+    { id: "bastion-ops", label: "Bastion Hosts (m5.medium)", x: 210, y: 250, w: 130, h: 38, type: "service", icon: <Server className="w-4 h-4" /> },
+    { id: "mon-stack", label: "Monitoring Stack (Prometheus/Grafana)", x: 70, y: 300, w: 270, h: 38, type: "service", icon: <SiPrometheus className="w-4 h-4" /> },
+    { id: "vpn-ops", label: "Aviatrix VPN", x: 70, y: 350, w: 270, h: 38, type: "service", icon: <Network className="w-4 h-4" /> },
 
-    // Center-Right: Production Account (ca-central-1)
-    { id: "prod-account", label: "PRODUCTION ACCOUNT (ca-central-1)", x: 600, y: 40, w: 750, h: 280, type: "group", region: "ca-central-1" },
-    
-    // Production Network Layer
-    { id: "prod-net", label: "Network Layer", x: 620, y: 70, w: 230, h: 110, type: "group" },
-    { id: "prod-alb", label: "Application Load Balancer", x: 640, y: 100, w: 110, h: 32, type: "service", icon: <Network className="w-4 h-4" />, pill: "prod" },
-    { id: "prod-nat", label: "NAT Gateway", x: 760, y: 100, w: 75, h: 32, type: "service", icon: <Network className="w-4 h-4" /> },
-    
-    // Production Compute Layer
-    { id: "prod-compute", label: "Compute Layer", x: 620, y: 190, w: 230, h: 110, type: "group" },
-    { id: "prod-eks", label: "EKS Cluster (Bottlerocket)", x: 640, y: 220, w: 190, h: 36, type: "service", icon: <SiKubernetes className="w-4 h-4" />, pill: "prod" },
-    { id: "prod-pods", label: "Application Pods", x: 640, y: 265, w: 90, h: 28, type: "service", icon: <SiKubernetes className="w-4 h-4" /> },
-    { id: "prod-mon", label: "Prometheus/Grafana", x: 740, y: 265, w: 90, h: 28, type: "service", icon: <Zap className="w-4 h-4" /> },
-    
-    // Production Data Layer - Multiple Databases
-    { id: "prod-data", label: "Data Layer", x: 870, y: 70, w: 240, h: 230, type: "group" },
-    { id: "prod-rds1", label: "Aurora PostgreSQL", x: 890, y: 100, w: 100, h: 30, type: "service", icon: <Database className="w-4 h-4" /> },
-    { id: "prod-rds2", label: "Aurora PostgreSQL", x: 1000, y: 100, w: 100, h: 30, type: "service", icon: <Database className="w-4 h-4" /> },
-    { id: "prod-rds3", label: "Aurora PostgreSQL", x: 890, y: 135, w: 100, h: 30, type: "service", icon: <Database className="w-4 h-4" /> },
-    { id: "prod-rds4", label: "Aurora PostgreSQL", x: 1000, y: 135, w: 100, h: 30, type: "service", icon: <Database className="w-4 h-4" /> },
-    { id: "prod-redis1", label: "ElastiCache Redis", x: 890, y: 180, w: 100, h: 30, type: "service", icon: <Zap className="w-4 h-4" /> },
-    { id: "prod-redis2", label: "ElastiCache Redis", x: 1000, y: 180, w: 100, h: 30, type: "service", icon: <Zap className="w-4 h-4" /> },
-    { id: "prod-bastion", label: "Bastion Host", x: 890, y: 225, w: 210, h: 30, type: "service", icon: <Server className="w-4 h-4" /> },
-    
-    // Production Security & Monitoring
-    { id: "prod-sec", label: "Security & Monitoring", x: 1130, y: 70, w: 200, h: 110, type: "group" },
-    { id: "prod-cw", label: "CloudWatch", x: 1150, y: 100, w: 80, h: 32, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
-    { id: "prod-kms", label: "KMS", x: 1240, y: 100, w: 70, h: 32, type: "service", icon: <Lock className="w-4 h-4" /> },
-    { id: "prod-acm", label: "ACM Certificates", x: 1150, y: 140, w: 160, h: 32, type: "service", icon: <Lock className="w-4 h-4" /> },
+    // Top-Right: Production (CA-CENTRAL-1)
+    { id: "prod-account", label: "PRODUCTION (CA-CENTRAL-1)", x: 640, y: 30, w: 680, h: 270, type: "group", region: "ca-central-1" },
+    { id: "prod-alb", label: "ALB", x: 660, y: 70, w: 80, h: 36, type: "service", icon: <Network className="w-4 h-4" />, pill: "prod" },
+    { id: "prod-eks", label: "EKS (m5.xlarge x3)", x: 750, y: 70, w: 140, h: 36, type: "service", icon: <SiKubernetes className="w-4 h-4" />, pill: "prod" },
+    { id: "prod-rds", label: "Aurora PostgreSQL (db.r6g.large x3)", x: 900, y: 70, w: 200, h: 36, type: "service", icon: <SiPostgresql className="w-4 h-4" /> },
+    { id: "prod-redis", label: "Redis (cache.r6g.large x3)", x: 1110, y: 70, w: 180, h: 36, type: "service", icon: <SiRedis className="w-4 h-4" /> },
+    { id: "prod-cw", label: "CloudWatch", x: 660, y: 120, w: 100, h: 32, type: "service", icon: <SiAmazoncloudwatch className="w-4 h-4" /> },
+    { id: "prod-kms", label: "KMS", x: 770, y: 120, w: 70, h: 32, type: "service", icon: <Lock className="w-4 h-4" /> },
+    { id: "prod-s3", label: "S3 (api-internal-files-production)", x: 660, y: 165, w: 230, h: 32, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
 
-    // Staging Account (ca-central-1)
-    { id: "stg-account", label: "STAGING ACCOUNT (ca-central-1)", x: 600, y: 340, w: 750, h: 200, type: "group", region: "ca-central-1" },
-    { id: "stg-net", label: "Network", x: 620, y: 370, w: 110, h: 80, type: "group" },
-    { id: "stg-alb", label: "ALB", x: 640, y: 395, w: 70, h: 28, type: "service", icon: <Network className="w-4 h-4" />, pill: "staging" },
-    { id: "stg-compute", label: "Compute", x: 750, y: 370, w: 110, h: 80, type: "group" },
-    { id: "stg-eks", label: "EKS Cluster", x: 770, y: 395, w: 70, h: 28, type: "service", icon: <SiKubernetes className="w-4 h-4" />, pill: "staging" },
-    { id: "stg-data", label: "Data", x: 880, y: 370, w: 110, h: 80, type: "group" },
-    { id: "stg-rds", label: "Aurora PostgreSQL", x: 900, y: 395, w: 70, h: 28, type: "service", icon: <Database className="w-4 h-4" /> },
-    { id: "stg-redis", label: "ElastiCache Redis", x: 900, y: 430, w: 70, h: 28, type: "service", icon: <Zap className="w-4 h-4" /> },
-    { id: "stg-mon", label: "Monitoring", x: 1010, y: 370, w: 110, h: 80, type: "group" },
-    { id: "stg-cw", label: "CloudWatch", x: 1030, y: 395, w: 70, h: 28, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
+    // Mid-Right: Staging (CA-CENTRAL-1)
+    { id: "stg-account", label: "STAGING (CA-CENTRAL-1)", x: 640, y: 320, w: 680, h: 200, type: "group", region: "ca-central-1" },
+    { id: "stg-alb", label: "ALB", x: 660, y: 350, w: 80, h: 32, type: "service", icon: <Network className="w-4 h-4" />, pill: "staging" },
+    { id: "stg-eks", label: "EKS (m5.xlarge x3)", x: 750, y: 350, w: 140, h: 32, type: "service", icon: <SiKubernetes className="w-4 h-4" />, pill: "staging" },
+    { id: "stg-rds", label: "Aurora PostgreSQL (db.t3.medium x1)", x: 900, y: 350, w: 200, h: 32, type: "service", icon: <SiPostgresql className="w-4 h-4" /> },
+    { id: "stg-redis", label: "Redis (cache.t3.medium x1)", x: 1110, y: 350, w: 180, h: 32, type: "service", icon: <SiRedis className="w-4 h-4" /> },
+    { id: "stg-cw", label: "CloudWatch", x: 660, y: 395, w: 100, h: 32, type: "service", icon: <SiAmazoncloudwatch className="w-4 h-4" /> },
+    { id: "stg-kms", label: "KMS", x: 770, y: 395, w: 70, h: 32, type: "service", icon: <Lock className="w-4 h-4" /> },
+    { id: "stg-s3", label: "S3 (api-internal-files-staging)", x: 660, y: 440, w: 230, h: 32, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
 
-    // Sandbox Account (ca-central-1)
-    { id: "sbx-account", label: "SANDBOX ACCOUNT (ca-central-1)", x: 600, y: 560, w: 750, h: 160, type: "group", region: "ca-central-1" },
-    { id: "sbx-eks", label: "EKS Cluster", x: 620, y: 590, w: 90, h: 32, type: "service", icon: <SiKubernetes className="w-4 h-4" />, pill: "sandbox" },
-    { id: "sbx-rds", label: "Aurora PostgreSQL", x: 730, y: 590, w: 90, h: 32, type: "service", icon: <Database className="w-4 h-4" /> },
-    { id: "sbx-cw", label: "CloudWatch", x: 840, y: 590, w: 80, h: 32, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
+    // Bottom-Right: Sandbox (CA-CENTRAL-1)
+    { id: "sbx-account", label: "SANDBOX (CA-CENTRAL-1)", x: 640, y: 540, w: 680, h: 160, type: "group", region: "ca-central-1" },
+    { id: "sbx-eks", label: "EKS (t3.medium x2)", x: 660, y: 570, w: 130, h: 32, type: "service", icon: <SiKubernetes className="w-4 h-4" />, pill: "sandbox" },
+    { id: "sbx-rds", label: "Aurora PostgreSQL (db.t3.small x1)", x: 800, y: 570, w: 200, h: 32, type: "service", icon: <SiPostgresql className="w-4 h-4" /> },
+    { id: "sbx-redis", label: "Redis (cache.t3.small x1)", x: 1010, y: 570, w: 180, h: 32, type: "service", icon: <SiRedis className="w-4 h-4" /> },
+    { id: "sbx-cw", label: "CloudWatch", x: 660, y: 615, w: 100, h: 32, type: "service", icon: <SiAmazoncloudwatch className="w-4 h-4" /> },
+    { id: "sbx-kms", label: "KMS", x: 770, y: 615, w: 70, h: 32, type: "service", icon: <Lock className="w-4 h-4" /> },
 
-    // Bottom: Monitoring & Alerting (Centralized)
-    { id: "mon-account", label: "MONITORING & ALERTING", x: 50, y: 420, w: 480, h: 300, type: "group" },
-    { id: "central-cw", label: "CloudWatch (Centralized)", x: 70, y: 450, w: 140, h: 36, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
-    { id: "sns", label: "SNS Topics", x: 230, y: 450, w: 110, h: 36, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
-    { id: "lambda", label: "Lambda (CloudWatch → Slack)", x: 360, y: 450, w: 160, h: 36, type: "service", icon: <Zap className="w-4 h-4" /> },
-    { id: "s3-logs", label: "S3 (Logs/Archival)", x: 70, y: 500, w: 120, h: 36, type: "service", icon: <SiAmazon className="w-4 h-4" /> },
-    
-    // External Integrations
-    { id: "ext-int", label: "EXTERNAL INTEGRATIONS", x: 70, y: 560, w: 440, h: 140, type: "group" },
-    { id: "github", label: "GitHub Actions", x: 90, y: 590, w: 110, h: 32, type: "service", icon: <Server className="w-4 h-4" /> },
-    { id: "slack", label: "Slack Webhooks", x: 220, y: 590, w: 110, h: 32, type: "service", icon: <Zap className="w-4 h-4" /> },
-    { id: "pagerduty", label: "PagerDuty", x: 350, y: 590, w: 110, h: 32, type: "service", icon: <Shield className="w-4 h-4" /> },
+    // Bottom: Monitoring & Alerting
+    { id: "mon-alert", label: "MONITORING & ALERTING", x: 50, y: 450, w: 520, h: 250, type: "group" },
+    { id: "central-cw", label: "CloudWatch", x: 70, y: 480, w: 120, h: 36, type: "service", icon: <SiAmazoncloudwatch className="w-4 h-4" /> },
+    { id: "pagerduty", label: "PagerDuty", x: 210, y: 480, w: 110, h: 36, type: "service", icon: <SiPagerduty className="w-4 h-4" /> },
+    { id: "slack", label: "Slack", x: 340, y: 480, w: 90, h: 36, type: "service", icon: <SiSlack className="w-4 h-4" /> },
+    { id: "datadog", label: "Datadog", x: 450, y: 480, w: 100, h: 36, type: "service", icon: <SiDatadog className="w-4 h-4" /> },
   ];
 
   const edges: Edge[] = [
-    // External flow (blue - traffic)
-    { id: "r53-cf", from: [155, 88], to: [220, 88], color: "#22d3ee", dash: "8 8", speed: 2 },
-    { id: "cf-s3", from: [275, 88], to: [320, 88], color: "#22d3ee", dash: "8 8", speed: 2 },
-    { id: "s3-waf", from: [360, 88], to: [460, 88], color: "#22d3ee", dash: "8 8", speed: 2 },
-
-    // WAF -> Production ALB (traffic flow)
-    { id: "waf-prod", from: [580, 88], to: [695, 116], color: "#22d3ee", dash: "8 8", speed: 2.2 },
-    // WAF -> Staging ALB
-    { id: "waf-stg", from: [580, 88], to: [675, 409], color: "#22d3ee", dash: "8 8", speed: 2.2 },
-
-    // ALB -> EKS (application flow)
-    { id: "alb-prod-eks", from: [695, 116], to: [735, 238], color: "#60a5fa", dash: "8 8", speed: 2.5 },
-    { id: "alb-stg-eks", from: [675, 409], to: [805, 409], color: "#60a5fa", dash: "8 8", speed: 2.5 },
-
-    // EKS -> Databases (data access)
-    { id: "eks-prod-rds1", from: [830, 238], to: [940, 115], color: "#60a5fa", dash: "8 8", speed: 2.5 },
-    { id: "eks-prod-rds2", from: [830, 238], to: [1050, 115], color: "#60a5fa", dash: "8 8", speed: 2.5 },
-    { id: "eks-prod-redis", from: [830, 238], to: [945, 195], color: "#60a5fa", dash: "8 8", speed: 2.8 },
-    { id: "eks-stg-rds", from: [805, 409], to: [935, 409], color: "#60a5fa", dash: "8 8", speed: 2.5 },
-    { id: "eks-stg-redis", from: [805, 409], to: [935, 448], color: "#60a5fa", dash: "8 8", speed: 2.8 },
-    { id: "eks-sbx-rds", from: [665, 606], to: [775, 606], color: "#60a5fa", dash: "8 8", speed: 2.5 },
-
-    // ArgoCD -> All EKS clusters (purple - GitOps deployments)
-    { id: "argo-prod", from: [150, 279], to: [735, 238], color: "#a78bfa", dash: "6 6", speed: 1.8 },
-    { id: "argo-stg", from: [150, 279], to: [805, 409], color: "#a78bfa", dash: "6 6", speed: 1.8 },
-    { id: "argo-sbx", from: [150, 279], to: [665, 606], color: "#a78bfa", dash: "6 6", speed: 1.8 },
-
-    // GitHub -> Production (CI/CD)
-    { id: "gh-prod", from: [145, 606], to: [735, 238], color: "#8b5cf6", dash: "6 6", speed: 2.5 },
-
-    // Monitoring flows (gray - logs/metrics)
-    { id: "prod-cw-central", from: [1190, 116], to: [140, 468], color: "#94a3b8", dash: "8 8", speed: 2.6 },
-    { id: "stg-cw-central", from: [1065, 409], to: [140, 468], color: "#94a3b8", dash: "8 8", speed: 2.6 },
-    { id: "sbx-cw-central", from: [880, 606], to: [140, 468], color: "#94a3b8", dash: "8 8", speed: 2.6 },
-    { id: "prom-prod-cw", from: [785, 279], to: [1190, 116], color: "#94a3b8", dash: "8 8", speed: 2.8 },
-
-    // CloudWatch -> SNS -> Lambda -> Slack (alerting chain)
-    { id: "cw-sns", from: [210, 468], to: [285, 468], color: "#f59e0b", dash: "8 8", speed: 2.4 },
-    { id: "sns-lambda", from: [340, 468], to: [440, 468], color: "#f59e0b", dash: "8 8", speed: 2.4 },
-    { id: "lambda-slack", from: [520, 468], to: [275, 606], color: "#f59e0b", dash: "8 8", speed: 2.2 },
-    { id: "cw-pagerduty", from: [210, 468], to: [405, 606], color: "#f59e0b", dash: "8 8", speed: 2.4 },
+    // External flow with labels
+    { id: "r53-cf", from: [160, 78], to: [220, 78], color: "#22d3ee", dash: "8 8", speed: 2, label: "user access" },
+    { id: "cf-s3", from: [270, 78], to: [330, 78], color: "#22d3ee", dash: "8 8", speed: 2, label: "static assets" },
+    { id: "cf-waf", from: [320, 78], to: [480, 78], color: "#22d3ee", dash: "8 8", speed: 2, label: "CDN traffic" },
     
-    // Central CloudWatch -> S3 logs (archival)
-    { id: "cw-s3logs", from: [140, 468], to: [130, 518], color: "#94a3b8", dash: "8 8", speed: 2.4 },
+    // WAF to environments
+    { id: "waf-prod", from: [620, 78], to: [700, 88], color: "#22d3ee", dash: "8 8", speed: 2.2, label: "live traffic" },
+    { id: "waf-stg", from: [620, 78], to: [700, 366], color: "#22d3ee", dash: "8 8", speed: 2.2, label: "live traffic" },
+    
+    // ALB to EKS
+    { id: "alb-prod-eks", from: [700, 88], to: [820, 88], color: "#60a5fa", dash: "8 8", speed: 2.5, label: "app data" },
+    { id: "alb-stg-eks", from: [700, 366], to: [820, 366], color: "#60a5fa", dash: "8 8", speed: 2.5, label: "app data" },
+    
+    // EKS to Databases
+    { id: "eks-prod-rds", from: [820, 88], to: [950, 88], color: "#60a5fa", dash: "8 8", speed: 2.5, label: "app data" },
+    { id: "eks-prod-redis", from: [820, 88], to: [1200, 88], color: "#60a5fa", dash: "8 8", speed: 2.8, label: "cache" },
+    { id: "eks-stg-rds", from: [820, 366], to: [950, 366], color: "#60a5fa", dash: "8 8", speed: 2.5, label: "app data" },
+    { id: "eks-stg-redis", from: [820, 366], to: [1200, 366], color: "#60a5fa", dash: "8 8", speed: 2.8, label: "cache" },
+    { id: "eks-sbx-rds", from: [725, 586], to: [850, 586], color: "#60a5fa", dash: "8 8", speed: 2.5, label: "app data" },
+    { id: "eks-sbx-redis", from: [725, 586], to: [1100, 586], color: "#60a5fa", dash: "8 8", speed: 2.8, label: "cache" },
+    
+    // ArgoCD deployments (GitOps)
+    { id: "argo-prod", from: [135, 269], to: [820, 88], color: "#a78bfa", dash: "6 6", speed: 1.8, label: "deploy workloads" },
+    { id: "argo-stg", from: [135, 269], to: [820, 366], color: "#a78bfa", dash: "6 6", speed: 1.8, label: "deploy workloads" },
+    { id: "argo-sbx", from: [135, 269], to: [725, 586], color: "#a78bfa", dash: "6 6", speed: 1.8, label: "deploy workloads" },
+    
+    // VPN connections
+    { id: "vpn-prod", from: [340, 369], to: [820, 88], color: "#8b5cf6", dash: "6 6", speed: 2.2, label: "VPC peering" },
+    { id: "vpn-stg", from: [340, 369], to: [820, 366], color: "#8b5cf6", dash: "6 6", speed: 2.2, label: "VPC peering" },
+    { id: "vpn-sbx", from: [340, 369], to: [725, 586], color: "#8b5cf6", dash: "6 6", speed: 2.2, label: "VPC peering" },
+    
+    // GuardDuty to Monitoring
+    { id: "gd-mon", from: [540, 128], to: [205, 319], color: "#ef4444", dash: "8 8", speed: 2.4, label: "threat detection" },
+    
+    // Metrics to Monitoring Stack
+    { id: "prod-mon-stack", from: [820, 88], to: [205, 319], color: "#10b981", dash: "8 8", speed: 2.6, label: "metrics" },
+    { id: "stg-mon-stack", from: [820, 366], to: [205, 319], color: "#10b981", dash: "8 8", speed: 2.6, label: "metrics" },
+    { id: "sbx-mon-stack", from: [725, 586], to: [205, 319], color: "#10b981", dash: "8 8", speed: 2.6, label: "metrics" },
+    
+    // CloudWatch to Alerting
+    { id: "prod-cw-alert", from: [710, 136], to: [130, 498], color: "#94a3b8", dash: "8 8", speed: 2.6, label: "metrics" },
+    { id: "stg-cw-alert", from: [710, 411], to: [130, 498], color: "#94a3b8", dash: "8 8", speed: 2.6, label: "metrics" },
+    { id: "sbx-cw-alert", from: [710, 631], to: [130, 498], color: "#94a3b8", dash: "8 8", speed: 2.6, label: "metrics" },
+    
+    // CloudWatch to PagerDuty/Slack
+    { id: "cw-pagerduty", from: [130, 498], to: [265, 498], color: "#f59e0b", dash: "8 8", speed: 2.4, label: "alerting" },
+    { id: "cw-slack", from: [130, 498], to: [385, 498], color: "#f59e0b", dash: "8 8", speed: 2.4, label: "notifications" },
+    
+    // Monitoring Stack to Datadog
+    { id: "mon-datadog", from: [205, 319], to: [500, 498], color: "#10b981", dash: "8 8", speed: 2.6, label: "metrics" },
+    
+    // KMS encryption connections
+    { id: "kms-prod-rds", from: [805, 136], to: [950, 88], color: "#8b5cf6", dash: "6 6", speed: 2.5 },
+    { id: "kms-prod-redis", from: [805, 136], to: [1200, 88], color: "#8b5cf6", dash: "6 6", speed: 2.5 },
+    { id: "kms-prod-s3", from: [805, 136], to: [775, 181], color: "#8b5cf6", dash: "6 6", speed: 2.5 },
   ];
 
-  // Render a node
   const renderNode = (node: Node, index: number) => {
     const isGroup = node.type === "group";
     const delay = node.delay ?? index * 0.04;
@@ -309,12 +327,10 @@ export default function AnimatedAwsInfra() {
       );
     }
 
-    // Service node
     const hasHighlight = node.highlight;
     
     return (
       <g key={node.id}>
-        {/* Glow effect for highlighted nodes */}
         {hasHighlight && (
           <motion.rect
             x={node.x - 2}
@@ -364,7 +380,6 @@ export default function AnimatedAwsInfra() {
           style={{ cursor: "pointer" }}
         />
         
-        {/* Pill badge */}
         {node.pill && (
           <>
             <motion.rect
@@ -400,7 +415,6 @@ export default function AnimatedAwsInfra() {
           </>
         )}
         
-        {/* Icon */}
         {node.icon && (
           <foreignObject x={node.x + 6} y={node.y + (node.h - 16) / 2} width={16} height={16}>
             <div className="text-gray-300 flex items-center justify-center">
@@ -409,7 +423,6 @@ export default function AnimatedAwsInfra() {
           </foreignObject>
         )}
         
-        {/* Label */}
         <text
           x={node.x + (node.icon ? 26 : 8)}
           y={node.y + node.h / 2 + 5}
@@ -426,86 +439,24 @@ export default function AnimatedAwsInfra() {
   return (
     <div className="w-full max-w-[1400px] mx-auto rounded-2xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 p-6 md:p-8 overflow-hidden shadow-2xl border border-slate-800/50">
       <svg 
-        viewBox="0 0 1400 900" 
+        viewBox="0 0 1400 800" 
         className="w-full h-auto"
         style={{ minHeight: '600px' }}
       >
         <defs>
-          {/* Arrow markers */}
-          <marker
-            id="arrow-cyan"
-            markerWidth="8"
-            markerHeight="8"
-            refX="6"
-            refY="3"
-            orient="auto"
-            markerUnits="strokeWidth"
-          >
-            <path d="M0,0 L0,6 L8,3 Z" fill="#22d3ee" />
-          </marker>
-          <marker
-            id="arrow-purple"
-            markerWidth="8"
-            markerHeight="8"
-            refX="6"
-            refY="3"
-            orient="auto"
-            markerUnits="strokeWidth"
-          >
-            <path d="M0,0 L0,6 L8,3 Z" fill="#a78bfa" />
-          </marker>
-          <marker
-            id="arrow-blue"
-            markerWidth="8"
-            markerHeight="8"
-            refX="6"
-            refY="3"
-            orient="auto"
-            markerUnits="strokeWidth"
-          >
-            <path d="M0,0 L0,6 L8,3 Z" fill="#60a5fa" />
-          </marker>
-          <marker
-            id="arrow-gray"
-            markerWidth="8"
-            markerHeight="8"
-            refX="6"
-            refY="3"
-            orient="auto"
-            markerUnits="strokeWidth"
-          >
-            <path d="M0,0 L0,6 L8,3 Z" fill="#94a3b8" />
-          </marker>
-          <marker
-            id="arrow-orange"
-            markerWidth="8"
-            markerHeight="8"
-            refX="6"
-            refY="3"
-            orient="auto"
-            markerUnits="strokeWidth"
-          >
-            <path d="M0,0 L0,6 L8,3 Z" fill="#f59e0b" />
-          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
+          </pattern>
+          <radialGradient id="ambient-glow" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="rgba(167,139,250,0.1)" />
+            <stop offset="100%" stopColor="rgba(167,139,250,0)" />
+          </radialGradient>
         </defs>
 
-        {/* Background grid */}
-        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
-        </pattern>
         <rect width="100%" height="100%" fill="url(#grid)" opacity={0.6} />
-        
-        {/* Radial gradients for ambiance */}
-        <radialGradient id="ambient-glow" cx="50%" cy="50%">
-          <stop offset="0%" stopColor="rgba(167,139,250,0.1)" />
-          <stop offset="100%" stopColor="rgba(167,139,250,0)" />
-        </radialGradient>
         <rect width="100%" height="100%" fill="url(#ambient-glow)" opacity={0.3} />
 
-        {/* Render all nodes */}
         {nodes.map((node, index) => renderNode(node, index))}
-
-        {/* Render all animated edges */}
         {edges.map((edge, index) => (
           <AnimatedArrow key={edge.id} edge={edge} index={index} />
         ))}
