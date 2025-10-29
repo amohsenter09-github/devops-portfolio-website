@@ -266,15 +266,31 @@ export default function Home() {
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
             {/* CKA Certification */}
             <div className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200">
-              <div className="w-40 h-40 flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
-                <Image
-                  src="https://images.credly.com/size/340x340/images/8b8ed108-e77c-41ac-bdc1-9c600d3dd63d/Certified-Kubernetes-Administrator-Program.png"
-                  alt="Certified Kubernetes Administrator (CKA)"
-                  width={160}
-                  height={160}
-                  className="object-contain"
-                  unoptimized
-                />
+              <div className="w-40 h-40 flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border-2 border-blue-200">
+                <div className="text-center">
+                  <svg width="120" height="120" viewBox="0 0 120 120" className="mx-auto">
+                    {/* Kubernetes Ship Wheel Icon */}
+                    <circle cx="60" cy="60" r="55" fill="none" stroke="#326CE5" strokeWidth="3" />
+                    <circle cx="60" cy="60" r="40" fill="none" stroke="#326CE5" strokeWidth="2" />
+                    <circle cx="60" cy="60" r="25" fill="#326CE5" />
+                    {/* Spokes */}
+                    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+                      <line
+                        key={angle}
+                        x1="60"
+                        y1="60"
+                        x2={60 + 55 * Math.cos((angle * Math.PI) / 180)}
+                        y2={60 + 55 * Math.sin((angle * Math.PI) / 180)}
+                        stroke="#326CE5"
+                        strokeWidth="2"
+                      />
+                    ))}
+                    {/* CKA Text */}
+                    <text x="60" y="45" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#326CE5">CERTIFIED</text>
+                    <text x="60" y="60" textAnchor="middle" fontSize="14" fontWeight="bold" fill="white">kubernetes</text>
+                    <text x="60" y="75" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#326CE5">ADMINISTRATOR</text>
+                  </svg>
+                </div>
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold text-gray-900">Certified Kubernetes</div>
@@ -284,15 +300,17 @@ export default function Home() {
 
             {/* Terraform Associate Certification */}
             <div className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200">
-              <div className="w-40 h-40 flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
-                <Image
-                  src="https://images.credly.com/size/340x340/images/99289602-861e-4929-8273-773e63a2aa6d/HashiCorp-Certified-Terraform-Associate-Badge.png"
-                  alt="HashiCorp Certified: Terraform Associate"
-                  width={160}
-                  height={160}
-                  className="object-contain"
-                  unoptimized
-                />
+              <div className="w-40 h-40 flex items-center justify-center bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border-2 border-purple-200">
+                <div className="text-center">
+                  <svg width="120" height="120" viewBox="0 0 120 120" className="mx-auto">
+                    {/* HashiCorp Logo Style */}
+                    <rect x="30" y="30" width="60" height="60" rx="8" fill="#6034B3" />
+                    <path d="M45 45 L75 75 M75 45 L45 75" stroke="white" strokeWidth="4" strokeLinecap="round" />
+                    {/* Certification Badge Border */}
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#6034B3" strokeWidth="3" />
+                    <text x="60" y="95" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#6034B3">HASHICORP</text>
+                  </svg>
+                </div>
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold text-gray-900">HashiCorp Certified</div>
