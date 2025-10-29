@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'revolutiones.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.credly.com',
+      },
     ],
   },
   

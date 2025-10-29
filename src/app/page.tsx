@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { TrendingUp, DollarSign, Clock, Shield, Zap, Award, ArrowRight, CheckCircle2 } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -250,54 +251,74 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Professional Certifications - Prominent Position */}
+      <section className="py-24 md:py-32 w-full flex items-center justify-center bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="text-center mb-12">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+              Professional Certifications
+            </h3>
+            <p className="text-sm text-gray-600">
+              Verified expertise in cloud infrastructure and automation
+            </p>
+          </div>
+          
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {/* CKA Certification */}
+            <a
+              href="https://www.credly.com/users/amr-fathy/badges"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200"
+            >
+              <div className="relative w-32 h-32">
+                <Image
+                  src="https://images.credly.com/images/8b8ed108-e77c-41ac-bdc1-9c600d3dd63d/blob.png"
+                  alt="Certified Kubernetes Administrator (CKA)"
+                  fill
+                  className="object-contain"
+                  sizes="128px"
+                />
+              </div>
+              <div className="text-center">
+                <div className="text-sm font-semibold text-gray-900">Certified Kubernetes</div>
+                <div className="text-xs text-gray-600">Administrator</div>
+              </div>
+            </a>
+
+            {/* Terraform Associate Certification */}
+            <a
+              href="https://www.credly.com/users/amr-fathy/badges"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200"
+            >
+              <div className="relative w-32 h-32">
+                <Image
+                  src="https://images.credly.com/images/99289602-861e-4929-8273-773e63a2aa6d/blob.png"
+                  alt="HashiCorp Certified: Terraform Associate"
+                  fill
+                  className="object-contain"
+                  sizes="128px"
+                />
+              </div>
+              <div className="text-center">
+                <div className="text-sm font-semibold text-gray-900">HashiCorp Certified</div>
+                <div className="text-xs text-gray-600">Terraform Associate</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Credentials & Trust Signals */}
       <section className="py-24 md:py-28 w-full flex items-center justify-center">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 mb-8">
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">AWS Certified</span>
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Kubernetes Expert</span>
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Security Best Practices</span>
             <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">GitOps Specialist</span>
-          </div>
-          
-          {/* Professional Certifications */}
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            <h3 className="text-center text-sm font-semibold text-gray-600 uppercase tracking-wide mb-6">
-              Professional Certifications
-            </h3>
-            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
-              {/* CKA Certification */}
-              <a
-                href="https://www.credly.com/users/amr-fathy/badges"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 p-4 rounded-xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200"
-              >
-                <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-sm">
-                  <span className="text-white font-bold text-xs text-center leading-tight">CKA</span>
-                </div>
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-gray-900">Certified Kubernetes</div>
-                  <div className="text-xs text-gray-600">Administrator</div>
-                </div>
-              </a>
-
-              {/* Terraform Certification */}
-              <a
-                href="https://www.credly.com/users/amr-fathy/badges"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 p-4 rounded-xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200"
-              >
-                <div className="w-24 h-24 rounded-lg bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-sm">
-                  <span className="text-white font-bold text-xs text-center leading-tight">Terraform</span>
-                </div>
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-gray-900">HashiCorp Certified</div>
-                  <div className="text-xs text-gray-600">Terraform Associate</div>
-                </div>
-              </a>
-            </div>
           </div>
         </div>
       </section>
