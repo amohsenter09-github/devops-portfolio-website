@@ -279,16 +279,17 @@ export default function Home() {
               return (
                 <motion.div 
                   key={project.slug}
-                  className="rounded-2xl bg-white shadow-sm p-8 lg:p-10 group cursor-pointer hover:shadow-md hover:bg-gray-50 transition-all duration-200"
+                  className="relative rounded-2xl bg-white shadow-sm p-8 lg:p-10 group cursor-pointer overflow-hidden"
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   whileHover={{ 
-                    y: -4,
+                    y: -6,
+                    scale: 1.02,
                     transition: { 
                       type: "spring", 
                       stiffness: 300, 
                       damping: 20,
-                      duration: 0.3
+                      duration: 0.4
                     }
                   }}
                   transition={{ 
@@ -300,29 +301,85 @@ export default function Home() {
                   }}
                   viewport={{ once: true, amount: 0.25 }}
                 >
-                  <div className="flex flex-col">
+                  {/* Animated glow effect on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, transparent 60%), linear-gradient(225deg, rgba(147, 51, 234, 0.08) 0%, transparent 50%)",
+                      filter: "blur(20px)",
+                    }}
+                    animate={{
+                      opacity: [0, 0.6, 0.4],
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  {/* Border glow effect */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 pointer-events-none"
+                    style={{
+                      border: "2px solid transparent",
+                      background: "linear-gradient(white, white) padding-box, linear-gradient(135deg, rgba(147, 51, 234, 0.4), rgba(147, 51, 234, 0.2)) border-box",
+                    }}
+                  />
+                  <div className="flex flex-col relative z-10">
                     {/* Project Header with Icon */}
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0">
-                        <Zap className="w-6 h-6 text-gray-600" />
-                      </div>
+                    <motion.div 
+                      className="flex items-start gap-4 mb-6"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.15 + 0.2 }}
+                      viewport={{ once: true }}
+                    >
+                      <motion.div 
+                        className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-50 transition-colors"
+                        whileHover={{ 
+                          scale: 1.1,
+                          rotate: [0, -5, 5, 0],
+                          transition: { duration: 0.3 }
+                        }}
+                      >
+                        <Zap className="w-6 h-6 text-gray-600 group-hover:text-purple-600 transition-colors" />
+                      </motion.div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-xl text-gray-900 mb-2">
+                        <motion.h3 
+                          className="font-semibold text-xl text-gray-900 mb-2 group-hover:text-purple-700 transition-colors"
+                          initial={{ opacity: 0, y: 5 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.15 + 0.3 }}
+                          viewport={{ once: true }}
+                        >
                           {project.title}
-                        </h3>
+                        </motion.h3>
                         {impact && (
-                          <div className="flex items-center gap-2">
+                          <motion.div 
+                            className="flex items-center gap-2"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: index * 0.15 + 0.4 }}
+                            viewport={{ once: true }}
+                          >
                             {impact.icon}
                             <span className="text-sm text-gray-700 font-semibold">{impact.value}</span>
                             <span className="text-sm text-gray-500">• {impact.metric}</span>
-                          </div>
+                          </motion.div>
                         )}
                       </div>
-                    </div>
+                    </motion.div>
 
-                    <p className="text-gray-700 text-base mb-6 flex-grow leading-relaxed">
+                    <motion.p 
+                      className="text-gray-700 text-base mb-6 flex-grow leading-relaxed"
+                      initial={{ opacity: 0, y: 5 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.15 + 0.4 }}
+                      viewport={{ once: true }}
+                    >
                       {project.summary}
-                    </p>
+                    </motion.p>
 
                     {/* Key Achievements - Project Specific */}
                     {projectAchievements[project.slug] && (
@@ -348,15 +405,35 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
-                    <div className="mt-auto">
+                    <motion.div 
+                      className="mt-auto"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: index * 0.15 + 0.5 }}
+                      viewport={{ once: true }}
+                    >
                       <Link 
                         href={`/projects#${project.slug}`}
-                        className="text-gray-700 hover:text-cyan-700 text-sm font-medium transition-colors inline-flex items-center gap-2"
+                        className="text-gray-700 group-hover:text-purple-600 text-sm font-medium transition-colors inline-flex items-center gap-2"
                       >
-                        View Full Case Study
-                        <ArrowRight className="w-4 h-4" />
+                        <motion.span
+                          whileHover={{ x: 2 }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          Learn more
+                        </motion.span>
+                        <motion.span
+                          animate={{ x: [0, 4, 0] }}
+                          transition={{ 
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        >
+                          →
+                        </motion.span>
                       </Link>
-                    </div>
+                    </motion.div>
                   </div>
                 </motion.div>
               );
