@@ -13,6 +13,8 @@ interface Recommendation {
   recommendation: string;
   rating: number;
   date: string;
+  projectValue?: string;
+  businessImpact?: string;
 }
 
 interface RecommendationCardProps {
@@ -32,7 +34,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
       }}
       viewport={{ once: true, amount: 0.25 }}
     >
-      <div className="h-full rounded-2xl bg-white shadow-sm border border-gray-100 p-6">
+      <div className="h-full rounded-2xl bg-white shadow-sm border border-gray-100 p-6 flex flex-col">
         {/* Rating Stars */}
         <div className="flex gap-1 mb-4">
           {[...Array(recommendation.rating)].map((_, i) => (
@@ -45,12 +47,21 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         </div>
         
         {/* Recommendation Text */}
-        <p className="text-base text-gray-600 leading-relaxed mb-6">
+        <p className="text-base text-gray-600 leading-relaxed mb-4 flex-grow">
           &ldquo;{recommendation.recommendation}&rdquo;
         </p>
+
+        {/* Project Value Badge */}
+        {recommendation.projectValue && (
+          <div className="mb-4 px-3 py-1.5 bg-cyan-50 border border-cyan-200 rounded-lg inline-flex items-center gap-2 self-start">
+            <span className="text-xs font-medium text-cyan-700">
+              Project Value: {recommendation.projectValue}
+            </span>
+          </div>
+        )}
         
         {/* Author Info */}
-        <div className="flex items-center pt-4">
+        <div className="flex items-center pt-4 mt-auto border-t border-gray-100">
           <div className="w-10 h-10 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-700 font-semibold text-sm mr-3 flex-shrink-0">
             {recommendation.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
           </div>
