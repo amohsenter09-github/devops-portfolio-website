@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Recommendations from "@/components/Recommendations";
 import Marquee from "@/components/Marquee";
+import FloatingAboutTab from "@/components/FloatingAboutTab";
 import { site } from "@/lib/siteConfig";
 
 export default function Home() {
@@ -34,8 +35,8 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Building Scalable Infrastructure
-              <span className="block mt-2 text-gray-700">with DevOps Precision</span>
+              Amr Fathy
+              <span className="block mt-2 text-gray-700">Senior DevOps & Cloud Platform Engineer</span>
             </motion.h1>
             
             <motion.p 
@@ -314,6 +315,49 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* About Me Section */}
+      <section id="about" className="relative z-10 py-16 md:py-20 w-full flex items-center justify-center border-t border-gray-200 bg-gray-50/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">About Me</h2>
+            <div className="max-w-4xl mx-auto space-y-6 text-gray-700 leading-relaxed">
+              <p className="text-lg">
+                I&apos;m Amr Fathy — a Senior DevOps and Cloud Platform Engineer who designs, builds, and operates scalable infrastructure across AWS and Kubernetes environments.
+              </p>
+              <p>
+                With over a decade of hands-on experience, I specialize in creating reliable, automated, and observable cloud platforms that empower engineering teams to deliver with speed and confidence.
+              </p>
+              <p>
+                I&apos;ve led multi-account AWS replatforming initiatives for <strong className="text-gray-900">AVIV Group (Immowelt & Immonet)</strong>, implemented observability and GitOps standards for <strong className="text-gray-900">Cybrid</strong>, and delivered modernized CI/CD pipelines for <strong className="text-gray-900">Schneider Electric</strong>, <strong className="text-gray-900">Bose</strong>, and <strong className="text-gray-900">Knab</strong> through my time at <strong className="text-gray-900">EPAM Systems</strong>.
+              </p>
+              <p className="mt-6">
+                My expertise spans <strong className="text-gray-900">AWS automation, Kubernetes platform engineering, observability, and security governance</strong> — focused on scalable, self-healing infrastructure for enterprise systems.
+              </p>
+              <p className="mt-4">
+                My current domain{" "}
+                <a 
+                  href="https://infra-ai-art.delivery" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-blue-600 hover:text-blue-700 hover:underline"
+                >
+                  infra-ai-art.delivery
+                </a>{" "}
+                embodies this philosophy: <em>delivering the art of intelligent infrastructure</em>.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Floating About Me Button */}
+      <FloatingAboutTab />
     </div>
   );
 }
