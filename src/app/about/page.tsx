@@ -67,7 +67,7 @@ export default function About() {
     <div className="w-full min-h-screen bg-white">
       {/* Hero Intro Section */}
       <section className="py-24 md:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-100">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ export default function About() {
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
               About
             </h1>
-            <div className="space-y-6">
+            <div className="space-y-6 max-w-3xl mx-auto">
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
                 I&apos;m <span className="font-semibold text-gray-900">Amr Fathy</span>, a Senior <span className="font-semibold text-gray-900">DevOps & Cloud Platform Engineer</span> with over 15 years of experience building secure, automated infrastructure across multi-account AWS environments.
               </p>
@@ -84,7 +84,7 @@ export default function About() {
                 I specialize in <span className="text-cyan-600 font-medium">cloud replatforming, GitOps automation, and observability-driven design</span> — helping organizations modernize and scale their platforms with confidence.
               </p>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                I&apos;ve led infrastructure modernization projects for <span className="font-medium">AVIV Group</span>, <span className="font-medium">EPAM Systems</span>, and <span className="font-medium">Cybrid.app</span>, achieving 99.9% uptime, automated deployments, and streamlined developer workflows across regulated environments.
+                I&apos;ve led infrastructure modernization projects for <span className="font-medium">AVIV Group</span>, <span className="font-medium">EPAM Systems</span>, and <span className="font-medium">Cybrid.app</span>, delivering automated deployments and streamlined developer workflows across regulated environments.
               </p>
             </div>
           </motion.div>
@@ -97,8 +97,8 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Core Expertise Card */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
@@ -127,9 +127,9 @@ export default function About() {
 
             {/* Key Achievements Card */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
               <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
@@ -193,7 +193,7 @@ export default function About() {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-12">
               Notable Clients & Partners
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 justify-items-center">
               {clients.map((client, idx) => (
                 <motion.div
                   key={idx}
@@ -201,7 +201,7 @@ export default function About() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: idx * 0.1, duration: 0.3 }}
                   viewport={{ once: true }}
-                  className="text-gray-700 font-medium text-sm md:text-base hover:text-gray-900 transition-colors"
+                  className="text-gray-700 font-medium text-sm md:text-base hover:text-gray-900 transition-colors text-center"
                 >
                   {client}
                 </motion.div>
