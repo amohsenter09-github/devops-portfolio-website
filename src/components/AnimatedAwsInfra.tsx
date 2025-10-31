@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import {
   SiKubernetes,
@@ -16,6 +16,12 @@ import {
 import {
   Server,
   Network,
+  ChevronUp,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ZoomIn,
+  ZoomOut,
 } from "lucide-react";
 
 type Node = {
@@ -35,161 +41,60 @@ type Node = {
   showRegionTag?: boolean;
 };
 
-type Edge = {
-  id: string;
-  from: [number, number];
-  to: [number, number];
-  label?: string;
-  flowType?: "traffic" | "deployment" | "monitoring";
-};
-
 const colors = {
   bg: "#ffffff",
   panel: "rgba(0, 0, 0, 0.03)",
   stroke: "rgba(0, 0, 0, 0.1)",
   label: "#232f3e",
-  traffic: "#2563eb",
-  deployment: "#fa8900",
-  monitoring: "#10b981",
   prodBox: "#dc2626",
   stagingBox: "#f59e0b",
   sandboxBox: "#10b981",
   regionTag: "#9ca3af",
 };
 
-function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isVisible: boolean }) {
-  const { from, to, label, flowType = "traffic" } = edge;
-  const markerId = `arrowhead-${edge.id}`;
-  
-  let arrowColor: string;
-  let strokeDashArray: string;
-  let strokeWidth: number;
-  
-  switch (flowType) {
-    case "traffic":
-      arrowColor = colors.traffic;
-      strokeDashArray = "none";
-      strokeWidth = 3;
-      break;
-    case "deployment":
-      arrowColor = colors.deployment;
-      strokeDashArray = "10 6";
-      strokeWidth = 2.5;
-      break;
-    case "monitoring":
-      arrowColor = colors.monitoring;
-      strokeDashArray = "4 4";
-      strokeWidth = 2.5;
-      break;
-    default:
-      arrowColor = colors.traffic;
-      strokeDashArray = "none";
-      strokeWidth = 3;
-  }
-  
-  const midX = (from[0] + to[0]) / 2;
-  const midY = (from[1] + to[1]) / 2;
-  
-  const dx = to[0] - from[0];
-  const dy = to[1] - from[1];
-  const pathLength = Math.sqrt(dx * dx + dy * dy);
-  
-  return (
-    <g key={`arrow-${edge.id}`}>
-      <defs>
-        <marker
-          id={markerId}
-          markerWidth="14"
-          markerHeight="14"
-          refX="12"
-          refY="7"
-          orient="auto"
-          markerUnits="strokeWidth"
-        >
-          <path d="M0,0 L0,14 L14,7 Z" fill={arrowColor} />
-        </marker>
-        <filter id={`glow-${edge.id}`}>
-          <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      
-      <line
-        x1={from[0]}
-        y1={from[1]}
-        x2={to[0]}
-        y2={to[1]}
-        stroke={arrowColor}
-        strokeWidth={strokeWidth}
-        strokeDasharray={strokeDashArray}
-        markerEnd={`url(#${markerId})`}
-        opacity={0.85}
-        filter={flowType === "traffic" ? `url(#glow-${edge.id})` : undefined}
-      />
-      
-      {isVisible && (
-        <motion.g
-          initial={{ x: from[0], y: from[1] }}
-          animate={{ x: to[0], y: to[1] }}
-          transition={{
-            duration: 4 + pathLength / 80,
-            repeat: Infinity,
-            ease: "linear",
-            delay: index * 0.2,
-          }}
-        >
-          <motion.circle
-            r={flowType === "traffic" ? 6 : 5}
-            fill={arrowColor}
-            animate={{
-              r: flowType === "traffic" ? [6, 8, 6] : [5, 7, 5],
-              opacity: [1, 0.7, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <circle r={flowType === "traffic" ? 10 : 8} fill={arrowColor} opacity={0.2} />
-        </motion.g>
-      )}
-      
-      {label && (
-        <g transform={`translate(${midX}, ${midY - 18})`}>
-          <rect
-            x={-label.length * 5}
-            y={-10}
-            width={label.length * 10}
-            height={18}
-            fill={colors.bg}
-            stroke={arrowColor}
-            strokeWidth="1.5"
-            rx={4}
-            opacity={0.95}
-          />
-          <text
-            x={0}
-            y={3}
-            fill={colors.label}
-            fontSize="11"
-            fontWeight={500}
-            textAnchor="middle"
-          >
-            {label}
-          </text>
-        </g>
-      )}
-    </g>
-  );
-}
-
 export default function AnimatedAwsInfra() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
+  const svgRef = useRef<SVGSVGElement>(null);
+  
+  // Pan and zoom state
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(0.35); // Start at 35% to fit entire diagram
+  
+  const PAN_STEP = 50; // Pixels to pan per click
+  const ZOOM_STEP = 0.1;
+  const MIN_SCALE = 0.2;
+  const MAX_SCALE = 1.0;
+  
+  const handlePan = (direction: 'up' | 'down' | 'left' | 'right') => {
+    setPan((prev) => {
+      switch (direction) {
+        case 'up':
+          return { ...prev, y: prev.y + PAN_STEP }; // See content above = move SVG down
+        case 'down':
+          return { ...prev, y: prev.y - PAN_STEP }; // See content below = move SVG up
+        case 'left':
+          return { ...prev, x: prev.x + PAN_STEP }; // See content left = move SVG right
+        case 'right':
+          return { ...prev, x: prev.x - PAN_STEP }; // See content right = move SVG left
+        default:
+          return prev;
+      }
+    });
+  };
+  
+  const handleZoom = (type: 'in' | 'out') => {
+    setScale((prev) => {
+      const newScale = type === 'in' 
+        ? Math.min(prev + ZOOM_STEP, MAX_SCALE)
+        : Math.max(prev - ZOOM_STEP, MIN_SCALE);
+      return newScale;
+    });
+  };
+  
+  const resetView = () => {
+    setPan({ x: 0, y: 0 });
+    setScale(0.35);
+  };
   
   // Larger canvas and bigger service boxes to fit text properly
   const nodes: Node[] = [
@@ -253,17 +158,6 @@ export default function AnimatedAwsInfra() {
     { id: "pagerduty", label: "PagerDuty", x: 460, y: 1180, w: 300, h: 95, type: "service", customIcon: <SiPagerduty className="w-8 h-8" /> },
     { id: "slack", label: "Slack", x: 780, y: 1180, w: 280, h: 95, type: "service", customIcon: <SiSlack className="w-8 h-8" /> },
     { id: "datadog", label: "Datadog", x: 1080, y: 1180, w: 320, h: 95, type: "service", customIcon: <SiDatadog className="w-8 h-8" /> },
-  ];
-
-  const edges: Edge[] = [
-    { id: "cf-waf", from: [960, 172], to: [1290, 172], label: "CDN traffic", flowType: "traffic" },
-    { id: "waf-prod", from: [1520, 172], to: [1720, 200], label: "live traffic", flowType: "traffic" },
-    { id: "alb-prod-eks", from: [1860, 200], to: [1990, 200], flowType: "traffic" },
-    { id: "eks-prod-rds", from: [2220, 200], to: [2370, 200], flowType: "traffic" },
-    { id: "argo-prod", from: [300, 607], to: [1990, 200], label: "deploy workloads", flowType: "deployment" },
-    { id: "prod-mon", from: [1740, 322], to: [490, 727], label: "metrics", flowType: "monitoring" },
-    { id: "cw-pagerduty", from: [280, 1227], to: [610, 1227], label: "alerting", flowType: "traffic" },
-    { id: "pagerduty-slack", from: [610, 1227], to: [920, 1227], label: "notifications", flowType: "traffic" },
   ];
 
   const renderNode = (node: Node, index: number) => {
@@ -410,49 +304,111 @@ export default function AnimatedAwsInfra() {
   };
 
   return (
-    <div ref={containerRef} className="w-full overflow-x-auto">
-      <div className="min-w-[3200px]">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="relative"
-        >
-          <div className="w-full max-w-[3200px] mx-auto rounded-xl bg-white p-16 md:p-20 overflow-hidden shadow-lg border border-gray-200">
-            <svg 
-              viewBox="0 0 3200 1650" 
-              className="w-full h-auto"
-              style={{ minHeight: '1100px' }}
-            >
-              <rect width="100%" height="100%" fill={colors.bg} />
-
-              {nodes.map((node, index) => renderNode(node, index))}
-              {isInView && edges.map((edge, index) => (
-                <CleanArrow key={edge.id} edge={edge} index={index} isVisible={isInView} />
-              ))}
-            </svg>
-            
-            {/* Legend - Bottom Right */}
-            <div className="absolute bottom-8 right-12 text-sm text-gray-600 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg px-6 py-4 border border-gray-200">
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-2 bg-blue-500 rounded-full" />
-                  <span className="font-medium">Traffic</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-2 bg-orange-500 rounded-full" style={{ border: "2px dashed", borderColor: "#fa8900", background: "transparent" }} />
-                  <span className="font-medium">Deployment</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-2 bg-green-500 rounded-full" style={{ border: "1px dotted", borderColor: "#10b981", background: "transparent" }} />
-                  <span className="font-medium">Monitoring</span>
-                </div>
+    <div ref={containerRef} className="w-full relative">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="relative w-full"
+      >
+        {/* Navigation Controls */}
+        <div className="absolute top-4 right-4 z-10 flex flex-col gap-2">
+          {/* Pan Controls */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-2 border border-gray-200">
+            <div className="flex flex-col gap-1">
+              <button
+                onClick={() => handlePan('up')}
+                className="p-2 hover:bg-gray-100 rounded transition-colors flex items-center justify-center"
+                aria-label="Pan Up"
+              >
+                <ChevronUp size={20} className="text-gray-700" />
+              </button>
+              <div className="flex gap-1">
+                <button
+                  onClick={() => handlePan('left')}
+                  className="p-2 hover:bg-gray-100 rounded transition-colors flex items-center justify-center"
+                  aria-label="Pan Left"
+                >
+                  <ChevronLeft size={20} className="text-gray-700" />
+                </button>
+                <button
+                  onClick={() => handlePan('right')}
+                  className="p-2 hover:bg-gray-100 rounded transition-colors flex items-center justify-center"
+                  aria-label="Pan Right"
+                >
+                  <ChevronRight size={20} className="text-gray-700" />
+                </button>
               </div>
+              <button
+                onClick={() => handlePan('down')}
+                className="p-2 hover:bg-gray-100 rounded transition-colors flex items-center justify-center"
+                aria-label="Pan Down"
+              >
+                <ChevronDown size={20} className="text-gray-700" />
+              </button>
             </div>
           </div>
-        </motion.div>
-      </div>
+          
+          {/* Zoom Controls */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-2 border border-gray-200 flex flex-col gap-1">
+            <button
+              onClick={() => handleZoom('in')}
+              className="p-2 hover:bg-gray-100 rounded transition-colors flex items-center justify-center"
+              aria-label="Zoom In"
+              disabled={scale >= MAX_SCALE}
+            >
+              <ZoomIn size={20} className="text-gray-700" />
+            </button>
+            <button
+              onClick={() => handleZoom('out')}
+              className="p-2 hover:bg-gray-100 rounded transition-colors flex items-center justify-center"
+              aria-label="Zoom Out"
+              disabled={scale <= MIN_SCALE}
+            >
+              <ZoomOut size={20} className="text-gray-700" />
+            </button>
+            <button
+              onClick={resetView}
+              className="p-2 hover:bg-gray-100 rounded transition-colors text-xs text-gray-700 font-medium"
+              aria-label="Reset View"
+            >
+              Reset
+            </button>
+          </div>
+          
+          {/* Scale Indicator */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg px-3 py-2 border border-gray-200 text-xs text-gray-600 font-medium text-center">
+            {Math.round(scale * 100)}%
+          </div>
+        </div>
+
+        {/* Diagram Container */}
+        <div className="w-full rounded-xl bg-white p-8 md:p-12 overflow-hidden shadow-lg border border-gray-200">
+          <div 
+            className="w-full overflow-auto"
+            style={{ 
+              height: 'calc(100vh - 200px)',
+              minHeight: '600px',
+              maxHeight: '900px'
+            }}
+          >
+            <svg 
+              ref={svgRef}
+              viewBox="0 0 3200 1650" 
+              className="w-full h-auto"
+              style={{
+                transform: `translate(${pan.x}px, ${pan.y}px) scale(${scale})`,
+                transformOrigin: 'top left',
+                transition: 'transform 0.2s ease-out',
+              }}
+            >
+              <rect width="100%" height="100%" fill={colors.bg} />
+              {nodes.map((node, index) => renderNode(node, index))}
+            </svg>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
