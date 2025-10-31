@@ -104,7 +104,7 @@ export default function About() {
             >
               <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                 <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
+                  <div className="flex items-center justify-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-lg bg-cyan-100 flex items-center justify-center">
                       <Zap className="w-5 h-5 text-cyan-600" />
                     </div>
@@ -112,8 +112,8 @@ export default function About() {
                   </div>
                   <div className="space-y-4">
                     {expertiseCategories.map((category, idx) => (
-                      <div key={idx} className="border-l-2 border-gray-200 pl-4">
-                        <div className="flex items-center gap-2 mb-2">
+                      <div key={idx} className="text-center">
+                        <div className="flex items-center justify-center gap-2 mb-2">
                           <span className="text-gray-500">{category.icon}</span>
                           <span className="font-semibold text-gray-900">{category.title}:</span>
                         </div>
@@ -134,7 +134,7 @@ export default function About() {
             >
               <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                 <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
+                  <div className="flex items-center justify-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
                       <Award className="w-5 h-5 text-green-600" />
                     </div>
@@ -142,9 +142,9 @@ export default function About() {
                   </div>
                   <ul className="space-y-3">
                     {achievements.map((achievement, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700 leading-relaxed">{achievement}</span>
+                      <li key={idx} className="flex items-center justify-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                        <span className="text-gray-700 leading-relaxed text-center">{achievement}</span>
                       </li>
                     ))}
                   </ul>
