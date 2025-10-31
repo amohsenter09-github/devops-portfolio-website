@@ -71,40 +71,32 @@ export default function Designs() {
       </section>
 
       {/* Animated AWS Infrastructure Diagram */}
-      <section className="py-12 md:py-16 w-full flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          {/* Description Section - Directly Above Diagram */}
-          <motion.div
-            className="my-12 text-center max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold mb-3 text-gray-900">
-              Automated AWS Cloud Platform
-            </h2>
-            <p className="text-gray-600 leading-relaxed text-lg">
-              This architecture illustrates a fully automated AWS cloud platform built with Terraform and managed through a GitOps workflow using ArgoCD.
-            </p>
-            <p className="text-gray-600 leading-relaxed text-lg mt-4">
-              The design spans multiple AWS accounts — Production, Staging, Sandbox, and Operations — each isolated by dedicated VPCs, IAM boundaries, and encrypted storage for maximum security and compliance.
-            </p>
-            <p className="text-gray-600 leading-relaxed text-lg mt-4">
-              Core components include Amazon EKS clusters running Bottlerocket nodes, Aurora PostgreSQL, ElastiCache Redis, and CloudFront for global delivery.
-            </p>
-            <p className="text-gray-600 leading-relaxed text-lg mt-4">
-              Security and governance are enforced through AWS WAF, GuardDuty, and Secrets Manager, while observability is powered by Prometheus, Grafana, Loki, and CloudWatch.
-            </p>
-            <p className="text-gray-600 leading-relaxed text-lg mt-4">
-              The entire platform is provisioned via modular Terraform code, following AWS best practices for automation, reusability, and least-privilege access — delivering a scalable, resilient, and operations-ready foundation for modern applications.
-            </p>
-          </motion.div>
+      <section className="py-16 bg-white text-center">
+        {/* Description Section - Clean & Centered */}
+        <motion.div
+          className="max-w-3xl mx-auto px-6 mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Automated AWS Cloud Platform
+          </h2>
+          <p className="text-gray-600 leading-relaxed text-base md:text-lg mb-6">
+            A fully automated AWS environment built with Terraform and managed through a GitOps workflow using ArgoCD.
+          </p>
+          <p className="text-gray-600 leading-relaxed text-base md:text-lg mb-6">
+            The design spans multiple AWS accounts — Production, Staging, Sandbox, and Operations — each isolated with dedicated VPCs, IAM boundaries, and encrypted storage.
+          </p>
+          <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+            Security, observability, and scalability are delivered through AWS WAF, GuardDuty, Prometheus, Grafana, and CloudWatch.
+          </p>
+        </motion.div>
 
-          {/* Diagram Container */}
-          <div className="mt-8">
-            <AnimatedAwsInfra />
-          </div>
+        {/* Diagram Container - Card Style */}
+        <div className="mt-12 max-w-6xl mx-auto rounded-2xl shadow-sm border border-gray-100 p-4">
+          <AnimatedAwsInfra />
         </div>
       </section>
     </div>
