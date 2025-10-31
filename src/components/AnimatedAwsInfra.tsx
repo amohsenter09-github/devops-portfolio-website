@@ -139,13 +139,13 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       break;
     case "deployment":
       arrowColor = colors.deployment;
-      strokeDashArray = "10 6";
-      strokeWidth = 2.5;
+      strokeDashArray = "none"; // Changed to solid
+      strokeWidth = 3;
       break;
     case "monitoring":
       arrowColor = colors.monitoring;
-      strokeDashArray = "4 4";
-      strokeWidth = 2.5;
+      strokeDashArray = "none"; // Changed to solid
+      strokeWidth = 3;
       break;
     default:
       arrowColor = colors.traffic;
@@ -458,7 +458,16 @@ export default function AnimatedAwsInfra() {
     if (node.numberLabel === "SANDBOX" || node.numberLabel === "3") numberLabelColor = colors.sandboxBox;
     
     return (
-      <g key={node.id}>
+      <motion.g 
+        key={node.id}
+        initial={{ opacity: 0, y: node.y + 10 }}
+        animate={{ opacity: 1, y: node.y }}
+        transition={{ 
+          duration: 0.5, 
+          delay: index * 0.05,
+          ease: "easeOut"
+        }}
+      >
         {hasHighlight && (
           <motion.rect
             x={node.x - 8}
@@ -481,7 +490,21 @@ export default function AnimatedAwsInfra() {
           />
         )}
         
-        <rect
+        {/* Soft shadow layer */}
+        <motion.rect
+          x={node.x + 2}
+          y={node.y + 2}
+          width={node.w}
+          height={node.h}
+          fill="rgba(0, 0, 0, 0.08)"
+          rx={8}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: index * 0.05 + 0.2 }}
+        />
+        
+        {/* Main card with soft shadow and hover interaction */}
+        <motion.rect
           x={node.x}
           y={node.y}
           width={node.w}
@@ -490,6 +513,15 @@ export default function AnimatedAwsInfra() {
           stroke={colors.stroke}
           strokeWidth={1.5}
           rx={8}
+          filter="url(#softShadow)"
+          initial={{ scale: 1, y: node.y }}
+          animate={{ y: node.y }}
+          whileHover={{ 
+            scale: 1.02,
+            y: node.y - 2,
+            transition: { duration: 0.2, ease: "easeOut" }
+          }}
+          style={{ cursor: "pointer" }}
         />
         
         {node.numberLabel && (
@@ -524,15 +556,25 @@ export default function AnimatedAwsInfra() {
           </foreignObject>
         )}
         
-        {/* Service Icon */}
-        <foreignObject x={node.x + 20} y={node.y + (node.h - 38) / 2} width={38} height={38}>
-          <div className="flex items-center justify-center h-full" style={{ color: node.awsIcon ? "#232f3e" : colors.label }}>
+        {/* Service Icon with hover animation */}
+        <foreignObject 
+          x={node.x + 20} 
+          y={node.y + (node.h - 38) / 2} 
+          width={38} 
+          height={38}
+        >
+          <motion.div 
+            className="flex items-center justify-center h-full" 
+            style={{ color: node.awsIcon ? "#232f3e" : colors.label }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.2 }}
+          >
             {node.awsIcon ? (
               <Icon icon={node.awsIcon} width="38" height="38" />
             ) : node.customIcon ? (
               node.customIcon
             ) : null}
-          </div>
+          </motion.div>
         </foreignObject>
         
         <text
@@ -541,10 +583,11 @@ export default function AnimatedAwsInfra() {
           fill={colors.label}
           fontSize={node.h < 90 ? 15 : 17}
           fontWeight={hasHighlight ? 600 : 500}
+          style={{ pointerEvents: "none" }}
         >
           {node.label}
         </text>
-      </g>
+      </motion.g>
     );
   };
 
@@ -648,6 +691,21 @@ export default function AnimatedAwsInfra() {
                 transition: 'transform 0.2s ease-out',
               }}
             >
+              <defs>
+                {/* Soft shadow filter for cards */}
+                <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                  <feOffset dx="0" dy="2" result="offsetblur" />
+                  <feComponentTransfer>
+                    <feFuncA type="linear" slope="0.3" />
+                  </feComponentTransfer>
+                  <feMerge>
+                    <feMergeNode />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              
               <rect width="100%" height="100%" fill={colors.bg} />
               {nodes.map((node, index) => renderNode(node, index))}
               {isInView && edges.map((edge, index) => (
