@@ -14,8 +14,8 @@ export default function Nav() {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 relative">
         <div className="flex items-center justify-center w-full">
-          {/* Navigation Tabs - Centered with slight right shift */}
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 items-center translate-x-8 md:translate-x-12 lg:translate-x-16">
+          {/* Navigation Tabs - Centered */}
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 items-center">
             <Link 
               href="/" 
               className="text-base font-medium transition-colors px-4 py-2 rounded-full text-gray-700 hover:text-gray-900"
