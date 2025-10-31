@@ -13,10 +13,6 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto px-6"
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            About <span className="text-cyan-600">Me</span>
-          </h1>
-
           <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
             <p>
               I&apos;m{" "}
