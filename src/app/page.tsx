@@ -26,13 +26,20 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-6">
               Enterprise Infrastructure & Cloud Platform Engineering
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              15+ years building secure, automated AWS infrastructures. 
-              Cloud replatforming, GitOps automation, and observability solutions.
-            </p>
+            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 max-w-3xl mx-auto">
+              <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                Cloud Replatforming
+              </span>
+              <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                GitOps Automation
+              </span>
+              <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                Observability Solutions
+              </span>
+            </div>
           </motion.div>
         </div>
       </section>
