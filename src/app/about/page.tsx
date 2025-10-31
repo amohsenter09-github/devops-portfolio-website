@@ -50,6 +50,17 @@ export default function About() {
                 |
               </motion.span>
             </motion.h1>
+            <div className="space-y-6 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                I&apos;m <span className="font-semibold text-gray-900">Amr Fathy</span>, a Senior <span className="font-semibold text-gray-900">DevOps & Cloud Platform Engineer</span> with over 15 years of experience building secure, automated infrastructure across multi-account AWS environments.
+              </p>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                I specialize in <span className="text-cyan-600 font-medium">cloud replatforming, GitOps automation, and observability-driven design</span> — helping organizations modernize and scale their platforms with confidence.
+              </p>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                I&apos;ve led infrastructure modernization projects for <span className="font-medium">AVIV Group</span>, <span className="font-medium">EPAM Systems</span>, and <span className="font-medium">Cybrid.app</span>, delivering automated deployments and streamlined developer workflows across regulated environments.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
