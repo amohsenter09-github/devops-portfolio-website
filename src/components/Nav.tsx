@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import { site } from "@/lib/siteConfig";
 
@@ -53,7 +54,27 @@ export default function Nav() {
                   : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
               }`}
             >
-              About
+              <span className="font-mono">
+                About
+                <motion.span
+                  className="text-cyan-600"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                >
+                  _
+                </motion.span>
+                me
+                {pathname === "/about" && (
+                  <motion.span
+                    className="text-cyan-600 ml-0.5"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    |
+                  </motion.span>
+                )}
+              </span>
             </Link>
             <Link 
               href="/contact" 
