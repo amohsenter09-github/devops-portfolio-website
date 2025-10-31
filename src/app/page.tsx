@@ -43,73 +43,48 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden" style={{ maxWidth: '100vw' }}>
       {/* Hero Section */}
-      <section className="relative py-32 md:py-40 text-center w-full flex flex-col items-center justify-center">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          {/* Robot Logo */}
+      <section className="relative min-h-screen flex items-center justify-center text-center w-full py-20 md:py-32">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          {/* Robot Logo - Centered */}
+          <div className="mb-12 md:mb-16">
+            <RobotLogo />
+          </div>
+
+          {/* Professional Tagline */}
           <motion.div
-            className="mb-8"
+            className="mb-8 md:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <RobotLogo />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-4">
+              Enterprise Infrastructure & Cloud Platform Engineering
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              15+ years building secure, automated AWS infrastructures. 
+              Cloud replatforming, GitOps automation, and observability solutions.
+            </p>
           </motion.div>
 
-          <motion.h2 
-            className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-          >
-            Senior DevOps & Cloud Platform Engineer
-          </motion.h2>
-
-          {/* Quantified Outcomes */}
+          {/* Key Metrics - Concise */}
           <motion.div 
-            className="flex flex-wrap justify-center items-center gap-10 mt-16 mb-12"
-            initial={{ opacity: 0, y: 8 }}
+            className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mt-12"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
+            transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <motion.div 
-              className="flex items-center gap-3 group"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-gray-200 transition-colors">
-                <DollarSign className="w-5 h-5 text-gray-600" />
-              </div>
-              <div className="text-left">
-                <div className="text-lg font-bold text-gray-900">$2M+</div>
-                <div className="text-xs text-gray-600">saved annually</div>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="flex items-center gap-3 group"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-gray-200 transition-colors">
-                <Shield className="w-5 h-5 text-gray-600" />
-              </div>
-              <div className="text-left">
-                <div className="text-lg font-bold text-gray-900">99.9%</div>
-                <div className="text-xs text-gray-600">uptime</div>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="flex items-center gap-3 group"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-gray-200 transition-colors">
-                <Zap className="w-5 h-5 text-gray-600" />
-              </div>
-              <div className="text-left">
-                <div className="text-lg font-bold text-gray-900">80%</div>
-                <div className="text-xs text-gray-600">faster deployments</div>
-              </div>
-            </motion.div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">$2M+</div>
+              <div className="text-sm text-gray-600">Annual savings</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">99.9%</div>
+              <div className="text-sm text-gray-600">Uptime SLA</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">80%</div>
+              <div className="text-sm text-gray-600">Faster deployments</div>
+            </div>
           </motion.div>
         </div>
       </section>
