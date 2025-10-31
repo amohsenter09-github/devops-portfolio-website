@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TrendingUp, Clock, Shield, DollarSign, Zap, Building2 } from "lucide-react";
+import { TrendingUp, Clock, Shield, DollarSign, Zap, Building2, ChevronDown } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Recommendations from "@/components/Recommendations";
 import Marquee from "@/components/Marquee";
@@ -168,8 +168,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Animated Scroll Arrow */}
+      <section className="py-8 md:py-12 w-full flex flex-col items-center justify-center bg-gray-50">
+        <motion.button
+          onClick={() => {
+            document.getElementById('recommendations')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="flex flex-col items-center gap-3 text-gray-600 hover:text-gray-900 transition-colors group cursor-pointer"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.1 }}
+        >
+          <span className="text-xs md:text-sm font-medium text-gray-600 group-hover:text-gray-900">
+            Client Recommendations
+          </span>
+          <motion.div
+            animate={{
+              y: [0, 8, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-lg transition-all duration-300"
+          >
+            <ChevronDown className="w-5 h-5 text-gray-600 group-hover:text-cyan-600 transition-colors" />
+          </motion.div>
+        </motion.button>
+      </section>
+
       {/* Client Recommendations - Compact */}
-      <section className="py-20 md:py-24 w-full flex items-center justify-center bg-white">
+      <section id="recommendations" className="py-20 md:py-24 w-full flex items-center justify-center bg-white">
         <Recommendations />
       </section>
     </div>
