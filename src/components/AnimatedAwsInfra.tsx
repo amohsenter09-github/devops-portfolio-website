@@ -564,7 +564,7 @@ export default function AnimatedAwsInfra() {
         </div>
 
         {/* Diagram Container */}
-        <div className="w-full rounded-xl bg-white p-8 md:p-12 overflow-hidden shadow-lg border border-gray-200">
+        <div className="w-full bg-white p-8 md:p-12 overflow-hidden">
           <div 
             className="w-full overflow-auto"
             style={{ 
