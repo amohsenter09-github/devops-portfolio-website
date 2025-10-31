@@ -13,7 +13,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto px-6"
         >
-          <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
+          <div className="space-y-6 text-gray-700 text-lg leading-relaxed pt-12 md:pt-16 lg:pt-20">
             <p>
               I&apos;m{" "}
               <span className="font-semibold text-gray-900">Amr Fathy</span>, a{" "}
