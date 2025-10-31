@@ -6,6 +6,7 @@ import { TrendingUp, DollarSign, Clock, Shield, Zap, ArrowRight, CheckCircle2 } 
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Recommendations from "@/components/Recommendations";
 import Marquee from "@/components/Marquee";
+import RobotLogo from "@/components/RobotLogo";
 import { projects } from "@/data/projects";
 
 export default function Home() {
@@ -44,40 +45,21 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative py-32 md:py-40 text-center w-full flex flex-col items-center justify-center">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <motion.h1 
-            className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight text-gray-900 mb-3 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ 
-              opacity: 1, 
-              y: 0, 
-              scale: 1,
-            }}
-            transition={{ 
-              duration: 0.8, 
-              ease: [0.22, 1, 0.36, 1],
-            }}
+          {/* Robot Logo */}
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
-            >
-              Amr
-            </motion.span>
-            {" "}
-            <motion.span
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
-            >
-              Fathy
-            </motion.span>
-          </motion.h1>
+            <RobotLogo />
+          </motion.div>
+
           <motion.h2 
-            className="text-xl sm:text-2xl font-bold text-gray-800 mb-4"
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
+            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
           >
             Senior DevOps & Cloud Platform Engineer
           </motion.h2>
@@ -87,7 +69,7 @@ export default function Home() {
             className="flex flex-wrap justify-center items-center gap-10 mt-16 mb-12"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
+            transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
           >
             <motion.div 
               className="flex items-center gap-3 group"
@@ -127,28 +109,6 @@ export default function Home() {
                 <div className="text-lg font-bold text-gray-900">80%</div>
                 <div className="text-xs text-gray-600">faster deployments</div>
               </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Hero CTA */}
-          <motion.div
-            className="mt-8"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Link 
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-cyan-700 px-8 py-4 text-base font-semibold text-white hover:bg-cyan-600 transition-colors duration-200 shadow-md hover:shadow-lg"
-              >
-                <span>Schedule Consultation</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </motion.div>
           </motion.div>
         </div>
