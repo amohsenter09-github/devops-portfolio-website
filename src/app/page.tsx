@@ -29,7 +29,7 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-8 md:mb-10 text-center">
               Enterprise Infrastructure & Cloud Platform Engineering
             </h2>
-            <div className="w-full flex flex-wrap justify-center items-center gap-3 md:gap-5">
+            <div className="w-full flex flex-wrap justify-center items-center gap-3 md:gap-5 mb-12 md:mb-16">
               {["Cloud Replatforming", "GitOps Automation", "Observability Solutions"].map((badge, index) => (
                 <motion.span
                   key={badge}
@@ -54,6 +54,35 @@ export default function Home() {
                 </motion.span>
               ))}
             </div>
+
+            {/* Animated Scroll Arrow */}
+            <motion.button
+              onClick={() => {
+                document.getElementById('recommendations')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="flex flex-col items-center gap-3 text-gray-600 hover:text-gray-900 transition-colors group cursor-pointer mt-8"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              whileHover={{ scale: 1.1 }}
+            >
+              <span className="text-xs md:text-sm font-medium text-gray-600 group-hover:text-gray-900">
+                Client Recommendations
+              </span>
+              <motion.div
+                animate={{
+                  y: [0, 8, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-lg transition-all duration-300"
+              >
+                <ChevronDown className="w-5 h-5 text-gray-600 group-hover:text-cyan-600 transition-colors" />
+              </motion.div>
+            </motion.button>
           </motion.div>
         </div>
       </section>
@@ -166,38 +195,6 @@ export default function Home() {
             <span className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium shadow-sm">GitOps Specialist</span>
           </div>
         </div>
-      </section>
-
-      {/* Animated Scroll Arrow */}
-      <section className="py-8 md:py-12 w-full flex flex-col items-center justify-center bg-gray-50">
-        <motion.button
-          onClick={() => {
-            document.getElementById('recommendations')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="flex flex-col items-center gap-3 text-gray-600 hover:text-gray-900 transition-colors group cursor-pointer"
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          whileHover={{ scale: 1.1 }}
-        >
-          <span className="text-xs md:text-sm font-medium text-gray-600 group-hover:text-gray-900">
-            Client Recommendations
-          </span>
-          <motion.div
-            animate={{
-              y: [0, 8, 0],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-lg transition-all duration-300"
-          >
-            <ChevronDown className="w-5 h-5 text-gray-600 group-hover:text-cyan-600 transition-colors" />
-          </motion.div>
-        </motion.button>
       </section>
 
       {/* Client Recommendations - Compact */}
