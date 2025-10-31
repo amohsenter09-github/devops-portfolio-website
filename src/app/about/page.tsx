@@ -64,12 +64,12 @@ export default function About() {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-white flex flex-col items-center">
+    <div className="w-full min-h-screen bg-white">
       {/* Hero Intro Section */}
-      <section className="w-full py-24 md:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-100">
-        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <section className="py-24 md:py-32 w-full flex items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
-            className="text-center w-full"
+            className="text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -93,28 +93,27 @@ export default function About() {
       </section>
 
       {/* Core Expertise & Key Achievements */}
-      <section className="w-full py-16 md:py-24 bg-white">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-          <div className="w-full grid md:grid-cols-2 gap-8 lg:gap-12">
+      <section className="py-16 md:py-24 w-full flex items-center justify-center bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Core Expertise Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="w-full"
             >
-              <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow w-full">
-                <CardContent className="p-8 !pt-8 w-full">
-                  <div className="flex items-center justify-center gap-3 mb-6 w-full">
+              <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-8 !pt-8">
+                  <div className="flex items-center justify-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-lg bg-cyan-100 flex items-center justify-center">
                       <Zap className="w-5 h-5 text-cyan-600" />
                     </div>
                     <h2 className="text-2xl font-bold text-gray-900">Core Expertise</h2>
                   </div>
-                  <div className="space-y-4 w-full">
+                  <div className="space-y-4">
                     {expertiseCategories.map((category, idx) => (
-                      <div key={idx} className="text-center w-full">
+                      <div key={idx} className="text-center">
                         <div className="flex items-center justify-center gap-2 mb-2">
                           <span className="text-gray-500">{category.icon}</span>
                           <span className="font-semibold text-gray-900">{category.title}:</span>
@@ -133,19 +132,18 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="w-full"
             >
-              <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow w-full">
-                <CardContent className="p-8 !pt-8 w-full">
-                  <div className="flex items-center justify-center gap-3 mb-6 w-full">
+              <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-8 !pt-8">
+                  <div className="flex items-center justify-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
                       <Award className="w-5 h-5 text-green-600" />
                     </div>
                     <h2 className="text-2xl font-bold text-gray-900">Key Achievements</h2>
                   </div>
-                  <ul className="space-y-3 w-full">
+                  <ul className="space-y-3">
                     {achievements.map((achievement, idx) => (
-                      <li key={idx} className="flex items-center justify-center gap-3 w-full">
+                      <li key={idx} className="flex items-center justify-center gap-3">
                         <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
                         <span className="text-gray-700 leading-relaxed text-center">{achievement}</span>
                       </li>
@@ -159,17 +157,16 @@ export default function About() {
       </section>
 
       {/* Professional Philosophy */}
-      <section className="w-full py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <section className="py-16 md:py-24 w-full flex items-center justify-center bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="w-full"
           >
-            <Card className="border border-gray-200 shadow-sm w-full">
-              <CardContent className="p-8 md:p-12 !pt-8 w-full">
+            <Card className="border border-gray-200 shadow-sm">
+              <CardContent className="p-8 md:p-12 !pt-8">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
                   Professional Philosophy
                 </h2>
@@ -185,19 +182,19 @@ export default function About() {
       </section>
 
       {/* Notable Clients & Partners */}
-      <section className="w-full py-16 md:py-24 bg-white">
-        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <section className="py-16 md:py-24 w-full flex items-center justify-center bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center w-full"
+            className="text-center"
           >
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-12">
               Notable Clients & Partners
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 justify-items-center w-full">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 justify-items-center">
               {clients.map((client, idx) => (
                 <motion.div
                   key={idx}
