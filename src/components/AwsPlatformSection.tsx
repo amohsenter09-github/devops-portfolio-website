@@ -14,7 +14,7 @@ export default function AwsPlatformSection() {
 
         {/* ===== DESCRIPTION - Below Diagram with Animation ===== */}
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
