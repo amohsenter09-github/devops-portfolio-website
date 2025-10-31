@@ -13,18 +13,18 @@ export default function Nav() {
   return (
     <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
       <nav className="mx-auto max-w-6xl px-6 sm:px-8 py-5 relative">
-        <div className="flex flex-col items-center space-y-3">
-          {/* Navigation Tabs - Centered */}
-          <div className="flex flex-wrap justify-center gap-5 sm:gap-8 items-center">
+        <div className="flex flex-col items-center space-y-3 relative">
+          {/* Navigation Tabs - Centered Horizontally */}
+          <div className="flex flex-wrap justify-center gap-5 sm:gap-8 items-center w-full">
             <Link 
               href="/" 
-              className={`text-sm sm:text-base font-medium tracking-wide transition-all px-4 py-1 rounded-full ${
+              className={`text-sm sm:text-base font-medium tracking-wide transition-all px-4 py-1 rounded-full lowercase ${
                 pathname === "/" 
                   ? "text-cyan-700 font-semibold"
                   : "text-gray-700 hover:text-gray-900"
               }`}
             >
-              Home
+              home
             </Link>
             <Link 
               href="/designs" 
@@ -34,7 +34,7 @@ export default function Nav() {
                   : "text-gray-700 hover:text-gray-900"
               }`}
             >
-              <span className="font-mono">
+              <span className="font-mono lowercase">
                 designed
                 <motion.span
                   className="text-cyan-600"
@@ -67,13 +67,13 @@ export default function Nav() {
             </Link>
             <Link 
               href="/blog" 
-              className={`text-sm sm:text-base font-medium tracking-wide transition-all px-4 py-1 rounded-full ${
+              className={`text-sm sm:text-base font-medium tracking-wide transition-all px-4 py-1 rounded-full lowercase ${
                 pathname.startsWith("/blog") 
                   ? "text-cyan-700 font-semibold"
                   : "text-gray-700 hover:text-gray-900"
               }`}
             >
-              Blog
+              blog
             </Link>
             <Link 
               href="/about" 
@@ -83,8 +83,8 @@ export default function Nav() {
                   : "text-gray-700 hover:text-gray-900"
               }`}
             >
-              <span className="font-mono">
-                About
+              <span className="font-mono lowercase">
+                about
                 <motion.span
                   className="text-cyan-600"
                   initial={{ opacity: 0 }}
@@ -107,13 +107,13 @@ export default function Nav() {
             </Link>
             <Link 
               href="/contact" 
-              className={`text-sm sm:text-base font-medium tracking-wide transition-all px-4 py-1 rounded-full ${
+              className={`text-sm sm:text-base font-medium tracking-wide transition-all px-4 py-1 rounded-full lowercase ${
                 pathname === "/contact" 
                   ? "text-cyan-700 font-semibold"
                   : "text-gray-700 hover:text-gray-900"
               }`}
             >
-              Contact
+              contact
             </Link>
           </div>
 
@@ -122,7 +122,7 @@ export default function Nav() {
         </div>
 
         {/* Right side icons - top right */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-5">
+        <div className="absolute right-6 top-5 flex items-center gap-5">
           <a
             href={site.contact.linkedin}
             target="_blank"
