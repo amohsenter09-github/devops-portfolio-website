@@ -63,6 +63,66 @@ const colors = {
   regionTag: "#9ca3af",
 };
 
+// Component to animate dot along curved path
+function CurvedDotAnimator({
+  from,
+  control,
+  to,
+  arrowColor,
+  flowType,
+  index,
+  distance,
+}: {
+  from: [number, number];
+  control: [number, number];
+  to: [number, number];
+  arrowColor: string;
+  flowType: "traffic" | "deployment" | "monitoring";
+  index: number;
+  distance: number;
+}) {
+  const [progress, setProgress] = React.useState(0);
+
+  React.useEffect(() => {
+    const duration = 4000 + distance / 80;
+    const startTime = Date.now() + index * 200;
+
+    const animate = () => {
+      const elapsed = (Date.now() - startTime) % duration;
+      const t = elapsed / duration;
+      setProgress(t);
+      requestAnimationFrame(animate);
+    };
+
+    const rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
+  }, [distance, index]);
+
+  // Calculate position on quadratic Bezier curve
+  const t = progress;
+  const x = (1 - t) * (1 - t) * from[0] + 2 * (1 - t) * t * control[0] + t * t * to[0];
+  const y = (1 - t) * (1 - t) * from[1] + 2 * (1 - t) * t * control[1] + t * t * to[1];
+
+  return (
+    <g transform={`translate(${x}, ${y})`}>
+      <motion.circle
+        r={flowType === "traffic" ? 6 : 5}
+        fill={arrowColor}
+        animate={{
+          r: flowType === "traffic" ? [6, 8, 6] : [5, 7, 5],
+          opacity: [1, 0.7, 1],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <circle r={flowType === "traffic" ? 10 : 8} fill={arrowColor} opacity={0.2} />
+    </g>
+  );
+}
+
 function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isVisible: boolean }) {
   const { from, to, label, flowType = "traffic" } = edge;
   const markerId = `arrowhead-${edge.id}`;
@@ -158,33 +218,15 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       />
       
       {isVisible && (
-        <motion.g
-          animate={{
-            x: [from[0], controlX, to[0]],
-            y: [from[1], controlY, to[1]],
-          }}
-          transition={{
-            duration: 4 + distance / 80,
-            repeat: Infinity,
-            ease: [0.43, 0.13, 0.23, 0.96], // Custom bezier for smooth curve
-            delay: index * 0.2,
-          }}
-        >
-          <motion.circle
-            r={flowType === "traffic" ? 6 : 5}
-            fill={arrowColor}
-            animate={{
-              r: flowType === "traffic" ? [6, 8, 6] : [5, 7, 5],
-              opacity: [1, 0.7, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <circle r={flowType === "traffic" ? 10 : 8} fill={arrowColor} opacity={0.2} />
-        </motion.g>
+        <CurvedDotAnimator
+          from={from}
+          control={[controlX, controlY]}
+          to={to}
+          arrowColor={arrowColor}
+          flowType={flowType}
+          index={index}
+          distance={distance}
+        />
       )}
       
       {label && (
