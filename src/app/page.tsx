@@ -29,13 +29,13 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-8 md:mb-10 text-center">
               Enterprise Infrastructure & Cloud Platform Engineering
             </h2>
-            <div className="flex flex-wrap justify-end items-center gap-3 md:gap-5 max-w-3xl ml-auto">
+            <div className="flex flex-wrap justify-center items-center gap-3 md:gap-5 max-w-3xl mx-auto">
               {["Cloud Replatforming", "GitOps Automation", "Observability Solutions"].map((badge, index) => (
                 <motion.span
                   key={badge}
                   className="px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-all duration-300 cursor-default"
-                  initial={{ opacity: 0, x: 20, scale: 0.9 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{
                     delay: 0.5 + index * 0.1,
                     duration: 0.5,
