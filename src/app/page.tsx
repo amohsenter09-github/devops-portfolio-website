@@ -82,42 +82,6 @@ export default function Home() {
             Senior DevOps & Cloud Platform Engineer
           </motion.h2>
 
-          {/* Navigation Tabs under Amr Fathy - Always Visible */}
-          <div className="w-full mb-8 mt-8 relative z-20">
-            <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 items-center w-full" role="navigation">
-              <Link 
-                href="/" 
-                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
-              >
-                Home
-              </Link>
-              <Link 
-                href="/designs" 
-                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
-              >
-                Designs
-              </Link>
-              <Link 
-                href="/blog" 
-                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
-              >
-                Blog
-              </Link>
-              <Link 
-                href="/about" 
-                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
-              >
-                About
-              </Link>
-              <Link 
-                href="/contact" 
-                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2 rounded-full hover:bg-gray-100"
-              >
-                Contact
-              </Link>
-            </nav>
-          </div>
-
           {/* Quantified Outcomes */}
           <motion.div 
             className="flex flex-wrap justify-center items-center gap-10 mt-16 mb-12"
