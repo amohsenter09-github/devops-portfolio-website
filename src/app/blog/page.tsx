@@ -134,69 +134,6 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* All Posts */}
-      <section className="py-12 md:py-16 w-full flex items-center justify-center">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <h2 className="text-2xl md:text-3xl font-bold mb-10 text-gray-900 text-center">All Articles</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8 mx-auto">
-            {blogPosts.map((post, index) => (
-              <motion.article
-                key={post.id}
-                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg transition"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="p-6">
-                  <div className="flex items-center mb-3 text-sm text-gray-500">
-                    <Calendar size={14} className="mr-2" />
-                    {new Date(post.date).toLocaleDateString('en-US', { 
-                      year: 'numeric', 
-                      month: 'short', 
-                      day: 'numeric' 
-                    })}
-                    <Clock size={14} className="ml-3 mr-1" />
-                    {post.readTime}
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                    {post.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <span 
-                        key={tag}
-                        className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {post.tags.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
-                        +{post.tags.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                  
-                  <Link 
-                    href={`/blog/${post.slug}`}
-                    className="text-gray-900 hover:text-gray-700 font-medium text-sm"
-                  >
-                    Read More →
-                  </Link>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
