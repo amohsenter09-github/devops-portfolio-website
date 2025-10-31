@@ -34,7 +34,36 @@ export default function Nav() {
                   : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
               }`}
             >
-              Designs
+              <span className="font-mono">
+                designed
+                <motion.span
+                  className="text-cyan-600"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                >
+                  _
+                </motion.span>
+                by
+                <motion.span
+                  className="text-cyan-600"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
+                >
+                  _
+                </motion.span>
+                me
+                {pathname === "/designs" && (
+                  <motion.span
+                    className="text-cyan-600 ml-0.5"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    |
+                  </motion.span>
+                )}
+              </span>
             </Link>
             <Link 
               href="/blog" 
