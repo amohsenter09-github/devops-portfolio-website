@@ -12,27 +12,19 @@ export default function Nav() {
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between w-full">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 relative">
+        <div className="flex items-center justify-center w-full">
           {/* Navigation Tabs - Centered */}
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 items-center flex-1">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 items-center">
             <Link 
               href="/" 
-              className={`text-base font-medium transition-colors px-4 py-2 rounded-full ${
-                pathname === "/" 
-                  ? "text-gray-900 bg-gray-100" 
-                  : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              }`}
+              className="text-base font-medium transition-colors px-4 py-2 rounded-full text-gray-700 hover:text-gray-900"
             >
               Home
             </Link>
             <Link 
               href="/designs" 
-              className={`text-base font-medium transition-colors px-4 py-2 rounded-full ${
-                pathname === "/designs" 
-                  ? "text-gray-900 bg-gray-100" 
-                  : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              }`}
+              className="text-base font-medium transition-colors px-4 py-2 rounded-full text-gray-700 hover:text-gray-900"
             >
               <span className="font-mono">
                 designed
@@ -67,21 +59,13 @@ export default function Nav() {
             </Link>
             <Link 
               href="/blog" 
-              className={`text-base font-medium transition-colors px-4 py-2 rounded-full ${
-                pathname.startsWith("/blog") 
-                  ? "text-gray-900 bg-gray-100" 
-                  : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              }`}
+              className="text-base font-medium transition-colors px-4 py-2 rounded-full text-gray-700 hover:text-gray-900"
             >
               Blog
             </Link>
             <Link 
               href="/about" 
-              className={`text-base font-medium transition-colors px-4 py-2 rounded-full ${
-                pathname === "/about" 
-                  ? "text-gray-900 bg-gray-100" 
-                  : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              }`}
+              className="text-base font-medium transition-colors px-4 py-2 rounded-full text-gray-700 hover:text-gray-900"
             >
               <span className="font-mono">
                 About
@@ -107,18 +91,14 @@ export default function Nav() {
             </Link>
             <Link 
               href="/contact" 
-              className={`text-base font-medium transition-colors px-4 py-2 rounded-full ${
-                pathname === "/contact" 
-                  ? "text-gray-900 bg-gray-100" 
-                  : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              }`}
+              className="text-base font-medium transition-colors px-4 py-2 rounded-full text-gray-700 hover:text-gray-900"
             >
               Contact
             </Link>
           </div>
 
-          {/* Right side icons - Far right with minimal right padding */}
-          <div className="flex items-center gap-4 sm:gap-6 -mr-4 sm:-mr-6 lg:-mr-8">
+          {/* Right side icons - Absolutely positioned far right */}
+          <div className="absolute right-4 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 flex items-center gap-4 sm:gap-6">
             {/* LinkedIn Icon */}
             <a
               href={site.contact.linkedin}
