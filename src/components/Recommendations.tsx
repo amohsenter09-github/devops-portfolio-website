@@ -49,7 +49,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
       className="cursor-pointer"
     >
       <motion.div 
-        className="h-full rounded-2xl bg-white border border-gray-200 p-8 lg:p-10 flex flex-col relative overflow-hidden group"
+        className="h-full rounded-xl bg-white border border-gray-200 p-6 lg:p-7 flex flex-col relative overflow-hidden group"
         style={{
           boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
         }}
@@ -71,7 +71,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
 
         {/* Rating Stars */}
         <motion.div 
-          className="flex gap-1.5 mb-6 relative z-10"
+          className="flex gap-1.5 mb-4 relative z-10"
           initial={{ opacity: 0, x: -10 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ delay: index * 0.08 + 0.15, duration: 0.4 }}
@@ -101,7 +101,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
         
         {/* Recommendation Text */}
         <motion.p 
-          className="text-base text-gray-700 leading-relaxed mb-6 flex-grow relative z-10 font-medium"
+          className="text-sm text-gray-700 leading-relaxed mb-4 flex-grow relative z-10 font-medium"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: index * 0.08 + 0.4, duration: 0.5 }}
@@ -270,16 +270,16 @@ export default function Recommendations() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      {/* Section Header */}
+      {/* Section Header - Compact */}
       <motion.div 
-        className="text-center mb-16"
+        className="text-center mb-10"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.25 }}
       >
         <motion.h2 
-          className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3"
+          className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4 }}
@@ -288,13 +288,13 @@ export default function Recommendations() {
           Client Recommendations
         </motion.h2>
         <motion.p 
-          className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto"
+          className="text-gray-600 text-sm max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.4 }}
           viewport={{ once: true }}
         >
-          Trusted by enterprise clients worldwide • See all recommendations on{" "}
+          Trusted by enterprise clients • See all on{" "}
           <a 
             href={site.contact.linkedin + "/details/recommendations/"} 
             target="_blank" 
@@ -306,8 +306,8 @@ export default function Recommendations() {
         </motion.p>
       </motion.div>
 
-      {/* Vertical Tab Layout: Left Panel + Right Content */}
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 min-h-[600px]">
+      {/* Vertical Tab Layout: Left Panel + Right Content - Compact */}
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 min-h-[500px]">
         {/* Left Sidebar - Vertical Tabs */}
         <div className="flex-shrink-0 w-full lg:w-72">
           <div className="flex lg:flex-col gap-3 lg:gap-4 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 lg:sticky lg:top-24">
@@ -367,7 +367,7 @@ export default function Recommendations() {
           </div>
         </div>
 
-        {/* Right Content Area - Recommendations Grid */}
+        {/* Right Content Area - Recommendations Grid - Compact */}
         <div className="flex-1 min-w-0">
           <motion.div
             key={displayTab}
@@ -375,7 +375,7 @@ export default function Recommendations() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
           >
             {currentRecommendations.map((recommendation, index) => (
               <RecommendationCard
@@ -391,7 +391,7 @@ export default function Recommendations() {
       {/* View More Link */}
       {site.recommendations.length > 0 && (
         <motion.div
-          className="text-center mt-12"
+          className="text-center mt-8"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.4 }}
