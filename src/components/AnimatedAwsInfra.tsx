@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import React from "react";
+import { Icon } from "@iconify/react";
 import {
-  SiAmazoncloudwatch,
   SiKubernetes,
   SiPrometheus,
   SiArgo,
@@ -14,16 +14,9 @@ import {
   SiPagerduty
 } from "react-icons/si";
 import {
-  Cloud,
-  Shield,
-  Network,
   Server,
-  Globe,
-  Key,
-  Loader,
-  MessageSquare,
+  Network,
   Zap,
-  Database
 } from "lucide-react";
 
 type Node = {
@@ -34,45 +27,74 @@ type Node = {
   w: number;
   h: number;
   type: "group" | "service";
-  icon?: React.ReactNode;
+  awsIcon?: string; // Iconify icon name
+  customIcon?: React.ReactNode;
   numberLabel?: string;
   highlight?: boolean;
   delay?: number;
   region?: string;
+  showRegionTag?: boolean; // Show region tag inside service box
 };
 
 type Edge = {
   id: string;
   from: [number, number];
   to: [number, number];
-  color?: string;
-  dash?: string;
   label?: string;
-  type?: "solid" | "dashed";
+  flowType?: "traffic" | "deployment" | "monitoring"; // Determines style and color
 };
 
+// Enhanced color system
 const colors = {
   bg: "#ffffff",
   panel: "rgba(0, 0, 0, 0.03)",
   stroke: "rgba(0, 0, 0, 0.2)",
   label: "#232f3e",
-  arrowSolid: "#232f3e",
-  arrowDashed: "#fa8900",
+  // Flow type colors
+  traffic: "#2563eb", // Blue for data traffic
+  deployment: "#fa8900", // Orange for deployment/automation
+  monitoring: "#10b981", // Green for monitoring/metrics
+  // Environment badges
   prodBox: "#dc2626",
   stagingBox: "#f59e0b",
   sandboxBox: "#10b981",
+  regionTag: "#9ca3af", // Faint gray for region tags
 };
 
 function CleanArrow({ edge, index }: { edge: Edge; index: number }) {
-  const { from, to, label, type = "solid" } = edge;
+  const { from, to, label, flowType = "traffic" } = edge;
   const markerId = `arrowhead-${edge.id}`;
-  const arrowColor = type === "dashed" ? colors.arrowDashed : colors.arrowSolid;
-  const strokeWidth = 3;
+  
+  // Determine arrow properties based on flow type
+  let arrowColor: string;
+  let strokeDashArray: string;
+  let strokeWidth: number;
+  
+  switch (flowType) {
+    case "traffic":
+      arrowColor = colors.traffic; // Blue
+      strokeDashArray = "none"; // Solid
+      strokeWidth = 3;
+      break;
+    case "deployment":
+      arrowColor = colors.deployment; // Orange
+      strokeDashArray = "10 6"; // Dashed
+      strokeWidth = 2.5;
+      break;
+    case "monitoring":
+      arrowColor = colors.monitoring; // Green
+      strokeDashArray = "4 4"; // Dotted
+      strokeWidth = 2.5;
+      break;
+    default:
+      arrowColor = colors.traffic;
+      strokeDashArray = "none";
+      strokeWidth = 3;
+  }
   
   const midX = (from[0] + to[0]) / 2;
   const midY = (from[1] + to[1]) / 2;
   
-  // Calculate path length and direction
   const dx = to[0] - from[0];
   const dy = to[1] - from[1];
   const pathLength = Math.sqrt(dx * dx + dy * dy);
@@ -93,6 +115,7 @@ function CleanArrow({ edge, index }: { edge: Edge; index: number }) {
         </marker>
       </defs>
       
+      {/* Base arrow line */}
       <line
         x1={from[0]}
         y1={from[1]}
@@ -100,40 +123,41 @@ function CleanArrow({ edge, index }: { edge: Edge; index: number }) {
         y2={to[1]}
         stroke={arrowColor}
         strokeWidth={strokeWidth}
-        strokeDasharray={type === "dashed" ? "10 6" : "none"}
+        strokeDasharray={strokeDashArray}
         markerEnd={`url(#${markerId})`}
-        opacity={0.9}
+        opacity={0.85}
       />
       
-      {/* Animated moving dot to show direction */}
+      {/* Animated moving dot - slower, smoother */}
       <motion.g
         initial={{ x: from[0], y: from[1] }}
         animate={{ x: to[0], y: to[1] }}
         transition={{
-          duration: 3 + pathLength / 100,
+          duration: 4 + pathLength / 80,
           repeat: Infinity,
           ease: "linear",
-          delay: index * 0.15,
+          delay: index * 0.2,
         }}
       >
         <motion.circle
-          r={5}
+          r={flowType === "traffic" ? 6 : 5}
           fill={arrowColor}
           animate={{
-            r: [5, 7, 5],
-            opacity: [1, 0.8, 1],
+            r: flowType === "traffic" ? [6, 8, 6] : [5, 7, 5],
+            opacity: [1, 0.7, 1],
           }}
           transition={{
-            duration: 1.5,
+            duration: 2,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         />
-        <circle r={8} fill={arrowColor} opacity={0.3} />
+        <circle r={flowType === "traffic" ? 10 : 8} fill={arrowColor} opacity={0.2} />
       </motion.g>
       
+      {/* Label */}
       {label && (
-        <g transform={`translate(${midX}, ${midY - 16})`}>
+        <g transform={`translate(${midX}, ${midY - 18})`}>
           <rect
             x={-label.length * 4.5}
             y={-9}
@@ -149,7 +173,7 @@ function CleanArrow({ edge, index }: { edge: Edge; index: number }) {
             x={0}
             y={3}
             fill={colors.label}
-            fontSize="11"
+            fontSize="10"
             fontWeight={500}
             textAnchor="middle"
           >
@@ -162,87 +186,86 @@ function CleanArrow({ edge, index }: { edge: Edge; index: number }) {
 }
 
 export default function AnimatedAwsInfra() {
-  // Larger, cleaner layout with bigger text
   const nodes: Node[] = [
-    // Top: External AWS Services - Bigger
+    // Top: External AWS Services
     { id: "ext", label: "EXTERNAL AWS SERVICES", x: 80, y: 50, w: 700, h: 300, type: "group" },
-    { id: "route53", label: "Route53", x: 100, y: 110, w: 200, h: 70, type: "service", icon: <Globe className="w-7 h-7" /> },
-    { id: "api-gateway", label: "API Gateway", x: 320, y: 110, w: 220, h: 70, type: "service", icon: <Network className="w-7 h-7" /> },
-    { id: "cloudfront", label: "CloudFront", x: 560, y: 110, w: 200, h: 70, type: "service", icon: <Cloud className="w-7 h-7" /> },
-    { id: "s3-static", label: "Amazon S3", x: 100, y: 200, w: 200, h: 70, type: "service", icon: <Database className="w-7 h-7" /> },
-    { id: "s3-portal", label: "Amazon S3", x: 320, y: 200, w: 440, h: 70, type: "service", icon: <Database className="w-7 h-7" /> },
+    { id: "route53", label: "Route53", x: 100, y: 110, w: 200, h: 70, type: "service", awsIcon: "simple-icons:amazonroute53" },
+    { id: "api-gateway", label: "API Gateway", x: 320, y: 110, w: 220, h: 70, type: "service", awsIcon: "simple-icons:amazonapigateway" },
+    { id: "cloudfront", label: "CloudFront", x: 560, y: 110, w: 200, h: 70, type: "service", awsIcon: "simple-icons:amazoncloudfront" },
+    { id: "s3-static", label: "Amazon S3", x: 100, y: 200, w: 200, h: 70, type: "service", awsIcon: "simple-icons:amazons3" },
+    { id: "s3-portal", label: "Amazon S3", x: 320, y: 200, w: 440, h: 70, type: "service", awsIcon: "simple-icons:amazons3" },
 
-    // Security Services - Bigger
+    // Security Services
     { id: "sec", label: "SECURITY SERVICES", x: 820, y: 50, w: 400, h: 300, type: "group" },
-    { id: "waf", label: "WAF", x: 840, y: 110, w: 360, h: 70, type: "service", icon: <Shield className="w-7 h-7" /> },
-    { id: "guardduty", label: "GuardDuty", x: 840, y: 200, w: 360, h: 70, type: "service", icon: <Shield className="w-7 h-7" /> },
+    { id: "waf", label: "WAF", x: 840, y: 110, w: 360, h: 70, type: "service", awsIcon: "simple-icons:amazonaws" },
+    { id: "guardduty", label: "GuardDuty", x: 840, y: 200, w: 360, h: 70, type: "service", awsIcon: "simple-icons:amazonaws" },
 
-    // Left: Operations (US-WEST-2) - Bigger
+    // Left: Operations (US-WEST-2)
     { id: "ops-account", label: "OPERATIONS (US-WEST-2)", x: 80, y: 380, w: 600, h: 480, type: "group", region: "us-west-2" },
-    { id: "argocd", label: "ArgoCD (HA)", x: 100, y: 450, w: 280, h: 80, type: "service", highlight: true, icon: <SiArgo className="w-7 h-7" /> },
-    { id: "bastion-ops", label: "Bastion Hosts (m5.medium)", x: 400, y: 450, w: 260, h: 80, type: "service", icon: <Server className="w-7 h-7" /> },
-    { id: "mon-stack", label: "Monitoring (Prometheus/Grafana)", x: 100, y: 550, w: 560, h: 80, type: "service", icon: <SiPrometheus className="w-7 h-7" /> },
-    { id: "vpn-ops", label: "Aviatrix VPN", x: 100, y: 650, w: 560, h: 80, type: "service", icon: <Network className="w-7 h-7" /> },
-    { id: "lambda-ops", label: "Lambda", x: 100, y: 750, w: 560, h: 70, type: "service", icon: <Zap className="w-7 h-7" /> },
+    { id: "argocd", label: "ArgoCD (HA)", x: 100, y: 450, w: 280, h: 80, type: "service", highlight: true, customIcon: <SiArgo className="w-7 h-7" />, showRegionTag: true, region: "us-west-2" },
+    { id: "bastion-ops", label: "Bastion Hosts (m5.medium)", x: 400, y: 450, w: 260, h: 80, type: "service", customIcon: <Server className="w-7 h-7" />, showRegionTag: true, region: "us-west-2" },
+    { id: "mon-stack", label: "Monitoring (Prometheus/Grafana)", x: 100, y: 550, w: 560, h: 80, type: "service", customIcon: <SiPrometheus className="w-7 h-7" /> },
+    { id: "vpn-ops", label: "Aviatrix VPN", x: 100, y: 650, w: 560, h: 80, type: "service", customIcon: <Network className="w-7 h-7" /> },
+    { id: "lambda-ops", label: "Lambda", x: 100, y: 750, w: 560, h: 70, type: "service", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "us-west-2" },
 
-    // Top-Right: Production (CA-CENTRAL-1) - Bigger
+    // Top-Right: Production (CA-CENTRAL-1)
     { id: "prod-account", label: "PRODUCTION (CA-CENTRAL-1)", x: 1260, y: 50, w: 1200, h: 500, type: "group", region: "ca-central-1" },
-    { id: "prod-alb", label: "ALB", x: 1280, y: 130, w: 200, h: 85, type: "service", numberLabel: "PROD 1", icon: <Network className="w-7 h-7" /> },
-    { id: "prod-eks", label: "EKS", x: 1500, y: 130, w: 280, h: 85, type: "service", numberLabel: "PROD 2", icon: <SiKubernetes className="w-7 h-7" /> },
-    { id: "prod-rds", label: "Aurora PostgreSQL", x: 1800, y: 130, w: 400, h: 85, type: "service", numberLabel: "3", icon: <SiPostgresql className="w-7 h-7" /> },
-    { id: "prod-redis", label: "ElastiCache Redis", x: 2220, y: 130, w: 360, h: 85, type: "service", icon: <SiRedis className="w-7 h-7" /> },
-    { id: "prod-cw", label: "CloudWatch", x: 1280, y: 240, w: 220, h: 70, type: "service", icon: <SiAmazoncloudwatch className="w-7 h-7" /> },
-    { id: "prod-kms", label: "KMS", x: 1520, y: 240, w: 180, h: 70, type: "service", icon: <Key className="w-7 h-7" /> },
-    { id: "prod-s3", label: "Amazon S3", x: 1720, y: 240, w: 520, h: 70, type: "service", icon: <Database className="w-7 h-7" /> },
-    { id: "prod-sns", label: "SNS", x: 2260, y: 240, w: 180, h: 70, type: "service", icon: <MessageSquare className="w-7 h-7" /> },
-    { id: "prod-sqs", label: "SQS", x: 1280, y: 330, w: 180, h: 70, type: "service", icon: <Loader className="w-7 h-7" /> },
-    { id: "prod-lambda", label: "Lambda Functions", x: 1480, y: 330, w: 400, h: 70, type: "service", icon: <Zap className="w-7 h-7" /> },
-    { id: "prod-vpc", label: "VPC (Multi-AZ)", x: 1900, y: 330, w: 540, h: 70, type: "service", icon: <Network className="w-7 h-7" /> },
+    { id: "prod-alb", label: "ALB", x: 1280, y: 130, w: 200, h: 85, type: "service", numberLabel: "PROD 1", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-eks", label: "EKS", x: 1500, y: 130, w: 280, h: 85, type: "service", numberLabel: "PROD 2", customIcon: <SiKubernetes className="w-7 h-7" />, showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-rds", label: "Aurora PostgreSQL", x: 1800, y: 130, w: 400, h: 85, type: "service", numberLabel: "3", customIcon: <SiPostgresql className="w-7 h-7" />, showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-redis", label: "ElastiCache Redis", x: 2220, y: 130, w: 360, h: 85, type: "service", customIcon: <SiRedis className="w-7 h-7" />, showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-cw", label: "CloudWatch", x: 1280, y: 240, w: 220, h: 70, type: "service", awsIcon: "simple-icons:amazoncloudwatch", showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-kms", label: "KMS", x: 1520, y: 240, w: 180, h: 70, type: "service", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-s3", label: "Amazon S3", x: 1720, y: 240, w: 520, h: 70, type: "service", awsIcon: "simple-icons:amazons3", showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-sns", label: "SNS", x: 2260, y: 240, w: 180, h: 70, type: "service", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-sqs", label: "SQS", x: 1280, y: 330, w: 180, h: 70, type: "service", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-lambda", label: "Lambda Functions", x: 1480, y: 330, w: 400, h: 70, type: "service", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
+    { id: "prod-vpc", label: "VPC (Multi-AZ)", x: 1900, y: 330, w: 540, h: 70, type: "service", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
 
-    // Mid-Right: Staging (CA-CENTRAL-1) - Bigger
+    // Mid-Right: Staging (CA-CENTRAL-1)
     { id: "stg-account", label: "STAGING (CA-CENTRAL-1)", x: 1260, y: 580, w: 1200, h: 380, type: "group", region: "ca-central-1" },
-    { id: "stg-alb", label: "ALB", x: 1280, y: 640, w: 200, h: 80, type: "service", numberLabel: "STAGING 1", icon: <Network className="w-7 h-7" /> },
-    { id: "stg-eks", label: "EKS", x: 1500, y: 640, w: 280, h: 80, type: "service", numberLabel: "STAGING 2", icon: <SiKubernetes className="w-7 h-7" /> },
-    { id: "stg-rds", label: "Aurora PostgreSQL", x: 1800, y: 640, w: 400, h: 80, type: "service", icon: <SiPostgresql className="w-7 h-7" /> },
-    { id: "stg-redis", label: "ElastiCache Redis", x: 2220, y: 640, w: 360, h: 80, type: "service", icon: <SiRedis className="w-7 h-7" /> },
-    { id: "stg-cw", label: "CloudWatch", x: 1280, y: 740, w: 220, h: 65, type: "service", icon: <SiAmazoncloudwatch className="w-7 h-7" /> },
-    { id: "stg-kms", label: "KMS", x: 1520, y: 740, w: 180, h: 65, type: "service", icon: <Key className="w-7 h-7" /> },
-    { id: "stg-s3", label: "Amazon S3", x: 1720, y: 740, w: 520, h: 65, type: "service", icon: <Database className="w-7 h-7" /> },
-    { id: "stg-vpc", label: "VPC (Multi-AZ)", x: 2260, y: 740, w: 320, h: 65, type: "service", icon: <Network className="w-7 h-7" /> },
+    { id: "stg-alb", label: "ALB", x: 1280, y: 640, w: 200, h: 80, type: "service", numberLabel: "STAGING 1", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
+    { id: "stg-eks", label: "EKS", x: 1500, y: 640, w: 280, h: 80, type: "service", numberLabel: "STAGING 2", customIcon: <SiKubernetes className="w-7 h-7" />, showRegionTag: true, region: "ca-central-1" },
+    { id: "stg-rds", label: "Aurora PostgreSQL", x: 1800, y: 640, w: 400, h: 80, type: "service", customIcon: <SiPostgresql className="w-7 h-7" />, showRegionTag: true, region: "ca-central-1" },
+    { id: "stg-redis", label: "ElastiCache Redis", x: 2220, y: 640, w: 360, h: 80, type: "service", customIcon: <SiRedis className="w-7 h-7" />, showRegionTag: true, region: "ca-central-1" },
+    { id: "stg-cw", label: "CloudWatch", x: 1280, y: 740, w: 220, h: 65, type: "service", awsIcon: "simple-icons:amazoncloudwatch", showRegionTag: true, region: "ca-central-1" },
+    { id: "stg-kms", label: "KMS", x: 1520, y: 740, w: 180, h: 65, type: "service", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
+    { id: "stg-s3", label: "Amazon S3", x: 1720, y: 740, w: 520, h: 65, type: "service", awsIcon: "simple-icons:amazons3", showRegionTag: true, region: "ca-central-1" },
+    { id: "stg-vpc", label: "VPC (Multi-AZ)", x: 2260, y: 740, w: 320, h: 65, type: "service", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
 
-    // Bottom-Right: Sandbox (CA-CENTRAL-1) - Bigger
+    // Bottom-Right: Sandbox (CA-CENTRAL-1)
     { id: "sbx-account", label: "SANDBOX (CA-CENTRAL-1)", x: 1260, y: 990, w: 1200, h: 280, type: "group", region: "ca-central-1" },
-    { id: "sbx-eks", label: "EKS", x: 1280, y: 1050, w: 300, h: 80, type: "service", numberLabel: "SANDBOX", icon: <SiKubernetes className="w-7 h-7" /> },
-    { id: "sbx-rds", label: "Aurora PostgreSQL", x: 1600, y: 1050, w: 400, h: 80, type: "service", icon: <SiPostgresql className="w-7 h-7" /> },
-    { id: "sbx-redis", label: "ElastiCache Redis", x: 2020, y: 1050, w: 360, h: 80, type: "service", icon: <SiRedis className="w-7 h-7" /> },
-    { id: "sbx-cw", label: "CloudWatch", x: 1280, y: 1150, w: 220, h: 65, type: "service", icon: <SiAmazoncloudwatch className="w-7 h-7" /> },
-    { id: "sbx-kms", label: "KMS", x: 1520, y: 1150, w: 180, h: 65, type: "service", icon: <Key className="w-7 h-7" /> },
+    { id: "sbx-eks", label: "EKS", x: 1280, y: 1050, w: 300, h: 80, type: "service", numberLabel: "SANDBOX", customIcon: <SiKubernetes className="w-7 h-7" />, showRegionTag: true, region: "ca-central-1" },
+    { id: "sbx-rds", label: "Aurora PostgreSQL", x: 1600, y: 1050, w: 400, h: 80, type: "service", customIcon: <SiPostgresql className="w-7 h-7" />, showRegionTag: true, region: "ca-central-1" },
+    { id: "sbx-redis", label: "ElastiCache Redis", x: 2020, y: 1050, w: 360, h: 80, type: "service", customIcon: <SiRedis className="w-7 h-7" />, showRegionTag: true, region: "ca-central-1" },
+    { id: "sbx-cw", label: "CloudWatch", x: 1280, y: 1150, w: 220, h: 65, type: "service", awsIcon: "simple-icons:amazoncloudwatch", showRegionTag: true, region: "ca-central-1" },
+    { id: "sbx-kms", label: "KMS", x: 1520, y: 1150, w: 180, h: 65, type: "service", awsIcon: "simple-icons:amazonaws", showRegionTag: true, region: "ca-central-1" },
 
-    // Bottom: Monitoring & Alerting - Bigger
+    // Bottom: Monitoring & Alerting
     { id: "mon-alert", label: "MONITORING & ALERTING", x: 80, y: 890, w: 1080, h: 380, type: "group" },
-    { id: "central-cw", label: "CloudWatch", x: 100, y: 960, w: 260, h: 80, type: "service", icon: <SiAmazoncloudwatch className="w-7 h-7" /> },
-    { id: "pagerduty", label: "PagerDuty", x: 380, y: 960, w: 240, h: 80, type: "service", icon: <SiPagerduty className="w-7 h-7" /> },
-    { id: "slack", label: "Slack", x: 640, y: 960, w: 220, h: 80, type: "service", icon: <SiSlack className="w-7 h-7" /> },
-    { id: "datadog", label: "Datadog", x: 880, y: 960, w: 260, h: 80, type: "service", icon: <SiDatadog className="w-7 h-7" /> },
+    { id: "central-cw", label: "CloudWatch", x: 100, y: 960, w: 260, h: 80, type: "service", awsIcon: "simple-icons:amazoncloudwatch" },
+    { id: "pagerduty", label: "PagerDuty", x: 380, y: 960, w: 240, h: 80, type: "service", customIcon: <SiPagerduty className="w-7 h-7" /> },
+    { id: "slack", label: "Slack", x: 640, y: 960, w: 220, h: 80, type: "service", customIcon: <SiSlack className="w-7 h-7" /> },
+    { id: "datadog", label: "Datadog", x: 880, y: 960, w: 260, h: 80, type: "service", customIcon: <SiDatadog className="w-7 h-7" /> },
   ];
 
-  // Minimal essential edges - only critical paths
+  // Enhanced edges with flow types
   const edges: Edge[] = [
-    // Primary user flow - Solid black (most important)
-    { id: "cf-waf", from: [760, 145], to: [1020, 145], color: colors.arrowSolid, label: "CDN traffic", type: "solid" },
-    { id: "waf-prod", from: [1200, 145], to: [1380, 172], color: colors.arrowSolid, label: "live traffic", type: "solid" },
-    { id: "alb-prod-eks", from: [1480, 172], to: [1610, 172], color: colors.arrowSolid, type: "solid" },
-    { id: "eks-prod-rds", from: [1780, 172], to: [1910, 172], color: colors.arrowSolid, type: "solid" },
+    // Primary user flow - Traffic (Blue, Solid)
+    { id: "cf-waf", from: [760, 145], to: [1020, 145], label: "CDN traffic", flowType: "traffic" },
+    { id: "waf-prod", from: [1200, 145], to: [1380, 172], label: "live traffic", flowType: "traffic" },
+    { id: "alb-prod-eks", from: [1480, 172], to: [1610, 172], flowType: "traffic" },
+    { id: "eks-prod-rds", from: [1780, 172], to: [1910, 172], flowType: "traffic" },
     
-    // ArgoCD deployment - Dashed orange (one representative)
-    { id: "argo-prod", from: [240, 490], to: [1610, 172], color: colors.arrowDashed, label: "deploy workloads", type: "dashed" },
+    // ArgoCD deployment - Deployment (Orange, Dashed)
+    { id: "argo-prod", from: [240, 490], to: [1610, 172], label: "deploy workloads", flowType: "deployment" },
     
-    // Monitoring - Dashed orange (one representative)
-    { id: "prod-mon", from: [1390, 275], to: [360, 590], color: colors.arrowDashed, label: "metrics", type: "dashed" },
+    // Monitoring - Monitoring (Green, Dotted)
+    { id: "prod-mon", from: [1390, 275], to: [360, 590], label: "metrics", flowType: "monitoring" },
     
-    // Alerting flow - Solid black
-    { id: "cw-pagerduty", from: [230, 1000], to: [500, 1000], color: colors.arrowSolid, label: "alerting", type: "solid" },
-    { id: "pagerduty-slack", from: [500, 1000], to: [750, 1000], color: colors.arrowSolid, label: "notifications", type: "solid" },
+    // Alerting flow - Traffic (Blue, Solid)
+    { id: "cw-pagerduty", from: [230, 1000], to: [500, 1000], label: "alerting", flowType: "traffic" },
+    { id: "pagerduty-slack", from: [500, 1000], to: [750, 1000], label: "notifications", flowType: "traffic" },
   ];
 
   const renderNode = (node: Node, index: number) => {
@@ -355,15 +378,34 @@ export default function AnimatedAwsInfra() {
           </>
         )}
         
+        {/* Region tag - faint gray inside box */}
+        {node.showRegionTag && node.region && (
+          <text
+            x={node.x + 16}
+            y={node.y + node.h - 10}
+            fill={colors.regionTag}
+            fontSize={10}
+            fontWeight={400}
+            opacity={0.7}
+          >
+            {node.region}
+          </text>
+        )}
+        
+        {/* Service Icon - AWS or Custom */}
         <foreignObject x={node.x + 16} y={node.y + (node.h - 32) / 2} width={32} height={32}>
-          <div className="flex items-center justify-center h-full" style={{ color: colors.label }}>
-            {node.icon}
+          <div className="flex items-center justify-center h-full" style={{ color: node.awsIcon ? "#232f3e" : colors.label }}>
+            {node.awsIcon ? (
+              <Icon icon={node.awsIcon} width="32" height="32" />
+            ) : node.customIcon ? (
+              node.customIcon
+            ) : null}
           </div>
         </foreignObject>
         
         <text
-          x={node.x + (node.icon ? 58 : 20)}
-          y={node.y + node.h / 2 + 7}
+          x={node.x + (node.awsIcon || node.customIcon ? 58 : 20)}
+          y={node.y + node.h / 2 + (node.showRegionTag && node.region ? 0 : 7)}
           fill={colors.label}
           fontSize={node.h < 75 ? 13 : 15}
           fontWeight={hasHighlight ? 600 : 500}
