@@ -89,7 +89,7 @@ export default function AwsPlatformSection() {
           </motion.div>
 
           {/* ===== DIAGRAM CARD ===== */}
-          <div className="flex-1 rounded-2xl shadow-sm border border-gray-100 p-4 bg-white" style={{ paddingTop: '80px' }}>
+          <div className="flex-1 p-4 bg-white" style={{ paddingTop: '80px' }}>
             <AnimatedAwsInfra />
           </div>
         </div>
