@@ -12,10 +12,9 @@ export default function Nav() {
 
   return (
     <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-      <nav className="mx-auto max-w-6xl px-6 sm:px-8 py-5 relative">
-        {/* Navigation Container */}
-        <div className="flex items-center justify-center relative">
-          {/* Navigation Tabs - Centered */}
+      <nav className="mx-auto max-w-6xl px-6 sm:px-8 py-5 relative min-h-[60px]">
+        {/* Navigation Links - Absolutely Centered */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="flex flex-wrap justify-center gap-5 sm:gap-8 items-center">
             <Link 
               href="/" 
@@ -38,7 +37,7 @@ export default function Nav() {
               <span className="font-mono lowercase">
                 designed
                 <motion.span
-                  className="text-cyan-600"
+                  className={pathname === "/designs" ? "text-cyan-700" : "text-cyan-600"}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.2 }}
@@ -47,7 +46,7 @@ export default function Nav() {
                 </motion.span>
                 by
                 <motion.span
-                  className="text-cyan-600"
+                  className={pathname === "/designs" ? "text-cyan-700" : "text-cyan-600"}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.4 }}
@@ -57,8 +56,8 @@ export default function Nav() {
                 me
                 {pathname === "/designs" && (
                   <motion.span
-                    className="text-cyan-600 ml-0.5"
-                    animate={{ opacity: [1, 0, 1] }}
+                    className="text-cyan-700 ml-0.5 font-semibold"
+                    animate={{ opacity: [1, 0.3, 1] }}
                     transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
                   >
                     |
@@ -87,7 +86,7 @@ export default function Nav() {
               <span className="font-mono lowercase">
                 about
                 <motion.span
-                  className="text-cyan-600"
+                  className={pathname === "/about" ? "text-cyan-700" : "text-cyan-600"}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.2 }}
@@ -97,8 +96,8 @@ export default function Nav() {
                 me
                 {pathname === "/about" && (
                   <motion.span
-                    className="text-cyan-600 ml-0.5"
-                    animate={{ opacity: [1, 0, 1] }}
+                    className="text-cyan-700 ml-0.5 font-semibold"
+                    animate={{ opacity: [1, 0.3, 1] }}
                     transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
                   >
                     |
@@ -117,24 +116,24 @@ export default function Nav() {
               contact
             </Link>
           </div>
-
-          {/* Right side icons - Absolutely positioned */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-4 sm:gap-5">
-            <a
-              href={site.contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              <Linkedin size={20} />
-            </a>
-            <ThemeToggle />
-          </div>
         </div>
 
-        {/* Thin subtle divider below nav */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mt-4" />
+        {/* Right side icons - Absolutely positioned */}
+        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-4 sm:gap-5">
+          <a
+            href={site.contact.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            className="text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            <Linkedin size={20} />
+          </a>
+          <ThemeToggle />
+        </div>
+
+        {/* Thin subtle divider below nav - positioned absolutely */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
       </nav>
     </header>
   );
