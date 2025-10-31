@@ -63,66 +63,6 @@ const colors = {
   regionTag: "#9ca3af",
 };
 
-// Component to animate dot along curved path
-function CurvedDotAnimator({
-  from,
-  control,
-  to,
-  arrowColor,
-  flowType,
-  index,
-  distance,
-}: {
-  from: [number, number];
-  control: [number, number];
-  to: [number, number];
-  arrowColor: string;
-  flowType: "traffic" | "deployment" | "monitoring";
-  index: number;
-  distance: number;
-}) {
-  const [progress, setProgress] = React.useState(0);
-
-  React.useEffect(() => {
-    const duration = 4000 + distance / 80;
-    const startTime = Date.now() + index * 200;
-
-    const animate = () => {
-      const elapsed = (Date.now() - startTime) % duration;
-      const t = elapsed / duration;
-      setProgress(t);
-      requestAnimationFrame(animate);
-    };
-
-    const rafId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId);
-  }, [distance, index]);
-
-  // Calculate position on quadratic Bezier curve
-  const t = progress;
-  const x = (1 - t) * (1 - t) * from[0] + 2 * (1 - t) * t * control[0] + t * t * to[0];
-  const y = (1 - t) * (1 - t) * from[1] + 2 * (1 - t) * t * control[1] + t * t * to[1];
-
-  return (
-    <g transform={`translate(${x}, ${y})`}>
-      <motion.circle
-        r={flowType === "traffic" ? 6 : 5}
-        fill={arrowColor}
-        animate={{
-          r: flowType === "traffic" ? [6, 8, 6] : [5, 7, 5],
-          opacity: [1, 0.7, 1],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <circle r={flowType === "traffic" ? 10 : 8} fill={arrowColor} opacity={0.2} />
-    </g>
-  );
-}
-
 function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isVisible: boolean }) {
   const { from, to, label, flowType = "traffic" } = edge;
   const markerId = `arrowhead-${edge.id}`;
@@ -139,13 +79,13 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       break;
     case "deployment":
       arrowColor = colors.deployment;
-      strokeDashArray = "none"; // Changed to solid
-      strokeWidth = 3;
+      strokeDashArray = "10 6";
+      strokeWidth = 2.5;
       break;
     case "monitoring":
       arrowColor = colors.monitoring;
-      strokeDashArray = "none"; // Changed to solid
-      strokeWidth = 3;
+      strokeDashArray = "4 4";
+      strokeWidth = 2.5;
       break;
     default:
       arrowColor = colors.traffic;
@@ -153,34 +93,12 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       strokeWidth = 3;
   }
   
-  // Calculate curve control point for smooth arc
-  const dx = to[0] - from[0];
-  const dy = to[1] - from[1];
-  const distance = Math.sqrt(dx * dx + dy * dy);
-  const curveOffset = Math.min(distance * 0.3, 80); // Curve amount, max 80px
-  
-  // Calculate perpendicular direction for curve
-  const perpX = -dy / distance;
-  const perpY = dx / distance;
-  
-  // Control point offset perpendicular to the line
   const midX = (from[0] + to[0]) / 2;
   const midY = (from[1] + to[1]) / 2;
-  const controlX = midX + perpX * curveOffset;
-  const controlY = midY + perpY * curveOffset;
   
-  // Create curved path using quadratic Bezier curve
-  const pathD = `M ${from[0]} ${from[1]} Q ${controlX} ${controlY} ${to[0]} ${to[1]}`;
-  
-  // Calculate point on curve for animation
-  const getPointOnCurve = (t: number) => {
-    const x = (1 - t) * (1 - t) * from[0] + 2 * (1 - t) * t * controlX + t * t * to[0];
-    const y = (1 - t) * (1 - t) * from[1] + 2 * (1 - t) * t * controlY + t * t * to[1];
-    return [x, y];
-  };
-  
-  // Calculate label position on curve (at t=0.5)
-  const labelPoint = getPointOnCurve(0.5);
+  const dx = to[0] - from[0];
+  const dy = to[1] - from[1];
+  const pathLength = Math.sqrt(dx * dx + dy * dy);
   
   return (
     <g key={`arrow-${edge.id}`}>
@@ -205,10 +123,11 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
         </filter>
       </defs>
       
-      {/* Curved path instead of straight line */}
-      <path
-        d={pathD}
-        fill="none"
+      <line
+        x1={from[0]}
+        y1={from[1]}
+        x2={to[0]}
+        y2={to[1]}
         stroke={arrowColor}
         strokeWidth={strokeWidth}
         strokeDasharray={strokeDashArray}
@@ -218,19 +137,35 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       />
       
       {isVisible && (
-        <CurvedDotAnimator
-          from={from}
-          control={[controlX, controlY]}
-          to={to}
-          arrowColor={arrowColor}
-          flowType={flowType}
-          index={index}
-          distance={distance}
-        />
+        <motion.g
+          initial={{ x: from[0], y: from[1] }}
+          animate={{ x: to[0], y: to[1] }}
+          transition={{
+            duration: 4 + pathLength / 80,
+            repeat: Infinity,
+            ease: "linear",
+            delay: index * 0.2,
+          }}
+        >
+          <motion.circle
+            r={flowType === "traffic" ? 6 : 5}
+            fill={arrowColor}
+            animate={{
+              r: flowType === "traffic" ? [6, 8, 6] : [5, 7, 5],
+              opacity: [1, 0.7, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <circle r={flowType === "traffic" ? 10 : 8} fill={arrowColor} opacity={0.2} />
+        </motion.g>
       )}
       
       {label && (
-        <g transform={`translate(${labelPoint[0]}, ${labelPoint[1] - 25})`}>
+        <g transform={`translate(${midX}, ${midY - 25})`}>
           <rect
             x={-label.length * 5}
             y={-10}
@@ -458,16 +393,7 @@ export default function AnimatedAwsInfra() {
     if (node.numberLabel === "SANDBOX" || node.numberLabel === "3") numberLabelColor = colors.sandboxBox;
     
     return (
-      <motion.g 
-        key={node.id}
-        initial={{ opacity: 0, y: node.y + 10 }}
-        animate={{ opacity: 1, y: node.y }}
-        transition={{ 
-          duration: 0.5, 
-          delay: index * 0.05,
-          ease: "easeOut"
-        }}
-      >
+      <g key={node.id}>
         {hasHighlight && (
           <motion.rect
             x={node.x - 8}
@@ -490,21 +416,7 @@ export default function AnimatedAwsInfra() {
           />
         )}
         
-        {/* Soft shadow layer */}
-        <motion.rect
-          x={node.x + 2}
-          y={node.y + 2}
-          width={node.w}
-          height={node.h}
-          fill="rgba(0, 0, 0, 0.08)"
-          rx={8}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: index * 0.05 + 0.2 }}
-        />
-        
-        {/* Main card with soft shadow and hover interaction */}
-        <motion.rect
+        <rect
           x={node.x}
           y={node.y}
           width={node.w}
@@ -513,15 +425,6 @@ export default function AnimatedAwsInfra() {
           stroke={colors.stroke}
           strokeWidth={1.5}
           rx={8}
-          filter="url(#softShadow)"
-          initial={{ scale: 1, y: node.y }}
-          animate={{ y: node.y }}
-          whileHover={{ 
-            scale: 1.02,
-            y: node.y - 2,
-            transition: { duration: 0.2, ease: "easeOut" }
-          }}
-          style={{ cursor: "pointer" }}
         />
         
         {node.numberLabel && (
@@ -556,25 +459,15 @@ export default function AnimatedAwsInfra() {
           </foreignObject>
         )}
         
-        {/* Service Icon with hover animation */}
-        <foreignObject 
-          x={node.x + 20} 
-          y={node.y + (node.h - 38) / 2} 
-          width={38} 
-          height={38}
-        >
-          <motion.div 
-            className="flex items-center justify-center h-full" 
-            style={{ color: node.awsIcon ? "#232f3e" : colors.label }}
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.2 }}
-          >
+        {/* Service Icon */}
+        <foreignObject x={node.x + 20} y={node.y + (node.h - 38) / 2} width={38} height={38}>
+          <div className="flex items-center justify-center h-full" style={{ color: node.awsIcon ? "#232f3e" : colors.label }}>
             {node.awsIcon ? (
               <Icon icon={node.awsIcon} width="38" height="38" />
             ) : node.customIcon ? (
               node.customIcon
             ) : null}
-          </motion.div>
+          </div>
         </foreignObject>
         
         <text
@@ -583,11 +476,10 @@ export default function AnimatedAwsInfra() {
           fill={colors.label}
           fontSize={node.h < 90 ? 15 : 17}
           fontWeight={hasHighlight ? 600 : 500}
-          style={{ pointerEvents: "none" }}
         >
           {node.label}
         </text>
-      </motion.g>
+      </g>
     );
   };
 
@@ -691,21 +583,6 @@ export default function AnimatedAwsInfra() {
                 transition: 'transform 0.2s ease-out',
               }}
             >
-              <defs>
-                {/* Soft shadow filter for cards */}
-                <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-                  <feOffset dx="0" dy="2" result="offsetblur" />
-                  <feComponentTransfer>
-                    <feFuncA type="linear" slope="0.3" />
-                  </feComponentTransfer>
-                  <feMerge>
-                    <feMergeNode />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              
               <rect width="100%" height="100%" fill={colors.bg} />
               {nodes.map((node, index) => renderNode(node, index))}
               {isInView && edges.map((edge, index) => (
