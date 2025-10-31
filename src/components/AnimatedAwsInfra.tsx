@@ -165,7 +165,7 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       )}
       
       {label && (
-        <g transform={`translate(${midX}, ${midY - 18})`}>
+        <g transform={`translate(${midX}, ${midY - 25})`}>
           <rect
             x={-label.length * 5}
             y={-10}
@@ -199,7 +199,7 @@ export default function AnimatedAwsInfra() {
   
   // Pan and zoom state
   const [pan, setPan] = useState({ x: 0, y: 0 });
-  const [scale, setScale] = useState(0.45); // Start at 45% - bigger default size
+  const [scale, setScale] = useState(0.8); // Start at 80% as requested
   const [isInView, setIsInView] = useState(false);
   
   const PAN_STEP = 50; // Pixels to pan per click
@@ -235,7 +235,7 @@ export default function AnimatedAwsInfra() {
   
   const resetView = () => {
     setPan({ x: 0, y: 0 });
-    setScale(0.45);
+    setScale(0.8);
   };
 
   // Track when component is in view for animations
@@ -316,26 +316,26 @@ export default function AnimatedAwsInfra() {
     { id: "datadog", label: "Datadog", x: 1080, y: 1180, w: 320, h: 95, type: "service", customIcon: <SiDatadog className="w-8 h-8" /> },
   ];
 
-  // Main organized arrow animations - Key flows only
+  // Main organized arrow animations - Key flows only, routed to avoid text
   const edges: Edge[] = [
-    // Primary user traffic flow (Blue, Solid)
-    { id: "cf-waf", from: [820, 172], to: [1290, 172], label: "CDN traffic", flowType: "traffic" },
-    { id: "waf-prod", from: [1520, 172], to: [1720, 200], label: "live traffic", flowType: "traffic" },
-    { id: "alb-prod-eks", from: [1860, 200], to: [1990, 200], flowType: "traffic" },
-    { id: "eks-prod-rds", from: [2220, 200], to: [2370, 200], flowType: "traffic" },
-    { id: "rds-prod-redis", from: [2740, 200], to: [2980, 200], flowType: "traffic" },
+    // Primary user traffic flow (Blue, Solid) - Routed above/below text areas
+    { id: "cf-waf", from: [820, 145], to: [1290, 145], label: "CDN traffic", flowType: "traffic" }, // Above boxes
+    { id: "waf-prod", from: [1520, 145], to: [1720, 140], label: "live traffic", flowType: "traffic" }, // Above ALB box
+    { id: "alb-prod-eks", from: [1860, 140], to: [1990, 140], flowType: "traffic" }, // Above boxes
+    { id: "eks-prod-rds", from: [2220, 140], to: [2370, 140], flowType: "traffic" }, // Above boxes
+    { id: "rds-prod-redis", from: [2740, 140], to: [2980, 140], flowType: "traffic" }, // Above boxes
     
-    // ArgoCD deployment flows (Orange, Dashed)
-    { id: "argo-prod", from: [300, 607], to: [1990, 200], label: "deploy workloads", flowType: "deployment" },
-    { id: "argo-stg", from: [300, 607], to: [1990, 847], label: "deploy workloads", flowType: "deployment" },
-    { id: "argo-sbx", from: [300, 607], to: [1790, 1337], label: "deploy workloads", flowType: "deployment" },
+    // ArgoCD deployment flows (Orange, Dashed) - Routed around boxes
+    { id: "argo-prod", from: [300, 607], to: [1990, 140], label: "deploy workloads", flowType: "deployment" }, // Goes to top of EKS
+    { id: "argo-stg", from: [300, 607], to: [1990, 760], label: "deploy workloads", flowType: "deployment" }, // Goes above staging boxes
+    { id: "argo-sbx", from: [300, 607], to: [1790, 1240], label: "deploy workloads", flowType: "deployment" }, // Goes above sandbox boxes
     
-    // Monitoring flows (Green, Dotted)
-    { id: "prod-mon", from: [1740, 322], to: [490, 727], label: "metrics", flowType: "monitoring" },
-    { id: "stg-mon", from: [1740, 960], to: [490, 727], label: "metrics", flowType: "monitoring" },
-    { id: "sbx-mon", from: [1790, 1442], to: [490, 727], label: "metrics", flowType: "monitoring" },
+    // Monitoring flows (Green, Dotted) - Routed around boxes
+    { id: "prod-mon", from: [1740, 240], to: [490, 727], label: "metrics", flowType: "monitoring" }, // Goes below prod boxes, above ops boxes
+    { id: "stg-mon", from: [1740, 880], to: [490, 727], label: "metrics", flowType: "monitoring" }, // Goes below staging boxes
+    { id: "sbx-mon", from: [1790, 1360], to: [490, 727], label: "metrics", flowType: "monitoring" }, // Goes below sandbox boxes
     
-    // Alerting flow (Blue, Solid)
+    // Alerting flow (Blue, Solid) - Already routed between boxes horizontally
     { id: "cw-pagerduty", from: [280, 1227], to: [610, 1227], label: "alerting", flowType: "traffic" },
     { id: "pagerduty-slack", from: [610, 1227], to: [920, 1227], label: "notifications", flowType: "traffic" },
   ];
