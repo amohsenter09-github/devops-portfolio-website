@@ -67,7 +67,23 @@ export default function Home() {
               whileHover={{ scale: 1.1 }}
             >
               <span className="text-xs md:text-sm font-medium text-gray-600 group-hover:text-gray-900">
-                Client Recommendations
+                <motion.span
+                  className="inline-block"
+                  animate={{
+                    textShadow: [
+                      "0 0 0px rgba(6, 182, 212, 0)",
+                      "0 0 20px rgba(6, 182, 212, 0.3), 0 0 30px rgba(6, 182, 212, 0.2)",
+                      "0 0 0px rgba(6, 182, 212, 0)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  Client Recommendations
+                </motion.span>
               </span>
               <motion.div
                 animate={{
