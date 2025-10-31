@@ -93,12 +93,34 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       strokeWidth = 3;
   }
   
-  const midX = (from[0] + to[0]) / 2;
-  const midY = (from[1] + to[1]) / 2;
-  
+  // Calculate curve control point for smooth arc
   const dx = to[0] - from[0];
   const dy = to[1] - from[1];
-  const pathLength = Math.sqrt(dx * dx + dy * dy);
+  const distance = Math.sqrt(dx * dx + dy * dy);
+  const curveOffset = Math.min(distance * 0.3, 80); // Curve amount, max 80px
+  
+  // Calculate perpendicular direction for curve
+  const perpX = -dy / distance;
+  const perpY = dx / distance;
+  
+  // Control point offset perpendicular to the line
+  const midX = (from[0] + to[0]) / 2;
+  const midY = (from[1] + to[1]) / 2;
+  const controlX = midX + perpX * curveOffset;
+  const controlY = midY + perpY * curveOffset;
+  
+  // Create curved path using quadratic Bezier curve
+  const pathD = `M ${from[0]} ${from[1]} Q ${controlX} ${controlY} ${to[0]} ${to[1]}`;
+  
+  // Calculate point on curve for animation
+  const getPointOnCurve = (t: number) => {
+    const x = (1 - t) * (1 - t) * from[0] + 2 * (1 - t) * t * controlX + t * t * to[0];
+    const y = (1 - t) * (1 - t) * from[1] + 2 * (1 - t) * t * controlY + t * t * to[1];
+    return [x, y];
+  };
+  
+  // Calculate label position on curve (at t=0.5)
+  const labelPoint = getPointOnCurve(0.5);
   
   return (
     <g key={`arrow-${edge.id}`}>
@@ -123,11 +145,10 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
         </filter>
       </defs>
       
-      <line
-        x1={from[0]}
-        y1={from[1]}
-        x2={to[0]}
-        y2={to[1]}
+      {/* Curved path instead of straight line */}
+      <path
+        d={pathD}
+        fill="none"
         stroke={arrowColor}
         strokeWidth={strokeWidth}
         strokeDasharray={strokeDashArray}
@@ -138,12 +159,14 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       
       {isVisible && (
         <motion.g
-          initial={{ x: from[0], y: from[1] }}
-          animate={{ x: to[0], y: to[1] }}
+          animate={{
+            x: [from[0], controlX, to[0]],
+            y: [from[1], controlY, to[1]],
+          }}
           transition={{
-            duration: 4 + pathLength / 80,
+            duration: 4 + distance / 80,
             repeat: Infinity,
-            ease: "linear",
+            ease: [0.43, 0.13, 0.23, 0.96], // Custom bezier for smooth curve
             delay: index * 0.2,
           }}
         >
@@ -165,7 +188,7 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       )}
       
       {label && (
-        <g transform={`translate(${midX}, ${midY - 25})`}>
+        <g transform={`translate(${labelPoint[0]}, ${labelPoint[1] - 25})`}>
           <rect
             x={-label.length * 5}
             y={-10}
