@@ -270,42 +270,6 @@ export default function Recommendations() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      {/* Section Header - Compact */}
-      <motion.div 
-        className="text-center mb-10"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.25 }}
-      >
-        <motion.h2 
-          className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
-        >
-          Client Recommendations
-        </motion.h2>
-        <motion.p 
-          className="text-gray-600 text-sm max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.4 }}
-          viewport={{ once: true }}
-        >
-          Trusted by enterprise clients • See all on{" "}
-          <a 
-            href={site.contact.linkedin + "/details/recommendations/"} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-cyan-600 hover:text-cyan-700 font-medium underline underline-offset-4 transition-colors"
-          >
-            LinkedIn
-          </a>
-        </motion.p>
-      </motion.div>
-
       {/* Vertical Tab Layout: Left Panel + Right Content - Compact */}
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 min-h-[500px]">
         {/* Left Sidebar - Vertical Tabs */}
@@ -387,42 +351,6 @@ export default function Recommendations() {
           </motion.div>
         </div>
       </div>
-
-      {/* View More Link */}
-      {site.recommendations.length > 0 && (
-        <motion.div
-          className="text-center mt-8"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <a
-            href={site.contact.linkedin + "/details/recommendations/"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-semibold text-sm transition-colors group"
-          >
-            <span>View All Recommendations on LinkedIn</span>
-            <motion.svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              className="group-hover:translate-x-1 transition-transform"
-              whileHover={{ x: 4 }}
-            >
-              <path
-                d="M6 12L10 8L6 4"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </motion.svg>
-          </a>
-        </motion.div>
-      )}
     </div>
   );
 }
