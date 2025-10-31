@@ -73,20 +73,6 @@ export default function Designs() {
       {/* Animated AWS Infrastructure Diagram */}
       <section className="py-12 md:py-16 w-full flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-8 text-center"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-              AWS Multi-Account Infrastructure
-            </h2>
-            <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
-              Animated architecture diagram showing production, staging, and sandbox environments with GitOps workflows
-            </p>
-          </motion.div>
           <AnimatedAwsInfra />
         </div>
       </section>

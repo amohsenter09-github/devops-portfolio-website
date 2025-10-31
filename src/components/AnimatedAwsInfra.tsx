@@ -484,17 +484,16 @@ export default function AnimatedAwsInfra() {
   };
 
   return (
-    <div ref={containerRef} className="w-full">
+    <div ref={containerRef} className="w-full relative">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="w-full"
+        className="relative w-full"
       >
-        {/* Navigation Controls - Outside diagram */}
-        <div className="flex justify-end mb-4 gap-2">
-          <div className="flex flex-col gap-2">
+        {/* Navigation Controls */}
+        <div className="absolute top-4 right-4 z-10 flex flex-col gap-2">
           {/* Pan Controls */}
           <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-2 border border-gray-200">
             <div className="flex flex-col gap-1">
@@ -561,7 +560,6 @@ export default function AnimatedAwsInfra() {
           {/* Scale Indicator */}
           <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg px-3 py-2 border border-gray-200 text-xs text-gray-600 font-medium text-center">
             {Math.round(scale * 100)}%
-          </div>
           </div>
         </div>
 
