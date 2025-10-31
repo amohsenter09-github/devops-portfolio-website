@@ -20,11 +20,13 @@ import {
   Shield,
   Database,
   Network,
-  Lock,
   Server,
-  Zap,
   Globe,
-  Key
+  Key,
+  Loader,
+  MessageSquare,
+  Zap,
+  Lock
 } from "lucide-react";
 
 type Node = {
@@ -50,6 +52,7 @@ type Edge = {
   speed?: number;
   dash?: string;
   label?: string;
+  priority?: "high" | "medium" | "low"; // For arrow visibility
 };
 
 const bg = {
@@ -58,77 +61,79 @@ const bg = {
   label: "rgb(203 213 225)",
 };
 
-// Enhanced animated arrow with clearer movement
+// Improved animated arrow with single flowing line - less noisy
 function AnimatedArrow({ edge, index }: { edge: Edge; index: number }) {
-  const { from, to, color = "#22d3ee", dash = "8 8", speed = 3, label } = edge;
+  const { from, to, color = "#22d3ee", dash = "12 8", speed = 4, label, priority = "medium" } = edge;
   const markerId = `arrowhead-${edge.id}`;
   
-  // Calculate midpoint for label
+  // Calculate path
   const midX = (from[0] + to[0]) / 2;
   const midY = (from[1] + to[1]) / 2;
   
-  // Calculate angle for label positioning
   const dx = to[0] - from[0];
   const dy = to[1] - from[1];
   const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+  
+  // Only show animated dots for high priority connections, static for others
+  const showAnimation = priority === "high";
+  const strokeOpacity = priority === "high" ? 0.8 : priority === "medium" ? 0.6 : 0.4;
   
   return (
     <g key={`arrow-${edge.id}`}>
       <defs>
         <marker
           id={markerId}
-          markerWidth="10"
-          markerHeight="10"
-          refX="7"
-          refY="4"
+          markerWidth="8"
+          markerHeight="8"
+          refX="6"
+          refY="3.5"
           orient="auto"
           markerUnits="strokeWidth"
         >
-          <path d="M0,0 L0,8 L10,4 Z" fill={color} />
+          <path d="M0,0 L0,7 L8,3.5 Z" fill={color} />
         </marker>
       </defs>
       
-      {/* Static dashed line - more visible */}
+      {/* Static dashed line - base path */}
       <line
         x1={from[0]}
         y1={from[1]}
         x2={to[0]}
         y2={to[1]}
         stroke={color}
-        strokeWidth={2.5}
+        strokeWidth={2}
         strokeDasharray={dash}
-        opacity={0.5}
+        opacity={strokeOpacity * 0.5}
       />
       
-      {/* Multiple animated dots for clearer movement */}
-      {[0, 0.33, 0.66].map((offset, i) => (
+      {/* Single flowing dot - less noisy than multiple */}
+      {showAnimation && (
         <motion.g
-          key={i}
           initial={{ x: from[0], y: from[1] }}
           animate={{ x: to[0], y: to[1] }}
           transition={{
             duration: speed,
             repeat: Infinity,
             ease: "linear",
-            delay: index * 0.3 + offset * speed,
+            delay: index * 0.2,
           }}
         >
           <motion.circle 
-            r={5}
+            r={4}
             fill={color}
             animate={{
-              r: [5, 6.5, 5],
-              opacity: [1, 0.9, 1],
+              r: [4, 5, 4],
+              opacity: [1, 0.8, 1],
             }}
             transition={{
-              duration: 1.2,
+              duration: 0.8,
               repeat: Infinity,
               ease: "easeInOut",
             }}
           />
-          <circle r={8} fill={color} opacity={0.25} />
+          <circle r={6} fill={color} opacity={0.2} />
         </motion.g>
-      ))}
+      )}
       
       {/* Arrow line with marker */}
       <line
@@ -137,30 +142,30 @@ function AnimatedArrow({ edge, index }: { edge: Edge; index: number }) {
         x2={to[0]}
         y2={to[1]}
         stroke={color}
-        strokeWidth={2.5}
+        strokeWidth={2}
         markerEnd={`url(#${markerId})`}
-        opacity={0.7}
+        opacity={strokeOpacity}
       />
       
-      {/* Enhanced connection label */}
-      {label && (
+      {/* Connection label - only for high priority */}
+      {label && priority === "high" && (
         <g transform={`translate(${midX}, ${midY}) rotate(${angle})`}>
           <rect
-            x={-label.length * 3.5}
-            y={-10}
-            width={label.length * 7}
-            height={16}
-            fill="rgba(15, 23, 42, 0.95)"
-            rx={4}
+            x={-label.length * 3}
+            y={-9}
+            width={label.length * 6}
+            height={14}
+            fill="rgba(15, 23, 42, 0.9)"
+            rx={3}
             stroke={color}
-            strokeWidth={1.5}
-            opacity={0.95}
+            strokeWidth={1}
+            opacity={0.9}
           />
           <text
             x={0}
-            y={3}
+            y={2}
             fill={bg.label}
-            fontSize={10}
+            fontSize={9}
             fontWeight={600}
             textAnchor="middle"
           >
@@ -173,124 +178,131 @@ function AnimatedArrow({ edge, index }: { edge: Edge; index: number }) {
 }
 
 export default function AnimatedAwsInfra() {
-  // Expanded canvas: 1800x1000 for better clarity
   const nodes: Node[] = [
-    // Top: External AWS Services (scaled up)
-    { id: "ext", label: "EXTERNAL AWS SERVICES", x: 60, y: 40, w: 420, h: 200, type: "group" },
-    { id: "route53", label: "Route53", x: 80, y: 80, w: 120, h: 45, type: "service", icon: <Globe className="w-5 h-5" /> },
-    { id: "cloudfront", label: "CloudFront", x: 210, y: 80, w: 130, h: 45, type: "service", icon: <Cloud className="w-5 h-5" /> },
-    { id: "s3-static", label: "S3 (static assets)", x: 350, y: 80, w: 120, h: 45, type: "service", icon: <SiAmazon className="w-5 h-5" /> },
-    { id: "s3-portal", label: "portal-admin-app-production", x: 80, y: 140, w: 390, h: 38, type: "service", icon: <SiAmazon className="w-5 h-5" /> },
+    // Top: External AWS Services
+    { id: "ext", label: "EXTERNAL AWS SERVICES", x: 60, y: 40, w: 480, h: 220, type: "group" },
+    { id: "route53", label: "Route53", x: 80, y: 80, w: 130, h: 45, type: "service", icon: <Globe className="w-5 h-5" /> },
+    { id: "cloudfront", label: "CloudFront", x: 220, y: 80, w: 140, h: 45, type: "service", icon: <Cloud className="w-5 h-5" /> },
+    { id: "s3-static", label: "S3 (static assets)", x: 370, y: 80, w: 150, h: 45, type: "service", icon: <SiAmazon className="w-5 h-5" /> },
+    { id: "api-gateway", label: "API Gateway", x: 80, y: 140, w: 140, h: 45, type: "service", icon: <Network className="w-5 h-5" /> },
+    { id: "s3-portal", label: "S3 (portal-admin-app)", x: 230, y: 140, w: 290, h: 45, type: "service", icon: <SiAmazon className="w-5 h-5" /> },
 
-    // Security Services (larger)
-    { id: "sec", label: "SECURITY SERVICES", x: 500, y: 40, w: 240, h: 200, type: "group" },
-    { id: "waf", label: "WAF", x: 520, y: 80, w: 200, h: 45, type: "service", icon: <Shield className="w-5 h-5" /> },
-    { id: "guardduty", label: "GuardDuty", x: 520, y: 140, w: 200, h: 45, type: "service", icon: <Shield className="w-5 h-5" /> },
+    // Security Services - Enhanced
+    { id: "sec", label: "SECURITY SERVICES", x: 560, y: 40, w: 280, h: 220, type: "group" },
+    { id: "waf", label: "WAF", x: 580, y: 80, w: 240, h: 45, type: "service", icon: <Shield className="w-5 h-5" /> },
+    { id: "guardduty", label: "GuardDuty", x: 580, y: 140, w: 240, h: 45, type: "service", icon: <Shield className="w-5 h-5" /> },
+    { id: "iam", label: "IAM", x: 580, y: 200, w: 240, h: 45, type: "service", icon: <Lock className="w-5 h-5" /> },
 
-    // Left: Operations (US-WEST-2) - larger
-    { id: "ops-account", label: "OPERATIONS (US-WEST-2)", x: 60, y: 260, w: 380, h: 280, type: "group", region: "us-west-2" },
-    { id: "argocd", label: "ArgoCD (HA)", x: 80, y: 310, w: 170, h: 48, type: "service", highlight: true, icon: <SiArgo className="w-5 h-5" /> },
-    { id: "bastion-ops", label: "Bastion Hosts (m5.medium)", x: 260, y: 310, w: 170, h: 48, type: "service", icon: <Server className="w-5 h-5" /> },
-    { id: "mon-stack", label: "Monitoring Stack (Prometheus/Grafana)", x: 80, y: 375, w: 350, h: 48, type: "service", icon: <SiPrometheus className="w-5 h-5" /> },
-    { id: "vpn-ops", label: "Aviatrix VPN", x: 80, y: 440, w: 350, h: 48, type: "service", icon: <Network className="w-5 h-5" /> },
+    // Left: Operations (US-WEST-2) - Enhanced
+    { id: "ops-account", label: "OPERATIONS (US-WEST-2)", x: 60, y: 280, w: 400, h: 300, type: "group", region: "us-west-2" },
+    { id: "argocd", label: "ArgoCD (HA)", x: 80, y: 330, w: 180, h: 50, type: "service", highlight: true, icon: <SiArgo className="w-5 h-5" /> },
+    { id: "bastion-ops", label: "Bastion Hosts (m5.medium)", x: 270, y: 330, w: 180, h: 50, type: "service", icon: <Server className="w-5 h-5" /> },
+    { id: "mon-stack", label: "Monitoring (Prometheus/Grafana)", x: 80, y: 395, w: 370, h: 50, type: "service", icon: <SiPrometheus className="w-5 h-5" /> },
+    { id: "vpn-ops", label: "Aviatrix VPN", x: 80, y: 460, w: 370, h: 50, type: "service", icon: <Network className="w-5 h-5" /> },
+    { id: "lambda-ops", label: "Lambda (Ops Automation)", x: 80, y: 525, w: 370, h: 45, type: "service", icon: <Zap className="w-5 h-5" /> },
 
-    // Top-Right: Production (CA-CENTRAL-1) - larger and better organized
-    { id: "prod-account", label: "PRODUCTION (CA-CENTRAL-1)", x: 860, y: 40, w: 880, h: 340, type: "group", region: "ca-central-1" },
-    { id: "prod-alb", label: "ALB", x: 880, y: 90, w: 100, h: 48, type: "service", icon: <Network className="w-5 h-5" />, pill: "prod" },
-    { id: "prod-eks", label: "EKS (m5.xlarge x3)", x: 990, y: 90, w: 180, h: 48, type: "service", icon: <SiKubernetes className="w-5 h-5" />, pill: "prod" },
-    { id: "prod-rds", label: "Aurora PostgreSQL (db.r6g.large x3)", x: 1180, y: 90, w: 260, h: 48, type: "service", icon: <SiPostgresql className="w-5 h-5" /> },
-    { id: "prod-redis", label: "Redis (cache.r6g.large x3)", x: 1450, y: 90, w: 250, h: 48, type: "service", icon: <SiRedis className="w-5 h-5" /> },
-    { id: "prod-cw", label: "CloudWatch", x: 880, y: 155, w: 130, h: 42, type: "service", icon: <SiAmazoncloudwatch className="w-5 h-5" /> },
-    { id: "prod-kms", label: "KMS", x: 1020, y: 155, w: 90, h: 42, type: "service", icon: <Key className="w-5 h-5" /> },
-    { id: "prod-s3", label: "S3 (api-internal-files-production)", x: 880, y: 210, w: 340, h: 42, type: "service", icon: <SiAmazon className="w-5 h-5" /> },
+    // Top-Right: Production (CA-CENTRAL-1) - Enhanced
+    { id: "prod-account", label: "PRODUCTION (CA-CENTRAL-1)", x: 860, y: 40, w: 920, h: 360, type: "group", region: "ca-central-1" },
+    { id: "prod-alb", label: "ALB", x: 880, y: 90, w: 110, h: 50, type: "service", icon: <Network className="w-5 h-5" />, pill: "prod" },
+    { id: "prod-eks", label: "EKS (m5.xlarge x3)", x: 1000, y: 90, w: 200, h: 50, type: "service", icon: <SiKubernetes className="w-5 h-5" />, pill: "prod" },
+    { id: "prod-rds", label: "Aurora PostgreSQL (db.r6g.large x3)", x: 1210, y: 90, w: 280, h: 50, type: "service", icon: <SiPostgresql className="w-5 h-5" /> },
+    { id: "prod-redis", label: "ElastiCache Redis (cache.r6g.large x3)", x: 1500, y: 90, w: 260, h: 50, type: "service", icon: <SiRedis className="w-5 h-5" /> },
+    { id: "prod-cw", label: "CloudWatch", x: 880, y: 155, w: 140, h: 44, type: "service", icon: <SiAmazoncloudwatch className="w-5 h-5" /> },
+    { id: "prod-kms", label: "KMS", x: 1030, y: 155, w: 100, h: 44, type: "service", icon: <Key className="w-5 h-5" /> },
+    { id: "prod-s3", label: "S3 (api-internal-files)", x: 880, y: 215, w: 360, h: 44, type: "service", icon: <SiAmazon className="w-5 h-5" /> },
+    { id: "prod-sns", label: "SNS", x: 1250, y: 215, w: 100, h: 44, type: "service", icon: <MessageSquare className="w-5 h-5" /> },
+    { id: "prod-sqs", label: "SQS", x: 1360, y: 215, w: 100, h: 44, type: "service", icon: <Loader className="w-5 h-5" /> },
+    { id: "prod-lambda", label: "Lambda Functions", x: 880, y: 275, w: 280, h: 44, type: "service", icon: <Zap className="w-5 h-5" /> },
+    { id: "prod-vpc", label: "VPC (Multi-AZ)", x: 1170, y: 275, w: 290, h: 44, type: "service", icon: <Network className="w-5 h-5" /> },
 
-    // Mid-Right: Staging (CA-CENTRAL-1) - larger
-    { id: "stg-account", label: "STAGING (CA-CENTRAL-1)", x: 860, y: 400, w: 880, h: 260, type: "group", region: "ca-central-1" },
-    { id: "stg-alb", label: "ALB", x: 880, y: 440, w: 100, h: 42, type: "service", icon: <Network className="w-5 h-5" />, pill: "staging" },
-    { id: "stg-eks", label: "EKS (m5.xlarge x3)", x: 990, y: 440, w: 180, h: 42, type: "service", icon: <SiKubernetes className="w-5 h-5" />, pill: "staging" },
-    { id: "stg-rds", label: "Aurora PostgreSQL (db.t3.medium x1)", x: 1180, y: 440, w: 260, h: 42, type: "service", icon: <SiPostgresql className="w-5 h-5" /> },
-    { id: "stg-redis", label: "Redis (cache.t3.medium x1)", x: 1450, y: 440, w: 250, h: 42, type: "service", icon: <SiRedis className="w-5 h-5" /> },
-    { id: "stg-cw", label: "CloudWatch", x: 880, y: 495, w: 130, h: 38, type: "service", icon: <SiAmazoncloudwatch className="w-5 h-5" /> },
-    { id: "stg-kms", label: "KMS", x: 1020, y: 495, w: 90, h: 38, type: "service", icon: <Key className="w-5 h-5" /> },
-    { id: "stg-s3", label: "S3 (api-internal-files-staging)", x: 880, y: 545, w: 340, h: 38, type: "service", icon: <SiAmazon className="w-5 h-5" /> },
+    // Mid-Right: Staging (CA-CENTRAL-1) - Enhanced
+    { id: "stg-account", label: "STAGING (CA-CENTRAL-1)", x: 860, y: 420, w: 920, h: 280, type: "group", region: "ca-central-1" },
+    { id: "stg-alb", label: "ALB", x: 880, y: 460, w: 110, h: 44, type: "service", icon: <Network className="w-5 h-5" />, pill: "staging" },
+    { id: "stg-eks", label: "EKS (m5.xlarge x3)", x: 1000, y: 460, w: 200, h: 44, type: "service", icon: <SiKubernetes className="w-5 h-5" />, pill: "staging" },
+    { id: "stg-rds", label: "Aurora PostgreSQL (db.t3.medium x1)", x: 1210, y: 460, w: 280, h: 44, type: "service", icon: <SiPostgresql className="w-5 h-5" /> },
+    { id: "stg-redis", label: "ElastiCache Redis (cache.t3.medium x1)", x: 1500, y: 460, w: 260, h: 44, type: "service", icon: <SiRedis className="w-5 h-5" /> },
+    { id: "stg-cw", label: "CloudWatch", x: 880, y: 520, w: 140, h: 40, type: "service", icon: <SiAmazoncloudwatch className="w-5 h-5" /> },
+    { id: "stg-kms", label: "KMS", x: 1030, y: 520, w: 100, h: 40, type: "service", icon: <Key className="w-5 h-5" /> },
+    { id: "stg-s3", label: "S3 (api-internal-files-staging)", x: 880, y: 575, w: 360, h: 40, type: "service", icon: <SiAmazon className="w-5 h-5" /> },
+    { id: "stg-vpc", label: "VPC (Multi-AZ)", x: 1250, y: 575, w: 290, h: 40, type: "service", icon: <Network className="w-5 h-5" /> },
 
-    // Bottom-Right: Sandbox (CA-CENTRAL-1) - larger
-    { id: "sbx-account", label: "SANDBOX (CA-CENTRAL-1)", x: 860, y: 680, w: 880, h: 200, type: "group", region: "ca-central-1" },
-    { id: "sbx-eks", label: "EKS (t3.medium x2)", x: 880, y: 720, w: 170, h: 42, type: "service", icon: <SiKubernetes className="w-5 h-5" />, pill: "sandbox" },
-    { id: "sbx-rds", label: "Aurora PostgreSQL (db.t3.small x1)", x: 1060, y: 720, w: 260, h: 42, type: "service", icon: <SiPostgresql className="w-5 h-5" /> },
-    { id: "sbx-redis", label: "Redis (cache.t3.small x1)", x: 1330, y: 720, w: 250, h: 42, type: "service", icon: <SiRedis className="w-5 h-5" /> },
-    { id: "sbx-cw", label: "CloudWatch", x: 880, y: 775, w: 130, h: 38, type: "service", icon: <SiAmazoncloudwatch className="w-5 h-5" /> },
-    { id: "sbx-kms", label: "KMS", x: 1020, y: 775, w: 90, h: 38, type: "service", icon: <Key className="w-5 h-5" /> },
+    // Bottom-Right: Sandbox (CA-CENTRAL-1)
+    { id: "sbx-account", label: "SANDBOX (CA-CENTRAL-1)", x: 860, y: 720, w: 920, h: 220, type: "group", region: "ca-central-1" },
+    { id: "sbx-eks", label: "EKS (t3.medium x2)", x: 880, y: 760, w: 190, h: 44, type: "service", icon: <SiKubernetes className="w-5 h-5" />, pill: "sandbox" },
+    { id: "sbx-rds", label: "Aurora PostgreSQL (db.t3.small x1)", x: 1080, y: 760, w: 280, h: 44, type: "service", icon: <SiPostgresql className="w-5 h-5" /> },
+    { id: "sbx-redis", label: "ElastiCache Redis (cache.t3.small x1)", x: 1370, y: 760, w: 260, h: 44, type: "service", icon: <SiRedis className="w-5 h-5" /> },
+    { id: "sbx-cw", label: "CloudWatch", x: 880, y: 820, w: 140, h: 40, type: "service", icon: <SiAmazoncloudwatch className="w-5 h-5" /> },
+    { id: "sbx-kms", label: "KMS", x: 1030, y: 820, w: 100, h: 40, type: "service", icon: <Key className="w-5 h-5" /> },
 
-    // Bottom: Monitoring & Alerting - larger
-    { id: "mon-alert", label: "MONITORING & ALERTING", x: 60, y: 560, w: 680, h: 320, type: "group" },
-    { id: "central-cw", label: "CloudWatch", x: 80, y: 600, w: 160, h: 48, type: "service", icon: <SiAmazoncloudwatch className="w-5 h-5" /> },
-    { id: "pagerduty", label: "PagerDuty", x: 260, y: 600, w: 140, h: 48, type: "service", icon: <SiPagerduty className="w-5 h-5" /> },
-    { id: "slack", label: "Slack", x: 420, y: 600, w: 120, h: 48, type: "service", icon: <SiSlack className="w-5 h-5" /> },
-    { id: "datadog", label: "Datadog", x: 560, y: 600, w: 160, h: 48, type: "service", icon: <SiDatadog className="w-5 h-5" /> },
+    // Bottom: Monitoring & Alerting - Enhanced
+    { id: "mon-alert", label: "MONITORING & ALERTING", x: 60, y: 600, w: 740, h: 340, type: "group" },
+    { id: "central-cw", label: "CloudWatch Dashboards", x: 80, y: 640, w: 180, h: 50, type: "service", icon: <SiAmazoncloudwatch className="w-5 h-5" /> },
+    { id: "pagerduty", label: "PagerDuty", x: 280, y: 640, w: 150, h: 50, type: "service", icon: <SiPagerduty className="w-5 h-5" /> },
+    { id: "slack", label: "Slack", x: 450, y: 640, w: 130, h: 50, type: "service", icon: <SiSlack className="w-5 h-5" /> },
+    { id: "datadog", label: "Datadog", x: 600, y: 640, w: 180, h: 50, type: "service", icon: <SiDatadog className="w-5 h-5" /> },
   ];
 
   const edges: Edge[] = [
-    // External flow with labels (slower speeds for clarity)
-    { id: "r53-cf", from: [200, 102], to: [275, 102], color: "#22d3ee", dash: "10 8", speed: 3.5, label: "user access" },
-    { id: "cf-s3", from: [340, 102], to: [410, 102], color: "#22d3ee", dash: "10 8", speed: 3.5, label: "static assets" },
-    { id: "cf-waf", from: [410, 102], to: [580, 102], color: "#22d3ee", dash: "10 8", speed: 3.5, label: "CDN traffic" },
+    // External flow - high priority
+    { id: "r53-cf", from: [215, 102], to: [290, 102], color: "#22d3ee", dash: "12 8", speed: 4, label: "DNS", priority: "high" },
+    { id: "cf-s3", from: [360, 102], to: [445, 102], color: "#22d3ee", dash: "12 8", speed: 4, label: "static", priority: "high" },
+    { id: "cf-waf", from: [445, 102], to: [600, 102], color: "#22d3ee", dash: "12 8", speed: 4, label: "CDN", priority: "high" },
     
-    // WAF to environments (clearer)
-    { id: "waf-prod", from: [740, 102], to: [930, 114], color: "#22d3ee", dash: "10 8", speed: 4, label: "live traffic" },
-    { id: "waf-stg", from: [740, 102], to: [930, 461], color: "#22d3ee", dash: "10 8", speed: 4, label: "live traffic" },
+    // WAF to environments - high priority
+    { id: "waf-prod", from: [820, 102], to: [935, 115], color: "#22d3ee", dash: "12 8", speed: 4.5, label: "traffic", priority: "high" },
+    { id: "waf-stg", from: [820, 102], to: [935, 482], color: "#22d3ee", dash: "12 8", speed: 4.5, label: "traffic", priority: "high" },
     
-    // ALB to EKS (clearer movement)
-    { id: "alb-prod-eks", from: [930, 114], to: [1050, 114], color: "#60a5fa", dash: "10 8", speed: 3.8, label: "app data" },
-    { id: "alb-stg-eks", from: [930, 461], to: [1050, 461], color: "#60a5fa", dash: "10 8", speed: 3.8, label: "app data" },
+    // ALB to EKS - high priority
+    { id: "alb-prod-eks", from: [935, 115], to: [1060, 115], color: "#60a5fa", dash: "12 8", speed: 4, label: "app", priority: "high" },
+    { id: "alb-stg-eks", from: [935, 482], to: [1060, 482], color: "#60a5fa", dash: "12 8", speed: 4, label: "app", priority: "high" },
     
-    // EKS to Databases (clearer)
-    { id: "eks-prod-rds", from: [1050, 114], to: [1240, 114], color: "#60a5fa", dash: "10 8", speed: 3.8, label: "app data" },
-    { id: "eks-prod-redis", from: [1050, 114], to: [1575, 114], color: "#60a5fa", dash: "10 8", speed: 4.2, label: "cache" },
-    { id: "eks-stg-rds", from: [1050, 461], to: [1240, 461], color: "#60a5fa", dash: "10 8", speed: 3.8, label: "app data" },
-    { id: "eks-stg-redis", from: [1050, 461], to: [1575, 461], color: "#60a5fa", dash: "10 8", speed: 4.2, label: "cache" },
-    { id: "eks-sbx-rds", from: [965, 741], to: [1195, 741], color: "#60a5fa", dash: "10 8", speed: 3.8, label: "app data" },
-    { id: "eks-sbx-redis", from: [965, 741], to: [1505, 741], color: "#60a5fa", dash: "10 8", speed: 4.2, label: "cache" },
+    // EKS to Databases - high priority
+    { id: "eks-prod-rds", from: [1060, 115], to: [1270, 115], color: "#60a5fa", dash: "12 8", speed: 4, priority: "high" },
+    { id: "eks-prod-redis", from: [1060, 115], to: [1630, 115], color: "#60a5fa", dash: "12 8", speed: 4.5, priority: "high" },
+    { id: "eks-stg-rds", from: [1060, 482], to: [1270, 482], color: "#60a5fa", dash: "12 8", speed: 4, priority: "high" },
+    { id: "eks-stg-redis", from: [1060, 482], to: [1630, 482], color: "#60a5fa", dash: "12 8", speed: 4.5, priority: "high" },
+    { id: "eks-sbx-rds", from: [975, 782], to: [1220, 782], color: "#60a5fa", dash: "12 8", speed: 4, priority: "medium" },
+    { id: "eks-sbx-redis", from: [975, 782], to: [1500, 782], color: "#60a5fa", dash: "12 8", speed: 4.5, priority: "medium" },
     
-    // ArgoCD deployments (GitOps - clearer)
-    { id: "argo-prod", from: [165, 334], to: [1050, 114], color: "#a78bfa", dash: "8 6", speed: 3, label: "deploy workloads" },
-    { id: "argo-stg", from: [165, 334], to: [1050, 461], color: "#a78bfa", dash: "8 6", speed: 3, label: "deploy workloads" },
-    { id: "argo-sbx", from: [165, 334], to: [965, 741], color: "#a78bfa", dash: "8 6", speed: 3, label: "deploy workloads" },
+    // ArgoCD deployments - high priority (GitOps)
+    { id: "argo-prod", from: [170, 355], to: [1060, 115], color: "#a78bfa", dash: "10 6", speed: 3.5, label: "deploy", priority: "high" },
+    { id: "argo-stg", from: [170, 355], to: [1060, 482], color: "#a78bfa", dash: "10 6", speed: 3.5, label: "deploy", priority: "high" },
+    { id: "argo-sbx", from: [170, 355], to: [975, 782], color: "#a78bfa", dash: "10 6", speed: 3.5, priority: "medium" },
     
-    // VPN connections (clearer)
-    { id: "vpn-prod", from: [425, 464], to: [1050, 114], color: "#8b5cf6", dash: "8 6", speed: 3.5, label: "VPC peering" },
-    { id: "vpn-stg", from: [425, 464], to: [1050, 461], color: "#8b5cf6", dash: "8 6", speed: 3.5, label: "VPC peering" },
-    { id: "vpn-sbx", from: [425, 464], to: [965, 741], color: "#8b5cf6", dash: "8 6", speed: 3.5, label: "VPC peering" },
+    // VPN connections - medium priority
+    { id: "vpn-prod", from: [445, 485], to: [1060, 115], color: "#8b5cf6", dash: "10 6", speed: 4, priority: "medium" },
+    { id: "vpn-stg", from: [445, 485], to: [1060, 482], color: "#8b5cf6", dash: "10 6", speed: 4, priority: "medium" },
+    { id: "vpn-sbx", from: [445, 485], to: [975, 782], color: "#8b5cf6", dash: "10 6", speed: 4, priority: "low" },
     
-    // GuardDuty to Monitoring
-    { id: "gd-mon", from: [680, 162], to: [255, 399], color: "#ef4444", dash: "10 8", speed: 3.8, label: "threat detection" },
+    // GuardDuty to Monitoring - medium priority
+    { id: "gd-mon", from: [760, 162], to: [265, 420], color: "#ef4444", dash: "12 8", speed: 4, priority: "medium" },
     
-    // Metrics to Monitoring Stack (clearer)
-    { id: "prod-mon-stack", from: [1050, 114], to: [255, 399], color: "#10b981", dash: "10 8", speed: 4, label: "metrics" },
-    { id: "stg-mon-stack", from: [1050, 461], to: [255, 399], color: "#10b981", dash: "10 8", speed: 4, label: "metrics" },
-    { id: "sbx-mon-stack", from: [965, 741], to: [255, 399], color: "#10b981", dash: "10 8", speed: 4, label: "metrics" },
+    // Metrics to Monitoring Stack - medium priority
+    { id: "prod-mon-stack", from: [1060, 115], to: [265, 420], color: "#10b981", dash: "12 8", speed: 4.5, priority: "medium" },
+    { id: "stg-mon-stack", from: [1060, 482], to: [265, 420], color: "#10b981", dash: "12 8", speed: 4.5, priority: "medium" },
+    { id: "sbx-mon-stack", from: [975, 782], to: [265, 420], color: "#10b981", dash: "12 8", speed: 4.5, priority: "low" },
     
-    // CloudWatch to Alerting (clearer)
-    { id: "prod-cw-alert", from: [945, 176], to: [160, 624], color: "#94a3b8", dash: "10 8", speed: 4.2, label: "metrics" },
-    { id: "stg-cw-alert", from: [945, 514], to: [160, 624], color: "#94a3b8", dash: "10 8", speed: 4.2, label: "metrics" },
-    { id: "sbx-cw-alert", from: [945, 794], to: [160, 624], color: "#94a3b8", dash: "10 8", speed: 4.2, label: "metrics" },
+    // CloudWatch to Alerting - low priority (less noise)
+    { id: "prod-cw-alert", from: [950, 177], to: [170, 665], color: "#94a3b8", dash: "14 10", speed: 5, priority: "low" },
+    { id: "stg-cw-alert", from: [950, 540], to: [170, 665], color: "#94a3b8", dash: "14 10", speed: 5, priority: "low" },
+    { id: "sbx-cw-alert", from: [950, 840], to: [170, 665], color: "#94a3b8", dash: "14 10", speed: 5, priority: "low" },
     
-    // CloudWatch to PagerDuty/Slack (clearer)
-    { id: "cw-pagerduty", from: [160, 624], to: [330, 624], color: "#f59e0b", dash: "10 8", speed: 3.8, label: "alerting" },
-    { id: "cw-slack", from: [160, 624], to: [480, 624], color: "#f59e0b", dash: "10 8", speed: 3.8, label: "notifications" },
+    // CloudWatch to PagerDuty/Slack - medium priority
+    { id: "cw-pagerduty", from: [170, 665], to: [355, 665], color: "#f59e0b", dash: "12 8", speed: 4, priority: "medium" },
+    { id: "cw-slack", from: [170, 665], to: [515, 665], color: "#f59e0b", dash: "12 8", speed: 4, priority: "medium" },
     
-    // Monitoring Stack to Datadog
-    { id: "mon-datadog", from: [255, 399], to: [640, 624], color: "#10b981", dash: "10 8", speed: 4, label: "metrics" },
+    // Monitoring Stack to Datadog - medium priority
+    { id: "mon-datadog", from: [265, 420], to: [690, 665], color: "#10b981", dash: "12 8", speed: 4.5, priority: "medium" },
     
-    // KMS encryption connections
-    { id: "kms-prod-rds", from: [1065, 176], to: [1240, 114], color: "#8b5cf6", dash: "8 6", speed: 3.5 },
-    { id: "kms-prod-redis", from: [1065, 176], to: [1575, 114], color: "#8b5cf6", dash: "8 6", speed: 3.5 },
-    { id: "kms-prod-s3", from: [1065, 176], to: [1050, 231], color: "#8b5cf6", dash: "8 6", speed: 3.5 },
+    // KMS encryption connections - low priority
+    { id: "kms-prod-rds", from: [1080, 177], to: [1270, 115], color: "#8b5cf6", dash: "10 6", speed: 4, priority: "low" },
+    { id: "kms-prod-redis", from: [1080, 177], to: [1630, 115], color: "#8b5cf6", dash: "10 6", speed: 4, priority: "low" },
+    { id: "kms-prod-s3", from: [1080, 177], to: [1060, 237], color: "#8b5cf6", dash: "10 6", speed: 4, priority: "low" },
   ];
 
   const renderNode = (node: Node, index: number) => {
     const isGroup = node.type === "group";
-    const delay = node.delay ?? index * 0.03;
+    const delay = node.delay ?? index * 0.02;
     
     if (isGroup) {
       return (
@@ -298,7 +310,7 @@ export default function AnimatedAwsInfra() {
           key={node.id}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay }}
+          transition={{ duration: 0.5, delay }}
         >
           <rect
             x={node.x}
@@ -371,14 +383,14 @@ export default function AnimatedAwsInfra() {
           stroke={hasHighlight ? "#a78bfa" : bg.stroke}
           strokeWidth={hasHighlight ? 2 : 1.5}
           rx={8}
-          initial={{ opacity: 0, scale: 0.85 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ 
-            duration: 0.6, 
+            duration: 0.5, 
             delay,
             type: "spring",
-            stiffness: 180,
-            damping: 18
+            stiffness: 200,
+            damping: 20
           }}
           whileHover={{ 
             stroke: hasHighlight ? "#c4b5fd" : "#a78bfa",
@@ -424,16 +436,15 @@ export default function AnimatedAwsInfra() {
           </>
         )}
         
-        {node.icon && (
-          <foreignObject x={node.x + 8} y={node.y + (node.h - 20) / 2} width={20} height={20}>
-            <div className="text-gray-300 flex items-center justify-center">
-              {node.icon}
-            </div>
-          </foreignObject>
-        )}
+        {/* Service Icon */}
+        <foreignObject x={node.x + 8} y={node.y + (node.h - 22) / 2} width={22} height={22}>
+          <div className="text-gray-300 flex items-center justify-center h-full">
+            {node.icon}
+          </div>
+        </foreignObject>
         
         <text
-          x={node.x + (node.icon ? 32 : 12)}
+          x={node.x + (node.icon ? 34 : 12)}
           y={node.y + node.h / 2 + 6}
           fill={bg.label}
           fontSize={node.h < 42 ? 10 : 11}
