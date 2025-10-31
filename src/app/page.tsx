@@ -26,19 +26,33 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-8 md:mb-10 text-center">
               Enterprise Infrastructure & Cloud Platform Engineering
             </h2>
-            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 max-w-3xl mx-auto">
-              <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm">
-                Cloud Replatforming
-              </span>
-              <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm">
-                GitOps Automation
-              </span>
-              <span className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm">
-                Observability Solutions
-              </span>
+            <div className="flex flex-wrap justify-end items-center gap-3 md:gap-5 max-w-3xl ml-auto">
+              {["Cloud Replatforming", "GitOps Automation", "Observability Solutions"].map((badge, index) => (
+                <motion.span
+                  key={badge}
+                  className="px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-all duration-300 cursor-default"
+                  initial={{ opacity: 0, x: 20, scale: 0.9 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  transition={{
+                    delay: 0.5 + index * 0.1,
+                    duration: 0.5,
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 15
+                  }}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -2,
+                    borderColor: "rgb(6, 182, 212)",
+                    boxShadow: "0 4px 12px rgba(6, 182, 212, 0.15)"
+                  }}
+                >
+                  {badge}
+                </motion.span>
+              ))}
             </div>
           </motion.div>
         </div>
