@@ -6,7 +6,7 @@ export default function About() {
   return (
     <div className="w-full min-h-screen bg-white">
       {/* Hero Intro Section */}
-      <section className="pt-48 md:pt-56 lg:pt-64 pb-24 md:pb-32 w-full flex items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-100">
+      <section className="pt-64 md:pt-72 lg:pt-80 pb-24 md:pb-32 w-full flex items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             className=""
