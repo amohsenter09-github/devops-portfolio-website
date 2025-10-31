@@ -10,7 +10,8 @@ export default function AwsPlatformSection() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* ===== DESCRIPTION - Left Side with Vertical Animation ===== */}
           <motion.div
-            className="lg:w-1/3 flex-shrink-0 mt-4 lg:mt-6"
+            className="lg:w-1/3 flex-shrink-0"
+            style={{ paddingTop: '80px' }}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -88,7 +89,7 @@ export default function AwsPlatformSection() {
           </motion.div>
 
           {/* ===== DIAGRAM CARD ===== */}
-          <div className="flex-1 rounded-2xl shadow-sm border border-gray-100 p-4 bg-white mt-4 lg:mt-6">
+          <div className="flex-1 rounded-2xl shadow-sm border border-gray-100 p-4 bg-white" style={{ paddingTop: '80px' }}>
             <AnimatedAwsInfra />
           </div>
         </div>
