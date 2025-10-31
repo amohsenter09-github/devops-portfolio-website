@@ -64,12 +64,12 @@ export default function About() {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-white">
+    <div className="w-full min-h-screen bg-white flex flex-col items-center">
       {/* Hero Intro Section */}
-      <section className="py-24 md:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full py-24 md:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-100">
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
           <motion.div
-            className="text-center"
+            className="text-center w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -93,9 +93,9 @@ export default function About() {
       </section>
 
       {/* Core Expertise & Key Achievements */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+      <section className="w-full py-16 md:py-24 bg-white">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <div className="w-full grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Core Expertise Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -105,8 +105,8 @@ export default function About() {
               className="w-full"
             >
               <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow w-full">
-                <CardContent className="p-8 w-full">
-                  <div className="flex items-center justify-center gap-3 mb-6">
+                <CardContent className="p-8 !pt-8 w-full">
+                  <div className="flex items-center justify-center gap-3 mb-6 w-full">
                     <div className="w-10 h-10 rounded-lg bg-cyan-100 flex items-center justify-center">
                       <Zap className="w-5 h-5 text-cyan-600" />
                     </div>
@@ -136,8 +136,8 @@ export default function About() {
               className="w-full"
             >
               <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow w-full">
-                <CardContent className="p-8 w-full">
-                  <div className="flex items-center justify-center gap-3 mb-6">
+                <CardContent className="p-8 !pt-8 w-full">
+                  <div className="flex items-center justify-center gap-3 mb-6 w-full">
                     <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
                       <Award className="w-5 h-5 text-green-600" />
                     </div>
@@ -159,8 +159,8 @@ export default function About() {
       </section>
 
       {/* Professional Philosophy */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="w-full py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -169,7 +169,7 @@ export default function About() {
             className="w-full"
           >
             <Card className="border border-gray-200 shadow-sm w-full">
-              <CardContent className="p-8 md:p-12 w-full">
+              <CardContent className="p-8 md:p-12 !pt-8 w-full">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
                   Professional Philosophy
                 </h2>
@@ -185,8 +185,8 @@ export default function About() {
       </section>
 
       {/* Notable Clients & Partners */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="w-full py-16 md:py-24 bg-white">
+        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -197,7 +197,7 @@ export default function About() {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-12">
               Notable Clients & Partners
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 w-full justify-items-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 justify-items-center w-full">
               {clients.map((client, idx) => (
                 <motion.div
                   key={idx}
