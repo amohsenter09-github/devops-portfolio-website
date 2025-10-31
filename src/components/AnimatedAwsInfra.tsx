@@ -199,13 +199,13 @@ export default function AnimatedAwsInfra() {
   
   // Pan and zoom state
   const [pan, setPan] = useState({ x: 0, y: 0 });
-  const [scale, setScale] = useState(0.8); // Start at 80% as requested
+  const [scale, setScale] = useState(1.2); // Start at 120% as default
   const [isInView, setIsInView] = useState(false);
   
   const PAN_STEP = 50; // Pixels to pan per click
   const ZOOM_STEP = 0.1;
   const MIN_SCALE = 0.2;
-  const MAX_SCALE = 1.0;
+  const MAX_SCALE = 2.0; // Allow up to 200% zoom
   
   const handlePan = (direction: 'up' | 'down' | 'left' | 'right') => {
     setPan((prev) => {
@@ -235,7 +235,7 @@ export default function AnimatedAwsInfra() {
   
   const resetView = () => {
     setPan({ x: 0, y: 0 });
-    setScale(0.8);
+    setScale(1.2); // Reset to 120% default
   };
 
   // Track when component is in view for animations
