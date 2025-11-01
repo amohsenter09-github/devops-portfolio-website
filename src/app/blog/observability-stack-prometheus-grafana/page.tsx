@@ -92,46 +92,41 @@ export default function ObservabilityStackPost() {
           </motion.div>
         </div>
 
-        {/* Key Metrics - Full Width Section with Professional Design */}
-        <section className="py-20 md:py-28 w-full bg-gray-50/50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div 
-                className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-10"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                {[
-                  { value: "80%", label: "MTTR Reduction", colorClass: "text-blue-600", bgClass: "bg-white", hoverBorder: "hover:border-blue-300", accentColor: "from-blue-500 to-blue-600" },
-                  { value: "99.9%", label: "Uptime Achieved", colorClass: "text-green-600", bgClass: "bg-white", hoverBorder: "hover:border-green-300", accentColor: "from-green-500 to-green-600" },
-                  { value: "50+", label: "Dashboards", colorClass: "text-purple-600", bgClass: "bg-white", hoverBorder: "hover:border-purple-300", accentColor: "from-purple-500 to-purple-600" },
-                  { value: "100+", label: "Alerts Configured", colorClass: "text-orange-600", bgClass: "bg-white", hoverBorder: "hover:border-orange-300", accentColor: "from-orange-500 to-orange-600" },
-                ].map((metric, index) => (
-                  <motion.div
-                    key={metric.label}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                    whileHover={{ scale: 1.02, y: -4 }}
-                    className="relative group"
-                  >
-                    <div className={`relative text-center p-8 md:p-10 lg:p-12 rounded-2xl ${metric.bgClass} border border-gray-200 hover:border-gray-300 ${metric.hoverBorder} transition-all duration-300 shadow-md hover:shadow-xl overflow-hidden`}>
-                      {/* Accent bar at top */}
-                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${metric.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                      
-                      <div className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-4 ${metric.colorClass}`}>
-                        {metric.value}
-                      </div>
-                      <div className="text-sm md:text-base lg:text-lg font-semibold text-gray-700 leading-tight">
-                        {metric.label}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
+        {/* Key Metrics - Simple & Clean (Following Home Page Pattern) */}
+        <section className="py-16 md:py-24 w-full flex items-center justify-center bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <motion.div 
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {[
+                { value: "80%", label: "MTTR Reduction", colorClass: "text-blue-600", borderColor: "hover:border-blue-300", bgGradient: "from-blue-50 to-blue-100/50" },
+                { value: "99.9%", label: "Uptime Achieved", colorClass: "text-green-600", borderColor: "hover:border-green-300", bgGradient: "from-green-50 to-green-100/50" },
+                { value: "50+", label: "Dashboards", colorClass: "text-purple-600", borderColor: "hover:border-purple-300", bgGradient: "from-purple-50 to-purple-100/50" },
+                { value: "100+", label: "Alerts Configured", colorClass: "text-orange-600", borderColor: "hover:border-orange-300", bgGradient: "from-orange-50 to-orange-100/50" },
+              ].map((metric, index) => (
+                <motion.div 
+                  key={metric.label}
+                  className={`group text-center p-8 md:p-10 rounded-2xl bg-gradient-to-br ${metric.bgGradient} border border-gray-200 ${metric.borderColor} hover:shadow-lg transition-all duration-300`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <div className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 ${metric.colorClass}`}>
+                    {metric.value}
+                  </div>
+                  <div className="text-sm md:text-base lg:text-lg text-gray-700 font-semibold">
+                    {metric.label}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </section>
 
         {/* Continue Article Content */}
