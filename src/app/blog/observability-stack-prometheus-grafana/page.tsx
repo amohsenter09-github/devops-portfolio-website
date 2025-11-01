@@ -89,59 +89,51 @@ export default function ObservabilityStackPost() {
                 to understand system-wide behavior.
               </p>
             </div>
+            
+            {/* Key Metrics */}
+            <div className="mt-8">
+              <motion.div 
+                className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {[
+                  { value: "80%", label: "MTTR Reduction", colorClass: "text-blue-600", bgClass: "bg-blue-50", hoverBorder: "hover:border-blue-200" },
+                  { value: "99.9%", label: "Uptime Achieved", colorClass: "text-green-600", bgClass: "bg-green-50", hoverBorder: "hover:border-green-200" },
+                  { value: "50+", label: "Dashboards", colorClass: "text-purple-600", bgClass: "bg-purple-50", hoverBorder: "hover:border-purple-200" },
+                  { value: "100+", label: "Alerts Configured", colorClass: "text-orange-600", bgClass: "bg-orange-50", hoverBorder: "hover:border-orange-200" },
+                ].map((metric, index) => (
+                  <motion.div
+                    key={metric.label}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
+                    whileHover={{ scale: 1.02, y: -4 }}
+                    className={`text-center p-4 md:p-6 lg:p-8 rounded-xl ${metric.bgClass} border border-gray-200/60 hover:border-gray-300 ${metric.hoverBorder} transition-all duration-300 shadow-sm hover:shadow-lg`}
+                  >
+                    <div className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-2 ${metric.colorClass}`}>
+                      {metric.value}
+                    </div>
+                    <div className="text-xs md:text-sm lg:text-base text-gray-700 font-semibold leading-tight">
+                      {metric.label}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </motion.div>
-        </div>
 
-        {/* Key Metrics - Professional Layout with Clean Spacing */}
-        <section className="py-16 md:py-24 w-full bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              {[
-                { value: "80%", label: "MTTR Reduction", colorClass: "text-blue-600", bgClass: "bg-blue-50", hoverBorder: "hover:border-blue-300" },
-                { value: "99.9%", label: "Uptime Achieved", colorClass: "text-green-600", bgClass: "bg-green-50", hoverBorder: "hover:border-green-300" },
-                { value: "50+", label: "Dashboards", colorClass: "text-purple-600", bgClass: "bg-purple-50", hoverBorder: "hover:border-purple-300" },
-                { value: "100+", label: "Alerts Configured", colorClass: "text-orange-600", bgClass: "bg-orange-50", hoverBorder: "hover:border-orange-300" },
-              ].map((metric, index) => (
-                <motion.div
-                  key={metric.label}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                  whileHover={{ scale: 1.03, y: -6 }}
-                  className={`text-center p-8 md:p-10 lg:p-12 rounded-2xl ${metric.bgClass} border border-gray-200/80 hover:border-gray-300 ${metric.hoverBorder} transition-all duration-300 shadow-md hover:shadow-xl`}
-                  style={{
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05)'
-                  }}
-                >
-                  <div className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${metric.colorClass}`}>
-                    {metric.value}
-                  </div>
-                  <div className="text-base md:text-lg lg:text-xl text-gray-700 font-semibold leading-tight">
-                    {metric.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Continue Article Content */}
-        <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           {/* 2️⃣ My Solution */}
           <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-              className="bg-white rounded-xl border border-gray-200 p-content-xl md:p-section-md mb-section-3xl shadow-sm hover:shadow-md transition-shadow duration-300"
-            >
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            className="bg-white rounded-xl border border-gray-200 p-content-xl md:p-section-md mb-section-3xl shadow-sm hover:shadow-md transition-shadow duration-300"
+          >
             <h2 className="text-lg md:text-xl font-bold mb-content-xl text-gray-900">My Solution</h2>
             <div className="space-y-content-lg text-sm md:text-base text-gray-700 leading-relaxed">
               <p>
