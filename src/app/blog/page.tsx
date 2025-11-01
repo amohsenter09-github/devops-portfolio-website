@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
+import BlogPostCard from "@/components/BlogPostCard";
 
 type BlogPost = {
   slug: string;
@@ -19,8 +20,8 @@ export default async function BlogPage() {
   try {
     if (!fs.existsSync(blogDir)) {
       return (
-        <main className="min-h-screen bg-white text-gray-800 py-32 px-6">
-          <div className="max-w-4xl mx-auto">
+        <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-32 px-6">
+          <div className="max-w-5xl mx-auto">
             <p className="text-center text-gray-600">No blog posts found.</p>
           </div>
         </main>
@@ -56,34 +57,11 @@ export default async function BlogPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white text-gray-800 py-32 px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="space-y-8">
-          {posts.map((post) => (
-            <article
-              key={post.slug}
-              className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
-            >
-              <Link href={`/blog/${post.slug}`}>
-                <h2 className="text-2xl font-semibold text-cyan-700 hover:underline">
-                  {post.title}
-                </h2>
-              </Link>
-              <p className="text-sm text-gray-500 mt-1">{post.date}</p>
-              <p className="mt-3 text-gray-600">{post.description}</p>
-              {post.tags && post.tags.length > 0 && (
-                <div className="flex gap-2 mt-3 flex-wrap">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-cyan-50 text-cyan-700 text-xs font-medium px-2 py-1 rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </article>
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-20 md:py-32 px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="space-y-6 md:space-y-8">
+          {posts.map((post, index) => (
+            <BlogPostCard key={post.slug} post={post} index={index} />
           ))}
         </div>
       </div>
