@@ -8,101 +8,92 @@ export default function ObservabilityStackPost() {
   const tags = ["Observability", "Prometheus", "Grafana", "Jaeger", "Monitoring"];
 
   return (
-    <main className="bg-gradient-to-b from-gray-50 via-white to-gray-100 py-32">
-      {/* Header Section with Entrance Animation */}
-      <section className="mb-20 md:mb-32">
-        <div className="max-w-3xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.1 }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <Link 
-                href="/blog"
-                className="inline-flex items-center text-cyan-600 hover:text-cyan-700 transition-colors mb-6 group"
-              >
-                <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-                <span className="text-xs font-medium">Back to Blog</span>
-              </Link>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="flex items-center gap-4 mb-4 text-xs text-gray-500"
-            >
-              <div className="flex items-center gap-2">
-                <Calendar size={14} className="text-cyan-600" />
-                <span>January 25, 2024</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock size={14} className="text-cyan-600" />
-                <span>10 min read</span>
-              </div>
-            </motion.div>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="font-mono text-xl md:text-2xl font-semibold mb-6 text-gray-900 leading-tight"
-            >
-              Building a Unified Observability Stack: Prometheus, Grafana & Jaeger
-            </motion.h1>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="flex flex-wrap gap-2"
-            >
-              {tags.map((tag, index) => (
-                <motion.span
-                  key={tag}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 + index * 0.1, duration: 0.3 }}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    y: -2,
-                    boxShadow: "0 4px 12px rgba(6, 182, 212, 0.2)"
-                  }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-cyan-50 text-cyan-700 text-xs font-medium rounded-full border border-cyan-200 hover:bg-cyan-100 hover:border-cyan-300 transition-all duration-300 cursor-default"
-                >
-                  <Tag size={12} />
-                  {tag}
-                </motion.span>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Article Content - Centered Column */}
-      <article className="max-w-3xl mx-auto px-6 space-y-24">
+    <main className="bg-gradient-to-b from-gray-50 via-white to-gray-100 min-h-screen py-24 md:py-32">
+      <article className="max-w-3xl mx-auto px-6 sm:px-8 space-y-24 md:space-y-32">
         
+        {/* Header Section with Entrance Animation */}
+        <motion.header
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", staggerChildren: 0.1 }}
+          className="text-center mb-16"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <Link 
+              href="/blog"
+              className="inline-flex items-center text-cyan-600 hover:text-cyan-700 transition-colors mb-8 group"
+            >
+              <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
+              <span className="text-xs font-medium">Back to Blog</span>
+            </Link>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight"
+          >
+            Building a Unified Observability Stack: Prometheus, Grafana & Jaeger
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="text-gray-500 text-sm mb-6"
+          >
+            January 25, 2024 • 10 min read
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-2"
+          >
+            {tags.map((tag, index) => (
+              <motion.span
+                key={tag}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 + index * 0.1, duration: 0.3 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -2,
+                  boxShadow: "0 4px 12px rgba(6, 182, 212, 0.2)"
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-cyan-50 text-cyan-700 text-xs font-medium rounded-full border border-cyan-200 hover:bg-cyan-100 hover:border-cyan-300 transition-all duration-300 cursor-default"
+              >
+                <Tag size={12} />
+                {tag}
+              </motion.span>
+            ))}
+          </motion.div>
+        </motion.header>
+
         {/* 1️⃣ The Challenge */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 md:p-10 space-y-6 mb-20 md:mb-32"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="bg-white border border-gray-100 rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition-all duration-500 p-8 md:p-10 space-y-6"
         >
-          <h2 className="text-lg md:text-xl font-bold text-gray-900">The Challenge</h2>
-          <div className="space-y-4 text-sm md:text-base text-gray-700 leading-relaxed">
-            <p>
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6 border-l-4 border-cyan-500 pl-3">
+            The Challenge
+          </h2>
+          <div className="space-y-4">
+            <p className="text-base md:text-lg leading-relaxed text-gray-700">
               Our microservices system lacked centralized visibility — developers relied on fragmented CloudWatch dashboards, 
               manual log searches, and ad-hoc alerts. Metrics retention was inconsistent and tracing between APIs was impossible, 
               leading to delayed root cause analysis.
             </p>
-            <p className="text-gray-600">
+            <p className="text-base md:text-lg leading-relaxed text-gray-600">
               Without a unified observability stack, incident response times averaged 45+ minutes, and we had no way to 
               correlate errors across distributed services. Each team maintained separate monitoring tools, making it difficult 
               to understand system-wide behavior.
@@ -110,43 +101,48 @@ export default function ObservabilityStackPost() {
           </div>
           
           {/* Key Metrics Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-            <div className="text-center p-6 rounded-xl bg-blue-50 border border-blue-200">
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">80%</div>
-              <div className="text-sm md:text-base text-gray-700 font-semibold">MTTR Reduction</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+            <div className="bg-gradient-to-b from-white to-gray-50 border border-gray-100 rounded-xl text-center p-5 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="text-2xl md:text-3xl font-bold text-cyan-600 mb-1">80%</div>
+              <div className="text-xs font-medium text-gray-600 uppercase tracking-wide">MTTR Reduction</div>
             </div>
-            <div className="text-center p-6 rounded-xl bg-green-50 border border-green-200">
-              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">99.9%</div>
-              <div className="text-sm md:text-base text-gray-700 font-semibold">Uptime Achieved</div>
+            <div className="bg-gradient-to-b from-white to-gray-50 border border-gray-100 rounded-xl text-center p-5 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="text-2xl md:text-3xl font-bold text-green-600 mb-1">99.9%</div>
+              <div className="text-xs font-medium text-gray-600 uppercase tracking-wide">Uptime Achieved</div>
             </div>
-            <div className="text-center p-6 rounded-xl bg-purple-50 border border-purple-200">
-              <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">50+</div>
-              <div className="text-sm md:text-base text-gray-700 font-semibold">Dashboards</div>
+            <div className="bg-gradient-to-b from-white to-gray-50 border border-gray-100 rounded-xl text-center p-5 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="text-2xl md:text-3xl font-bold text-purple-600 mb-1">50+</div>
+              <div className="text-xs font-medium text-gray-600 uppercase tracking-wide">Dashboards</div>
             </div>
-            <div className="text-center p-6 rounded-xl bg-orange-50 border border-orange-200">
-              <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">100+</div>
-              <div className="text-sm md:text-base text-gray-700 font-semibold">Alerts Configured</div>
+            <div className="bg-gradient-to-b from-white to-gray-50 border border-gray-100 rounded-xl text-center p-5 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="text-2xl md:text-3xl font-bold text-orange-600 mb-1">100+</div>
+              <div className="text-xs font-medium text-gray-600 uppercase tracking-wide">Alerts Configured</div>
             </div>
           </div>
         </motion.div>
 
+        {/* Section Separator */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent my-20"></div>
+
         {/* 2️⃣ My Solution */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 md:p-10 space-y-6 mb-20 md:mb-32"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="bg-white border border-gray-100 rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition-all duration-500 p-8 md:p-10 space-y-6"
         >
-          <h2 className="text-lg md:text-xl font-bold text-gray-900">My Solution</h2>
-          <div className="space-y-4 text-sm md:text-base text-gray-700 leading-relaxed">
-            <p>
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6 border-l-4 border-cyan-500 pl-3">
+            My Solution
+          </h2>
+          <div className="space-y-4">
+            <p className="text-base md:text-lg leading-relaxed text-gray-700">
               We standardized our observability stack around open-source Helm charts — deploying Prometheus for metrics, 
               Grafana for visualization, Loki for logs, and Jaeger for distributed tracing. Using ArgoCD, the stack was 
               deployed GitOps-style across EKS clusters. Centralized alert routing was configured via Alertmanager and 
               PagerDuty integrations.
             </p>
-            <p className="text-gray-600">
+            <p className="text-base md:text-lg leading-relaxed text-gray-600">
               This unified approach eliminated tool fragmentation, provided consistent metric retention policies, and enabled 
               end-to-end request tracing. All infrastructure changes were version-controlled and deployed automatically, ensuring 
               consistent observability across development, staging, and production environments.
@@ -154,16 +150,19 @@ export default function ObservabilityStackPost() {
           </div>
         </motion.div>
 
+        {/* Section Separator */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent my-20"></div>
+
         {/* 3️⃣ Observability Stack Architecture */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 md:p-10 space-y-6 mb-20 md:mb-32"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="bg-white border border-gray-100 rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition-all duration-500 p-8 md:p-10 space-y-6"
         >
-          <h2 className="text-lg md:text-xl font-bold text-gray-900 flex items-center">
-            <Server className="mr-2 text-cyan-600" size={20} />
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6 border-l-4 border-cyan-500 pl-3 flex items-center">
+            <Server className="mr-3 text-cyan-600" size={24} />
             Observability Stack Architecture
           </h2>
           
@@ -222,23 +221,26 @@ export default function ObservabilityStackPost() {
             </div>
           </div>
 
-          <p className="text-sm md:text-base text-gray-600 leading-relaxed mt-6">
+          <p className="text-base md:text-lg leading-relaxed text-gray-600 mt-6">
             The stack provides comprehensive visibility across all layers of the application stack, 
             from infrastructure metrics to application performance, enabling proactive issue detection 
             and rapid troubleshooting.
           </p>
         </motion.div>
 
+        {/* Section Separator */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent my-20"></div>
+
         {/* 4️⃣ Implementation Details */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 md:p-10 space-y-6 mb-20 md:mb-32"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="bg-white border border-gray-100 rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition-all duration-500 p-8 md:p-10 space-y-6"
         >
-          <h2 className="text-lg md:text-xl font-bold text-gray-900 flex items-center">
-            <Code className="mr-2 text-cyan-600" size={20} />
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6 border-l-4 border-cyan-500 pl-3 flex items-center">
+            <Code className="mr-3 text-cyan-600" size={24} />
             Implementation Details
           </h2>
           
@@ -249,11 +251,11 @@ export default function ObservabilityStackPost() {
                 <BarChart3 className="mr-2 text-cyan-600" size={18} />
                 Prometheus Configuration
               </h3>
-              <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+              <p className="text-base md:text-lg leading-relaxed text-gray-700 mb-4">
                 Used the official <code className="px-1.5 py-0.5 bg-gray-100 text-cyan-700 rounded text-xs font-mono">kube-prometheus-stack</code> Helm chart with custom retention, 
                 multi-cluster federation, and ServiceMonitor CRDs for application metrics.
               </p>
-              <ul className="space-y-2 text-sm md:text-base text-gray-600 ml-4">
+              <ul className="space-y-2 text-base md:text-lg leading-relaxed text-gray-600 ml-4">
                 {[
                   "Custom retention policies (30 days for high-priority, 7 days for standard)",
                   "Multi-cluster federation for centralized metric aggregation",
@@ -282,11 +284,11 @@ export default function ObservabilityStackPost() {
                 <BarChart3 className="mr-2 text-cyan-600" size={18} />
                 Grafana Dashboards
               </h3>
-              <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+              <p className="text-base md:text-lg leading-relaxed text-gray-700 mb-4">
                 Deployed via ArgoCD Helm release, using pre-baked dashboards from JSON templates stored in Git. 
                 Integrated with SSO for RBAC access.
               </p>
-              <ul className="space-y-2 text-sm md:text-base text-gray-600 ml-4">
+              <ul className="space-y-2 text-base md:text-lg leading-relaxed text-gray-600 ml-4">
                 {[
                   "Infrastructure monitoring dashboards for CPU, memory, and network metrics",
                   "Application performance metrics with custom business KPIs",
@@ -316,11 +318,11 @@ export default function ObservabilityStackPost() {
                 <Database className="mr-2 text-cyan-600" size={18} />
                 Loki + Promtail
               </h3>
-              <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+              <p className="text-base md:text-lg leading-relaxed text-gray-700 mb-4">
                 Configured via Helm, ingesting EKS container logs and storing compressed logs on S3 for long-term retention 
                 and cost optimization.
               </p>
-              <ul className="space-y-2 text-sm md:text-base text-gray-600 ml-4">
+              <ul className="space-y-2 text-base md:text-lg leading-relaxed text-gray-600 ml-4">
                 {[
                   "Container log ingestion from EKS pods via Promtail DaemonSet",
                   "Log compression and indexing for efficient querying",
@@ -349,11 +351,11 @@ export default function ObservabilityStackPost() {
                 <Search className="mr-2 text-cyan-600" size={18} />
                 Jaeger Distributed Tracing
               </h3>
-              <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+              <p className="text-base md:text-lg leading-relaxed text-gray-700 mb-4">
                 Deployed using the Jaeger Operator chart, integrated with application traces through OpenTelemetry SDK for 
                 end-to-end request visibility across microservices.
               </p>
-              <ul className="space-y-2 text-sm md:text-base text-gray-600 ml-4">
+              <ul className="space-y-2 text-base md:text-lg leading-relaxed text-gray-600 ml-4">
                 {[
                   "Jaeger Operator deployed via Helm chart",
                   "OpenTelemetry SDK integration in application code",
@@ -382,11 +384,11 @@ export default function ObservabilityStackPost() {
                 <AlertCircle className="mr-2 text-cyan-600" size={18} />
                 AlertManager Configuration
               </h3>
-              <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+              <p className="text-base md:text-lg leading-relaxed text-gray-700 mb-4">
                 Set up with routing rules for severity levels, notifying Slack channels and PagerDuty for critical incidents 
                 with proper escalation policies.
               </p>
-              <ul className="space-y-2 text-sm md:text-base text-gray-600 ml-4">
+              <ul className="space-y-2 text-base md:text-lg leading-relaxed text-gray-600 ml-4">
                 {[
                   "Severity-based alert routing (critical, warning, info)",
                   "PagerDuty integration for on-call escalation",
@@ -411,15 +413,20 @@ export default function ObservabilityStackPost() {
           </div>
         </motion.div>
 
+        {/* Section Separator */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent my-20"></div>
+
         {/* 5️⃣ Results & Metrics */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 md:p-10 space-y-6"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="bg-white border border-gray-100 rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition-all duration-500 p-8 md:p-10 space-y-6"
         >
-          <h2 className="text-lg md:text-xl font-bold text-gray-900">Results Achieved</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6 border-l-4 border-cyan-500 pl-3">
+            Results Achieved
+          </h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div
@@ -431,7 +438,7 @@ export default function ObservabilityStackPost() {
               className="bg-green-50 border border-green-200 rounded-lg p-6 hover:shadow-md transition-all duration-300"
             >
               <h3 className="text-base md:text-lg font-semibold mb-4 text-green-800">Operational Improvements</h3>
-              <ul className="space-y-2 text-sm md:text-base text-green-700">
+              <ul className="space-y-2 text-base md:text-lg leading-relaxed text-green-700">
                 {[
                   "80% MTTR Reduction - Faster incident resolution",
                   "99.9% Uptime - Proactive monitoring",
@@ -455,7 +462,7 @@ export default function ObservabilityStackPost() {
               className="bg-cyan-50 border border-cyan-200 rounded-lg p-6 hover:shadow-md transition-all duration-300"
             >
               <h3 className="text-base md:text-lg font-semibold mb-4 text-cyan-800">Business Impact</h3>
-              <ul className="space-y-2 text-sm md:text-base text-cyan-700">
+              <ul className="space-y-2 text-base md:text-lg leading-relaxed text-cyan-700">
                 {[
                   "Reduced Downtime - Proactive issue detection",
                   "Improved Performance - Data-driven optimization",
@@ -471,6 +478,11 @@ export default function ObservabilityStackPost() {
             </motion.div>
           </div>
         </motion.div>
+
+        {/* Footer */}
+        <footer className="text-center text-gray-500 text-sm mt-24 border-t border-gray-100 pt-10">
+          © 2025 Amr Fathy — All rights reserved.
+        </footer>
 
       </article>
     </main>
