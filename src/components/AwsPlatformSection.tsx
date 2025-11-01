@@ -109,29 +109,28 @@ export default function AwsPlatformSection() {
             >
               <motion.a
                 href="/blog"
-                className="relative flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-cyan-100 to-blue-100 hover:from-cyan-200 hover:to-blue-200 text-cyan-900 rounded-lg transition-all duration-300 border-2 border-cyan-400/60 shadow-lg hover:shadow-xl"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
+                className="relative inline-flex items-center gap-2.5 px-5 py-2.5 bg-white/60 backdrop-blur-sm hover:bg-white/80 text-cyan-700 rounded-lg transition-all duration-500 border border-cyan-200/40 shadow-sm hover:shadow-md hover:border-cyan-300/60"
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.99 }}
               >
-                {/* Enhanced glowing effect */}
+                {/* Soft glowing effect */}
                 <motion.div
-                  className="absolute inset-0 rounded-lg bg-cyan-400/30"
+                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-400/10 via-blue-400/10 to-cyan-400/10"
                   animate={{
-                    opacity: [0.4, 0.8, 0.4],
-                    scale: [1, 1.08, 1],
+                    opacity: [0.5, 0.8, 0.5],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
                 />
-                <span className="relative text-base md:text-lg text-cyan-900 font-extrabold font-mono tracking-wide">
+                <span className="relative text-sm md:text-base text-cyan-700 font-semibold font-mono tracking-tight">
                   view_tech_details
                   <motion.span
-                    className="text-cyan-600 ml-0.5 font-bold"
-                    animate={{ opacity: [1, 0.3, 1] }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                    className="text-cyan-500 ml-0.5"
+                    animate={{ opacity: [1, 0.4, 1] }}
+                    transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
                   >
                     |
                   </motion.span>
