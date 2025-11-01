@@ -109,16 +109,16 @@ export default function AwsPlatformSection() {
             >
               <motion.a
                 href="/blog"
-                className="relative flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-cyan-50 to-blue-50 hover:from-cyan-100 hover:to-blue-100 text-cyan-700 font-medium rounded-lg transition-all duration-300 border border-cyan-200/50 shadow-sm hover:shadow-md"
-                whileHover={{ scale: 1.02 }}
+                className="relative flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-cyan-100 to-blue-100 hover:from-cyan-200 hover:to-blue-200 text-cyan-900 rounded-lg transition-all duration-300 border-2 border-cyan-400/60 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {/* Glowing effect */}
+                {/* Enhanced glowing effect */}
                 <motion.div
-                  className="absolute inset-0 rounded-lg bg-cyan-400/20"
+                  className="absolute inset-0 rounded-lg bg-cyan-400/30"
                   animate={{
-                    opacity: [0.3, 0.6, 0.3],
-                    scale: [1, 1.05, 1],
+                    opacity: [0.4, 0.8, 0.4],
+                    scale: [1, 1.08, 1],
                   }}
                   transition={{
                     duration: 2,
@@ -126,11 +126,11 @@ export default function AwsPlatformSection() {
                     ease: "easeInOut",
                   }}
                 />
-                <span className="relative text-sm md:text-base text-cyan-800 font-medium font-mono">
+                <span className="relative text-base md:text-lg text-cyan-900 font-extrabold font-mono tracking-wide">
                   view_tech_details
                   <motion.span
-                    className="text-cyan-600 ml-0.5"
-                    animate={{ opacity: [1, 0, 1] }}
+                    className="text-cyan-600 ml-0.5 font-bold"
+                    animate={{ opacity: [1, 0.3, 1] }}
                     transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
                   >
                     |
