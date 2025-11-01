@@ -10,7 +10,7 @@ export default function ObservabilityStackPost() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100">
       {/* Header Section - Centered Column with Left-Aligned Text */}
-      <section className="py-16 md:py-24 w-full flex items-center justify-center">
+      <section className="py-20 md:py-32 w-full flex items-center justify-center">
         <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -19,13 +19,13 @@ export default function ObservabilityStackPost() {
           >
             <Link 
               href="/blog"
-              className="inline-flex items-center text-cyan-600 hover:text-cyan-700 transition-colors mb-10 group"
+              className="inline-flex items-center text-cyan-600 hover:text-cyan-700 transition-colors mb-12 group"
             >
               <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
               <span className="text-xs font-medium">Back to Blog</span>
             </Link>
             
-            <div className="flex items-center gap-4 mb-8 text-xs text-gray-500">
+            <div className="flex items-center gap-4 mb-10 text-xs text-gray-500">
               <div className="flex items-center gap-2">
                 <Calendar size={14} className="text-cyan-600" />
                 <span>January 25, 2024</span>
@@ -36,12 +36,12 @@ export default function ObservabilityStackPost() {
               </div>
             </div>
             
-            <h1 className="font-mono text-xl md:text-2xl font-semibold mb-8 text-gray-900 leading-tight">
+            <h1 className="font-mono text-xl md:text-2xl font-semibold mb-10 text-gray-900 leading-tight">
               Building a Unified Observability Stack: Prometheus, Grafana & Jaeger
             </h1>
             
             {/* Tags with Clean Animations */}
-            <div className="flex flex-wrap gap-2 mb-24">
+            <div className="flex flex-wrap gap-2 mb-32">
               {tags.map((tag, index) => (
                 <motion.span
                   key={tag}
@@ -65,7 +65,7 @@ export default function ObservabilityStackPost() {
       </section>
 
       {/* Article Content - Centered Column with Left-Aligned Text */}
-      <article className="pb-24 md:pb-32 w-full flex items-center justify-center">
+      <article className="pb-32 md:pb-40 w-full flex items-center justify-center">
         <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           
           {/* 1️⃣ The Challenge */}
@@ -74,10 +74,10 @@ export default function ObservabilityStackPost() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-white rounded-xl border border-gray-200 p-8 md:p-10 mb-20 shadow-sm hover:shadow-md transition-shadow duration-300"
+            className="bg-white rounded-xl border border-gray-200 p-10 md:p-12 mb-32 shadow-sm hover:shadow-md transition-shadow duration-300"
           >
-            <h2 className="text-lg md:text-xl font-bold mb-6 text-gray-900">The Challenge</h2>
-            <div className="space-y-4 text-sm md:text-base text-gray-700 leading-relaxed">
+            <h2 className="text-lg md:text-xl font-bold mb-8 text-gray-900">The Challenge</h2>
+            <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
               <p>
                 Our microservices system lacked centralized visibility — developers relied on fragmented CloudWatch dashboards, 
                 manual log searches, and ad-hoc alerts. Metrics retention was inconsistent and tracing between APIs was impossible, 
@@ -92,7 +92,7 @@ export default function ObservabilityStackPost() {
             
             {/* Key Metrics */}
             <motion.div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mt-10"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mt-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -130,10 +130,10 @@ export default function ObservabilityStackPost() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            className="bg-white rounded-xl border border-gray-200 p-8 md:p-10 mb-20 shadow-sm hover:shadow-md transition-shadow duration-300"
+            className="bg-white rounded-xl border border-gray-200 p-10 md:p-12 mb-32 shadow-sm hover:shadow-md transition-shadow duration-300"
           >
-            <h2 className="text-lg md:text-xl font-bold mb-6 text-gray-900">My Solution</h2>
-            <div className="space-y-4 text-sm md:text-base text-gray-700 leading-relaxed">
+            <h2 className="text-lg md:text-xl font-bold mb-8 text-gray-900">My Solution</h2>
+            <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
               <p>
                 We standardized our observability stack around open-source Helm charts — deploying Prometheus for metrics, 
                 Grafana for visualization, Loki for logs, and Jaeger for distributed tracing. Using ArgoCD, the stack was 
@@ -154,16 +154,16 @@ export default function ObservabilityStackPost() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            className="bg-white rounded-xl border border-gray-200 p-8 md:p-10 mb-20 shadow-sm hover:shadow-md transition-shadow duration-300"
+            className="bg-white rounded-xl border border-gray-200 p-10 md:p-12 mb-32 shadow-sm hover:shadow-md transition-shadow duration-300"
           >
-            <h2 className="text-lg md:text-xl font-bold mb-6 text-gray-900 flex items-center">
+            <h2 className="text-lg md:text-xl font-bold mb-8 text-gray-900 flex items-center">
               <Server className="mr-2 text-cyan-600" size={20} />
               Observability Stack Architecture
             </h2>
             
-            <div className="bg-gray-50 rounded-lg p-6 md:p-8 mb-6 border border-gray-200">
-              <h3 className="text-base md:text-lg font-bold mb-6 text-gray-900">Three Pillars of Observability</h3>
-              <div className="space-y-5">
+            <div className="bg-gray-50 rounded-lg p-8 md:p-10 mb-8 border border-gray-200">
+              <h3 className="text-base md:text-lg font-bold mb-8 text-gray-900">Three Pillars of Observability</h3>
+              <div className="space-y-6">
                 {[
                   { 
                     label: "Metrics Collection", 
@@ -216,7 +216,7 @@ export default function ObservabilityStackPost() {
               </div>
             </div>
 
-            <p className="text-sm md:text-base text-gray-600 leading-relaxed mt-6">
+            <p className="text-sm md:text-base text-gray-600 leading-relaxed mt-8">
               The stack provides comprehensive visibility across all layers of the application stack, 
               from infrastructure metrics to application performance, enabling proactive issue detection 
               and rapid troubleshooting.
@@ -229,21 +229,21 @@ export default function ObservabilityStackPost() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-            className="bg-white rounded-xl border border-gray-200 p-8 md:p-10 mb-20 shadow-sm hover:shadow-md transition-shadow duration-300"
+            className="bg-white rounded-xl border border-gray-200 p-10 md:p-12 mb-32 shadow-sm hover:shadow-md transition-shadow duration-300"
           >
-            <h2 className="text-lg md:text-xl font-bold mb-6 text-gray-900 flex items-center">
+            <h2 className="text-lg md:text-xl font-bold mb-8 text-gray-900 flex items-center">
               <Code className="mr-2 text-cyan-600" size={20} />
               Implementation Details
             </h2>
             
-            <div className="space-y-10">
+            <div className="space-y-12">
               {/* Prometheus Configuration */}
               <div>
-                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 flex items-center">
+                <h3 className="text-base md:text-lg font-semibold mb-5 text-gray-900 flex items-center">
                   <BarChart3 className="mr-2 text-cyan-600" size={18} />
                   Prometheus Configuration
                 </h3>
-                <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-700 mb-5 leading-relaxed">
                   Used the official <code className="px-1.5 py-0.5 bg-gray-100 text-cyan-700 rounded text-xs font-mono">kube-prometheus-stack</code> Helm chart with custom retention, 
                   multi-cluster federation, and ServiceMonitor CRDs for application metrics.
                 </p>
@@ -272,11 +272,11 @@ export default function ObservabilityStackPost() {
 
               {/* Grafana Dashboards */}
               <div>
-                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 flex items-center">
+                <h3 className="text-base md:text-lg font-semibold mb-5 text-gray-900 flex items-center">
                   <BarChart3 className="mr-2 text-cyan-600" size={18} />
                   Grafana Dashboards
                 </h3>
-                <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-700 mb-5 leading-relaxed">
                   Deployed via ArgoCD Helm release, using pre-baked dashboards from JSON templates stored in Git. 
                   Integrated with SSO for RBAC access.
                 </p>
@@ -306,11 +306,11 @@ export default function ObservabilityStackPost() {
 
               {/* Loki + Promtail */}
               <div>
-                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 flex items-center">
+                <h3 className="text-base md:text-lg font-semibold mb-5 text-gray-900 flex items-center">
                   <Database className="mr-2 text-cyan-600" size={18} />
                   Loki + Promtail
                 </h3>
-                <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-700 mb-5 leading-relaxed">
                   Configured via Helm, ingesting EKS container logs and storing compressed logs on S3 for long-term retention 
                   and cost optimization.
                 </p>
@@ -339,11 +339,11 @@ export default function ObservabilityStackPost() {
 
               {/* Jaeger */}
               <div>
-                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 flex items-center">
+                <h3 className="text-base md:text-lg font-semibold mb-5 text-gray-900 flex items-center">
                   <Search className="mr-2 text-cyan-600" size={18} />
                   Jaeger Distributed Tracing
                 </h3>
-                <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-700 mb-5 leading-relaxed">
                   Deployed using the Jaeger Operator chart, integrated with application traces through OpenTelemetry SDK for 
                   end-to-end request visibility across microservices.
                 </p>
@@ -372,11 +372,11 @@ export default function ObservabilityStackPost() {
 
               {/* AlertManager */}
               <div>
-                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 flex items-center">
+                <h3 className="text-base md:text-lg font-semibold mb-5 text-gray-900 flex items-center">
                   <AlertCircle className="mr-2 text-cyan-600" size={18} />
                   AlertManager Configuration
                 </h3>
-                <p className="text-sm md:text-base text-gray-700 mb-4 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-700 mb-5 leading-relaxed">
                   Set up with routing rules for severity levels, notifying Slack channels and PagerDuty for critical incidents 
                   with proper escalation policies.
                 </p>
@@ -411,11 +411,11 @@ export default function ObservabilityStackPost() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-            className="bg-white rounded-xl border border-gray-200 p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow duration-300"
+            className="bg-white rounded-xl border border-gray-200 p-10 md:p-12 shadow-sm hover:shadow-md transition-shadow duration-300"
           >
-            <h2 className="text-lg md:text-xl font-bold mb-6 text-gray-900">Results Achieved</h2>
+            <h2 className="text-lg md:text-xl font-bold mb-8 text-gray-900">Results Achieved</h2>
             
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-10">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
