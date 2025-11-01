@@ -89,21 +89,24 @@ export default function ObservabilityStackPost() {
                 to understand system-wide behavior.
               </p>
             </div>
-            
-            {/* Key Metrics */}
-            <div className="mt-8">
+          </motion.div>
+        </div>
+
+        {/* Key Metrics - Full Width Section with Professional Design */}
+        <section className="py-20 md:py-28 w-full bg-gray-50/50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div 
-                className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+                className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-10"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 {[
-                  { value: "80%", label: "MTTR Reduction", colorClass: "text-blue-600", bgClass: "bg-blue-50", hoverBorder: "hover:border-blue-200" },
-                  { value: "99.9%", label: "Uptime Achieved", colorClass: "text-green-600", bgClass: "bg-green-50", hoverBorder: "hover:border-green-200" },
-                  { value: "50+", label: "Dashboards", colorClass: "text-purple-600", bgClass: "bg-purple-50", hoverBorder: "hover:border-purple-200" },
-                  { value: "100+", label: "Alerts Configured", colorClass: "text-orange-600", bgClass: "bg-orange-50", hoverBorder: "hover:border-orange-200" },
+                  { value: "80%", label: "MTTR Reduction", colorClass: "text-blue-600", bgClass: "bg-white", hoverBorder: "hover:border-blue-300", accentColor: "from-blue-500 to-blue-600" },
+                  { value: "99.9%", label: "Uptime Achieved", colorClass: "text-green-600", bgClass: "bg-white", hoverBorder: "hover:border-green-300", accentColor: "from-green-500 to-green-600" },
+                  { value: "50+", label: "Dashboards", colorClass: "text-purple-600", bgClass: "bg-white", hoverBorder: "hover:border-purple-300", accentColor: "from-purple-500 to-purple-600" },
+                  { value: "100+", label: "Alerts Configured", colorClass: "text-orange-600", bgClass: "bg-white", hoverBorder: "hover:border-orange-300", accentColor: "from-orange-500 to-orange-600" },
                 ].map((metric, index) => (
                   <motion.div
                     key={metric.label}
@@ -112,20 +115,27 @@ export default function ObservabilityStackPost() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
                     whileHover={{ scale: 1.02, y: -4 }}
-                    className={`text-center p-4 md:p-6 lg:p-8 rounded-xl ${metric.bgClass} border border-gray-200/60 hover:border-gray-300 ${metric.hoverBorder} transition-all duration-300 shadow-sm hover:shadow-lg`}
+                    className="relative group"
                   >
-                    <div className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-2 ${metric.colorClass}`}>
-                      {metric.value}
-                    </div>
-                    <div className="text-xs md:text-sm lg:text-base text-gray-700 font-semibold leading-tight">
-                      {metric.label}
+                    <div className={`relative text-center p-8 md:p-10 lg:p-12 rounded-2xl ${metric.bgClass} border border-gray-200 hover:border-gray-300 ${metric.hoverBorder} transition-all duration-300 shadow-md hover:shadow-xl overflow-hidden`}>
+                      {/* Accent bar at top */}
+                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${metric.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                      
+                      <div className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-4 ${metric.colorClass}`}>
+                        {metric.value}
+                      </div>
+                      <div className="text-sm md:text-base lg:text-lg font-semibold text-gray-700 leading-tight">
+                        {metric.label}
+                      </div>
                     </div>
                   </motion.div>
                 ))}
               </motion.div>
             </div>
-          </motion.div>
+        </section>
 
+        {/* Continue Article Content */}
+        <div className="max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           {/* 2️⃣ My Solution */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
