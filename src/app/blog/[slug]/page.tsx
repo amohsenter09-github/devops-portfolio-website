@@ -22,9 +22,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
-  // Handle both sync and async params (Next.js 15 compatibility)
-  const resolvedParams = await Promise.resolve(params);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  // Next.js 15: params is always a Promise
+  const resolvedParams = await params;
   const blogDir = path.join(process.cwd(), "src/app/blog");
   const filePath = path.join(blogDir, `${resolvedParams.slug}.mdx`);
   
