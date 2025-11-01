@@ -22,9 +22,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
+  // Handle both sync and async params (Next.js 15 compatibility)
+  const resolvedParams = await Promise.resolve(params);
   const blogDir = path.join(process.cwd(), "src/app/blog");
-  const filePath = path.join(blogDir, `${params.slug}.mdx`);
+  const filePath = path.join(blogDir, `${resolvedParams.slug}.mdx`);
   
   if (!fs.existsSync(filePath)) {
     notFound();
@@ -36,7 +38,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   return (
     <article className="prose prose-gray max-w-3xl mx-auto py-32 px-6">
       <header className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">{data.title || params.slug}</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">{data.title || resolvedParams.slug}</h1>
         {data.date && (
           <p className="text-gray-500 text-sm mb-4">{data.date}</p>
         )}
