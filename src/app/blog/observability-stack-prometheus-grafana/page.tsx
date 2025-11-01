@@ -89,14 +89,12 @@ export default function ObservabilityStackPost() {
                 to understand system-wide behavior.
               </p>
             </div>
-          </motion.div>
-          
-          {/* Key Metrics - Full Width Wider Cards with Fading Spaces */}
-          <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-12 mb-20">
-            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-              <div className="relative">
+            
+            {/* Key Metrics - Wider Cards with Fading Spaces */}
+            <div className="mt-8">
+              <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div 
-                  className="flex flex-col sm:flex-row"
+                  className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -108,54 +106,49 @@ export default function ObservabilityStackPost() {
                     { value: "50+", label: "Dashboards", colorClass: "text-purple-600", bgClass: "bg-purple-50", hoverBorder: "hover:border-purple-200" },
                     { value: "100+", label: "Alerts Configured", colorClass: "text-orange-600", bgClass: "bg-orange-50", hoverBorder: "hover:border-orange-200" },
                   ].map((metric, index) => (
-                    <div key={metric.label} className="relative flex-1" style={{ marginLeft: index > 0 ? '1.5rem' : '0', marginRight: index < 3 ? '1.5rem' : '0' }}>
-                      {/* Fading gradient overlay in the space between cards */}
+                    <div key={metric.label} className="relative">
+                      {/* Fading gradient overlay in gaps */}
                       {index > 0 && (
                         <div 
-                          className="absolute left-0 top-0 bottom-0 w-[3rem] -translate-x-full pointer-events-none z-30"
+                          className="absolute left-0 top-0 bottom-0 w-8 -translate-x-full pointer-events-none z-10"
                           style={{
                             background: `linear-gradient(to right, 
                               transparent 0%, 
-                              rgba(255, 255, 255, 0.2) 20%,
-                              rgba(255, 255, 255, 0.5) 40%,
-                              rgba(255, 255, 255, 0.7) 50%,
-                              rgba(255, 255, 255, 0.5) 60%,
-                              rgba(255, 255, 255, 0.2) 80%,
+                              rgba(255, 255, 255, 0.3) 30%,
+                              rgba(255, 255, 255, 0.6) 50%,
+                              rgba(255, 255, 255, 0.3) 70%,
                               transparent 100%)`
                           }}
                         />
                       )}
                       {index < 3 && (
                         <div 
-                          className="absolute right-0 top-0 bottom-0 w-[3rem] translate-x-full pointer-events-none z-30"
+                          className="absolute right-0 top-0 bottom-0 w-8 translate-x-full pointer-events-none z-10"
                           style={{
                             background: `linear-gradient(to left, 
                               transparent 0%, 
-                              rgba(255, 255, 255, 0.2) 20%,
-                              rgba(255, 255, 255, 0.5) 40%,
-                              rgba(255, 255, 255, 0.7) 50%,
-                              rgba(255, 255, 255, 0.5) 60%,
-                              rgba(255, 255, 255, 0.2) 80%,
+                              rgba(255, 255, 255, 0.3) 30%,
+                              rgba(255, 255, 255, 0.6) 50%,
+                              rgba(255, 255, 255, 0.3) 70%,
                               transparent 100%)`
                           }}
                         />
                       )}
-                      
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
                         whileHover={{ scale: 1.02, y: -4 }}
-                        className={`relative text-center p-8 md:p-10 lg:p-12 xl:p-14 rounded-xl ${metric.bgClass} border border-gray-200/60 hover:border-gray-300 ${metric.hoverBorder} transition-all duration-300 shadow-sm hover:shadow-lg`}
+                        className={`relative text-center p-6 md:p-8 lg:p-10 rounded-xl ${metric.bgClass} border border-gray-200/60 hover:border-gray-300 ${metric.hoverBorder} transition-all duration-300 shadow-sm hover:shadow-lg`}
                         style={{
                           boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1)'
                         }}
                       >
-                        <div className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 ${metric.colorClass}`}>
+                        <div className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-3 ${metric.colorClass}`}>
                           {metric.value}
                         </div>
-                        <div className="text-base md:text-lg lg:text-xl text-gray-700 font-semibold leading-tight">
+                        <div className="text-sm md:text-base lg:text-lg text-gray-700 font-semibold leading-tight">
                           {metric.label}
                         </div>
                       </motion.div>
@@ -164,7 +157,7 @@ export default function ObservabilityStackPost() {
                 </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* 2️⃣ My Solution */}
           <motion.div
