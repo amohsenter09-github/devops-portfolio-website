@@ -89,52 +89,54 @@ export default function ObservabilityStackPost() {
                 to understand system-wide behavior.
               </p>
             </div>
-            
-            {/* Key Metrics - Wider Cards with Fading Spaces */}
-            <div className="mt-content-xl -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+          </motion.div>
+          
+          {/* Key Metrics - Full Width Wider Cards with Fading Spaces */}
+          <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-12 mb-20">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
               <div className="relative">
                 <motion.div 
-                  className="relative flex flex-col sm:flex-row gap-4 md:gap-6 lg:gap-8"
+                  className="flex flex-col sm:flex-row"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
                   {[
-                    { value: "80%", label: "MTTR Reduction", colorClass: "text-blue-600", bgClass: "bg-blue-50", hoverBorder: "hover:border-blue-200", gradientFrom: "from-blue-50" },
-                    { value: "99.9%", label: "Uptime Achieved", colorClass: "text-green-600", bgClass: "bg-green-50", hoverBorder: "hover:border-green-200", gradientFrom: "from-green-50" },
-                    { value: "50+", label: "Dashboards", colorClass: "text-purple-600", bgClass: "bg-purple-50", hoverBorder: "hover:border-purple-200", gradientFrom: "from-purple-50" },
-                    { value: "100+", label: "Alerts Configured", colorClass: "text-orange-600", bgClass: "bg-orange-50", hoverBorder: "hover:border-orange-200", gradientFrom: "from-orange-50" },
+                    { value: "80%", label: "MTTR Reduction", colorClass: "text-blue-600", bgClass: "bg-blue-50", hoverBorder: "hover:border-blue-200" },
+                    { value: "99.9%", label: "Uptime Achieved", colorClass: "text-green-600", bgClass: "bg-green-50", hoverBorder: "hover:border-green-200" },
+                    { value: "50+", label: "Dashboards", colorClass: "text-purple-600", bgClass: "bg-purple-50", hoverBorder: "hover:border-purple-200" },
+                    { value: "100+", label: "Alerts Configured", colorClass: "text-orange-600", bgClass: "bg-orange-50", hoverBorder: "hover:border-orange-200" },
                   ].map((metric, index) => (
-                    <div key={metric.label} className="relative flex-1">
-                      {/* Fading gradient spacer on left (between cards) */}
+                    <div key={metric.label} className="relative flex-1" style={{ marginLeft: index > 0 ? '1.5rem' : '0', marginRight: index < 3 ? '1.5rem' : '0' }}>
+                      {/* Fading gradient overlay in the space between cards */}
                       {index > 0 && (
                         <div 
-                          className="absolute left-0 top-0 bottom-0 w-full -translate-x-full pointer-events-none z-30"
+                          className="absolute left-0 top-0 bottom-0 w-[3rem] -translate-x-full pointer-events-none z-30"
                           style={{
-                            width: '2rem',
                             background: `linear-gradient(to right, 
-                              rgba(255, 255, 255, 0) 0%, 
-                              rgba(255, 255, 255, 0.3) 25%,
-                              rgba(255, 255, 255, 0.6) 50%,
-                              rgba(255, 255, 255, 0.3) 75%,
-                              rgba(255, 255, 255, 0) 100%)`
+                              transparent 0%, 
+                              rgba(255, 255, 255, 0.2) 20%,
+                              rgba(255, 255, 255, 0.5) 40%,
+                              rgba(255, 255, 255, 0.7) 50%,
+                              rgba(255, 255, 255, 0.5) 60%,
+                              rgba(255, 255, 255, 0.2) 80%,
+                              transparent 100%)`
                           }}
                         />
                       )}
-                      {/* Fading gradient spacer on right (between cards) */}
                       {index < 3 && (
                         <div 
-                          className="absolute right-0 top-0 bottom-0 pointer-events-none z-30"
+                          className="absolute right-0 top-0 bottom-0 w-[3rem] translate-x-full pointer-events-none z-30"
                           style={{
-                            width: '2rem',
-                            transform: 'translateX(100%)',
                             background: `linear-gradient(to left, 
-                              rgba(255, 255, 255, 0) 0%, 
-                              rgba(255, 255, 255, 0.3) 25%,
-                              rgba(255, 255, 255, 0.6) 50%,
-                              rgba(255, 255, 255, 0.3) 75%,
-                              rgba(255, 255, 255, 0) 100%)`
+                              transparent 0%, 
+                              rgba(255, 255, 255, 0.2) 20%,
+                              rgba(255, 255, 255, 0.5) 40%,
+                              rgba(255, 255, 255, 0.7) 50%,
+                              rgba(255, 255, 255, 0.5) 60%,
+                              rgba(255, 255, 255, 0.2) 80%,
+                              transparent 100%)`
                           }}
                         />
                       )}
@@ -145,15 +147,15 @@ export default function ObservabilityStackPost() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
                         whileHover={{ scale: 1.02, y: -4 }}
-                        className={`relative text-center p-6 md:p-8 lg:p-10 xl:p-12 rounded-xl ${metric.bgClass} border border-gray-200/60 hover:border-gray-300 ${metric.hoverBorder} transition-all duration-300 shadow-sm hover:shadow-lg`}
+                        className={`relative text-center p-8 md:p-10 lg:p-12 xl:p-14 rounded-xl ${metric.bgClass} border border-gray-200/60 hover:border-gray-300 ${metric.hoverBorder} transition-all duration-300 shadow-sm hover:shadow-lg`}
                         style={{
-                          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1)'
+                          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1)'
                         }}
                       >
-                        <div className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 ${metric.colorClass}`}>
+                        <div className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 ${metric.colorClass}`}>
                           {metric.value}
                         </div>
-                        <div className="text-sm md:text-base lg:text-lg text-gray-700 font-semibold leading-tight">
+                        <div className="text-base md:text-lg lg:text-xl text-gray-700 font-semibold leading-tight">
                           {metric.label}
                         </div>
                       </motion.div>
@@ -162,7 +164,7 @@ export default function ObservabilityStackPost() {
                 </motion.div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* 2️⃣ My Solution */}
           <motion.div
