@@ -16,16 +16,19 @@ export default function ObservabilityStackPost() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center"
           >
-            <Link 
-              href="/blog"
-              className="inline-flex items-center text-cyan-600 hover:text-cyan-700 transition-colors mb-6 group"
-            >
-              <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-xs font-medium">Back to Blog</span>
-            </Link>
+            <div className="text-left mb-6">
+              <Link 
+                href="/blog"
+                className="inline-flex items-center text-cyan-600 hover:text-cyan-700 transition-colors group"
+              >
+                <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
+                <span className="text-xs font-medium">Back to Blog</span>
+              </Link>
+            </div>
             
-            <div className="flex items-center gap-4 mb-5 text-xs text-gray-500">
+            <div className="flex items-center justify-center gap-4 mb-5 text-xs text-gray-500">
               <div className="flex items-center gap-2">
                 <Calendar size={14} className="text-cyan-600" />
                 <span>January 25, 2024</span>
@@ -41,7 +44,7 @@ export default function ObservabilityStackPost() {
             </h1>
             
             {/* Tags with Clean Animations */}
-            <div className="flex flex-wrap gap-2 mb-16">
+            <div className="flex flex-wrap gap-2 mb-16 justify-center">
               {tags.map((tag, index) => (
                 <motion.span
                   key={tag}
@@ -65,7 +68,7 @@ export default function ObservabilityStackPost() {
       </section>
 
       {/* Article Content - Centered with Full Page Scrolling */}
-      <article className="pb-16 w-full">
+      <article className="pb-16 w-full flex items-center justify-center">
         <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           
           {/* 1️⃣ The Challenge */}
@@ -161,8 +164,8 @@ export default function ObservabilityStackPost() {
               Observability Stack Architecture
             </h2>
             
-            <div className="bg-gray-900 rounded-lg p-5 md:p-6 mb-5">
-              <h3 className="text-base md:text-lg font-bold mb-5 text-white">Three Pillars of Observability</h3>
+            <div className="bg-gray-50 rounded-lg p-5 md:p-6 mb-5 border border-gray-200">
+              <h3 className="text-base md:text-lg font-bold mb-5 text-gray-900">Three Pillars of Observability</h3>
               <div className="space-y-4">
                 {[
                   { 
@@ -207,8 +210,8 @@ export default function ObservabilityStackPost() {
                     <div className="flex items-start gap-2.5 flex-1">
                       <div className={`w-2.5 h-2.5 ${item.colorClass} rounded-full mt-1.5 flex-shrink-0`}></div>
                       <div className="flex-1">
-                        <span className="font-medium text-sm md:text-base text-white block mb-1">{item.label}</span>
-                        <span className="text-xs md:text-sm text-gray-400 block leading-relaxed">{item.tech}</span>
+                        <span className="font-medium text-sm md:text-base text-gray-900 block mb-1">{item.label}</span>
+                        <span className="text-xs md:text-sm text-gray-600 block leading-relaxed">{item.tech}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -462,39 +465,6 @@ export default function ObservabilityStackPost() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Call to Action */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
-            className="bg-white rounded-xl border border-gray-200 p-6 md:p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300"
-          >
-            <h2 className="text-lg md:text-xl font-bold mb-4 text-gray-900">Ready to Improve Your Observability?</h2>
-            <p className="text-sm md:text-base text-gray-600 mb-6 leading-relaxed max-w-2xl mx-auto">
-              I help companies build comprehensive observability stacks that provide actionable insights 
-              and reduce operational overhead. Let&apos;s discuss how I can help optimize your monitoring.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link 
-                  href="/contact"
-                  className="inline-flex items-center px-5 py-2.5 bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
-                >
-                  Get In Touch
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link 
-                  href="/projects"
-                  className="inline-flex items-center px-5 py-2.5 border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-50 text-sm font-semibold rounded-lg transition-all duration-300"
-                >
-                  View More Projects
-                </Link>
               </motion.div>
             </div>
           </motion.div>
