@@ -6,19 +6,17 @@ tags: ["AWS", "Terraform", "GitOps", "ArgoCD", "EKS", "Infrastructure as Code"]
 author: "Amr Fathy"
 ---
 
-## 🧱 Introduction
+🧱 Introduction
 
-Managing cloud infrastructure at scale requires more than provisioning — it demands **automation, isolation, and governance**.  
+Managing cloud infrastructure at scale requires more than provisioning — it demands automation, isolation, and governance.
 
-In this article, I'll walk through how I built a **multi-account AWS platform** using **Terraform** and **ArgoCD**, following a **GitOps-first approach**.
+In this article, I'll walk through how I built a multi-account AWS platform using Terraform and ArgoCD, following a GitOps-first approach.
 
-> Delivering a consistent, secure, and observable cloud platform that scales across multiple AWS environments.
+Delivering a consistent, secure, and observable cloud platform that scales across multiple AWS environments.
 
----
+🏗️ Architecture Overview
 
-## 🏗️ Architecture Overview
-
-The platform follows a **multi-account design**, where each AWS account is isolated by its own networking, IAM policies, and Terraform state.
+The platform follows a multi-account design, where each AWS account is isolated by its own networking, IAM policies, and Terraform state.
 
 ```bash
 terraform/
@@ -30,76 +28,71 @@ terraform/
 ```
 
 Each environment has:
-- Its own backend (S3 + DynamoDB)
-- Dedicated CI/CD pipelines
-- Isolated IAM boundaries
 
-### Core AWS Components
+Its own backend (S3 + DynamoDB)
+Dedicated CI/CD pipelines
+Isolated IAM boundaries
 
-- 🐳 **EKS clusters** with Bottlerocket worker nodes
-- 🧠 **Aurora PostgreSQL** and **ElastiCache Redis**
-- 🌐 **CloudFront + WAF** for CDN and edge security
-- 🔒 **IAM, GuardDuty, Secrets Manager**
-- 📊 **Prometheus, Grafana, Loki, CloudWatch**
-- 🔁 **ArgoCD & GitHub Actions** for GitOps automation
+Core AWS Components
 
-### ⚙️ Terraform Design Principles
+🐳 EKS clusters with Bottlerocket worker nodes
+🧠 Aurora PostgreSQL and ElastiCache Redis
+🌐 CloudFront + WAF for CDN and edge security
+🔒 IAM, GuardDuty, Secrets Manager
+📊 Prometheus, Grafana, Loki, CloudWatch
+🔁 ArgoCD & GitHub Actions for GitOps automation
 
-- **Modularity**: Reusable Terraform modules for EKS, DNS, monitoring, and security
-- **State Isolation**: Encrypted S3 bucket + DynamoDB lock per environment
-- **Security by Design**: IAM least-privilege, KMS encryption, private subnets
-- **GitOps Workflow**: Terraform + ArgoCD for full automation
+⚙️ Terraform Design Principles
 
----
+Modularity: Reusable Terraform modules for EKS, DNS, monitoring, and security
+State Isolation: Encrypted S3 bucket + DynamoDB lock per environment
+Security by Design: IAM least-privilege, KMS encryption, private subnets
+GitOps Workflow: Terraform + ArgoCD for full automation
 
-## ☁️ Core Infrastructure Components
+☁️ Core Infrastructure Components
 
-### 🧩 Container & Compute
+🧩 Container & Compute
 
-- Amazon EKS per environment (Bottlerocket nodes)
-- Add-ons: EBS CSI, CoreDNS, VPC CNI, Kube-proxy
+Amazon EKS per environment (Bottlerocket nodes)
+Add-ons: EBS CSI, CoreDNS, VPC CNI, Kube-proxy
 
-### 🧠 Data Layer
+🧠 Data Layer
 
-- Aurora PostgreSQL clusters per service
-- Automated backups, PITR, cross-region replication
-- ElastiCache Redis for caching and queues
+Aurora PostgreSQL clusters per service
+Automated backups, PITR, cross-region replication
+ElastiCache Redis for caching and queues
 
-### 🌐 Networking
+🌐 Networking
 
-- VPCs with public/private subnet separation
-- VPC Peering between Ops and App accounts
-- Route53 + ExternalDNS for DNS management
+VPCs with public/private subnet separation
+VPC Peering between Ops and App accounts
+Route53 + ExternalDNS for DNS management
 
-### 🔒 Security
+🔒 Security
 
-- IAM IRSA roles for pods
-- WAF + GuardDuty + Secrets Manager
-- Security Groups per service
+IAM IRSA roles for pods
+WAF + GuardDuty + Secrets Manager
+Security Groups per service
 
-### 📊 Observability
+📊 Observability
 
-- Prometheus + Grafana + Loki + Jaeger
-- CloudWatch → SNS → Slack / PagerDuty alerts
+Prometheus + Grafana + Loki + Jaeger
+CloudWatch → SNS → Slack / PagerDuty alerts
 
----
-
-## 🚀 GitOps & Automation
+🚀 GitOps & Automation
 
 The Operations account hosts ArgoCD, which deploys workloads across clusters.
 
-### Workflow
+Workflow
 
-1. Git push → GitHub Actions runs terraform fmt, validate, and plan
-2. Merge triggers ArgoCD sync
-3. Workloads auto-deploy to EKS
-4. Slack alerts if drift or failure detected
+Git push → GitHub Actions runs terraform fmt, validate, and plan
+Merge triggers ArgoCD sync
+Workloads auto-deploy to EKS
+Slack alerts if drift or failure detected
 
 Every change is traceable, reproducible, and auditable via Git.
 
----
-
-## 🔒 Security Model
+🔒 Security Model
 
 | Layer | Mechanism |
 |-------|-----------|
@@ -109,9 +102,7 @@ Every change is traceable, reproducible, and auditable via Git.
 | Perimeter | WAF, GuardDuty, TLS |
 | Secrets | AWS Secrets Manager + External Secrets Operator |
 
----
-
-## 📈 Observability
+📈 Observability
 
 Monitoring stack is provisioned through a single monitoring Terraform module:
 
@@ -125,18 +116,17 @@ module "monitoring" {
 ```
 
 Includes:
-- Prometheus (metrics)
-- Grafana (OAuth dashboards)
-- Loki (logs)
-- Jaeger (tracing)
-- SNS + CloudWatch alerts
 
----
+Prometheus (metrics)
+Grafana (OAuth dashboards)
+Loki (logs)
+Jaeger (tracing)
+SNS + CloudWatch alerts
 
-## 🧰 Tech Stack
+🧰 Tech Stack
 
 | Category | Tools |
-|---------|-------|
+|----------|-------|
 | IaC | Terraform (v1.6+) |
 | GitOps | ArgoCD, GitHub Actions |
 | Orchestration | Amazon EKS |
@@ -145,13 +135,8 @@ Includes:
 | Monitoring | Prometheus, Grafana, Loki |
 | Regions | ca-central-1, us-west-2 |
 
----
-
-## 🏁 Conclusion
+🏁 Conclusion
 
 This platform shows how Infrastructure as Code and GitOps together deliver a secure, scalable, and maintainable AWS ecosystem.
 
 It's a foundation for continuous delivery — built for engineers who value automation, security, and reliability.
-
-💬 Designed & implemented by **Amr Fathy** — Senior DevOps & Cloud Platform Engineer.
-
