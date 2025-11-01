@@ -7,8 +7,8 @@ export default async function BlogPage() {
 
   if (posts.length === 0) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-32 px-6">
-        <div className="max-w-4xl mx-auto">
+      <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-32 px-6 w-full flex items-center justify-center">
+        <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-600">No blog posts found.</p>
         </div>
       </main>
@@ -16,9 +16,9 @@ export default async function BlogPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 md:py-24 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="space-y-0">
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 md:py-24 w-full flex items-center justify-center">
+      <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div className="space-y-6 md:space-y-10">
           {posts.map((post, index) => (
             <BlogPostCard key={post.slug} post={post} index={index} />
           ))}

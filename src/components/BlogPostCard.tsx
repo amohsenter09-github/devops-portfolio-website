@@ -23,11 +23,11 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
         duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="mb-8 md:mb-12"
+      className="w-full"
     >
-      <Link href={`/blog/${post.slug}`}>
+      <Link href={`/blog/${post.slug}`} className="block w-full">
         <motion.div
-          className="group relative bg-white rounded-lg border border-gray-200 p-8 md:p-10 overflow-hidden cursor-pointer"
+          className="group relative bg-white rounded-lg border border-gray-200 p-8 md:p-10 overflow-hidden cursor-pointer w-full"
           whileHover={{ 
             y: -2,
             boxShadow: "0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(6, 182, 212, 0.1)",
