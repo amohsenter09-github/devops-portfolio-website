@@ -1,0 +1,157 @@
+---
+title: "Building a Multi-Account AWS Platform with Terraform & GitOps"
+description: "How I designed and automated a secure multi-account AWS infrastructure using Terraform, ArgoCD, and GitOps workflows."
+date: "2025-01-15"
+tags: ["AWS", "Terraform", "GitOps", "ArgoCD", "EKS", "Infrastructure as Code"]
+author: "Amr Fathy"
+---
+
+## 🧱 Introduction
+
+Managing cloud infrastructure at scale requires more than provisioning — it demands **automation, isolation, and governance**.  
+
+In this article, I'll walk through how I built a **multi-account AWS platform** using **Terraform** and **ArgoCD**, following a **GitOps-first approach**.
+
+> Delivering a consistent, secure, and observable cloud platform that scales across multiple AWS environments.
+
+---
+
+## 🏗️ Architecture Overview
+
+The platform follows a **multi-account design**, where each AWS account is isolated by its own networking, IAM policies, and Terraform state.
+
+```bash
+terraform/
+├── modules/
+├── production/
+├── staging/
+├── sandbox/
+└── operations/
+```
+
+Each environment has:
+- Its own backend (S3 + DynamoDB)
+- Dedicated CI/CD pipelines
+- Isolated IAM boundaries
+
+### Core AWS Components
+
+- 🐳 **EKS clusters** with Bottlerocket worker nodes
+- 🧠 **Aurora PostgreSQL** and **ElastiCache Redis**
+- 🌐 **CloudFront + WAF** for CDN and edge security
+- 🔒 **IAM, GuardDuty, Secrets Manager**
+- 📊 **Prometheus, Grafana, Loki, CloudWatch**
+- 🔁 **ArgoCD & GitHub Actions** for GitOps automation
+
+### ⚙️ Terraform Design Principles
+
+- **Modularity**: Reusable Terraform modules for EKS, DNS, monitoring, and security
+- **State Isolation**: Encrypted S3 bucket + DynamoDB lock per environment
+- **Security by Design**: IAM least-privilege, KMS encryption, private subnets
+- **GitOps Workflow**: Terraform + ArgoCD for full automation
+
+---
+
+## ☁️ Core Infrastructure Components
+
+### 🧩 Container & Compute
+
+- Amazon EKS per environment (Bottlerocket nodes)
+- Add-ons: EBS CSI, CoreDNS, VPC CNI, Kube-proxy
+
+### 🧠 Data Layer
+
+- Aurora PostgreSQL clusters per service
+- Automated backups, PITR, cross-region replication
+- ElastiCache Redis for caching and queues
+
+### 🌐 Networking
+
+- VPCs with public/private subnet separation
+- VPC Peering between Ops and App accounts
+- Route53 + ExternalDNS for DNS management
+
+### 🔒 Security
+
+- IAM IRSA roles for pods
+- WAF + GuardDuty + Secrets Manager
+- Security Groups per service
+
+### 📊 Observability
+
+- Prometheus + Grafana + Loki + Jaeger
+- CloudWatch → SNS → Slack / PagerDuty alerts
+
+---
+
+## 🚀 GitOps & Automation
+
+The Operations account hosts ArgoCD, which deploys workloads across clusters.
+
+### Workflow
+
+1. Git push → GitHub Actions runs terraform fmt, validate, and plan
+2. Merge triggers ArgoCD sync
+3. Workloads auto-deploy to EKS
+4. Slack alerts if drift or failure detected
+
+Every change is traceable, reproducible, and auditable via Git.
+
+---
+
+## 🔒 Security Model
+
+| Layer | Mechanism |
+|-------|-----------|
+| IAM | Least privilege + OIDC IRSA roles |
+| Network | Private subnets, VPC flow logs |
+| Data | KMS encryption, PITR backups |
+| Perimeter | WAF, GuardDuty, TLS |
+| Secrets | AWS Secrets Manager + External Secrets Operator |
+
+---
+
+## 📈 Observability
+
+Monitoring stack is provisioned through a single monitoring Terraform module:
+
+```terraform
+module "monitoring" {
+  source = "../../modules/monitoring"
+  grafana_ini_domain = var.grafana_ini_domain
+  cluster_name       = module.eks.cluster_name
+  environment        = var.env
+}
+```
+
+Includes:
+- Prometheus (metrics)
+- Grafana (OAuth dashboards)
+- Loki (logs)
+- Jaeger (tracing)
+- SNS + CloudWatch alerts
+
+---
+
+## 🧰 Tech Stack
+
+| Category | Tools |
+|---------|-------|
+| IaC | Terraform (v1.6+) |
+| GitOps | ArgoCD, GitHub Actions |
+| Orchestration | Amazon EKS |
+| Data | Aurora PostgreSQL, ElastiCache Redis |
+| Security | IAM, WAF, GuardDuty |
+| Monitoring | Prometheus, Grafana, Loki |
+| Regions | ca-central-1, us-west-2 |
+
+---
+
+## 🏁 Conclusion
+
+This platform shows how Infrastructure as Code and GitOps together deliver a secure, scalable, and maintainable AWS ecosystem.
+
+It's a foundation for continuous delivery — built for engineers who value automation, security, and reliability.
+
+💬 Designed & implemented by **Amr Fathy** — Senior DevOps & Cloud Platform Engineer.
+

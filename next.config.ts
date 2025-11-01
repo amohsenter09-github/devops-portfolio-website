@@ -1,4 +1,25 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "wrap",
+          properties: { className: ["anchor-link"] },
+        },
+      ],
+    ],
+  },
+});
 
 const nextConfig: NextConfig = {
   // Optimize for Vercel deployment
@@ -7,7 +28,11 @@ const nextConfig: NextConfig = {
   // Enable experimental features for better performance
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react'],
+    mdxRs: true,
   },
+  
+  // MDX page extensions
+  pageExtensions: ["ts", "tsx", "mdx"],
   
   // Image optimization
   images: {
@@ -67,4 +92,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);
