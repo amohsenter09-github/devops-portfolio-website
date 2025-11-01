@@ -70,9 +70,9 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
                 </div>
               </motion.div>
 
-              {/* Title - Improved Header */}
+              {/* Title - Professional Developer Font Header */}
               <motion.h2
-                className="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-cyan-700 transition-colors duration-300 leading-tight pr-4"
+                className="font-mono text-xl md:text-2xl font-semibold text-gray-900 group-hover:text-cyan-700 transition-colors duration-300 leading-tight pr-4 tracking-tight"
                 whileHover={{ x: 3 }}
                 transition={{ duration: 0.3 }}
               >
