@@ -44,6 +44,20 @@
   --accent-green: #30D158;
   --accent-orange: #FF9500;
   --accent-red: #FF3B30;
+  
+  /* Professional Spacing Scale - matches reference design pattern */
+  --spacing-section-xs: 2rem;      /* 32px */
+  --spacing-section-sm: 3rem;      /* 48px */
+  --spacing-section-md: 4rem;      /* 64px */
+  --spacing-section-lg: 5rem;      /* 80px */
+  --spacing-section-xl: 6rem;      /* 96px */
+  --spacing-section-2xl: 8rem;     /* 128px */
+  --spacing-section-3xl: 10rem;    /* 160px */
+  --spacing-content-xs: 0.75rem;   /* 12px */
+  --spacing-content-sm: 1rem;      /* 16px */
+  --spacing-content-md: 1.5rem;    /* 24px */
+  --spacing-content-lg: 2rem;       /* 32px */
+  --spacing-content-xl: 3rem;      /* 48px */
 }
 
 .dark {

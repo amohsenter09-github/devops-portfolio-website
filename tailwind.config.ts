@@ -9,6 +9,19 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      spacing: {
+        // Professional spacing scale - matches reference design
+        'section-sm': '3rem',      // 48px
+        'section-md': '4rem',       // 64px
+        'section-lg': '5rem',       // 80px
+        'section-xl': '6rem',       // 96px
+        'section-2xl': '8rem',      // 128px
+        'section-3xl': '10rem',     // 160px
+        'content-sm': '1.5rem',     // 24px
+        'content-md': '2rem',       // 32px
+        'content-lg': '3rem',       // 48px
+        'content-xl': '4rem',       // 64px
+      },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'monospace'],
