@@ -126,32 +126,16 @@ export default function AwsPlatformSection() {
                     ease: "easeInOut",
                   }}
                 />
-                <span className="relative text-sm md:text-base text-cyan-800 font-medium">Press here for technical implementation</span>
-                <motion.div
-                  className="relative"
-                  animate={{
-                    x: [0, 4, 0],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <svg
-                    className="w-5 h-5 text-cyan-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <span className="relative text-sm md:text-base text-cyan-800 font-medium font-mono">
+                  view_tech_details
+                  <motion.span
+                    className="text-cyan-600 ml-0.5"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.5}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </motion.div>
+                    |
+                  </motion.span>
+                </span>
               </motion.a>
             </motion.div>
           </div>
