@@ -96,6 +96,48 @@ export default function AwsPlatformSection() {
 
         {/* ===== SECTION DIVIDER ===== */}
         <div className="max-w-5xl mx-auto my-20 border-t border-gray-200" />
+        
+        {/* ===== ANIMATED REDIRECTION BUTTON ===== */}
+        <motion.div
+          className="flex items-center justify-center mt-12 md:mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <motion.a
+            href="/blog"
+            className="group flex items-center gap-3 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="text-base md:text-lg">Press here for technical implementation</span>
+            <motion.div
+              animate={{
+                x: [0, 8, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <svg
+                className="w-5 h-5 md:w-6 md:h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </motion.div>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );
