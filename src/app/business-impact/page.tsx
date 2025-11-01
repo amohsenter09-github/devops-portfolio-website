@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { TrendingUp, DollarSign, Clock, Shield, Users, Zap } from "lucide-react";
 
 export default function BusinessImpact() {
@@ -243,18 +244,18 @@ export default function BusinessImpact() {
               Let&apos;s discuss how my proven DevOps strategies can deliver measurable business results for your organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/contact"
                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
                 Schedule Consultation
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/blog/enterprise-microservices-platform"
                 className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
               >
                 View Case Study
-              </a>
+              </Link>
             </div>
           </div>
         </section>
