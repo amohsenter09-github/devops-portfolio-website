@@ -27,10 +27,10 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
     >
       <Link href={`/blog/${post.slug}`} className="block w-full">
         <motion.div
-          className="group relative bg-white rounded-lg border border-gray-200 p-8 md:p-10 overflow-hidden cursor-pointer w-full"
+          className="group relative bg-white rounded-xl border border-gray-200 overflow-hidden cursor-pointer w-full"
           whileHover={{ 
-            y: -2,
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(6, 182, 212, 0.1)",
+            y: -3,
+            boxShadow: "0 12px 40px rgba(0, 0, 0, 0.08), 0 6px 16px rgba(6, 182, 212, 0.12)",
             transition: { 
               type: "spring", 
               stiffness: 300, 
@@ -44,55 +44,61 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
         >
           {/* Hover gradient overlay */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-cyan-50/0 via-cyan-50/0 to-cyan-50/0 group-hover:from-cyan-50/20 group-hover:via-cyan-50/15 group-hover:to-cyan-50/10 transition-all duration-500 rounded-lg"
+            className="absolute inset-0 bg-gradient-to-r from-cyan-50/0 via-cyan-50/0 to-cyan-50/0 group-hover:from-cyan-50/20 group-hover:via-cyan-50/15 group-hover:to-cyan-50/10 transition-all duration-500 rounded-xl"
             initial={false}
           />
           
           {/* Decorative border on hover */}
           <motion.div
-            className="absolute inset-0 rounded-lg border border-cyan-200/0 group-hover:border-cyan-200/40 transition-all duration-500"
+            className="absolute inset-0 rounded-xl border-2 border-cyan-200/0 group-hover:border-cyan-200/50 transition-all duration-500"
             initial={false}
           />
 
-          <div className="relative z-10">
-            {/* Date Badge */}
-            <motion.div
-              className="flex items-center gap-2 text-xs md:text-sm text-gray-500 mb-5"
-              whileHover={{ x: 2 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Calendar size={14} className="text-cyan-600" />
-              <span className="font-medium">{post.date}</span>
-            </motion.div>
+          {/* Card Content with proper padding */}
+          <div className="relative z-10 px-8 md:px-10 lg:px-12 pt-8 md:pt-10 pb-8 md:pb-10">
+            {/* Header Section - Improved */}
+            <div className="mb-6 pb-6 border-b border-gray-100">
+              {/* Date Badge */}
+              <motion.div
+                className="flex items-center gap-2 mb-4"
+                whileHover={{ x: 2 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-cyan-50 rounded-full border border-cyan-100">
+                  <Calendar size={14} className="text-cyan-600" />
+                  <span className="text-xs md:text-sm text-cyan-700 font-semibold">{post.date}</span>
+                </div>
+              </motion.div>
 
-            {/* Title */}
-            <motion.h2
-              className="text-xl md:text-2xl font-bold text-gray-900 mb-4 group-hover:text-cyan-700 transition-colors duration-300 leading-snug"
-              whileHover={{ x: 3 }}
-              transition={{ duration: 0.3 }}
-            >
-              {post.title}
-            </motion.h2>
+              {/* Title - Improved Header */}
+              <motion.h2
+                className="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-cyan-700 transition-colors duration-300 leading-tight pr-4"
+                whileHover={{ x: 3 }}
+                transition={{ duration: 0.3 }}
+              >
+                {post.title}
+              </motion.h2>
+            </div>
 
             {/* Description */}
             <motion.p
-              className="text-gray-600 leading-relaxed mb-6 text-sm md:text-base group-hover:text-gray-700 transition-colors duration-300"
+              className="text-gray-600 leading-relaxed mb-8 text-base md:text-lg group-hover:text-gray-700 transition-colors duration-300"
               whileHover={{ x: 2 }}
               transition={{ duration: 0.3 }}
             >
               {post.description}
             </motion.p>
 
-            {/* Tags */}
+            {/* Tags Section */}
             {post.tags && post.tags.length > 0 && (
               <motion.div
-                className="flex flex-wrap gap-2 mb-6"
+                className="flex flex-wrap gap-2.5 mb-8"
                 initial={false}
               >
                 {post.tags.map((tag, tagIndex) => (
                   <motion.span
                     key={tag}
-                    className="bg-cyan-50 text-cyan-700 text-xs font-medium px-3 py-1.5 rounded-full border border-cyan-100 group-hover:bg-cyan-100 group-hover:border-cyan-200 transition-all duration-300"
+                    className="bg-cyan-50 text-cyan-700 text-xs font-medium px-3.5 py-2 rounded-full border border-cyan-100 group-hover:bg-cyan-100 group-hover:border-cyan-200 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -114,13 +120,13 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
 
             {/* Read More Link */}
             <motion.div
-              className="flex items-center gap-2 text-cyan-600 font-semibold text-sm group-hover:text-cyan-700 transition-colors duration-300"
+              className="flex items-center gap-2 text-cyan-600 font-semibold text-sm md:text-base group-hover:text-cyan-700 transition-colors duration-300 pt-2"
               whileHover={{ x: 5, gap: 6 }}
               transition={{ duration: 0.3 }}
             >
               <span>Read Article</span>
               <ArrowRight 
-                size={16} 
+                size={18} 
                 className="group-hover:translate-x-1 transition-transform duration-300"
               />
             </motion.div>
@@ -128,7 +134,7 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
 
           {/* Shimmer effect on hover */}
           <motion.div
-            className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none rounded-lg"
+            className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none rounded-xl"
             style={{
               background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent)",
             }}
