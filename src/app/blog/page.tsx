@@ -2,8 +2,8 @@ import BlogPostCard from "@/components/BlogPostCard";
 import { blogPosts } from "@/data/blogPosts";
 
 export default async function BlogPage() {
-  // Sort by date (newest first)
-  const posts = [...blogPosts].sort((a, b) => (a.date < b.date ? 1 : -1));
+  // Display posts in the order they are defined in blogPosts array
+  const posts = [...blogPosts];
 
   if (posts.length === 0) {
     return (
