@@ -6,7 +6,7 @@ import { ArrowLeft, Calendar, Clock, Tag, CheckCircle, Zap, Shield, Database, Cl
 
 export default function EnterpriseMicroservicesPlatform() {
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100">
       {/* Header */}
       <motion.section 
         className="py-16 sm:py-20"
@@ -14,7 +14,7 @@ export default function EnterpriseMicroservicesPlatform() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <Link 
             href="/blog"
             className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-8"
@@ -23,22 +23,22 @@ export default function EnterpriseMicroservicesPlatform() {
             Back to Blog
           </Link>
           
-          <div className="flex items-center mb-6 text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex items-center justify-center mb-6 text-sm text-gray-500 dark:text-gray-400">
             <Calendar size={16} className="mr-2" />
             January 15, 2024
             <Clock size={16} className="ml-4 mr-2" />
             15 min read
           </div>
           
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white text-center">
             Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed text-center max-w-3xl mx-auto">
             A comprehensive case study of building a production-ready microservices platform with 12+ services, 
             complete GitOps automation, and enterprise-grade security across multiple AWS environments.
           </p>
           
-          <div className="flex flex-wrap gap-2 mt-6">
+          <div className="flex flex-wrap justify-center gap-2 mt-6">
             {["Terraform", "Kubernetes", "ArgoCD", "Microservices", "AWS", "GitOps", "Security", "Monitoring"].map((tag) => (
               <span 
                 key={tag}
@@ -60,39 +60,39 @@ export default function EnterpriseMicroservicesPlatform() {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           
           {/* Executive Summary */}
           <motion.section 
-            className="mb-12"
+            className="mb-16 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
+              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center flex items-center justify-center">
                 <Zap className="w-6 h-6 text-blue-600 mr-3" />
                 Executive Summary
               </h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-center max-w-3xl mx-auto">
                 This enterprise microservices platform project delivered <strong>$2M in annual cost savings</strong> and 
-                <strong>99.9% uptime</strong> for a Fortune 500 financial services client. The solution transformed their 
+                <strong> 99.9% uptime</strong> for a Fortune 500 financial services client. The solution transformed their 
                 legacy infrastructure into a modern, scalable platform serving <strong>50,000+ concurrent users</strong> 
                 with zero-downtime deployments.
               </p>
-              <div className="grid md:grid-cols-3 gap-4 mt-4">
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">$2M</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Annual Cost Savings</div>
+              <div className="grid md:grid-cols-3 gap-4 mt-6 max-w-3xl mx-auto">
+                <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">$2M</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Annual Cost Savings</div>
                 </div>
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">System Uptime</div>
+                <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">System Uptime</div>
                 </div>
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">70%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Faster Deployments</div>
+                <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">70%</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Faster Deployments</div>
                 </div>
               </div>
             </div>
@@ -100,15 +100,15 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Architecture Overview */}
           <motion.section 
-            className="mb-12"
+            className="mb-16 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Architecture Overview</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Architecture Overview</h2>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="grid md:grid-cols-2 gap-8 mb-8 max-w-3xl mx-auto">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Infrastructure Foundation</h3>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-300">
@@ -157,16 +157,16 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Microservices Architecture */}
           <motion.section 
-            className="mb-12"
+            className="mb-16 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Microservices Architecture</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Microservices Architecture</h2>
             
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-6">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Service Categories</h3>
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 md:p-8 mb-6 max-w-3xl mx-auto">
+              <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Service Categories</h3>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -210,9 +210,9 @@ export default function EnterpriseMicroservicesPlatform() {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-3">Key Technical Achievements</h4>
-              <div className="grid md:grid-cols-2 gap-4 text-sm">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8 max-w-3xl mx-auto">
+              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-4 text-center">Key Technical Achievements</h4>
+              <div className="grid md:grid-cols-2 gap-4 text-sm max-w-2xl mx-auto">
                 <div>
                   <p className="text-blue-800 dark:text-blue-200 mb-2"><strong>Zero-Downtime Deployments:</strong></p>
                   <p className="text-blue-700 dark:text-blue-300">Rolling update strategy with maxUnavailable: 0 ensures continuous service availability</p>
@@ -235,15 +235,15 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* GitOps Implementation */}
           <motion.section 
-            className="mb-12"
+            className="mb-16 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">GitOps Implementation</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">GitOps Implementation</h2>
             
-            <div className="space-y-6">
+            <div className="space-y-6 max-w-3xl mx-auto">
               <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
                   <GitBranch className="w-6 h-6 text-green-600 mr-3" />
@@ -293,15 +293,15 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Monitoring & Observability */}
           <motion.section 
-            className="mb-12"
+            className="mb-16 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Monitoring & Observability</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Monitoring & Observability</h2>
             
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
                   <Monitor className="w-6 h-6 text-orange-600 mr-3" />
@@ -356,30 +356,29 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Implementation Details */}
           <motion.section 
-            className="mb-12"
+            className="mb-16 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div className="max-w-4xl mx-auto px-4">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <Code className="w-7 h-7 text-cyan-600 mr-3" />
-                Implementation Details
-              </h2>
-              
-              <div className="space-y-8">
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center flex items-center justify-center">
+              <Code className="w-7 h-7 text-cyan-600 mr-3" />
+              Implementation Details
+            </h2>
+            
+            <div className="space-y-8 max-w-3xl mx-auto">
                 {/* Prometheus Configuration */}
                 <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
                     <BarChart3 className="text-cyan-600" size={18} />
                     Prometheus Configuration
                   </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4 text-center">
                     Used the official <code className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-cyan-700 dark:text-cyan-400 rounded-md text-xs font-mono font-semibold">kube-prometheus-stack</code> Helm chart with custom retention, 
                     multi-cluster federation, and ServiceMonitor CRDs for application metrics.
                   </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left max-w-2xl mx-auto">
                     {[
                       "Custom retention policies (30 days for high-priority, 7 days for standard)",
                       "Multi-cluster federation for centralized metric aggregation",
@@ -404,15 +403,15 @@ export default function EnterpriseMicroservicesPlatform() {
 
                 {/* Grafana Dashboards */}
                 <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
                     <BarChart3 className="text-cyan-600" size={18} />
                     Grafana Dashboards
                   </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4 text-center">
                     Deployed via ArgoCD Helm release, using pre-baked dashboards from JSON templates stored in Git. 
                     Integrated with SSO for RBAC access.
                   </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left max-w-2xl mx-auto">
                     {[
                       "Infrastructure monitoring dashboards for CPU, memory, and network metrics",
                       "Application performance metrics with custom business KPIs",
@@ -438,15 +437,15 @@ export default function EnterpriseMicroservicesPlatform() {
 
                 {/* Loki + Promtail */}
                 <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
                     <Database className="text-cyan-600" size={18} />
                     Loki + Promtail
                   </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4 text-center">
                     Configured via Helm, ingesting EKS container logs and storing compressed logs on S3 for long-term retention 
                     and cost optimization.
                   </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left max-w-2xl mx-auto">
                     {[
                       "Container log ingestion from EKS pods via Promtail DaemonSet",
                       "Log compression and indexing for efficient querying",
@@ -471,15 +470,15 @@ export default function EnterpriseMicroservicesPlatform() {
 
                 {/* Jaeger Distributed Tracing */}
                 <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
                     <Search className="text-cyan-600" size={18} />
                     Jaeger Distributed Tracing
                   </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4 text-center">
                     Deployed using the Jaeger Operator chart, integrated with application traces through OpenTelemetry SDK for 
                     end-to-end request visibility across microservices.
                   </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left max-w-2xl mx-auto">
                     {[
                       "Jaeger Operator deployed via Helm chart",
                       "OpenTelemetry SDK integration in application code",
@@ -502,20 +501,19 @@ export default function EnterpriseMicroservicesPlatform() {
                   </ul>
                 </div>
               </div>
-            </div>
           </motion.section>
 
           {/* Results & Impact */}
           <motion.section 
-            className="mb-12"
+            className="mb-16 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Results & Impact</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Results & Impact</h2>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">99.9%</div>
                 <div className="text-gray-700 dark:text-gray-300 font-semibold">Uptime Achieved</div>
@@ -535,9 +533,9 @@ export default function EnterpriseMicroservicesPlatform() {
               </div>
             </div>
 
-            <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Key Business Benefits</h3>
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-lg p-6 md:p-8 max-w-3xl mx-auto">
+              <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Key Business Benefits</h3>
+              <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Operational Excellence</h4>
                   <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
@@ -562,15 +560,15 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Technical Stack */}
           <motion.section 
-            className="mb-12"
+            className="mb-16 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Technical Stack</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Technical Stack</h2>
             
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Infrastructure</h3>
                 <div className="flex flex-wrap gap-2">
@@ -597,20 +595,20 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Conclusion */}
           <motion.section 
-            className="mb-12"
+            className="mb-16 md:mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Conclusion</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-10 max-w-3xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center">Conclusion</h2>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-center">
                 This enterprise microservices platform represents a comprehensive solution for modern cloud-native applications. 
                 By leveraging Infrastructure as Code principles, advanced GitOps workflows, and enterprise-grade security practices, 
                 we achieved a robust, scalable, and maintainable platform that serves thousands of users with exceptional reliability.
               </p>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-center">
                 The combination of Terraform for infrastructure management, ArgoCD for GitOps automation, and comprehensive 
                 monitoring stack provides a solid foundation for future growth and innovation. This architecture demonstrates 
                 how modern DevOps practices can deliver both technical excellence and business value.
