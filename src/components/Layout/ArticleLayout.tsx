@@ -36,13 +36,10 @@ export default function ArticleLayout({
   }[spacing];
 
   return (
-    <main className="bg-white min-h-screen">
-      {/* Layout Component Indicator - Remove after verification */}
-      <div className="fixed top-20 right-4 z-50 bg-cyan-600 text-white text-xs px-3 py-1.5 rounded-full shadow-lg">
-        ✓ Layout Components Active
-      </div>
+    <main className="bg-white min-h-screen w-full flex items-center justify-center">
       <article
         className={cn(
+          "w-full",
           "mx-auto",
           "px-6 sm:px-8",
           maxWidthClasses[maxWidth],
@@ -57,4 +54,3 @@ export default function ArticleLayout({
     </main>
   );
 }
-

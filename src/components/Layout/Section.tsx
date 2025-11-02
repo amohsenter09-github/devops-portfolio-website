@@ -32,14 +32,12 @@ export default function Section({
     return (
       <>
         <motion.section
-          className={cn(spacingClasses[spacing], className, "relative")}
+          className={cn(spacingClasses[spacing], className)}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          {/* Section Component Indicator - Remove after verification */}
-          <div className="absolute -left-8 top-4 w-3 h-3 bg-cyan-500 rounded-full shadow-lg border-2 border-white" title="Section Component Active" />
           {children}
         </motion.section>
         {withDivider && (
@@ -57,9 +55,7 @@ export default function Section({
 
   return (
     <>
-      <section className={cn(spacingClasses[spacing], className, "relative")}>
-        {/* Section Component Indicator - Remove after verification */}
-        <div className="absolute -left-8 top-4 w-3 h-3 bg-cyan-500 rounded-full shadow-lg border-2 border-white" title="Section Component Active" />
+      <section className={cn(spacingClasses[spacing], className)}>
         {children}
       </section>
       {withDivider && (
