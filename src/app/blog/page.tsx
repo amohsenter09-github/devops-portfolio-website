@@ -2,8 +2,15 @@ import BlogPostCard from "@/components/BlogPostCard";
 import { blogPosts } from "@/data/blogPosts";
 
 export default async function BlogPage() {
-  // Display posts in the order they are defined in blogPosts array
-  const posts = [...blogPosts];
+  // IMPORTANT: Display posts in the EXACT order they are defined in blogPosts array
+  // NO sorting - order is manually controlled in blogPosts.ts
+  // Order: 1. Enterprise Microservices, 2. Deploy K8s GitOps, 3. Observability Stack, 4. MLOps Pipelines
+  const posts = [
+    blogPosts[0], // Enterprise Microservices Platform
+    blogPosts[1], // Deploy Your Apps on K8s
+    blogPosts[2], // Building a Unified Observability Stack
+    blogPosts[3], // Building Production-Ready MLOps Pipelines
+  ];
 
   if (posts.length === 0) {
     return (
