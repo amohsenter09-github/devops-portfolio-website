@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowLeft, Code, Server, Database, AlertCircle, BarChart3, Search } from "lucide-react";
+import { Code, Server, Database, AlertCircle, BarChart3, Search } from "lucide-react";
 import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function ObservabilityStackPost() {
@@ -12,24 +11,9 @@ export default function ObservabilityStackPost() {
       {/* Header - Centered like Home Page */}
       <header className="text-center mb-16 md:mb-20 w-full">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex justify-center mb-10">
-            <Link 
-              href="/blog"
-              className="inline-flex items-center text-cyan-600 hover:text-cyan-700 transition-colors text-sm font-medium group"
-            >
-              <ArrowLeft size={14} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-              Back to Blog
-            </Link>
-          </div>
-          
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-6 leading-tight text-center">
             Building a Unified Observability Stack: Prometheus, Grafana & Jaeger
           </h1>
-          
-          <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
-            <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-            <span>January 25, 2024</span>
-          </div>
         </div>
       </header>
 
