@@ -22,7 +22,7 @@ export default function ObservabilityStackPost() {
             </Link>
           </div>
           
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-6 leading-tight">
             Building a Unified Observability Stack: Prometheus, Grafana & Jaeger
           </h1>
           
@@ -35,18 +35,18 @@ export default function ObservabilityStackPost() {
 
       {/* 1️⃣ The Challenge */}
       <Section spacing="xl" withDivider animate>
-        <div className="w-full flex flex-col items-center">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-8 text-center">
+        <div className="w-full">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
               The Challenge
             </h2>
             
-            <div className="space-y-4 mb-10">
-              <p className="text-sm md:text-base leading-relaxed text-gray-700 text-center max-w-3xl mx-auto">
+            <div className="space-y-4 mb-10 max-w-3xl mx-auto">
+              <p className="text-sm md:text-base leading-relaxed text-gray-700">
                 Our microservices architecture lacked centralized observability. Teams relied on fragmented CloudWatch dashboards, 
                 manual log searches, and inconsistent alerting—making incident response slow and error correlation impossible.
               </p>
-              <p className="text-sm md:text-base leading-relaxed text-gray-700 text-center max-w-3xl mx-auto">
+              <p className="text-sm md:text-base leading-relaxed text-gray-700">
                 Without unified metrics, logs, and traces, average incident resolution exceeded 45 minutes. Separate monitoring 
                 tools per team prevented understanding system-wide behavior and delayed root cause analysis.
               </p>
@@ -59,40 +59,40 @@ export default function ObservabilityStackPost() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0 }}
-                className="bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 rounded-xl p-5 md:p-6 text-center hover:shadow-xl hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 group"
+                className="group text-center p-5 md:p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
               >
-                <div className="text-2xl md:text-3xl font-extrabold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300">80%</div>
-                <div className="text-xs font-semibold text-gray-600 uppercase tracking-wider">MTTR Reduction</div>
+                <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300">80%</div>
+                <div className="text-xs md:text-sm text-gray-600 font-medium uppercase tracking-wider">MTTR Reduction</div>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 rounded-xl p-5 md:p-6 text-center hover:shadow-xl hover:border-green-300 hover:-translate-y-1 transition-all duration-300 group"
+                className="group text-center p-5 md:p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300"
               >
-                <div className="text-2xl md:text-3xl font-extrabold text-green-600 mb-2 group-hover:scale-110 transition-transform duration-300">99.9%</div>
-                <div className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Uptime Achieved</div>
+                <div className="text-2xl md:text-3xl font-bold text-green-600 mb-2 group-hover:scale-110 transition-transform duration-300">99.9%</div>
+                <div className="text-xs md:text-sm text-gray-600 font-medium uppercase tracking-wider">Uptime Achieved</div>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 rounded-xl p-5 md:p-6 text-center hover:shadow-xl hover:border-purple-300 hover:-translate-y-1 transition-all duration-300 group"
+                className="group text-center p-5 md:p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all duration-300"
               >
-                <div className="text-2xl md:text-3xl font-extrabold text-purple-600 mb-2 group-hover:scale-110 transition-transform duration-300">50+</div>
-                <div className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Dashboards</div>
+                <div className="text-2xl md:text-3xl font-bold text-purple-600 mb-2 group-hover:scale-110 transition-transform duration-300">50+</div>
+                <div className="text-xs md:text-sm text-gray-600 font-medium uppercase tracking-wider">Dashboards</div>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 rounded-xl p-5 md:p-6 text-center hover:shadow-xl hover:border-orange-300 hover:-translate-y-1 transition-all duration-300 group"
+                className="group text-center p-5 md:p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300"
               >
-                <div className="text-2xl md:text-3xl font-extrabold text-orange-600 mb-2 group-hover:scale-110 transition-transform duration-300">100+</div>
-                <div className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Alerts Configured</div>
+                <div className="text-2xl md:text-3xl font-bold text-orange-600 mb-2 group-hover:scale-110 transition-transform duration-300">100+</div>
+                <div className="text-xs md:text-sm text-gray-600 font-medium uppercase tracking-wider">Alerts Configured</div>
               </motion.div>
             </div>
           </div>
@@ -101,19 +101,19 @@ export default function ObservabilityStackPost() {
 
       {/* 2️⃣ My Solution */}
       <Section spacing="xl" withDivider animate>
-        <div className="w-full flex flex-col items-center">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-8 text-center">
+        <div className="w-full">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
               My Solution
             </h2>
             
             <div className="space-y-4 max-w-3xl mx-auto">
-              <p className="text-sm md:text-base leading-relaxed text-gray-700 text-center">
+              <p className="text-sm md:text-base leading-relaxed text-gray-700">
                 I standardized the observability stack around open-source Helm charts: Prometheus for metrics, Grafana for 
                 visualization, Loki for logs, and Jaeger for distributed tracing. Deployed GitOps-style via ArgoCD across 
                 EKS clusters with centralized alert routing through Alertmanager and PagerDuty.
               </p>
-              <p className="text-sm md:text-base leading-relaxed text-gray-700 text-center">
+              <p className="text-sm md:text-base leading-relaxed text-gray-700">
                 This unified approach eliminated tool fragmentation, enforced consistent retention policies, and enabled 
                 end-to-end request tracing. All infrastructure changes are version-controlled and deployed automatically, 
                 ensuring consistent observability across dev, staging, and production.
@@ -125,17 +125,17 @@ export default function ObservabilityStackPost() {
 
       {/* 3️⃣ Observability Stack Architecture */}
       <Section spacing="xl" withDivider animate>
-        <div className="w-full flex flex-col items-center">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-8 text-center flex items-center justify-center gap-2">
+        <div className="w-full">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2">
               <Server className="text-cyan-600" size={22} />
               Observability Stack Architecture
             </h2>
             
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border-2 border-gray-200 mb-6 max-w-4xl mx-auto shadow-sm hover:shadow-md transition-shadow duration-300">
-              <h3 className="text-lg md:text-xl font-bold mb-6 text-gray-900 text-center">Three Pillars of Observability</h3>
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border border-gray-200 mb-6 max-w-4xl mx-auto shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+              <h3 className="text-lg md:text-xl font-semibold mb-6 text-gray-800">Three Pillars of Observability</h3>
               
-              <div className="space-y-5">
+              <div className="space-y-5 text-left max-w-3xl mx-auto">
                 {[
                   { 
                     label: "Metrics Collection", 
@@ -173,7 +173,7 @@ export default function ObservabilityStackPost() {
                   >
                     <div className={`w-3 h-3 ${item.colorClass} rounded-full mt-1 flex-shrink-0 shadow-sm`}></div>
                     <div className="flex-1">
-                      <span className="font-bold text-sm md:text-base text-gray-900 block mb-1">{item.label}</span>
+                      <span className="font-semibold text-sm md:text-base text-gray-800 block mb-1">{item.label}</span>
                       <span className="text-xs md:text-sm text-gray-600 block leading-relaxed">{item.tech}</span>
                     </div>
                   </motion.div>
@@ -181,7 +181,7 @@ export default function ObservabilityStackPost() {
               </div>
             </div>
 
-            <p className="text-sm md:text-base leading-relaxed text-gray-700 text-center max-w-3xl mx-auto mt-6">
+            <p className="text-sm md:text-base leading-relaxed text-gray-700 max-w-3xl mx-auto mt-6">
               The stack provides comprehensive visibility across infrastructure and application layers, enabling proactive 
               issue detection and rapid troubleshooting.
             </p>
@@ -191,25 +191,25 @@ export default function ObservabilityStackPost() {
 
       {/* 4️⃣ Implementation Details */}
       <Section spacing="xl" withDivider animate>
-        <div className="w-full flex flex-col items-center">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-8 text-center flex items-center justify-center gap-2">
+        <div className="w-full">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2">
               <Code className="text-cyan-600" size={22} />
               Implementation Details
             </h2>
             
-            <div className="space-y-10 max-w-3xl mx-auto">
+            <div className="space-y-8 max-w-3xl mx-auto">
               {/* Prometheus Configuration */}
-              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-base md:text-lg font-bold mb-4 text-gray-900 flex items-center gap-2">
+              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300 text-center">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
                   <BarChart3 className="text-cyan-600" size={18} />
                   Prometheus Configuration
                 </h3>
-                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4 text-center">
+                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
                   Used the official <code className="px-2 py-1 bg-gray-100 text-cyan-700 rounded-md text-xs font-mono font-semibold">kube-prometheus-stack</code> Helm chart with custom retention, 
                   multi-cluster federation, and ServiceMonitor CRDs for application metrics.
                 </p>
-                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 ml-2">
+                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
                   {[
                     "Custom retention policies (30 days for high-priority, 7 days for standard)",
                     "Multi-cluster federation for centralized metric aggregation",
@@ -233,16 +233,16 @@ export default function ObservabilityStackPost() {
               </div>
 
               {/* Grafana Dashboards */}
-              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-base md:text-lg font-bold mb-4 text-gray-900 flex items-center gap-2">
+              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300 text-center">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
                   <BarChart3 className="text-cyan-600" size={18} />
                   Grafana Dashboards
                 </h3>
-                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4 text-center">
+                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
                   Deployed via ArgoCD Helm release, using pre-baked dashboards from JSON templates stored in Git. 
                   Integrated with SSO for RBAC access.
                 </p>
-                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 ml-2">
+                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
                   {[
                     "Infrastructure monitoring dashboards for CPU, memory, and network metrics",
                     "Application performance metrics with custom business KPIs",
@@ -267,16 +267,16 @@ export default function ObservabilityStackPost() {
               </div>
 
               {/* Loki + Promtail */}
-              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-base md:text-lg font-bold mb-4 text-gray-900 flex items-center gap-2">
+              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300 text-center">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
                   <Database className="text-cyan-600" size={18} />
                   Loki + Promtail
                 </h3>
-                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4 text-center">
+                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
                   Configured via Helm, ingesting EKS container logs and storing compressed logs on S3 for long-term retention 
                   and cost optimization.
                 </p>
-                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 ml-2">
+                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
                   {[
                     "Container log ingestion from EKS pods via Promtail DaemonSet",
                     "Log compression and indexing for efficient querying",
@@ -300,16 +300,16 @@ export default function ObservabilityStackPost() {
               </div>
 
               {/* Jaeger */}
-              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-base md:text-lg font-bold mb-4 text-gray-900 flex items-center gap-2">
+              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300 text-center">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
                   <Search className="text-cyan-600" size={18} />
                   Jaeger Distributed Tracing
                 </h3>
-                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4 text-center">
+                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
                   Deployed using the Jaeger Operator chart, integrated with application traces through OpenTelemetry SDK for 
                   end-to-end request visibility across microservices.
                 </p>
-                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 ml-2">
+                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
                   {[
                     "Jaeger Operator deployed via Helm chart",
                     "OpenTelemetry SDK integration in application code",
@@ -333,16 +333,16 @@ export default function ObservabilityStackPost() {
               </div>
 
               {/* AlertManager */}
-              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-base md:text-lg font-bold mb-4 text-gray-900 flex items-center gap-2">
+              <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300 text-center">
+                <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
                   <AlertCircle className="text-cyan-600" size={18} />
                   AlertManager Configuration
                 </h3>
-                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4 text-center">
+                <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
                   Set up with routing rules for severity levels, notifying Slack channels and PagerDuty for critical incidents 
                   with proper escalation policies.
                 </p>
-                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 ml-2">
+                <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
                   {[
                     "Severity-based alert routing (critical, warning, info)",
                     "PagerDuty integration for on-call escalation",
@@ -371,9 +371,9 @@ export default function ObservabilityStackPost() {
 
       {/* 5️⃣ Results & Metrics */}
       <Section spacing="xl" animate>
-        <div className="w-full flex flex-col items-center">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-8 text-center">
+        <div className="w-full">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
               Results Achieved
             </h2>
             
@@ -383,10 +383,10 @@ export default function ObservabilityStackPost() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-gradient-to-br from-green-50 to-white border-2 border-green-200 rounded-xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300"
               >
-                <h3 className="text-base md:text-lg font-bold mb-5 text-green-800 text-center">Operational Improvements</h3>
-                <ul className="space-y-3 text-sm leading-relaxed text-green-700">
+                <h3 className="text-base md:text-lg font-semibold mb-5 text-green-800">Operational Improvements</h3>
+                <ul className="space-y-3 text-sm leading-relaxed text-green-700 text-left">
                   {[
                     "80% MTTR Reduction - Faster incident resolution",
                     "99.9% Uptime - Proactive monitoring",
@@ -406,10 +406,10 @@ export default function ObservabilityStackPost() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-gradient-to-br from-cyan-50 to-white border-2 border-cyan-200 rounded-xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
               >
-                <h3 className="text-base md:text-lg font-bold mb-5 text-cyan-800 text-center">Business Impact</h3>
-                <ul className="space-y-3 text-sm leading-relaxed text-cyan-700">
+                <h3 className="text-base md:text-lg font-semibold mb-5 text-cyan-800">Business Impact</h3>
+                <ul className="space-y-3 text-sm leading-relaxed text-cyan-700 text-left">
                   {[
                     "Reduced Downtime - Proactive issue detection",
                     "Improved Performance - Data-driven optimization",
