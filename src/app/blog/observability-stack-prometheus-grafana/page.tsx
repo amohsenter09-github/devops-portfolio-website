@@ -11,10 +11,56 @@ export default function ObservabilityStackPost() {
       {/* 4️⃣ Implementation Details */}
       <Section spacing="xl" withDivider animate>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2">
-            <Code className="text-cyan-600" size={22} />
-            Implementation Details
-          </h2>
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <Code className="text-cyan-600" size={22} />
+            </motion.div>
+            <span className="font-mono lowercase">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                implementation
+              </motion.span>
+              <motion.span
+                className="text-cyan-600"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                _
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                details
+              </motion.span>
+              <motion.span
+                className="text-cyan-600 ml-0.5"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              >
+                |
+              </motion.span>
+            </span>
+          </motion.h2>
           
           <div className="space-y-8 max-w-3xl mx-auto">
             {/* Prometheus Configuration */}
