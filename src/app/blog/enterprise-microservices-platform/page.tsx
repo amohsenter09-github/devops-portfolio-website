@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, Tag, CheckCircle, Zap, Shield, Database, Cloud, GitBranch, Monitor, Code, BarChart3, Search } from "lucide-react";
+import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function EnterpriseMicroservicesPlatform() {
   return (
@@ -14,14 +15,16 @@ export default function EnterpriseMicroservicesPlatform() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <Link 
-            href="/blog"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-8"
-          >
-            <ArrowLeft size={20} className="mr-2" />
-            Back to Blog
-          </Link>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <div className="w-full flex justify-start mb-8">
+            <Link 
+              href="/blog"
+              className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              <ArrowLeft size={20} className="mr-2" />
+              Back to Blog
+            </Link>
+          </div>
           
           <div className="flex items-center justify-center mb-6 text-sm text-gray-500 dark:text-gray-400">
             <Calendar size={16} className="mr-2" />
@@ -52,63 +55,48 @@ export default function EnterpriseMicroservicesPlatform() {
         </div>
       </motion.section>
 
-      {/* Content */}
-      <motion.article 
-        className="py-12"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      {/* Content using ArticleLayout for proper centering */}
+      <div className="bg-white">
+        <ArticleLayout maxWidth="4xl" spacing="relaxed">
           
           {/* Executive Summary */}
-          <motion.section 
-            className="mb-16 md:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center flex items-center justify-center">
-                <Zap className="w-6 h-6 text-blue-600 mr-3" />
-                Executive Summary
-              </h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-center max-w-3xl mx-auto">
-                This enterprise microservices platform project delivered <strong>$2M in annual cost savings</strong> and 
-                <strong> 99.9% uptime</strong> for a Fortune 500 financial services client. The solution transformed their 
-                legacy infrastructure into a modern, scalable platform serving <strong>50,000+ concurrent users</strong> 
-                with zero-downtime deployments.
-              </p>
-              <div className="grid md:grid-cols-3 gap-4 mt-6 max-w-3xl mx-auto">
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">$2M</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Annual Cost Savings</div>
-                </div>
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">System Uptime</div>
-                </div>
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">70%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Faster Deployments</div>
+          <Section spacing="xl" animate>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
+                <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center flex items-center justify-center">
+                  <Zap className="w-6 h-6 text-blue-600 mr-3" />
+                  Executive Summary
+                </h2>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-center max-w-3xl mx-auto">
+                  This enterprise microservices platform project delivered <strong>$2M in annual cost savings</strong> and 
+                  <strong> 99.9% uptime</strong> for a Fortune 500 financial services client. The solution transformed their 
+                  legacy infrastructure into a modern, scalable platform serving <strong>50,000+ concurrent users</strong> 
+                  with zero-downtime deployments.
+                </p>
+                <div className="grid md:grid-cols-3 gap-4 mt-6 max-w-3xl mx-auto">
+                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
+                    <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">$2M</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Annual Cost Savings</div>
+                  </div>
+                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
+                    <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">System Uptime</div>
+                  </div>
+                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
+                    <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">70%</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Faster Deployments</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </motion.section>
+          </Section>
 
           {/* Architecture Overview */}
-          <motion.section 
-            className="mb-16 md:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Architecture Overview</h2>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-8 max-w-3xl mx-auto">
+          <Section spacing="xl" animate>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Architecture Overview</h2>
+              
+              <div className="grid md:grid-cols-2 gap-8 mb-8 max-w-3xl mx-auto">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Infrastructure Foundation</h3>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-300">
@@ -153,17 +141,12 @@ export default function EnterpriseMicroservicesPlatform() {
                 </ul>
               </div>
             </div>
-          </motion.section>
+          </Section>
 
           {/* Microservices Architecture */}
-          <motion.section 
-            className="mb-16 md:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Microservices Architecture</h2>
+          <Section spacing="xl" animate>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Microservices Architecture</h2>
             
             <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 md:p-8 mb-6 max-w-3xl mx-auto">
               <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Service Categories</h3>
@@ -231,19 +214,14 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </Section>
 
           {/* GitOps Implementation */}
-          <motion.section 
-            className="mb-16 md:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">GitOps Implementation</h2>
-            
-            <div className="space-y-6 max-w-3xl mx-auto">
+          <Section spacing="xl" animate>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">GitOps Implementation</h2>
+              
+              <div className="space-y-6 max-w-3xl mx-auto">
               <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
                   <GitBranch className="w-6 h-6 text-green-600 mr-3" />
@@ -289,19 +267,14 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </Section>
 
           {/* Monitoring & Observability */}
-          <motion.section 
-            className="mb-16 md:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Monitoring & Observability</h2>
-            
-            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <Section spacing="xl" animate>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Monitoring & Observability</h2>
+              
+              <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
                   <Monitor className="w-6 h-6 text-orange-600 mr-3" />
@@ -352,22 +325,17 @@ export default function EnterpriseMicroservicesPlatform() {
                 </ul>
               </div>
             </div>
-          </motion.section>
+          </Section>
 
           {/* Implementation Details */}
-          <motion.section 
-            className="mb-16 md:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center flex items-center justify-center">
-              <Code className="w-7 h-7 text-cyan-600 mr-3" />
-              Implementation Details
-            </h2>
-            
-            <div className="space-y-8 max-w-3xl mx-auto">
+          <Section spacing="xl" animate>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center flex items-center justify-center">
+                <Code className="w-7 h-7 text-cyan-600 mr-3" />
+                Implementation Details
+              </h2>
+              
+              <div className="space-y-8 max-w-3xl mx-auto">
                 {/* Prometheus Configuration */}
                 <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
@@ -501,19 +469,15 @@ export default function EnterpriseMicroservicesPlatform() {
                   </ul>
                 </div>
               </div>
-          </motion.section>
+            </div>
+          </Section>
 
           {/* Results & Impact */}
-          <motion.section 
-            className="mb-16 md:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Results & Impact</h2>
-            
-            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <Section spacing="xl" animate>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Results & Impact</h2>
+              
+              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">99.9%</div>
                 <div className="text-gray-700 dark:text-gray-300 font-semibold">Uptime Achieved</div>
@@ -556,19 +520,14 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </Section>
 
           {/* Technical Stack */}
-          <motion.section 
-            className="mb-16 md:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Technical Stack</h2>
-            
-            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <Section spacing="xl" animate>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Technical Stack</h2>
+              
+              <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Infrastructure</h3>
                 <div className="flex flex-wrap gap-2">
@@ -591,33 +550,29 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </Section>
 
           {/* Conclusion */}
-          <motion.section 
-            className="mb-16 md:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-10 max-w-3xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center">Conclusion</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-center">
-                This enterprise microservices platform represents a comprehensive solution for modern cloud-native applications. 
-                By leveraging Infrastructure as Code principles, advanced GitOps workflows, and enterprise-grade security practices, 
-                we achieved a robust, scalable, and maintainable platform that serves thousands of users with exceptional reliability.
-              </p>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-center">
-                The combination of Terraform for infrastructure management, ArgoCD for GitOps automation, and comprehensive 
-                monitoring stack provides a solid foundation for future growth and innovation. This architecture demonstrates 
-                how modern DevOps practices can deliver both technical excellence and business value.
-              </p>
+          <Section spacing="xl" animate>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-10 max-w-3xl mx-auto">
+                <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center">Conclusion</h2>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-center">
+                  This enterprise microservices platform represents a comprehensive solution for modern cloud-native applications. 
+                  By leveraging Infrastructure as Code principles, advanced GitOps workflows, and enterprise-grade security practices, 
+                  we achieved a robust, scalable, and maintainable platform that serves thousands of users with exceptional reliability.
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-center">
+                  The combination of Terraform for infrastructure management, ArgoCD for GitOps automation, and comprehensive 
+                  monitoring stack provides a solid foundation for future growth and innovation. This architecture demonstrates 
+                  how modern DevOps practices can deliver both technical excellence and business value.
+                </p>
+              </div>
             </div>
-          </motion.section>
+          </Section>
 
-        </div>
-      </motion.article>
+        </ArticleLayout>
+      </div>
     </div>
   );
 }
