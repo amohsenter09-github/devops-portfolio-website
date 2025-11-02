@@ -6,6 +6,7 @@ interface ContainerProps {
   className?: string;
   maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "4xl" | "6xl" | "7xl" | "full";
   padding?: "none" | "sm" | "md" | "lg";
+  centerContent?: boolean;
 }
 
 const maxWidthClasses = {
@@ -27,17 +28,23 @@ const paddingClasses = {
   lg: "px-8 sm:px-12"
 };
 
+/**
+ * Container - Centered container with consistent max-widths and padding
+ * Enhanced with centerContent option for text/content centering
+ */
 export default function Container({ 
   children, 
   className,
   maxWidth = "7xl",
-  padding = "md"
+  padding = "md",
+  centerContent = false
 }: ContainerProps) {
   return (
     <div className={cn(
       "w-full mx-auto",
       maxWidthClasses[maxWidth],
       paddingClasses[padding],
+      centerContent && "flex flex-col items-center text-center",
       className
     )}>
       {children}
