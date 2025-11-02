@@ -40,9 +40,6 @@ export default function ArticleLayout({
       <article
         className={cn(
           "w-full",
-          "mx-auto",
-          "px-6 sm:px-8",
-          maxWidthClasses[maxWidth],
           padding,
           "flex flex-col items-center",
           spaceY,
