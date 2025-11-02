@@ -18,13 +18,6 @@ const maxWidthClasses = {
   "4xl": "max-w-4xl",
 };
 
-const spacingClasses = {
-  tight: "py-12 md:py-16 space-y-12 md:space-y-16",
-  normal: "py-16 md:py-24 space-y-16 md:space-y-24",
-  relaxed: "py-20 md:py-32 space-y-20 md:space-y-32",
-  loose: "py-24 md:py-40 space-y-24 md:space-y-40",
-};
-
 /**
  * ArticleLayout - Consistent layout for blog posts and articles
  * Ensures proper centralization, spacing, and readability
@@ -35,14 +28,27 @@ export default function ArticleLayout({
   maxWidth = "3xl",
   spacing = "normal",
 }: ArticleLayoutProps) {
+  const { padding, spacing: spaceY } = {
+    tight: { padding: "py-12 md:py-16", spacing: "space-y-12 md:space-y-16" },
+    normal: { padding: "py-16 md:py-24", spacing: "space-y-16 md:space-y-24" },
+    relaxed: { padding: "py-20 md:py-32", spacing: "space-y-20 md:space-y-32" },
+    loose: { padding: "py-24 md:py-40", spacing: "space-y-24 md:space-y-40" },
+  }[spacing];
+
   return (
     <main className="bg-white min-h-screen">
+      {/* Layout Component Indicator - Remove after verification */}
+      <div className="fixed top-20 right-4 z-50 bg-cyan-600 text-white text-xs px-3 py-1.5 rounded-full shadow-lg">
+        ✓ Layout Components Active
+      </div>
       <article
         className={cn(
           "mx-auto",
           "px-6 sm:px-8",
           maxWidthClasses[maxWidth],
-          spacingClasses[spacing],
+          padding,
+          "flex flex-col",
+          spaceY,
           className
         )}
       >

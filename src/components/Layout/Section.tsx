@@ -28,21 +28,20 @@ export default function Section({
   withDivider = false,
   animate = false,
 }: SectionProps) {
-  const content = (
-    <section className={cn(spacingClasses[spacing], className)}>
-      {children}
-    </section>
-  );
-
   if (animate) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        {content}
+      <>
+        <motion.section
+          className={cn(spacingClasses[spacing], className, "relative")}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          {/* Section Component Indicator - Remove after verification */}
+          <div className="absolute -left-8 top-4 w-3 h-3 bg-cyan-500 rounded-full shadow-lg border-2 border-white" title="Section Component Active" />
+          {children}
+        </motion.section>
         {withDivider && (
           <motion.div
             className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-20 md:my-24"
@@ -52,13 +51,17 @@ export default function Section({
             transition={{ duration: 0.8 }}
           />
         )}
-      </motion.div>
+      </>
     );
   }
 
   return (
     <>
-      {content}
+      <section className={cn(spacingClasses[spacing], className, "relative")}>
+        {/* Section Component Indicator - Remove after verification */}
+        <div className="absolute -left-8 top-4 w-3 h-3 bg-cyan-500 rounded-full shadow-lg border-2 border-white" title="Section Component Active" />
+        {children}
+      </section>
       {withDivider && (
         <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-20 md:my-24" />
       )}
