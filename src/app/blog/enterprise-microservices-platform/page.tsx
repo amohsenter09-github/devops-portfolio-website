@@ -140,6 +140,7 @@ export default function EnterpriseMicroservicesPlatform() {
                   </li>
                 </ul>
               </div>
+              </div>
             </div>
           </Section>
 
@@ -213,6 +214,7 @@ export default function EnterpriseMicroservicesPlatform() {
                   <p className="text-blue-700 dark:text-blue-300">Kustomize base/overlay pattern for environment-specific configurations</p>
                 </div>
               </div>
+              </div>
             </div>
           </Section>
 
@@ -265,6 +267,7 @@ export default function EnterpriseMicroservicesPlatform() {
                     AWS Secrets Manager → External Secrets Operator → Kubernetes Secrets → Pod Environment Variables
                   </code>
                 </div>
+              </div>
               </div>
             </div>
           </Section>
@@ -323,6 +326,7 @@ export default function EnterpriseMicroservicesPlatform() {
                     Datadog integration for enhanced observability
                   </li>
                 </ul>
+              </div>
               </div>
             </div>
           </Section>
@@ -519,6 +523,7 @@ export default function EnterpriseMicroservicesPlatform() {
                   </ul>
                 </div>
               </div>
+              </div>
             </div>
           </Section>
 
@@ -548,6 +553,7 @@ export default function EnterpriseMicroservicesPlatform() {
                     </span>
                   ))}
                 </div>
+              </div>
               </div>
             </div>
           </Section>
