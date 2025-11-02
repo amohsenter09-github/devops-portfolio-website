@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Server, Database, AlertCircle, BarChart3, Search } from "lucide-react";
+import { Code, Database, AlertCircle, BarChart3, Search } from "lucide-react";
 import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function ObservabilityStackPost() {
@@ -100,70 +100,6 @@ export default function ObservabilityStackPost() {
               ensuring consistent observability across dev, staging, and production.
             </p>
           </div>
-        </div>
-      </Section>
-
-      {/* 3️⃣ Observability Stack Architecture */}
-      <Section spacing="xl" withDivider animate>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2">
-            <Server className="text-cyan-600" size={22} />
-            Observability Stack Architecture
-          </h2>
-          
-          <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border border-gray-200 mb-6 max-w-4xl mx-auto shadow-sm hover:shadow-md transition-shadow duration-300">
-            <h3 className="text-lg md:text-xl font-semibold mb-6 text-gray-800">Three Pillars of Observability</h3>
-            
-            <div className="space-y-5 text-left max-w-3xl mx-auto">
-              {[
-                { 
-                  label: "Metrics Collection", 
-                  tech: "Prometheus Helm chart + Node Exporter + custom app metrics via /metrics endpoints",
-                  colorClass: "bg-orange-500"
-                },
-                { 
-                  label: "Visualization & Dashboards", 
-                  tech: "Grafana Helm chart, provisioned dashboards via ConfigMaps, SSO using OAuth",
-                  colorClass: "bg-blue-500"
-                },
-                { 
-                  label: "Distributed Tracing", 
-                  tech: "Jaeger Operator via Helm, integrated with OpenTelemetry SDK",
-                  colorClass: "bg-purple-500"
-                },
-                { 
-                  label: "Log Aggregation", 
-                  tech: "Loki + Promtail via Helm, pushing logs to S3 for long-term retention",
-                  colorClass: "bg-green-500"
-                },
-                { 
-                  label: "Alerting & Notification", 
-                  tech: "Alertmanager routes integrated with PagerDuty + Slack webhooks",
-                  colorClass: "bg-red-500"
-                },
-              ].map((item, index) => (
-                <motion.div 
-                  key={item.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-100/50 transition-colors duration-200"
-                >
-                  <div className={`w-3 h-3 ${item.colorClass} rounded-full mt-1 flex-shrink-0 shadow-sm`}></div>
-                  <div className="flex-1">
-                    <span className="font-semibold text-sm md:text-base text-gray-800 block mb-1">{item.label}</span>
-                    <span className="text-xs md:text-sm text-gray-600 block leading-relaxed">{item.tech}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          <p className="text-sm md:text-base leading-relaxed text-gray-700 max-w-3xl mx-auto mt-6">
-            The stack provides comprehensive visibility across infrastructure and application layers, enabling proactive 
-            issue detection and rapid troubleshooting.
-          </p>
         </div>
       </Section>
 
