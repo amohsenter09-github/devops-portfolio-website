@@ -32,12 +32,12 @@ export default function ObservabilityStackPost() {
 
       {/* 1️⃣ The Challenge */}
       <Section spacing="xl" withDivider animate>
-        <div className="w-full">
+        <div className="w-full flex flex-col items-center">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-8 text-center">
             The Challenge
           </h2>
           
-          <div className="space-y-6 mb-12 max-w-3xl mx-auto">
+          <div className="space-y-6 mb-12 w-full max-w-3xl">
             <p className="text-base leading-relaxed text-gray-700 text-center">
               Our microservices system lacked centralized visibility — developers relied on fragmented CloudWatch dashboards, 
               manual log searches, and ad-hoc alerts. Metrics retention was inconsistent and tracing between APIs was impossible, 
@@ -51,7 +51,7 @@ export default function ObservabilityStackPost() {
           </div>
           
           {/* Key Metrics Grid - Properly Centered with Consistent Spacing */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto mt-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 w-full max-w-4xl mt-12">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -98,12 +98,12 @@ export default function ObservabilityStackPost() {
 
       {/* 2️⃣ My Solution */}
       <Section spacing="xl" withDivider animate>
-        <div className="w-full">
+        <div className="w-full flex flex-col items-center">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-8 text-center">
             My Solution
           </h2>
           
-          <div className="space-y-6 max-w-3xl mx-auto">
+          <div className="space-y-6 w-full max-w-3xl">
             <p className="text-base leading-relaxed text-gray-700 text-center">
               We standardized our observability stack around open-source Helm charts — deploying Prometheus for metrics, 
               Grafana for visualization, Loki for logs, and Jaeger for distributed tracing. Using ArgoCD, the stack was 
@@ -121,13 +121,13 @@ export default function ObservabilityStackPost() {
 
       {/* 3️⃣ Observability Stack Architecture */}
       <Section spacing="xl" withDivider animate>
-        <div className="w-full">
+        <div className="w-full flex flex-col items-center">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-8 text-center flex items-center justify-center">
             <Server className="mr-2 text-cyan-600" size={20} />
             Observability Stack Architecture
           </h2>
           
-          <div className="bg-gray-50 rounded-lg p-8 md:p-10 border border-gray-200 mb-8 max-w-4xl mx-auto">
+          <div className="bg-gray-50 rounded-lg p-8 md:p-10 border border-gray-200 mb-8 w-full max-w-4xl">
             <h3 className="text-lg font-semibold mb-8 text-gray-900 text-center">Three Pillars of Observability</h3>
             
             <div className="space-y-6">
@@ -176,7 +176,7 @@ export default function ObservabilityStackPost() {
             </div>
           </div>
 
-          <p className="text-base leading-relaxed text-gray-700 text-center max-w-3xl mx-auto">
+          <p className="text-base leading-relaxed text-gray-700 text-center w-full max-w-3xl">
             The stack provides comprehensive visibility across all layers of the application stack, 
             from infrastructure metrics to application performance, enabling proactive issue detection 
             and rapid troubleshooting.
@@ -186,13 +186,13 @@ export default function ObservabilityStackPost() {
 
       {/* 4️⃣ Implementation Details */}
       <Section spacing="xl" withDivider animate>
-        <div className="w-full">
+        <div className="w-full flex flex-col items-center">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-8 text-center flex items-center justify-center">
             <Code className="mr-2 text-cyan-600" size={20} />
             Implementation Details
           </h2>
           
-          <div className="space-y-12 max-w-3xl mx-auto">
+          <div className="space-y-12 w-full max-w-3xl">
             {/* Prometheus Configuration */}
             <div>
               <h3 className="text-lg font-semibold mb-5 text-gray-900 flex items-center justify-center">
@@ -329,12 +329,12 @@ export default function ObservabilityStackPost() {
 
       {/* 5️⃣ Results & Metrics */}
       <Section spacing="xl" animate>
-        <div className="w-full">
+        <div className="w-full flex flex-col items-center">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-8 text-center">
             Results Achieved
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 w-full max-w-4xl">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

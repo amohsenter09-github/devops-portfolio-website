@@ -36,7 +36,7 @@ export default function ArticleLayout({
   }[spacing];
 
   return (
-    <main className="bg-white min-h-screen w-full flex items-center justify-center">
+    <main className="bg-white min-h-screen w-full">
       <article
         className={cn(
           "w-full",
@@ -44,7 +44,7 @@ export default function ArticleLayout({
           "px-6 sm:px-8",
           maxWidthClasses[maxWidth],
           padding,
-          "flex flex-col",
+          "flex flex-col items-center",
           spaceY,
           className
         )}
