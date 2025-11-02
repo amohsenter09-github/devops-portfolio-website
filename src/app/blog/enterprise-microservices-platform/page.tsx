@@ -362,150 +362,191 @@ export default function EnterpriseMicroservicesPlatform() {
             transition={{ delay: 0.55, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-              <Code className="w-7 h-7 text-cyan-600 mr-3" />
-              Implementation Details
-            </h2>
-            
-            <div className="space-y-8">
-              {/* Prometheus Configuration */}
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
-                  <BarChart3 className="w-6 h-6 text-cyan-600 mr-3" />
-                  Prometheus Configuration
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  Used the official <code className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-cyan-700 dark:text-cyan-400 rounded-md text-xs font-mono font-semibold">kube-prometheus-stack</code> Helm chart with custom retention, 
-                  multi-cluster federation, and ServiceMonitor CRDs for application metrics.
-                </p>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Custom retention policies (30 days for high-priority, 7 days for standard)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Multi-cluster federation for centralized metric aggregation</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>ServiceMonitor CRDs for Kubernetes-native service discovery</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Recording rules for pre-computed aggregations and performance</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>High availability setup with Thanos for long-term storage</span>
-                  </li>
-                </ul>
-              </div>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+              <motion.h2 
+                className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <Code className="text-cyan-600" size={22} />
+                </motion.div>
+                <span className="font-mono lowercase">
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                  >
+                    implementation
+                  </motion.span>
+                  <motion.span
+                    className="text-cyan-600"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.5 }}
+                  >
+                    _
+                  </motion.span>
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                  >
+                    details
+                  </motion.span>
+                  <motion.span
+                    className="text-cyan-600 ml-0.5"
+                    animate={{ opacity: [1, 0.3, 1] }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                  >
+                    |
+                  </motion.span>
+                </span>
+              </motion.h2>
+              
+              <div className="space-y-8 max-w-3xl mx-auto">
+                {/* Prometheus Configuration */}
+                <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                    <BarChart3 className="text-cyan-600" size={18} />
+                    Prometheus Configuration
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                    Used the official <code className="px-2 py-1 bg-gray-100 text-cyan-700 rounded-md text-xs font-mono font-semibold">kube-prometheus-stack</code> Helm chart with custom retention, 
+                    multi-cluster federation, and ServiceMonitor CRDs for application metrics.
+                  </p>
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                    {[
+                      "Custom retention policies (30 days for high-priority, 7 days for standard)",
+                      "Multi-cluster federation for centralized metric aggregation",
+                      "ServiceMonitor CRDs for Kubernetes-native service discovery",
+                      "Recording rules for pre-computed aggregations and performance",
+                      "High availability setup with Thanos for long-term storage"
+                    ].map((item, idx) => (
+                      <motion.li
+                        key={item}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.05, duration: 0.3 }}
+                        className="flex items-start gap-2"
+                      >
+                        <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                        <span>{item}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* Grafana Dashboards */}
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
-                  <BarChart3 className="w-6 h-6 text-cyan-600 mr-3" />
-                  Grafana Dashboards
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  Deployed via ArgoCD Helm release, using pre-baked dashboards from JSON templates stored in Git. 
-                  Integrated with SSO for RBAC access.
-                </p>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Infrastructure monitoring dashboards for CPU, memory, and network metrics</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Application performance metrics with custom business KPIs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Custom alerting rules with severity-based routing</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Multi-environment views (dev, staging, production)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Role-based access control (RBAC) with OAuth integration</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Dashboard versioning via GitOps workflows</span>
-                  </li>
-                </ul>
-              </div>
+                {/* Grafana Dashboards */}
+                <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                    <BarChart3 className="text-cyan-600" size={18} />
+                    Grafana Dashboards
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                    Deployed via ArgoCD Helm release, using pre-baked dashboards from JSON templates stored in Git. 
+                    Integrated with SSO for RBAC access.
+                  </p>
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                    {[
+                      "Infrastructure monitoring dashboards for CPU, memory, and network metrics",
+                      "Application performance metrics with custom business KPIs",
+                      "Custom alerting rules with severity-based routing",
+                      "Multi-environment views (dev, staging, production)",
+                      "Role-based access control (RBAC) with OAuth integration",
+                      "Dashboard versioning via GitOps workflows"
+                    ].map((item, idx) => (
+                      <motion.li
+                        key={item}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.05, duration: 0.3 }}
+                        className="flex items-start gap-2"
+                      >
+                        <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                        <span>{item}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* Loki + Promtail */}
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
-                  <Database className="w-6 h-6 text-cyan-600 mr-3" />
-                  Loki + Promtail
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  Configured via Helm, ingesting EKS container logs and storing compressed logs on S3 for long-term retention 
-                  and cost optimization.
-                </p>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Container log ingestion from EKS pods via Promtail DaemonSet</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Log compression and indexing for efficient querying</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>S3 backend for long-term log retention (90 days)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Label-based log filtering and routing</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Integration with Grafana for unified log visualization</span>
-                  </li>
-                </ul>
-              </div>
+                {/* Loki + Promtail */}
+                <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                    <Database className="text-cyan-600" size={18} />
+                    Loki + Promtail
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                    Configured via Helm, ingesting EKS container logs and storing compressed logs on S3 for long-term retention 
+                    and cost optimization.
+                  </p>
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                    {[
+                      "Container log ingestion from EKS pods via Promtail DaemonSet",
+                      "Log compression and indexing for efficient querying",
+                      "S3 backend for long-term log retention (90 days)",
+                      "Label-based log filtering and routing",
+                      "Integration with Grafana for unified log visualization"
+                    ].map((item, idx) => (
+                      <motion.li
+                        key={item}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.05, duration: 0.3 }}
+                        className="flex items-start gap-2"
+                      >
+                        <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                        <span>{item}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* Jaeger Distributed Tracing */}
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
-                  <Search className="w-6 h-6 text-cyan-600 mr-3" />
-                  Jaeger Distributed Tracing
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  Deployed using the Jaeger Operator chart, integrated with application traces through OpenTelemetry SDK for 
-                  end-to-end request visibility across microservices.
-                </p>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Jaeger Operator deployed via Helm chart</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>OpenTelemetry SDK integration in application code</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Trace sampling configuration (10% for production, 100% for staging)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Service dependency mapping and performance analysis</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs mr-2">▸</span>
-                    <span>Integration with Grafana for trace visualization</span>
-                  </li>
-                </ul>
+                {/* Jaeger Distributed Tracing */}
+                <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                    <Search className="text-cyan-600" size={18} />
+                    Jaeger Distributed Tracing
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                    Deployed using the Jaeger Operator chart, integrated with application traces through OpenTelemetry SDK for 
+                    end-to-end request visibility across microservices.
+                  </p>
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                    {[
+                      "Jaeger Operator deployed via Helm chart",
+                      "OpenTelemetry SDK integration in application code",
+                      "Trace sampling configuration (10% for production, 100% for staging)",
+                      "Service dependency mapping and performance analysis",
+                      "Integration with Grafana for trace visualization"
+                    ].map((item, idx) => (
+                      <motion.li
+                        key={item}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.05, duration: 0.3 }}
+                        className="flex items-start gap-2"
+                      >
+                        <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                        <span>{item}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </motion.section>
