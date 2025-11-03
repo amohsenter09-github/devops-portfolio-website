@@ -116,8 +116,9 @@ export default function AwsPlatformSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                This diagram illustrates a <strong className="text-gray-900">complete AWS-native CDC (Change Data Capture) pipeline</strong> 
-                for real-time data ingestion, transformation, and analytics, built entirely on AWS services.
+                This architecture represents a <strong className="text-gray-900">production-ready, AWS-native CDC pipeline</strong> designed for 
+                real-time data replication, transformation, and analytics. The design philosophy centers on <strong className="text-gray-900">serverless-first principles</strong>, 
+                minimizing operational overhead while maximizing scalability and cost-efficiency through native AWS service integration.
               </p>
             </motion.div>
             <motion.div
@@ -127,9 +128,11 @@ export default function AwsPlatformSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                The architecture uses <strong className="text-gray-900">AWS DMS (Database Migration Service)</strong> to capture changes from 
-                Aurora PostgreSQL via Write-Ahead Logs, streams them through <strong className="text-gray-900">Kinesis Data Streams</strong> 
-                or <strong className="text-gray-900">MSK (Managed Streaming for Kafka)</strong> for real-time processing.
+                <strong className="text-gray-900">Change Data Capture (CDC)</strong> begins at the source: <strong className="text-gray-900">AWS DMS</strong> reads Aurora PostgreSQL 
+                Write-Ahead Logs (WAL) to capture database changes in real-time without impacting source performance. This approach eliminates the need for 
+                polling or batch extraction, ensuring <strong className="text-gray-900">sub-second latency</strong> for data replication. The CDC stream is then routed to 
+                <strong className="text-gray-900">Kinesis Data Streams</strong> (for managed real-time streaming) or <strong className="text-gray-900">MSK</strong> (for Kafka-compatible architectures), 
+                providing flexibility to choose based on throughput requirements and existing Kafka expertise.
               </p>
             </motion.div>
             <motion.div
@@ -139,10 +142,13 @@ export default function AwsPlatformSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                Data transformation is handled by <strong className="text-gray-900">AWS Glue Streaming ETL</strong> with Spark, 
-                <strong className="text-gray-900">Lambda functions</strong> for lightweight processing, and <strong className="text-gray-900">AppFlow</strong> 
-                for SaaS integrations. Processed data flows into <strong className="text-gray-900">S3 Data Lake</strong> (Parquet/ORC format) 
-                and <strong className="text-gray-900">Amazon Redshift</strong> for analytics.
+                The <strong className="text-gray-900">ETL layer</strong> employs a <strong className="text-gray-900">multi-tool strategy</strong> optimized for different workloads: 
+                <strong className="text-gray-900">Glue Streaming ETL</strong> with Apache Spark handles complex transformations at scale, 
+                <strong className="text-gray-900">Lambda functions</strong> process lightweight, event-driven transformations with minimal latency, and 
+                <strong className="text-gray-900">AppFlow</strong> integrates SaaS platforms (Salesforce, ServiceNow, etc.) without custom code. 
+                Transformed data is written to <strong className="text-gray-900">S3 Data Lake</strong> in columnar formats (Parquet/ORC) for optimal query performance, 
+                while <strong className="text-gray-900">Redshift</strong> serves as the high-performance data warehouse for analytical queries requiring 
+                complex joins and aggregations.
               </p>
             </motion.div>
             <motion.div
@@ -151,12 +157,26 @@ export default function AwsPlatformSection() {
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
             >
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                The <strong className="text-gray-900">analytics layer</strong> provides multiple query interfaces: <strong className="text-gray-900">Athena</strong> offers 
+                serverless SQL queries directly against S3 data without infrastructure management, <strong className="text-gray-900">QuickSight</strong> delivers 
+                interactive BI dashboards with built-in ML insights, and <strong className="text-gray-900">Redshift Spectrum</strong> enables Redshift clusters 
+                to query petabytes of S3 data without loading it into the warehouse. This <strong className="text-gray-900">hybrid approach</strong> optimizes 
+                costs by keeping hot data in Redshift and cold data in S3, querying both seamlessly.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
               <p className="text-gray-600 leading-relaxed text-sm">
-                Query and analytics are powered by <strong className="text-gray-900">Athena</strong> for serverless S3 queries, 
-                <strong className="text-gray-900">QuickSight</strong> for BI dashboards, and <strong className="text-gray-900">Redshift Spectrum</strong> 
-                for querying S3 data. Governance is enforced through <strong className="text-gray-900">Lake Formation</strong> and 
-                <strong className="text-gray-900">Glue Catalog</strong>, with <strong className="text-gray-900">CloudWatch</strong> providing 
-                comprehensive monitoring across the entire pipeline.
+                <strong className="text-gray-900">Governance and monitoring</strong> are embedded throughout: <strong className="text-gray-900">Glue Catalog</strong> maintains 
+                a centralized metadata repository, enabling schema evolution and data discovery. <strong className="text-gray-900">Lake Formation</strong> enforces 
+                fine-grained access controls, column-level security, and audit logging across S3 data. <strong className="text-gray-900">CloudWatch</strong> monitors 
+                pipeline health, stream throughput, Lambda invocations, and DMS replication lag, providing end-to-end observability. This architecture ensures 
+                <strong className="text-gray-900">data lineage, compliance, and operational excellence</strong> while maintaining the agility needed for modern data-driven applications.
               </p>
             </motion.div>
           </motion.div>
