@@ -1,237 +1,271 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, Tag, Code, Server, Shield, Zap } from "lucide-react";
+import { Code, Server, Zap, Database, BarChart3, Brain } from "lucide-react";
+import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function MLOpsImplementationPost() {
   return (
-    <div className="w-full">
-      {/* Header */}
-      <motion.section 
-        className="py-16 sm:py-20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="max-w-4xl mx-auto px-4">
-          <Link 
-            href="/blog"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-8"
+    <ArticleLayout maxWidth="4xl" spacing="relaxed">
+      
+      {/* Implementation Details */}
+      <Section spacing="xl" withDivider animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <ArrowLeft size={20} className="mr-2" />
-            Back to Blog
-          </Link>
-          
-          <div className="flex items-center mb-6 text-sm text-gray-500 dark:text-gray-400">
-            <Calendar size={16} className="mr-2" />
-            January 20, 2024
-            <Clock size={16} className="ml-4 mr-2" />
-            8 min read
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Building Production-Ready MLOps Pipelines with Kubernetes
-          </h1>
-          
-          <div className="flex flex-wrap gap-2 mb-8">
-            {["MLOps", "Kubernetes", "MLflow", "SageMaker", "AWS"].map((tag) => (
-              <span 
-                key={tag}
-                className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <Brain className="text-cyan-600" size={22} />
+            </motion.div>
+            <span className="font-mono lowercase">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <Tag size={12} className="inline mr-1" />
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Article Content */}
-      <motion.article 
-        className="py-12"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-4xl mx-auto px-4 prose prose-lg dark:prose-invert">
+                mlops
+              </motion.span>
+              <motion.span
+                className="text-cyan-600"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                _
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                implementation
+              </motion.span>
+              <motion.span
+                className="text-cyan-600 ml-0.5"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              >
+                |
+              </motion.span>
+            </span>
+          </motion.h2>
           
-          {/* Introduction */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">The Challenge</h2>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                <strong>Problem:</strong> A financial services company needed to deploy machine learning models at scale 
-                while maintaining model versioning, monitoring, and automated retraining capabilities. Their existing 
-                manual deployment process couldn&apos;t handle the complexity of ML workflows.
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                <strong>My Solution:</strong> I designed and implemented a complete MLOps pipeline using Kubernetes, 
-                MLflow, and AWS SageMaker, enabling automated model training, deployment, and monitoring with 
-                enterprise-grade reliability.
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">95%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Automation</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">50+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Models Deployed</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">99.9%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Uptime</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">80%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Faster Deployment</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* MLOps Architecture */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <Server className="mr-3 text-blue-600" />
+          <div className="space-y-8 max-w-3xl mx-auto">
+            {/* MLOps Pipeline Architecture */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Server className="text-cyan-600" size={18} />
                 MLOps Pipeline Architecture
-              </h2>
-              
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Pipeline Components</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Data Ingestion & Preprocessing</span>
-                    <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">Apache Airflow</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Model Training & Experimentation</span>
-                    <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">MLflow + SageMaker</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Model Registry & Versioning</span>
-                    <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">MLflow Model Registry</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-orange-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Model Deployment & Serving</span>
-                    <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">Kubernetes + Seldon</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Monitoring & Drift Detection</span>
-                    <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">Prometheus + Grafana</span>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                The pipeline integrates seamlessly with existing Kubernetes infrastructure, providing 
-                scalable model serving with automatic scaling based on traffic patterns and 
-                comprehensive monitoring for model performance and data drift detection.
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Complete end-to-end MLOps pipeline integrating data ingestion, model training, deployment, and monitoring 
+                with Kubernetes, MLflow, and AWS SageMaker for enterprise-grade reliability and scalability.
               </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Data Ingestion & Preprocessing via Apache Airflow",
+                  "Model Training & Experimentation with MLflow + SageMaker",
+                  "Model Registry & Versioning using MLflow Model Registry",
+                  "Model Deployment & Serving on Kubernetes + Seldon",
+                  "Monitoring & Drift Detection with Prometheus + Grafana",
+                  "Automated retraining triggers based on performance metrics"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </div>
-          </div>
 
-          {/* Technical Implementation */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <Code className="mr-3 text-green-600" />
-                Technical Implementation
-              </h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">MLflow Integration</h3>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• Centralized experiment tracking</li>
-                    <li>• Model versioning and registry</li>
-                    <li>• Automated model validation</li>
-                    <li>• A/B testing framework</li>
-                    <li>• Model performance monitoring</li>
-                    <li>• Automated retraining triggers</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Kubernetes Deployment</h3>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• Horizontal Pod Autoscaling</li>
-                    <li>• Resource quotas and limits</li>
-                    <li>• Rolling updates and rollbacks</li>
-                    <li>• Service mesh integration</li>
-                    <li>• GPU resource management</li>
-                    <li>• Multi-tenant isolation</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Key Results */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Results Achieved</h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-3 text-green-800 dark:text-green-200">Operational Excellence</h3>
-                  <ul className="space-y-2 text-green-700 dark:text-green-300">
-                    <li>• <strong>95% Automation</strong> - End-to-end ML pipeline</li>
-                    <li>• <strong>80% Faster Deployment</strong> - Automated model serving</li>
-                    <li>• <strong>99.9% Uptime</strong> - Kubernetes reliability</li>
-                    <li>• <strong>Zero Manual Intervention</strong> - Fully automated workflows</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-3 text-blue-800 dark:text-blue-200">ML Operations</h3>
-                  <ul className="space-y-2 text-blue-700 dark:text-blue-300">
-                    <li>• <strong>50+ Models</strong> - Successfully deployed</li>
-                    <li>• <strong>Real-time Monitoring</strong> - Model performance tracking</li>
-                    <li>• <strong>Automated Retraining</strong> - Data drift detection</li>
-                    <li>• <strong>A/B Testing</strong> - Model comparison framework</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Call to Action */}
-          <div className="professional-card mb-8">
-            <div className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Ready to Implement MLOps?</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                I help companies build production-ready MLOps pipelines that scale with their business. 
-                Let&apos;s discuss how I can help optimize your machine learning operations.
+            {/* MLflow Integration */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Code className="text-cyan-600" size={18} />
+                MLflow Integration
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Centralized experiment tracking and model management with automated validation, A/B testing framework, 
+                and performance monitoring for comprehensive ML operations.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
-                >
-                  Get In Touch
-                </Link>
-                <Link 
-                  href="/projects"
-                  className="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-medium rounded-lg transition-colors duration-200"
-                >
-                  View More Projects
-                </Link>
-              </div>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Centralized experiment tracking and model registry",
+                  "Model versioning and automated validation",
+                  "A/B testing framework for model comparison",
+                  "Model performance monitoring and alerting",
+                  "Automated retraining triggers based on data drift",
+                  "Integration with Kubernetes for scalable deployment"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Kubernetes Deployment */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Server className="text-cyan-600" size={18} />
+                Kubernetes Deployment
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Production-ready Kubernetes deployment with horizontal pod autoscaling, rolling updates, service mesh integration, 
+                and GPU resource management for optimal ML model serving.
+              </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Horizontal Pod Autoscaling based on traffic patterns",
+                  "Resource quotas and limits for cost optimization",
+                  "Rolling updates and rollbacks for zero-downtime deployments",
+                  "Service mesh integration for advanced networking",
+                  "GPU resource management for training workloads",
+                  "Multi-tenant isolation for security and performance"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Monitoring & Observability */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <BarChart3 className="text-cyan-600" size={18} />
+                Monitoring & Observability
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Comprehensive monitoring solution with Prometheus and Grafana for model performance tracking, data drift detection, 
+                and automated alerting for proactive ML operations management.
+              </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Model performance metrics and KPIs tracking",
+                  "Data drift detection with automated alerts",
+                  "Prometheus metrics collection and aggregation",
+                  "Grafana dashboards for visualization and analysis",
+                  "Real-time monitoring of inference latency and throughput",
+                  "Automated alerts for model degradation and anomalies"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </div>
           </div>
-
         </div>
-      </motion.article>
-    </div>
+      </Section>
+
+      {/* Results & Metrics */}
+      <Section spacing="xl" animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
+            Results Achieved
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300"
+            >
+              <h3 className="text-base md:text-lg font-semibold mb-5 text-green-800">Operational Excellence</h3>
+              <ul className="space-y-3 text-sm leading-relaxed text-green-700 text-left">
+                {[
+                  "95% Automation - End-to-end ML pipeline",
+                  "80% Faster Deployment - Automated model serving",
+                  "99.9% Uptime - Kubernetes reliability",
+                  "Zero Manual Intervention - Fully automated workflows"
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="text-green-600 mt-1 font-bold">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
+            >
+              <h3 className="text-base md:text-lg font-semibold mb-5 text-cyan-800">ML Operations</h3>
+              <ul className="space-y-3 text-sm leading-relaxed text-cyan-700 text-left">
+                {[
+                  "50+ Models - Successfully deployed",
+                  "Real-time Monitoring - Model performance tracking",
+                  "Automated Retraining - Data drift detection",
+                  "A/B Testing - Model comparison framework"
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="text-cyan-600 mt-1 font-bold">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Footer - Professional */}
+      <footer className="text-center text-gray-500 text-sm mt-20 md:mt-24 border-t border-gray-200 pt-8 w-full">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          © 2025 Amr Fathy — All rights reserved.
+        </div>
+      </footer>
+
+    </ArticleLayout>
   );
 }
