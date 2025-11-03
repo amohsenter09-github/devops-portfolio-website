@@ -1,472 +1,305 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, Tag, Code, Server, Shield, Zap } from "lucide-react";
+import { Code, GitBranch, Server, Shield, Zap, AlertCircle } from "lucide-react";
+import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function GitOpsArchitecturePost() {
   return (
-    <div className="w-full">
-      {/* Header */}
-      <motion.section 
-        className="py-16 sm:py-20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="max-w-4xl mx-auto px-4">
-          <Link 
-            href="/blog"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-8"
+    <ArticleLayout maxWidth="4xl" spacing="relaxed">
+      
+      {/* Implementation Details */}
+      <Section spacing="xl" withDivider animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <ArrowLeft size={20} className="mr-2" />
-            Back to Blog
-          </Link>
-          
-          <div className="flex items-center mb-6 text-sm text-gray-500 dark:text-gray-400">
-            <Calendar size={16} className="mr-2" />
-            January 15, 2024
-            <Clock size={16} className="ml-4 mr-2" />
-            12 min read
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Deploy Your Apps on K8s the GitOps Way: Using ArgoCD and Image Updater
-          </h1>
-          
-          <div className="flex flex-wrap gap-2 mb-8">
-            {["Kubernetes", "ArgoCD", "GitOps", "Image Updater", "AWS EKS"].map((tag) => (
-              <span 
-                key={tag}
-                className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <GitBranch className="text-cyan-600" size={22} />
+            </motion.div>
+            <span className="font-mono lowercase">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <Tag size={12} className="inline mr-1" />
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Article Content */}
-      <motion.article 
-        className="py-12"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-4xl mx-auto px-4 prose prose-lg dark:prose-invert">
+                gitops
+              </motion.span>
+              <motion.span
+                className="text-cyan-600"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                _
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                implementation
+              </motion.span>
+              <motion.span
+                className="text-cyan-600 ml-0.5"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              >
+                |
+              </motion.span>
+            </span>
+          </motion.h2>
           
-          {/* Introduction */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">The Challenge</h2>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                <strong>Problem:</strong> Managing deployments across multiple Kubernetes environments was becoming increasingly complex. 
-                Manual deployments, inconsistent configurations, and lack of automated image updates were causing deployment delays and operational overhead.
+          <div className="space-y-8 max-w-3xl mx-auto">
+            {/* ArgoCD Configuration */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <GitBranch className="text-cyan-600" size={18} />
+                ArgoCD Configuration
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Deployed ArgoCD via Helm chart with Application of Applications pattern, enabling automated 
+                deployment synchronization across multiple Kubernetes clusters with Git-based configuration management.
               </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                <strong>My Solution:</strong> I implemented a complete GitOps workflow using ArgoCD and Image Updater to automate deployments 
-                and image updates across multiple Kubernetes clusters. This approach eliminated manual processes and ensured consistency.
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Application of Applications pattern for scalable management",
+                  "Multi-cluster management with centralized control",
+                  "Automated sync policies for continuous deployment",
+                  "RBAC and security controls for access management",
+                  "Webhook integration for real-time updates",
+                  "Health checks and automatic rollback capabilities"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Image Updater Integration */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Zap className="text-cyan-600" size={18} />
+                Image Updater Integration
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Configured ArgoCD Image Updater to automatically detect and update container images from registries, 
+                creating pull requests for image tag updates with configurable update strategies.
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">3</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">K8s Clusters</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">15+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Microservices</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">100%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Automated</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">Zero</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Downtime</div>
-                </div>
-              </div>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Registry polling configuration for automatic image detection",
+                  "Update strategies (semver, latest, digest-based)",
+                  "Automated PR creation for image tag updates",
+                  "Rollback capabilities for failed deployments",
+                  "Multi-registry support (ECR, Docker Hub, GCR)",
+                  "Update policies and filters for controlled updates"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </div>
-          </div>
 
-          {/* My Approach */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">GitOps Implementation Strategy</h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">ArgoCD Configuration</h3>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• Application of Applications pattern</li>
-                    <li>• Multi-cluster management</li>
-                    <li>• Automated sync policies</li>
-                    <li>• RBAC and security controls</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Image Updater Integration</h3>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• Automated image tag updates</li>
-                    <li>• Registry polling configuration</li>
-                    <li>• Update strategies and policies</li>
-                    <li>• Rollback capabilities</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Architecture Overview */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <Server className="mr-3 text-blue-600" />
-                GitOps Architecture Overview
-              </h2>
-              
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Multi-Cluster Setup</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Production Cluster</span>
-                    <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">Live customer traffic</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Staging Cluster</span>
-                    <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">Pre-production testing</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
-                    <span className="font-medium">Development Cluster</span>
-                    <span className="ml-auto text-sm text-gray-600 dark:text-gray-400">Development & experimentation</span>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Each cluster is managed by ArgoCD with Kustomize overlays for environment-specific configurations. 
-                The Image Updater automatically polls container registries and updates image tags when new versions are available.
+            {/* Multi-Cluster Setup */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Server className="text-cyan-600" size={18} />
+                Multi-Cluster Setup
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Managed three Kubernetes clusters (Production, Staging, Development) from a single ArgoCD instance 
+                using Kustomize overlays for environment-specific configurations.
               </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Production cluster for live customer traffic",
+                  "Staging cluster for pre-production testing",
+                  "Development cluster for experimentation",
+                  "Kustomize overlays for environment-specific configs",
+                  "Centralized management from single ArgoCD instance",
+                  "Consistent deployment patterns across environments"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </div>
-          </div>
 
-          {/* Infrastructure Components */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <Code className="mr-3 text-green-600" />
-                GitOps Components
-              </h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">ArgoCD Setup</h3>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• Application of Applications pattern</li>
-                    <li>• Multi-cluster management</li>
-                    <li>• Automated sync policies</li>
-                    <li>• RBAC and security controls</li>
-                    <li>• Webhook integration</li>
-                    <li>• Health checks and monitoring</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Image Updater Configuration</h3>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li>• Registry polling configuration</li>
-                    <li>• Update strategies (semver, latest)</li>
-                    <li>• Automated PR creation</li>
-                    <li>• Rollback capabilities</li>
-                    <li>• Multi-registry support</li>
-                    <li>• Update policies and filters</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Security Implementation */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <Shield className="mr-3 text-red-600" />
+            {/* Security & Best Practices */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Shield className="text-cyan-600" size={18} />
                 Security & Best Practices
-              </h2>
-              
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-red-800 dark:text-red-200">GitOps Security Implementation</h3>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <h4 className="font-medium text-red-700 dark:text-red-300 mb-2">Access Control</h4>
-                    <ul className="space-y-1 text-red-600 dark:text-red-400">
-                      <li>• RBAC policies for ArgoCD</li>
-                      <li>• Service account permissions</li>
-                      <li>• Cluster role bindings</li>
-                      <li>• Namespace isolation</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-red-700 dark:text-red-300 mb-2">Image Security</h4>
-                    <ul className="space-y-1 text-red-600 dark:text-red-400">
-                      <li>• Container image scanning</li>
-                      <li>• Vulnerability assessments</li>
-                      <li>• Signed image verification</li>
-                      <li>• Registry access controls</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* GitOps Implementation */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <Zap className="mr-3 text-purple-600" />
-                Complete GitOps Workflow
-              </h2>
-              
-              <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-purple-800 dark:text-purple-200">Automated Deployment Pipeline</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">1</span>
-                    </div>
-                    <span className="text-purple-700 dark:text-purple-300">Code pushed to Git repository</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">2</span>
-                    </div>
-                    <span className="text-purple-700 dark:text-purple-300">CI/CD pipeline builds and pushes Docker images</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">3</span>
-                    </div>
-                    <span className="text-purple-700 dark:text-purple-300">Image Updater detects new images and creates PR</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">4</span>
-                    </div>
-                    <span className="text-purple-700 dark:text-purple-300">ArgoCD syncs changes to target clusters</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-purple-600 dark:text-purple-300 font-bold text-sm">5</span>
-                    </div>
-                    <span className="text-purple-700 dark:text-purple-300">Health checks and automatic rollback on failure</span>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Using Kustomize for environment-specific configurations and ArgoCD Image Updater for automated image updates, 
-                we achieved a fully automated deployment pipeline with zero manual intervention required.
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Implemented comprehensive security controls including RBAC policies, container image scanning, 
+                and vulnerability assessments to ensure secure GitOps workflows.
               </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "RBAC policies for ArgoCD access control",
+                  "Service account permissions with least privilege",
+                  "Cluster role bindings for namespace isolation",
+                  "Container image scanning and vulnerability assessments",
+                  "Signed image verification for trusted sources",
+                  "Registry access controls and authentication"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </div>
-          </div>
 
-          {/* Monitoring & Observability */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Monitoring & Observability</h2>
-              
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-orange-600 dark:text-orange-400 font-bold text-xl">P</span>
-                  </div>
-                  <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">Prometheus</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Metrics collection and alerting</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-blue-600 dark:text-blue-400 font-bold text-xl">G</span>
-                  </div>
-                  <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">Grafana</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Dashboards and visualization</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-purple-600 dark:text-purple-400 font-bold text-xl">J</span>
-                  </div>
-                  <h3 className="font-semibold mb-2 text-gray-900 dark:text-white">Jaeger</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Distributed tracing</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Key Results */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Results I Delivered</h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-3 text-green-800 dark:text-green-200">Deployment Improvements</h3>
-                  <ul className="space-y-2 text-green-700 dark:text-green-300">
-                    <li>• <strong>100% Automated Deployments</strong> - Zero manual intervention</li>
-                    <li>• <strong>Zero-Downtime Updates</strong> - Rolling updates with health checks</li>
-                    <li>• <strong>90% Faster Deployments</strong> - GitOps automation</li>
-                    <li>• <strong>Automatic Image Updates</strong> - Image Updater integration</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-3 text-blue-800 dark:text-blue-200">Operational Excellence</h3>
-                  <ul className="space-y-2 text-blue-700 dark:text-blue-300">
-                    <li>• <strong>Consistent Environments</strong> - Kustomize overlays</li>
-                    <li>• <strong>Multi-Cluster Management</strong> - Single ArgoCD instance</li>
-                    <li>• <strong>Audit Trail</strong> - Git-based deployment history</li>
-                    <li>• <strong>Easy Rollbacks</strong> - Git revert capabilities</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Technical Stack */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Technical Stack</h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">GitOps Tools</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {["ArgoCD", "Image Updater", "Kustomize", "Helm", "Git", "Docker"].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Infrastructure</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {["Kubernetes", "AWS EKS", "ECR", "Terraform", "Prometheus", "Grafana"].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Lessons Learned */}
-          <div className="professional-card mb-8">
-            <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Key Lessons & Insights</h2>
-              
-              <div className="space-y-6">
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Image Updater is Game-Changing</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    The ArgoCD Image Updater eliminates the need for manual image tag updates. It automatically detects new images 
-                    and creates pull requests, making the entire deployment process truly automated.
-                  </p>
-                </div>
-                
-                <div className="border-l-4 border-green-500 pl-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Kustomize Simplifies Multi-Environment Management</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Using Kustomize overlays for different environments (dev, staging, prod) provides consistency while allowing 
-                    environment-specific customizations. This approach scales much better than maintaining separate manifests.
-                  </p>
-                </div>
-                
-                <div className="border-l-4 border-purple-500 pl-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">GitOps Reduces Operational Complexity</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    ArgoCD with GitOps principles eliminated manual deployment processes and reduced human error. 
-                    The declarative approach made rollbacks and environment management much more reliable and auditable.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Call to Action */}
-          <div className="professional-card mb-8">
-            <div className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Ready to Implement GitOps?</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                I help companies implement modern GitOps workflows using ArgoCD and Image Updater to achieve 
-                fully automated deployments. Let&apos;s discuss how I can help optimize your Kubernetes deployment process.
+            {/* Automated Deployment Pipeline */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Code className="text-cyan-600" size={18} />
+                Automated Deployment Pipeline
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Established complete GitOps workflow from code push to production deployment with automated 
+                image updates and synchronization across clusters.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
-                >
-                  Get In Touch
-                </Link>
-                <Link 
-                  href="/projects"
-                  className="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-medium rounded-lg transition-colors duration-200"
-                >
-                  View More Projects
-                </Link>
-              </div>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Code pushed to Git repository triggers CI/CD pipeline",
+                  "CI/CD builds and pushes Docker images to registry",
+                  "Image Updater detects new images and creates PR",
+                  "ArgoCD syncs changes to target Kubernetes clusters",
+                  "Health checks and automatic rollback on failure",
+                  "Zero-downtime deployments with rolling updates"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </div>
           </div>
-
         </div>
-      </motion.article>
+      </Section>
 
-      {/* Related Articles */}
-      <motion.section 
-        className="py-12"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-white">Related Articles</h2>
+      {/* Results & Metrics */}
+      <Section spacing="xl" animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
+            Results Achieved
+          </h2>
           
-          <div className="grid md:grid-cols-2 gap-6">
-            <Link href="/blog/gitops-argocd-kubernetes" className="professional-card hover:transform hover:-translate-y-1 transition-all duration-200">
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                  Advanced ArgoCD Configuration Patterns
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Learn advanced ArgoCD patterns including Application of Applications and multi-cluster management strategies.
-                </p>
-              </div>
-            </Link>
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300"
+            >
+              <h3 className="text-base md:text-lg font-semibold mb-5 text-green-800">Deployment Improvements</h3>
+              <ul className="space-y-3 text-sm leading-relaxed text-green-700 text-left">
+                {[
+                  "100% Automation - Zero manual intervention",
+                  "90% Faster Deployments - GitOps efficiency",
+                  "Zero Downtime - Rolling updates with health checks",
+                  "Automatic Image Updates - Image Updater integration"
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="text-green-600 mt-1 font-bold">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
             
-            <Link href="/blog/kubernetes-image-updater-setup" className="professional-card hover:transform hover:-translate-y-1 transition-all duration-200">
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                  Complete Image Updater Setup Guide
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Step-by-step guide: How to configure ArgoCD Image Updater for automated container image updates.
-                </p>
-              </div>
-            </Link>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
+            >
+              <h3 className="text-base md:text-lg font-semibold mb-5 text-cyan-800">Operational Excellence</h3>
+              <ul className="space-y-3 text-sm leading-relaxed text-cyan-700 text-left">
+                {[
+                  "Consistent Environments - Kustomize overlays",
+                  "Multi-Cluster Management - Single ArgoCD instance",
+                  "Audit Trail - Git-based deployment history",
+                  "Easy Rollbacks - Git revert capabilities"
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="text-cyan-600 mt-1 font-bold">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
         </div>
-      </motion.section>
-    </div>
+      </Section>
+
+      {/* Footer - Professional */}
+      <footer className="text-center text-gray-500 text-sm mt-20 md:mt-24 border-t border-gray-200 pt-8 w-full">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          © 2025 Amr Fathy — All rights reserved.
+        </div>
+      </footer>
+
+    </ArticleLayout>
   );
 }
