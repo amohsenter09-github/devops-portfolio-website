@@ -103,7 +103,7 @@ export default function AwsPlatformSection() {
         </div>
 
         {/* ===== MERMAID DIAGRAM SECTION ===== */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start mt-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* Description for Mermaid Diagram */}
           <motion.div
             className="lg:w-1/3 flex-shrink-0 pt-20"
@@ -320,7 +320,7 @@ export default function AwsPlatformSection() {
         </div>
 
         {/* ===== AWS NATIVE MLOPS PIPELINE SECTION ===== */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start mt-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* Description for MLOps Pipeline Diagram */}
           <motion.div
             className="lg:w-1/3 flex-shrink-0 pt-20"
