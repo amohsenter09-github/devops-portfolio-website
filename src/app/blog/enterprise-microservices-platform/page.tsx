@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, Tag, CheckCircle, Zap, Shield, Database, Cloud, GitBranch, Monitor, Code, BarChart3, Search } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, CheckCircle, Zap, Shield, Database, Cloud, GitBranch, Monitor, Code, BarChart3, Search } from "lucide-react";
 import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function EnterpriseMicroservicesPlatform() {
@@ -16,7 +16,7 @@ export default function EnterpriseMicroservicesPlatform() {
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="w-full flex justify-start mb-8">
+          <div className="w-full flex justify-center mb-8">
             <Link 
               href="/blog"
               className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
@@ -26,32 +26,20 @@ export default function EnterpriseMicroservicesPlatform() {
             </Link>
           </div>
           
-          <div className="flex items-center justify-center mb-6 text-sm text-gray-600 dark:text-gray-400">
+          <div className="flex items-center justify-center mb-6 text-sm text-gray-700 dark:text-gray-300">
             <Calendar size={16} className="mr-2" />
             January 15, 2024
             <Clock size={16} className="ml-4 mr-2" />
             15 min read
           </div>
           
-          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100 text-center">
+          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
             Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
           </h1>
-          <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-center">
+          <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed mb-6 text-center">
             A comprehensive case study of building a production-ready microservices platform with 12+ services, 
             complete GitOps automation, and enterprise-grade security across multiple AWS environments.
           </p>
-          
-          <div className="flex flex-wrap justify-center gap-2 mt-6">
-            {["Terraform", "Kubernetes", "ArgoCD", "Microservices", "AWS", "GitOps", "Security", "Monitoring"].map((tag) => (
-              <span 
-                key={tag}
-                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 text-sm rounded-full font-medium shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-              >
-                <Tag size={14} className="inline mr-1.5" />
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
       </motion.section>
 
