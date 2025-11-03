@@ -1,400 +1,661 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, CheckCircle, Zap, Shield, Database, Cloud, GitBranch, Monitor } from "lucide-react";
+import { Code, Server, Shield, Database, Cloud, GitBranch, Monitor, Zap } from "lucide-react";
 import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function EnterpriseMicroservicesPlatform() {
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-100 relative">
-      {/* Matrix Glow Animation Background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-animated opacity-20 blur-3xl" />
-      </div>
-      <div className="container mx-auto max-w-4xl px-6 sm:px-8">
-        {/* Header */}
-        <motion.section 
-          className="py-16 sm:py-20"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="w-full">
-            <div className="w-full flex justify-center mb-8">
-              <Link 
-                href="/blog"
-                className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
+    <ArticleLayout maxWidth="4xl" spacing="relaxed">
+      
+      {/* Executive Summary */}
+      <Section spacing="xl" withDivider animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <Zap className="text-cyan-600" size={22} />
+            </motion.div>
+            <span className="font-mono lowercase">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <ArrowLeft size={20} className="mr-2" />
-                Back to Blog
-              </Link>
-            </div>
-            
-            <div className="flex items-center justify-center mb-6 text-sm text-gray-800 dark:text-gray-200 font-medium">
-              <Calendar size={16} className="mr-2" />
-              January 15, 2024
-              <Clock size={16} className="ml-4 mr-2" />
-              15 min read
-            </div>
-            
-            <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
-              Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
-            </h1>
-            <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100 leading-relaxed mb-6 font-medium text-center">
-              A comprehensive case study of building a production-ready microservices platform with 12+ services, 
-              complete GitOps automation, and enterprise-grade security across multiple AWS environments.
-            </p>
-          </div>
-        </motion.section>
-
-        {/* Content using ArticleLayout for proper centering */}
-        <ArticleLayout maxWidth="4xl" spacing="relaxed">
+                executive
+              </motion.span>
+              <motion.span
+                className="text-cyan-600"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                _
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                summary
+              </motion.span>
+              <motion.span
+                className="text-cyan-600 ml-0.5"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              >
+                |
+              </motion.span>
+            </span>
+          </motion.h2>
           
-          {/* Executive Summary */}
-          <Section spacing="xl" animate>
-            <div className="w-full py-8 text-center">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
-                <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center justify-center">
-                  <Zap className="w-6 h-6 text-blue-600 mr-3" />
-                  Executive Summary
-                </h2>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                  This enterprise microservices platform project delivered <strong>$2M in annual cost savings</strong> and 
-                  <strong> 99.9% uptime</strong> for a Fortune 500 financial services client. The solution transformed their 
-                  legacy infrastructure into a modern, scalable platform serving <strong>50,000+ concurrent users</strong> 
-                  with zero-downtime deployments.
-                </p>
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-stretch mt-8">
-                  <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
-                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">$2M</div>
-                    <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Annual Cost Savings</div>
-                  </div>
-                  <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
-                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">99.9%</div>
-                    <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">System Uptime</div>
-                  </div>
-                  <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
-                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">70%</div>
-                    <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Faster Deployments</div>
-                  </div>
-                </div>
+          <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300 max-w-3xl mx-auto">
+            <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-6">
+              This enterprise microservices platform project delivered <strong>$2M in annual cost savings</strong> and 
+              <strong> 99.9% uptime</strong> for a Fortune 500 financial services client. The solution transformed their 
+              legacy infrastructure into a modern, scalable platform serving <strong>50,000+ concurrent users</strong> 
+              with zero-downtime deployments.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <div className="text-2xl font-bold text-gray-900 mb-1">$2M</div>
+                <div className="text-xs text-gray-600">Annual Cost Savings</div>
+              </div>
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <div className="text-2xl font-bold text-gray-900 mb-1">99.9%</div>
+                <div className="text-xs text-gray-600">System Uptime</div>
+              </div>
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <div className="text-2xl font-bold text-gray-900 mb-1">70%</div>
+                <div className="text-xs text-gray-600">Faster Deployments</div>
               </div>
             </div>
-          </Section>
+          </div>
+        </div>
+      </Section>
 
-          {/* Architecture Overview */}
-          <Section spacing="xl" animate>
-            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">Architecture Overview</h2>
-              
-              <div className="grid md:grid-cols-2 gap-6 place-items-stretch mb-8">
-              <div className="space-y-4 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 h-full flex flex-col">
-                <h3 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Infrastructure Foundation</h3>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Multi-environment AWS setup (Production, Staging, Sandbox)
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    EKS clusters with self-managed node groups
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Aurora PostgreSQL with Multi-AZ deployment
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    ElastiCache Redis clusters for high availability
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="space-y-4 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 h-full flex flex-col">
-                <h3 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Security & Compliance</h3>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-center">
-                    <Shield className="w-5 h-5 text-blue-500 mr-2" />
-                    AWS GuardDuty threat detection
-                  </li>
-                  <li className="flex items-center">
-                    <Shield className="w-5 h-5 text-blue-500 mr-2" />
-                    WAF protection and security groups
-                  </li>
-                  <li className="flex items-center">
-                    <Shield className="w-5 h-5 text-blue-500 mr-2" />
-                    External Secrets Operator integration
-                  </li>
-                  <li className="flex items-center">
-                    <Shield className="w-5 h-5 text-blue-500 mr-2" />
-                    Comprehensive IAM policies
-                  </li>
-                </ul>
-              </div>
-              </div>
+      {/* Architecture Overview */}
+      <Section spacing="xl" withDivider animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <Server className="text-cyan-600" size={22} />
+            </motion.div>
+            <span className="font-mono lowercase">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                architecture
+              </motion.span>
+              <motion.span
+                className="text-cyan-600"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                _
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                overview
+              </motion.span>
+              <motion.span
+                className="text-cyan-600 ml-0.5"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              >
+                |
+              </motion.span>
+            </span>
+          </motion.h2>
+          
+          <div className="space-y-8 max-w-3xl mx-auto">
+            {/* Infrastructure Foundation */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Server className="text-cyan-600" size={18} />
+                Infrastructure Foundation
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Multi-environment AWS setup with EKS clusters, Aurora PostgreSQL, and ElastiCache Redis for high availability 
+                and scalability across Production, Staging, and Sandbox environments.
+              </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Multi-environment AWS setup (Production, Staging, Sandbox)",
+                  "EKS clusters with self-managed node groups",
+                  "Aurora PostgreSQL with Multi-AZ deployment",
+                  "ElastiCache Redis clusters for high availability",
+                  "ALB and Route53 for load balancing and DNS",
+                  "S3 buckets for data storage and backups"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </div>
-          </Section>
 
-          {/* Microservices Architecture */}
-          <Section spacing="xl" animate>
-            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">Microservices Architecture</h2>
+            {/* Security & Compliance */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Shield className="text-cyan-600" size={18} />
+                Security & Compliance
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Enterprise-grade security implementation with AWS GuardDuty, WAF protection, External Secrets Operator, 
+                and comprehensive IAM policies for compliance and threat detection.
+              </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "AWS GuardDuty threat detection and monitoring",
+                  "WAF protection and security groups",
+                  "External Secrets Operator integration",
+                  "Comprehensive IAM policies and roles",
+                  "Network isolation and VPC configuration",
+                  "Encryption at rest and in transit"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Microservices Architecture */}
+      <Section spacing="xl" withDivider animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <Code className="text-cyan-600" size={22} />
+            </motion.div>
+            <span className="font-mono lowercase">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                microservices
+              </motion.span>
+              <motion.span
+                className="text-cyan-600"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                _
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                architecture
+              </motion.span>
+              <motion.span
+                className="text-cyan-600 ml-0.5"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              >
+                |
+              </motion.span>
+            </span>
+          </motion.h2>
+          
+          <div className="space-y-8 max-w-3xl mx-auto">
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Server className="text-cyan-600" size={18} />
+                Service Categories
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                12+ microservices organized into API Services, Internal Services, Integration Services, and Portal Services 
+                with zero-downtime deployments and horizontal scaling capabilities.
+              </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "API Services: Identity, Banking, Organization Management, Web Event Processing",
+                  "Internal Services: Account Management, Key Management, File Storage, Identity Provider",
+                  "Integration Services: Exchange Rate, Transfer Processing, Workflow Orchestration, Notifications",
+                  "Portal Services: Organization Portal, Payments Portal, Ingress Controller",
+                  "Zero-downtime deployments with rolling update strategy",
+                  "Horizontal scaling with HPA based on CPU and memory metrics"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Zap className="text-cyan-600" size={18} />
+                Key Technical Achievements
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Advanced Kubernetes configurations and service mesh implementation for optimal performance and reliability 
+                across the microservices platform.
+              </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Zero-Downtime Deployments: Rolling update strategy with maxUnavailable: 0",
+                  "Horizontal Scaling: HPA configuration with CPU and memory-based scaling policies",
+                  "Service Mesh: ClusterIP services with proper networking and service discovery",
+                  "Configuration Management: Kustomize base/overlay pattern for environment-specific configs",
+                  "Service Discovery: Kubernetes DNS for automatic service resolution",
+                  "Health Checks: Liveness and readiness probes for reliable deployments"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* GitOps Implementation */}
+      <Section spacing="xl" withDivider animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <GitBranch className="text-cyan-600" size={22} />
+            </motion.div>
+            <span className="font-mono lowercase">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                gitops
+              </motion.span>
+              <motion.span
+                className="text-cyan-600"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                _
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                implementation
+              </motion.span>
+              <motion.span
+                className="text-cyan-600 ml-0.5"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              >
+                |
+              </motion.span>
+            </span>
+          </motion.h2>
+          
+          <div className="space-y-8 max-w-3xl mx-auto">
+            {/* ArgoCD Deployment */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <GitBranch className="text-cyan-600" size={18} />
+                ArgoCD Deployment & Management
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                ArgoCD deployed and managed entirely through Terraform, ensuring infrastructure consistency and enabling 
+                automated GitOps workflows across all environments.
+              </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "ACM certificates for secure HTTPS communication",
+                  "Automated namespace creation and RBAC configuration",
+                  "Image Updater for automated container image updates",
+                  "External DNS integration for seamless service discovery",
+                  "Application of Applications pattern for scalable management",
+                  "Multi-environment synchronization with Kustomize overlays"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* External Secrets */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Database className="text-cyan-600" size={18} />
+                External Secrets Integration
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Secure credential management through AWS Secrets Manager integration with External Secrets Operator, 
+                eliminating hardcoded secrets and ensuring compliance.
+              </p>
+              <div className="bg-gray-50 rounded p-3 text-sm text-gray-700 font-mono text-center max-w-2xl mx-auto mb-4">
+                AWS Secrets Manager → External Secrets Operator → Kubernetes Secrets → Pod Environment Variables
+              </div>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "AWS Secrets Manager for centralized secret storage",
+                  "External Secrets Operator for Kubernetes integration",
+                  "Automatic secret synchronization and rotation",
+                  "Namespace-based secret isolation",
+                  "Compliance with security best practices",
+                  "Audit trail for secret access and changes"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Monitoring & Observability */}
+      <Section spacing="xl" withDivider animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8 flex items-center justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <Monitor className="text-cyan-600" size={22} />
+            </motion.div>
+            <span className="font-mono lowercase">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                monitoring
+              </motion.span>
+              <motion.span
+                className="text-cyan-600"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                _
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                observability
+              </motion.span>
+              <motion.span
+                className="text-cyan-600 ml-0.5"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              >
+                |
+              </motion.span>
+            </span>
+          </motion.h2>
+          
+          <div className="space-y-8 max-w-3xl mx-auto">
+            {/* Prometheus & Grafana */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Monitor className="text-cyan-600" size={18} />
+                Prometheus & Grafana Stack
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Comprehensive monitoring solution with custom dashboards, OAuth integration, and automated alerting 
+                for microservices performance and health tracking.
+              </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Custom dashboards for microservices monitoring",
+                  "OAuth integration with AWS Cognito",
+                  "PagerDuty integration for critical alerts",
+                  "Slack notifications for engineering teams",
+                  "ServiceMonitor CRDs for Kubernetes-native metrics",
+                  "Recording rules for pre-computed aggregations"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* AWS CloudWatch */}
+            <div className="bg-white rounded-xl p-5 md:p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 flex items-center justify-center gap-2">
+                <Cloud className="text-cyan-600" size={18} />
+                AWS CloudWatch Integration
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-gray-700 mb-4">
+                Centralized logging and metrics collection with custom CloudWatch dashboards, automated alerting, 
+                and Datadog integration for enhanced observability.
+              </p>
+              <ul className="space-y-2 text-sm leading-relaxed text-gray-600 text-left max-w-2xl mx-auto">
+                {[
+                  "Centralized logging and metrics collection",
+                  "Custom CloudWatch dashboards",
+                  "Automated alerting and incident response",
+                  "Datadog integration for enhanced observability",
+                  "Log Insights for advanced querying",
+                  "CloudWatch Alarms for proactive monitoring"
+                ].map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-cyan-600 mt-1 font-bold text-xs">▸</span>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Results & Impact */}
+      <Section spacing="xl" animate>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
+            Results Achieved
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300"
+            >
+              <h3 className="text-base md:text-lg font-semibold mb-5 text-green-800">Operational Excellence</h3>
+              <ul className="space-y-3 text-sm leading-relaxed text-green-700 text-left">
+                {[
+                  "99.9% Uptime - Proactive monitoring and reliability",
+                  "Zero Downtime Deployments - Rolling update strategy",
+                  "80% MTTR Reduction - Faster incident resolution",
+                  "95% Automation - Automated deployments reduced manual errors"
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="text-green-600 mt-1 font-bold">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
             
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 md:p-8 mb-6 shadow-md">
-              <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-6 text-gray-900 dark:text-white text-center">Service Categories</h3>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">API Services</h4>
-                  <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                    <li>• Identity & Authentication Service</li>
-                    <li>• Banking & Financial Operations</li>
-                    <li>• Organization Management</li>
-                    <li>• Web Event Processing</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Internal Services</h4>
-                  <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                    <li>• Account Management</li>
-                    <li>• Key Management Service</li>
-                    <li>• File Storage & Processing</li>
-                    <li>• Identity Provider</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Integration Services</h4>
-                  <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                    <li>• Exchange Rate Service</li>
-                    <li>• Transfer Processing</li>
-                    <li>• Workflow Orchestration</li>
-                    <li>• Notification Service</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Portal Services</h4>
-                  <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                    <li>• Organization Portal</li>
-                    <li>• Payments Portal</li>
-                    <li>• Ingress Controller</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
+            >
+              <h3 className="text-base md:text-lg font-semibold mb-5 text-cyan-800">Business Impact</h3>
+              <ul className="space-y-3 text-sm leading-relaxed text-cyan-700 text-left">
+                {[
+                  "$2M Annual Cost Savings - Infrastructure optimization",
+                  "50,000+ Concurrent Users - Scalable platform",
+                  "70% Faster Deployments - GitOps automation",
+                  "Improved Developer Experience - Simplified workflows"
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="text-cyan-600 mt-1 font-bold">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl p-6 md:p-8 shadow-md">
-              <h4 className="text-lg md:text-xl font-semibold tracking-tight text-blue-900 dark:text-blue-100 mb-6 text-center">Key Technical Achievements</h4>
-              <div className="grid md:grid-cols-2 gap-6 text-sm">
-                <div>
-                  <p className="text-blue-800 dark:text-blue-200 mb-2"><strong>Zero-Downtime Deployments:</strong></p>
-                  <p className="text-blue-700 dark:text-blue-300">Rolling update strategy with maxUnavailable: 0 ensures continuous service availability</p>
-                </div>
-                <div>
-                  <p className="text-blue-800 dark:text-blue-200 mb-2"><strong>Horizontal Scaling:</strong></p>
-                  <p className="text-blue-700 dark:text-blue-300">HPA configuration with CPU and memory-based scaling policies</p>
-                </div>
-                <div>
-                  <p className="text-blue-800 dark:text-blue-200 mb-2"><strong>Service Mesh:</strong></p>
-                  <p className="text-blue-700 dark:text-blue-300">ClusterIP services with proper networking and service discovery</p>
-                </div>
-                <div>
-                  <p className="text-blue-800 dark:text-blue-200 mb-2"><strong>Configuration Management:</strong></p>
-                  <p className="text-blue-700 dark:text-blue-300">Kustomize base/overlay pattern for environment-specific configurations</p>
-                </div>
-              </div>
-              </div>
-            </div>
-          </Section>
+      {/* Footer - Professional */}
+      <footer className="text-center text-gray-500 text-sm mt-20 md:mt-24 border-t border-gray-200 pt-8 w-full">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          © 2025 Amr Fathy — All rights reserved.
+        </div>
+      </footer>
 
-          {/* GitOps Implementation */}
-          <Section spacing="xl" animate>
-            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">GitOps Implementation</h2>
-              
-              <div className="space-y-6">
-              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-all duration-300">
-                <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white flex items-center">
-                  <GitBranch className="w-6 h-6 text-green-600 mr-3" />
-                  ArgoCD Deployment & Management
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  ArgoCD was deployed and managed entirely through Terraform, ensuring infrastructure consistency 
-                  and enabling automated GitOps workflows across all environments.
-                </p>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    ACM certificates for secure HTTPS communication
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Automated namespace creation and RBAC configuration
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Image Updater for automated container image updates
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    External DNS integration for seamless service discovery
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-all duration-300">
-                <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white flex items-center">
-                  <Database className="w-6 h-6 text-purple-600 mr-3" />
-                  External Secrets Integration
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Secure credential management through AWS Secrets Manager integration with External Secrets Operator, 
-                  eliminating hardcoded secrets and ensuring compliance.
-                </p>
-                <div className="bg-gray-50 dark:bg-gray-700 rounded p-4">
-                  <code className="text-sm text-gray-800 dark:text-gray-200">
-                    AWS Secrets Manager → External Secrets Operator → Kubernetes Secrets → Pod Environment Variables
-                  </code>
-                </div>
-              </div>
-              </div>
-            </div>
-          </Section>
-
-          {/* Monitoring & Observability */}
-          <Section spacing="xl" animate>
-            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">Monitoring & Observability</h2>
-              
-              <div className="grid md:grid-cols-2 gap-6 place-items-stretch">
-              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-                <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white flex items-center">
-                  <Monitor className="w-6 h-6 text-orange-600 mr-3" />
-                  Prometheus & Grafana Stack
-                </h3>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Custom dashboards for microservices monitoring
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    OAuth integration with AWS Cognito
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    PagerDuty integration for critical alerts
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Slack notifications for engineering teams
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-                <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white flex items-center">
-                  <Cloud className="w-6 h-6 text-blue-600 mr-3" />
-                  AWS CloudWatch Integration
-                </h3>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Centralized logging and metrics collection
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Custom CloudWatch dashboards
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Automated alerting and incident response
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    Datadog integration for enhanced observability
-                  </li>
-                </ul>
-              </div>
-              </div>
-            </div>
-          </Section>
-
-          {/* Results & Impact */}
-          <Section spacing="xl" animate>
-            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">Results & Impact</h2>
-              
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-stretch mb-8">
-              <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
-                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">99.9%</div>
-                <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">Uptime Achieved</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Across all environments</div>
-              </div>
-              
-              <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
-                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">0</div>
-                <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">Downtime Deployments</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Zero-downtime strategy</div>
-              </div>
-              
-              <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
-                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">80%</div>
-                <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">MTTR Reduction</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Mean Time To Recovery</div>
-              </div>
-            </div>
-
-            <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-md">
-              <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-6 text-gray-900 dark:text-white text-center">Key Business Benefits</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Operational Excellence</h4>
-                  <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                    <li>• Automated deployments reduced manual errors by 95%</li>
-                    <li>• Infrastructure as Code enabled rapid environment provisioning</li>
-                    <li>• Comprehensive monitoring provided proactive issue detection</li>
-                    <li>• Security compliance achieved through automated policies</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Developer Experience</h4>
-                  <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                    <li>• GitOps workflow simplified deployment processes</li>
-                    <li>• Environment parity reduced development friction</li>
-                    <li>• Self-service infrastructure provisioning</li>
-                    <li>• Comprehensive documentation and runbooks</li>
-                  </ul>
-                </div>
-              </div>
-              </div>
-            </div>
-          </Section>
-
-          {/* Conclusion */}
-          <Section spacing="xl" animate>
-            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
-              <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 md:p-10 shadow-md">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white text-center">Conclusion</h2>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-center">
-                  This enterprise microservices platform represents a comprehensive solution for modern cloud-native applications. 
-                  By leveraging Infrastructure as Code principles, advanced GitOps workflows, and enterprise-grade security practices, 
-                  we achieved a robust, scalable, and maintainable platform that serves thousands of users with exceptional reliability.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-center">
-                  The combination of Terraform for infrastructure management, ArgoCD for GitOps automation, and comprehensive 
-                  monitoring stack provides a solid foundation for future growth and innovation. This architecture demonstrates 
-                  how modern DevOps practices can deliver both technical excellence and business value.
-                </p>
-              </div>
-            </div>
-          </Section>
-
-        </ArticleLayout>
-      </div>
-    </div>
+    </ArticleLayout>
   );
 }
