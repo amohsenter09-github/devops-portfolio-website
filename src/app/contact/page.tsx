@@ -242,24 +242,6 @@ export default function Contact() {
                   </form>
                 </div>
               </div>
-
-              <div className="mt-12 p-6 bg-gray-50 rounded-lg">
-                <h2 className="text-xl font-semibold mb-4 text-gray-900 text-center">What I Can Help With</h2>
-                <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
-                  <ul className="space-y-2">
-                    <li>• AWS Infrastructure Design & Migration</li>
-                    <li>• Kubernetes & Container Orchestration</li>
-                    <li>• CI/CD Pipeline Implementation</li>
-                    <li>• Infrastructure as Code (Terraform, CDK)</li>
-                  </ul>
-                  <ul className="space-y-2">
-                    <li>• Observability & Monitoring Setup</li>
-                    <li>• Security & Compliance Implementation</li>
-                    <li>• Legacy System Modernization</li>
-                    <li>• DevOps Process Optimization</li>
-                  </ul>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>
