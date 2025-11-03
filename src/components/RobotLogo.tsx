@@ -15,10 +15,11 @@ export default function RobotLogo() {
         <motion.div
           className="relative mb-4"
           animate={{
-            scale: [1, 1.05, 1],
+            scale: [1, 1.03, 1],
+            y: [0, -4, 0],
           }}
           transition={{
-            duration: 3,
+            duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -168,10 +169,10 @@ export default function RobotLogo() {
 
         {/* Logo Text */}
         <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-mono font-bold text-gray-900 tracking-tight"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-gray-900 tracking-tight"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
         >
           <motion.span
             className="text-cyan-600"
@@ -189,13 +190,23 @@ export default function RobotLogo() {
           I_am_loveing_infra_I_build_it
         </motion.h1>
 
-        {/* Underline */}
+        {/* Subtle Underline */}
         <motion.div
-          className="h-1 w-24 md:w-32 bg-gradient-to-r from-transparent via-cyan-500 to-transparent rounded-full mt-2"
-          initial={{ width: 0 }}
-          animate={{ width: "128px" }}
-          transition={{ delay: 0.4, duration: 0.8 }}
+          className="h-0.5 w-20 md:w-28 bg-gradient-to-r from-transparent via-cyan-500 to-transparent rounded-full mt-3"
+          initial={{ width: 0, opacity: 0 }}
+          animate={{ width: "112px", opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
         />
+
+        {/* Fading Space Separator */}
+        <motion.div
+          className="mt-6 md:mt-8 w-full max-w-md mx-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 1 }}
+        >
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+        </motion.div>
       </motion.div>
     </div>
   );

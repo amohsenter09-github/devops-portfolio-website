@@ -26,9 +26,6 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-8 md:mb-10 text-center">
-              Enterprise Infrastructure & Cloud Platform Engineering
-            </h2>
             <div className="w-full flex flex-wrap justify-center items-center gap-3 md:gap-5 mb-12 md:mb-16">
               {["Cloud Replatforming", "GitOps Automation", "Observability Solutions"].map((badge, index) => (
                 <motion.span
