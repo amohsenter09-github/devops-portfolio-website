@@ -168,12 +168,11 @@ export default function RobotLogo() {
 
         {/* Logo Text */}
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 tracking-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-mono font-bold text-gray-900 tracking-tight"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          INFRA
           <motion.span
             className="text-cyan-600"
             animate={{
@@ -185,8 +184,9 @@ export default function RobotLogo() {
               ease: "easeInOut",
             }}
           >
-            CORE
+            ~
           </motion.span>
+          I_am_loveing_infra_I_build_it
         </motion.h1>
 
         {/* Underline */}
