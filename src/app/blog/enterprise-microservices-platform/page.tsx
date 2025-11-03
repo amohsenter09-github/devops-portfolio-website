@@ -15,7 +15,7 @@ export default function EnterpriseMicroservicesPlatform() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center w-full">
           <div className="w-full flex justify-center mb-8">
             <Link 
               href="/blog"
@@ -49,7 +49,7 @@ export default function EnterpriseMicroservicesPlatform() {
           
           {/* Executive Summary */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 py-8 text-center">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center w-full">
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
                 <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center justify-center">
                   <Zap className="w-6 h-6 text-blue-600 mr-3" />
