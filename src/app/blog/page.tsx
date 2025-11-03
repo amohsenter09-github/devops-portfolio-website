@@ -36,7 +36,7 @@ export default function BlogPage() {
               transition={{ duration: 0.6 }}
               className="mb-12 md:mb-16 text-center"
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 select-none">
                 Engineering Blog
               </h1>
             </motion.div>
