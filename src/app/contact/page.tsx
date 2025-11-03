@@ -89,8 +89,6 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Contact</h1>
-            
             <div className="mt-6 max-w-4xl mx-auto">
               <p className="text-gray-700 leading-7 mb-8 text-center">
                 Ready to transform your infrastructure and accelerate your development workflow? 

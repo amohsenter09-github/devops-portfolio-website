@@ -4,7 +4,7 @@ export const site = {
     subtitle: "Transform your infrastructure with proven DevOps strategies that deliver measurable business results. I help enterprise clients achieve 99.9% uptime, reduce deployment costs by 60%, and accelerate time-to-market through automation excellence.",
   },
   contact: {
-    email: "contact@amrfathy.dev",
+    email: "amohsenter09@outlook.com",
     phone: "+49 176 281 366 89",
     location: "Leipzig, Germany",
     linkedin: "https://linkedin.com/in/amr-fathy-4a826a77",
