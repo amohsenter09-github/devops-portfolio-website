@@ -15,131 +15,68 @@ type BlogPost = {
 export default function BlogPostCard({ post, index }: { post: BlogPost; index: number }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{
-        delay: index * 0.08,
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
+        delay: index * 0.1,
+        duration: 0.6,
+        ease: "easeOut",
       }}
       className="w-full"
     >
-      <Link href={`/blog/${post.slug}`} className="block w-full">
+      <Link href={`/blog/${post.slug}`} className="block w-full group">
         <motion.div
-          className="group relative bg-white rounded-xl border border-gray-200 overflow-hidden cursor-pointer w-full"
+          className="relative bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
           whileHover={{ 
-            y: -3,
-            boxShadow: "0 12px 40px rgba(0, 0, 0, 0.08), 0 6px 16px rgba(6, 182, 212, 0.12)",
+            y: -2,
             transition: { 
-              type: "spring", 
-              stiffness: 300, 
-              damping: 25,
-              duration: 0.4 
+              duration: 0.3,
+              ease: "easeOut"
             }
           }}
-          style={{
-            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06)",
-          }}
         >
-          {/* Hover gradient overlay */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-cyan-50/0 via-cyan-50/0 to-cyan-50/0 group-hover:from-cyan-50/20 group-hover:via-cyan-50/15 group-hover:to-cyan-50/10 transition-all duration-500 rounded-xl"
-            initial={false}
-          />
-          
-          {/* Decorative border on hover */}
-          <motion.div
-            className="absolute inset-0 rounded-xl border-2 border-cyan-200/0 group-hover:border-cyan-200/50 transition-all duration-500"
-            initial={false}
-          />
-
-          {/* Card Content with proper padding */}
-          <div className="relative z-10 px-8 md:px-10 lg:px-12 pt-8 md:pt-10 pb-8 md:pb-10">
-            {/* Header Section - Improved */}
-            <div className="mb-6 pb-6 border-b border-gray-100">
-              {/* Date Badge */}
-              <motion.div
-                className="flex items-center gap-2 mb-4"
-                whileHover={{ x: 2 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-cyan-50 rounded-full border border-cyan-100">
-                  <Calendar size={14} className="text-cyan-600" />
-                  <span className="text-xs md:text-sm text-cyan-700 font-semibold">{post.date}</span>
-                </div>
-              </motion.div>
-
-              {/* Title - Professional Developer Font Header */}
-              <motion.h2
-                className="font-mono text-xl md:text-2xl font-semibold text-gray-900 group-hover:text-cyan-700 transition-colors duration-300 leading-tight pr-4 tracking-tight"
-                whileHover={{ x: 3 }}
-                transition={{ duration: 0.3 }}
-              >
-                {post.title}
-              </motion.h2>
+          {/* Card Content */}
+          <div className="px-6 md:px-8 pt-6 md:pt-8 pb-6 md:pb-8">
+            {/* Date - Subtle */}
+            <div className="flex items-center gap-2 mb-4">
+              <Calendar size={14} className="text-gray-400 dark:text-gray-500" />
+              <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">{post.date}</span>
             </div>
 
-            {/* Description */}
-            <motion.p
-              className="text-gray-600 leading-relaxed mb-8 text-base md:text-lg group-hover:text-gray-700 transition-colors duration-300"
-              whileHover={{ x: 2 }}
-              transition={{ duration: 0.3 }}
-            >
-              {post.description}
-            </motion.p>
+            {/* Title - Medium Size */}
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-3 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+              {post.title}
+            </h2>
 
-            {/* Tags Section */}
+            {/* Description - Medium Size */}
+            <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+              {post.description}
+            </p>
+
+            {/* Tags Section - Toned Down */}
             {post.tags && post.tags.length > 0 && (
-              <motion.div
-                className="flex flex-wrap gap-2.5 mb-8"
-                initial={false}
-              >
-                {post.tags.map((tag, tagIndex) => (
-                  <motion.span
+              <div className="flex flex-wrap gap-2 mb-6">
+                {post.tags.slice(0, 5).map((tag) => (
+                  <span
                     key={tag}
-                    className="bg-cyan-50 text-cyan-700 text-xs font-medium px-3.5 py-2 rounded-full border border-cyan-100 group-hover:bg-cyan-100 group-hover:border-cyan-200 transition-all duration-300"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: (index * 0.08) + (tagIndex * 0.04),
-                      duration: 0.3,
-                    }}
-                    whileHover={{
-                      scale: 1.05,
-                      backgroundColor: "rgb(207, 250, 254)",
-                      borderColor: "rgb(165, 243, 252)",
-                    }}
+                    className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 transition-colors duration-200 group-hover:bg-gray-200 dark:group-hover:bg-gray-600"
                   >
                     {tag}
-                  </motion.span>
+                  </span>
                 ))}
-              </motion.div>
+              </div>
             )}
 
-            {/* Read More Link */}
-            <motion.div
-              className="flex items-center gap-2 text-cyan-600 font-semibold text-sm md:text-base group-hover:text-cyan-700 transition-colors duration-300 pt-2"
-              whileHover={{ x: 5, gap: 6 }}
-              transition={{ duration: 0.3 }}
-            >
+            {/* Read Article Link - Clean */}
+            <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-3 transition-all duration-200">
               <span>Read Article</span>
               <ArrowRight 
-                size={18} 
-                className="group-hover:translate-x-1 transition-transform duration-300"
+                size={16} 
+                className="transition-transform duration-200 group-hover:translate-x-1"
               />
-            </motion.div>
+            </div>
           </div>
-
-          {/* Shimmer effect on hover */}
-          <motion.div
-            className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none rounded-xl"
-            style={{
-              background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent)",
-            }}
-            initial={false}
-          />
         </motion.div>
       </Link>
     </motion.article>
