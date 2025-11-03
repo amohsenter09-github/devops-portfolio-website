@@ -145,9 +145,13 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
         theme: 'default',
         securityLevel: 'loose',
         flowchart: {
-          useMaxWidth: true,
+          useMaxWidth: false, // Allow full width for better scaling
           htmlLabels: true,
           curve: 'basis',
+          padding: 20,
+        },
+        gantt: {
+          useMaxWidth: false,
         },
       });
       mermaidInitialized = true;
@@ -170,41 +174,61 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
                   // Make SVG interactive
                   const svg = mermaidRef.current.querySelector('svg');
                   if (svg) {
+                    // Remove default Mermaid sizing constraints
+                    svg.removeAttribute('width');
+                    svg.removeAttribute('height');
                     svg.style.width = '100%';
                     svg.style.height = 'auto';
                     svg.style.maxWidth = 'none';
-                    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                    svg.setAttribute('preserveAspectRatio', 'none');
                     
                     // Wait for SVG to render, then calculate scale to fit
                     setTimeout(() => {
                       if (svg && transformRef.current && mermaidRef.current) {
-                        // Get the actual SVG dimensions
-                        const svgBox = svg.getBBox();
-                        const svgWidth = svg.viewBox?.baseVal?.width || svgBox.width || 800;
-                        const svgHeight = svg.viewBox?.baseVal?.height || svgBox.height || 600;
+                        // Get the actual SVG dimensions from viewBox or bounding box
+                        const viewBox = svg.viewBox?.baseVal;
+                        let svgWidth = viewBox?.width || 800;
+                        let svgHeight = viewBox?.height || 600;
                         
-                        // Get container dimensions (the div with border)
-                        const container = mermaidRef.current.closest('div[class*="border"]');
-                        const containerWidth = container?.clientWidth || 800;
-                        const containerHeight = container?.clientHeight || 700;
-                        const padding = 60; // Account for padding on all sides
+                        // If no viewBox, try getBBox (but this requires SVG to be rendered)
+                        if (!viewBox || svgWidth === 0 || svgHeight === 0) {
+                          try {
+                            const bbox = svg.getBBox();
+                            svgWidth = bbox.width || 800;
+                            svgHeight = bbox.height || 600;
+                          } catch {
+                            // Fallback to default dimensions
+                            svgWidth = 800;
+                            svgHeight = 600;
+                          }
+                        }
                         
-                        // Calculate scale to fit the entire diagram within container
+                        // Get container dimensions - the TransformComponent wrapper
+                        const transformWrapper = mermaidRef.current.closest('.react-transform-wrapper');
+                        const containerElement = transformWrapper?.querySelector('.react-transform-component') as HTMLElement;
+                        const containerWidth = containerElement?.clientWidth || 800;
+                        const containerHeight = containerElement?.clientHeight || 700;
+                        
+                        // Calculate scale to fit the entire diagram within container with padding
+                        const padding = 40;
                         const scaleX = (containerWidth - padding) / svgWidth;
                         const scaleY = (containerHeight - padding) / svgHeight;
-                        const calculatedScale = Math.min(scaleX, scaleY, 0.9); // Cap at 90% to ensure it fits
+                        const calculatedScale = Math.min(scaleX, scaleY, 1.0); // Cap at 100% max
+                        
+                        // Ensure minimum scale to prevent diagram from being too small
+                        const finalScale = Math.max(calculatedScale, 0.5);
                         
                         // Center and scale the diagram to fit
                         transformRef.current.setTransform(
                           0, // center X
                           0, // center Y
-                          calculatedScale
+                          finalScale
                         );
                         
-                        setInitialScale(calculatedScale);
-                        setZoomLevel(calculatedScale);
+                        setInitialScale(finalScale);
+                        setZoomLevel(finalScale);
                       }
-                    }, 150);
+                    }, 200);
                   }
                   setSvgLoaded(true);
                 }
@@ -233,7 +257,12 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
         </div>
       )}
       <div 
-        className="w-full relative border border-gray-200 rounded-lg overflow-hidden min-h-[600px] h-[700px]"
+        className="w-full relative border border-gray-200 rounded-lg overflow-hidden"
+        style={{ 
+          height: 'calc(100vh - 200px)',
+          minHeight: '600px',
+          maxHeight: '900px'
+        }}
       >
         <TransformWrapper
           ref={transformRef}
@@ -314,11 +343,12 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
               <>
                 <TransformComponent
                   wrapperClass="w-full h-full cursor-grab"
-                  contentClass="w-full h-full flex items-center justify-center"
+                  contentClass="w-full h-full flex items-center justify-center p-4"
                 >
                   <div 
                     ref={mermaidRef} 
                     className="mermaid-container w-full h-full flex justify-center items-center"
+                    style={{ minWidth: '100%', minHeight: '100%' }}
                   />
                 </TransformComponent>
                 {svgLoaded && !error && (
