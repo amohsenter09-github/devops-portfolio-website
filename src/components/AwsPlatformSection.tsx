@@ -115,8 +115,8 @@ export default function AwsPlatformSection() {
             >
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
                 This architecture represents a <strong className="text-gray-900">production-ready, AWS-native CDC pipeline</strong> designed for 
-                real-time data ingestion, processing, and analytics. The design follows a <strong className="text-gray-900">streaming-first approach</strong>, 
-                enabling high-throughput data movement from sources through processing layers to final analytics and delivery.
+                real-time data replication, transformation, and analytics. The design philosophy centers on <strong className="text-gray-900">serverless-first principles</strong>, 
+                minimizing operational overhead while maximizing scalability and cost-efficiency through native AWS service integration.
               </p>
             </motion.div>
             <motion.div
@@ -126,10 +126,11 @@ export default function AwsPlatformSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                <strong className="text-gray-900">Change Data Capture (CDC)</strong> initiates from the <strong className="text-gray-900">CDC Source</strong>, capturing changes 
-                from applications like <strong className="text-gray-900">AWS S3 Application</strong>. The CDC stream flows into <strong className="text-gray-900">Stream Platform</strong> 
-                (Kafka or Kinesis) and <strong className="text-gray-900">CDC Target</strong>, providing a resilient, scalable messaging layer that decouples producers from consumers 
-                and enables real-time data processing.
+                <strong className="text-gray-900">Change Data Capture (CDC)</strong> begins at the source: <strong className="text-gray-900">AWS DMS</strong> reads Aurora PostgreSQL 
+                Write-Ahead Logs (WAL) to capture database changes in real-time without impacting source performance. This approach eliminates the need for 
+                polling or batch extraction, ensuring <strong className="text-gray-900">sub-second latency</strong> for data replication. The CDC stream is then routed to 
+                <strong className="text-gray-900">Kinesis Data Streams</strong> (for managed real-time streaming) or <strong className="text-gray-900">MSK</strong> (for Kafka-compatible architectures), 
+                providing flexibility to choose based on throughput requirements and existing Kafka expertise.
               </p>
             </motion.div>
             <motion.div
@@ -139,10 +140,13 @@ export default function AwsPlatformSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                The <strong className="text-gray-900">Data Ingest Processing</strong> layer serves as the central hub for real-time data ingestion and transformation. 
-                It receives streams from both the Stream Platform and CDC Target, performs initial processing, and routes data to <strong className="text-gray-900">Batch Processing</strong> 
-                for complex transformations and to <strong className="text-gray-900">Data Warehousing</strong> (S3 and Redshift) for persistent storage. This dual-path approach 
-                enables both real-time and batch processing patterns, optimizing for different use cases and latency requirements.
+                The <strong className="text-gray-900">ETL layer</strong> employs a <strong className="text-gray-900">multi-tool strategy</strong> optimized for different workloads: 
+                <strong className="text-gray-900">Glue Streaming ETL</strong> with Apache Spark handles complex transformations at scale, 
+                <strong className="text-gray-900">Lambda functions</strong> process lightweight, event-driven transformations with minimal latency, and 
+                <strong className="text-gray-900">AppFlow</strong> integrates SaaS platforms (Salesforce, ServiceNow, etc.) without custom code. 
+                Transformed data is written to <strong className="text-gray-900">S3 Data Lake</strong> in columnar formats (Parquet/ORC) for optimal query performance, 
+                while <strong className="text-gray-900">Redshift</strong> serves as the high-performance data warehouse for analytical queries requiring 
+                complex joins and aggregations.
               </p>
             </motion.div>
             <motion.div
@@ -151,11 +155,26 @@ export default function AwsPlatformSection() {
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
             >
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                The <strong className="text-gray-900">analytics layer</strong> provides multiple query interfaces: <strong className="text-gray-900">Athena</strong> offers 
+                serverless SQL queries directly against S3 data without infrastructure management, <strong className="text-gray-900">QuickSight</strong> delivers 
+                interactive BI dashboards with built-in ML insights, and <strong className="text-gray-900">Redshift Spectrum</strong> enables Redshift clusters 
+                to query petabytes of S3 data without loading it into the warehouse. This <strong className="text-gray-900">hybrid approach</strong> optimizes 
+                costs by keeping hot data in Redshift and cold data in S3, querying both seamlessly.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
               <p className="text-gray-600 leading-relaxed text-sm">
-                The <strong className="text-gray-900">analytics and delivery layer</strong> extracts value from processed data: <strong className="text-gray-900">Business Metrics</strong> 
-                provide insights from the data warehouse, <strong className="text-gray-900">Data Product Delivery</strong> serves curated datasets to downstream consumers, and 
-                <strong className="text-gray-900">Real-time Analytics</strong> enable immediate insights from streaming data. This architecture ensures <strong className="text-gray-900">end-to-end data flow</strong>, 
-                from source capture through processing to actionable business intelligence, all built on AWS native services.
+                <strong className="text-gray-900">Governance and monitoring</strong> are embedded throughout: <strong className="text-gray-900">Glue Catalog</strong> maintains 
+                a centralized metadata repository, enabling schema evolution and data discovery. <strong className="text-gray-900">Lake Formation</strong> enforces 
+                fine-grained access controls, column-level security, and audit logging across S3 data. <strong className="text-gray-900">CloudWatch</strong> monitors 
+                pipeline health, stream throughput, Lambda invocations, and DMS replication lag, providing end-to-end observability. This architecture ensures 
+                <strong className="text-gray-900">data lineage, compliance, and operational excellence</strong> while maintaining the agility needed for modern data-driven applications.
               </p>
             </motion.div>
           </motion.div>
@@ -173,51 +192,71 @@ export default function AwsPlatformSection() {
 
     subgraph "AWS Native CDC Pipeline"
 
-        subgraph "Sources"
+        subgraph "Source Database"
 
-            CDCSOURCE[CDC Source]
+            AURORA[Aurora PostgreSQL<br/>Source DB]
 
-            S3APP[AWS S3 Application]
-
-        end
-
-        
-
-        subgraph "Streaming & Ingestion"
-
-            STREAMPLATFORM[Stream Platform<br/>Kafka, Kinesis]
-
-            CDCTARGET[CDC Target<br/>Kafka, Kinesis]
+            DMS[DMS Task<br/>CDC Replication]
 
         end
 
         
 
-        subgraph "Processing"
+        subgraph "Streaming & Processing"
 
-            DATAINGEST[Data Ingest Processing]
+            KINESIS[Kinesis Data Streams<br/>Real-time]
 
-            BATCHPROC[Batch Processing]
+            FIREHOSE[Kinesis Firehose<br/>Delivery]
 
-        end
-
-        
-
-        subgraph "Data Warehouse"
-
-            DATAWAREHOUSE[Data Warehousing<br/>S3, Redshift]
+            MSK[MSK Cluster<br/>Kafka Alternative]
 
         end
 
         
 
-        subgraph "Analytics & Delivery"
+        subgraph "ETL & Transformation"
 
-            BUSINESSMETRICS[Business Metrics]
+            GLUESTREAMING[Glue Streaming ETL<br/>Spark]
 
-            DATAPRODUCT[Data Product Delivery]
+            LAMBDA[Lambda Functions<br/>Processing]
 
-            REALTIME[Real-time Analytics]
+            APPFLOW[AppFlow<br/>SaaS Integration]
+
+        end
+
+        
+
+        subgraph "Data Warehouse & Lake"
+
+            REDSHIFT[Redshift<br/>Data Warehouse]
+
+            S3DATA[S3 Data Lake<br/>Parquet/ORC]
+
+            S3STAGE[S3 Staging<br/>Raw Data]
+
+        end
+
+        
+
+        subgraph "Query & Analytics"
+
+            ATHENA[Athena<br/>Serverless Query]
+
+            QUICKSIGHT[QuickSight<br/>BI & Analytics]
+
+            REDSHIFTSPECTRUM[Redshift Spectrum<br/>S3 Query]
+
+        end
+
+        
+
+        subgraph "Governance & Monitoring"
+
+            CWMONITOR[CloudWatch<br/>Monitoring]
+
+            LAKEFORMATION[Lake Formation<br/>Governance]
+
+            GLUECATALOG[Glue Catalog<br/>Metadata]
 
         end
 
@@ -225,21 +264,43 @@ export default function AwsPlatformSection() {
 
 
 
-    CDCSOURCE -.->|CDC| S3APP
+    AURORA -->|Write-Ahead Logs| DMS
 
-    STREAMPLATFORM -.->|Stream| DATAINGEST
+    DMS -->|CDC Stream| KINESIS
 
-    CDCTARGET -.->|CDC Stream| DATAINGEST
+    KINESIS -->|Real-time Processing| GLUESTREAMING
 
-    DATAINGEST -.->|Process| BATCHPROC
+    GLUESTREAMING -->|Transform Data| FIREHOSE
 
-    DATAINGEST -.->|Ingest| DATAWAREHOUSE
+    FIREHOSE -->|Load to| S3DATA
 
-    DATAWAREHOUSE -.->|Query| BUSINESSMETRICS
+    S3DATA -->|COPY Command| REDSHIFT
 
-    BUSINESSMETRICS -.->|Deliver| DATAPRODUCT
+    KINESIS -->|Direct Processing| LAMBDA
 
-    DATAPRODUCT -.->|Analytics| REALTIME`}
+    LAMBDA -->|Write to| S3STAGE
+
+    MSK -->|Kafka Streams| GLUESTREAMING
+
+    
+
+    S3DATA -->|Register Tables| GLUECATALOG
+
+    GLUECATALOG -->|Govern Access| LAKEFORMATION
+
+    S3DATA -->|Query via| ATHENA
+
+    REDSHIFT -->|BI Analytics| QUICKSIGHT
+
+    REDSHIFT -->|Query S3| REDSHIFTSPECTRUM
+
+    
+
+    AURORA -->|Metrics| CWMONITOR
+
+    KINESIS -->|Metrics| CWMONITOR
+
+    DMS -->|Replication Metrics| CWMONITOR`}
                 title="AWS Native CDC Pipeline Architecture"
               />
             </motion.div>
