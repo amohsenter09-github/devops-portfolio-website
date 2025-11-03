@@ -258,24 +258,26 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
 
   return (
     <div className="w-full relative">
-      {title && (
-        <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 text-center">
-          {title}
-        </h3>
-      )}
       {error && (
-        <div className="text-red-500 text-center p-4 bg-red-50 rounded">
+        <div className="text-red-500 text-center p-4 bg-red-50 rounded mb-4">
           {error}
         </div>
       )}
-      <div 
-        className="w-full relative border border-gray-200 rounded-lg overflow-hidden"
-        style={{ 
-          height: 'calc(100vh - 200px)',
-          minHeight: '600px',
-          maxHeight: '900px'
-        }}
-      >
+      {/* Diagram Container - matching AnimatedAwsInfra structure */}
+      <div className="w-full bg-white p-8 md:p-12 overflow-hidden">
+        {title && (
+          <h3 className="text-base md:text-lg font-semibold mb-6 text-gray-800 text-center">
+            {title}
+          </h3>
+        )}
+        <div 
+          className="w-full relative border border-gray-200 rounded-lg overflow-hidden"
+          style={{ 
+            height: 'calc(100vh - 200px)',
+            minHeight: '600px',
+            maxHeight: '900px'
+          }}
+        >
         <TransformWrapper
           ref={transformRef}
           initialScale={1.0}
@@ -379,6 +381,7 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
             );
           }}
         </TransformWrapper>
+        </div>
       </div>
     </div>
   );

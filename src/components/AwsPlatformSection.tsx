@@ -90,9 +90,7 @@ export default function AwsPlatformSection() {
 
           {/* ===== DIAGRAM CARD ===== */}
           <div className="flex-1 pt-20">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
-              <AnimatedAwsInfra />
-            </div>
+            <AnimatedAwsInfra />
           </div>
         </div>
 
@@ -186,14 +184,13 @@ export default function AwsPlatformSection() {
 
           {/* Mermaid Diagram Card */}
           <div className="flex-1 pt-20">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                <MermaidDiagram
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <MermaidDiagram
                 chart={`graph TB
 
     subgraph "AWS Native CDC Pipeline"
@@ -309,8 +306,7 @@ export default function AwsPlatformSection() {
     DMS -->|Replication Metrics| CWMONITOR`}
                 title="AWS Native CDC Pipeline Architecture"
               />
-              </motion.div>
-            </div>
+            </motion.div>
           </div>
         </div>
         
@@ -400,14 +396,13 @@ export default function AwsPlatformSection() {
 
           {/* MLOps Pipeline Diagram Card */}
           <div className="flex-1 pt-20">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                <MermaidDiagram
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <MermaidDiagram
                 chart={`graph TB
 
     subgraph "AWS Native MLOps Pipeline"
@@ -527,8 +522,7 @@ export default function AwsPlatformSection() {
     STEP -->|Execute| SMTRAIN`}
                 title="AWS Native MLOps Pipeline Architecture"
               />
-              </motion.div>
-            </div>
+            </motion.div>
           </div>
         </div>
         
