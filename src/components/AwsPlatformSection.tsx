@@ -116,8 +116,8 @@ export default function AwsPlatformSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                This diagram illustrates a <strong className="text-gray-900">real-time data ingestion and processing platform</strong> built on AWS, 
-                integrating multiple microservices, SaaS vendors, and a modern data stack.
+                This diagram illustrates a <strong className="text-gray-900">complete AWS-native CDC (Change Data Capture) pipeline</strong> 
+                for real-time data ingestion, transformation, and analytics, built entirely on AWS services.
               </p>
             </motion.div>
             <motion.div
@@ -127,9 +127,9 @@ export default function AwsPlatformSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                The architecture uses <strong className="text-gray-900">Debezium CDC</strong> to capture changes from Aurora Postgres databases, 
-                streams them through <strong className="text-gray-900">Kafka/MSK</strong>, and loads data into <strong className="text-gray-900">Snowflake</strong> 
-                via Snowpipe Streaming.
+                The architecture uses <strong className="text-gray-900">AWS DMS (Database Migration Service)</strong> to capture changes from 
+                Aurora PostgreSQL via Write-Ahead Logs, streams them through <strong className="text-gray-900">Kinesis Data Streams</strong> 
+                or <strong className="text-gray-900">MSK (Managed Streaming for Kafka)</strong> for real-time processing.
               </p>
             </motion.div>
             <motion.div
@@ -139,9 +139,10 @@ export default function AwsPlatformSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                <strong className="text-gray-900">Temporal workers</strong> orchestrate DLT ingestion jobs for vendor APIs 
-                (HubSpot, Google Ads, LinkedIn Ads, Chargebee, Modern Treasury), while a <strong className="text-gray-900">Webhook Gateway</strong> 
-                receives real-time events from SaaS providers.
+                Data transformation is handled by <strong className="text-gray-900">AWS Glue Streaming ETL</strong> with Spark, 
+                <strong className="text-gray-900">Lambda functions</strong> for lightweight processing, and <strong className="text-gray-900">AppFlow</strong> 
+                for SaaS integrations. Processed data flows into <strong className="text-gray-900">S3 Data Lake</strong> (Parquet/ORC format) 
+                and <strong className="text-gray-900">Amazon Redshift</strong> for analytics.
               </p>
             </motion.div>
             <motion.div
@@ -151,9 +152,11 @@ export default function AwsPlatformSection() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 leading-relaxed text-sm">
-                Data flows through <strong className="text-gray-900">RAW_BRONZE → REFINED_SILVER → MARTS_GOLD</strong> layers in Snowflake, 
-                transformed via <strong className="text-gray-900">dbt</strong>, and visualized in <strong className="text-gray-900">Sigma dashboards</strong> 
-                for analytics and business intelligence.
+                Query and analytics are powered by <strong className="text-gray-900">Athena</strong> for serverless S3 queries, 
+                <strong className="text-gray-900">QuickSight</strong> for BI dashboards, and <strong className="text-gray-900">Redshift Spectrum</strong> 
+                for querying S3 data. Governance is enforced through <strong className="text-gray-900">Lake Formation</strong> and 
+                <strong className="text-gray-900">Glue Catalog</strong>, with <strong className="text-gray-900">CloudWatch</strong> providing 
+                comprehensive monitoring across the entire pipeline.
               </p>
             </motion.div>
           </motion.div>
@@ -167,34 +170,120 @@ export default function AwsPlatformSection() {
               viewport={{ once: true, margin: "-50px" }}
             >
               <MermaidDiagram
-                chart={`flowchart LR
-  subgraph "EKS (staging)"
-    TW[Temporal workers]
-    DLT1["DLT container\\n(source=HubSpot/Ads/CB/MT)"]
-  end
-  subgraph MSK
-    DBZ[Debezium on MSK Connect]
-    K[(Kafka topics)]
-    SNKS[[Snowflake Kafka Sink/Snowpipe Streaming]]
-  end
-  subgraph Vendors
-    MT[Modern Treasury API]
-    HS[HubSpot API]
-    ADS[Google/LinkedIn Ads]
-    CB[Chargebee API]
-    WH[Webhook Gateway]
-  end
-  PG[(Aurora Postgres svc_*)]
+                chart={`graph TB
 
-  PG--WAL-->DBZ-->K-->SNKS-->RAW[(Snowflake RAW_BRONZE)]
-  TW--schedule-->DLT1-->RAW
-  WH--Temporal signal-->TW
-  MT--API pull-->DLT1
-  HS--API pull-->DLT1
-  ADS--API pull-->DLT1
-  CB--API pull-->DLT1
-  RAW-->SILVER[(REFINED_SILVER via dbt)]-->GOLD[(MARTS_GOLD)]-->SIGMA`}
-                title="Data Pipeline Architecture"
+    subgraph "AWS Native CDC Pipeline"
+
+        subgraph "Source Database"
+
+            AURORA[Aurora PostgreSQL<br/>Source DB]
+
+            DMS[DMS Task<br/>CDC Replication]
+
+        end
+
+        
+
+        subgraph "Streaming & Processing"
+
+            KINESIS[Kinesis Data Streams<br/>Real-time]
+
+            FIREHOSE[Kinesis Firehose<br/>Delivery]
+
+            MSK[MSK Cluster<br/>Kafka Alternative]
+
+        end
+
+        
+
+        subgraph "ETL & Transformation"
+
+            GLUESTREAMING[Glue Streaming ETL<br/>Spark]
+
+            LAMBDA[Lambda Functions<br/>Processing]
+
+            APPFLOW[AppFlow<br/>SaaS Integration]
+
+        end
+
+        
+
+        subgraph "Data Warehouse & Lake"
+
+            REDSHIFT[Redshift<br/>Data Warehouse]
+
+            S3DATA[S3 Data Lake<br/>Parquet/ORC]
+
+            S3STAGE[S3 Staging<br/>Raw Data]
+
+        end
+
+        
+
+        subgraph "Query & Analytics"
+
+            ATHENA[Athena<br/>Serverless Query]
+
+            QUICKSIGHT[QuickSight<br/>BI & Analytics]
+
+            REDSHIFTSPECTRUM[Redshift Spectrum<br/>S3 Query]
+
+        end
+
+        
+
+        subgraph "Governance & Monitoring"
+
+            CWMONITOR[CloudWatch<br/>Monitoring]
+
+            LAKEFORMATION[Lake Formation<br/>Governance]
+
+            GLUECATALOG[Glue Catalog<br/>Metadata]
+
+        end
+
+    end
+
+
+
+    AURORA -->|Write-Ahead Logs| DMS
+
+    DMS -->|CDC Stream| KINESIS
+
+    KINESIS -->|Real-time Processing| GLUESTREAMING
+
+    GLUESTREAMING -->|Transform Data| FIREHOSE
+
+    FIREHOSE -->|Load to| S3DATA
+
+    S3DATA -->|COPY Command| REDSHIFT
+
+    KINESIS -->|Direct Processing| LAMBDA
+
+    LAMBDA -->|Write to| S3STAGE
+
+    MSK -->|Kafka Streams| GLUESTREAMING
+
+    
+
+    S3DATA -->|Register Tables| GLUECATALOG
+
+    GLUECATALOG -->|Govern Access| LAKEFORMATION
+
+    S3DATA -->|Query via| ATHENA
+
+    REDSHIFT -->|BI Analytics| QUICKSIGHT
+
+    REDSHIFT -->|Query S3| REDSHIFTSPECTRUM
+
+    
+
+    AURORA -->|Metrics| CWMONITOR
+
+    KINESIS -->|Metrics| CWMONITOR
+
+    DMS -->|Replication Metrics| CWMONITOR`}
+                title="AWS Native CDC Pipeline Architecture"
               />
             </motion.div>
           </div>
