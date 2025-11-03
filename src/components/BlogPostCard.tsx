@@ -15,67 +15,150 @@ type BlogPost = {
 export default function BlogPostCard({ post, index }: { post: BlogPost; index: number }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{
-        delay: index * 0.1,
-        duration: 0.6,
-        ease: "easeOut",
+        delay: index * 0.12,
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
       }}
       className="w-full"
     >
       <Link href={`/blog/${post.slug}`} className="block w-full group">
         <motion.div
-          className="relative bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+          className="relative bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden cursor-pointer"
           whileHover={{ 
-            y: -2,
+            y: -6,
+            scale: 1.02,
             transition: { 
-              duration: 0.3,
-              ease: "easeOut"
+              duration: 0.4,
+              ease: [0.22, 1, 0.36, 1]
             }
           }}
+          style={{
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.06)",
+          }}
         >
-          {/* Card Content */}
-          <div className="px-6 md:px-8 pt-6 md:pt-8 pb-6 md:pb-8">
-            {/* Date - Subtle */}
-            <div className="flex items-center gap-2 mb-4">
-              <Calendar size={14} className="text-gray-400 dark:text-gray-500" />
-              <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">{post.date}</span>
-            </div>
+          {/* Animated border glow on hover */}
+          <motion.div
+            className="absolute inset-0 rounded-xl border-2 border-blue-500/0 opacity-0 group-hover:opacity-100 pointer-events-none"
+            initial={false}
+            transition={{ duration: 0.4 }}
+            style={{
+              background: "linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1), rgba(59, 130, 246, 0.1))",
+              backgroundSize: "200% 100%",
+            }}
+          />
 
-            {/* Title - Medium Size */}
-            <h2 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-3 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+          {/* Gradient accent bar at top */}
+          <motion.div
+            className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100"
+            initial={false}
+            transition={{ duration: 0.4 }}
+          />
+
+          {/* Enhanced shadow on hover */}
+          <motion.div
+            className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 pointer-events-none"
+            initial={false}
+            style={{
+              boxShadow: "0 20px 50px rgba(59, 130, 246, 0.15), 0 10px 30px rgba(147, 51, 234, 0.1)",
+            }}
+            transition={{ duration: 0.4 }}
+          />
+
+          {/* Card Content with improved spacing */}
+          <div className="relative z-10 px-8 md:px-10 pt-8 md:pt-10 pb-8 md:pb-10">
+            {/* Date - Better positioning */}
+            <motion.div 
+              className="flex items-center gap-2 mb-5"
+              whileHover={{ x: 3 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Calendar size={15} className="text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-200" />
+              <span className="text-xs text-gray-500 dark:text-gray-400 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                {post.date}
+              </span>
+            </motion.div>
+
+            {/* Title - Enhanced with animation */}
+            <motion.h2 
+              className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.3 }}
+            >
               {post.title}
-            </h2>
+            </motion.h2>
 
-            {/* Description - Medium Size */}
-            <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            {/* Description - Better line height and spacing */}
+            <motion.p 
+              className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-7 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300"
+              whileHover={{ x: 2 }}
+              transition={{ duration: 0.3 }}
+            >
               {post.description}
-            </p>
+            </motion.p>
 
-            {/* Tags Section - Toned Down */}
+            {/* Tags Section - Better styling */}
             {post.tags && post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-6">
-                {post.tags.slice(0, 5).map((tag) => (
-                  <span
+              <motion.div 
+                className="flex flex-wrap gap-2.5 mb-7"
+                initial={false}
+              >
+                {post.tags.slice(0, 5).map((tag, tagIndex) => (
+                  <motion.span
                     key={tag}
-                    className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 transition-colors duration-200 group-hover:bg-gray-200 dark:group-hover:bg-gray-600"
+                    className="px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600"
+                    whileHover={{
+                      scale: 1.08,
+                      backgroundColor: "rgb(219, 234, 254)",
+                      borderColor: "rgb(59, 130, 246)",
+                      color: "rgb(37, 99, 235)",
+                      transition: { duration: 0.2 }
+                    }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: (index * 0.12) + (tagIndex * 0.05),
+                      duration: 0.3,
+                    }}
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
+              </motion.div>
             )}
 
-            {/* Read Article Link - Clean */}
-            <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-3 transition-all duration-200">
-              <span>Read Article</span>
-              <ArrowRight 
-                size={16} 
-                className="transition-transform duration-200 group-hover:translate-x-1"
-              />
-            </div>
+            {/* Read Article Link - More prominent and attractive */}
+            <motion.div 
+              className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm md:text-base group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300"
+              whileHover={{ x: 6, gap: 8 }}
+              transition={{ 
+                duration: 0.3,
+                ease: "easeOut"
+              }}
+            >
+              <span className="relative">
+                Read Article
+                <motion.span
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 origin-left"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </span>
+              <motion.div
+                whileHover={{ x: 3 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ArrowRight 
+                  size={18} 
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </motion.div>
+            </motion.div>
           </div>
         </motion.div>
       </Link>
