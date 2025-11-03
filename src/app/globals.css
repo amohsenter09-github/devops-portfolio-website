@@ -507,12 +507,28 @@ html.dark .recommendation-card-clean:hover {
   transition: background-color 180ms ease;
 }
 
-/* Respect reduced motion */
+/* Matrix Glow Animation */
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-animated {
+  background: linear-gradient(270deg, #00ff99, #0066ff, #cc33ff);
+  background-size: 600% 600%;
+  animation: moveGradient 12s ease infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  
+  .bg-animated {
+    animation: none !important;
   }
 }

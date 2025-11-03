@@ -7,7 +7,11 @@ import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function EnterpriseMicroservicesPlatform() {
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-100">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-100 relative">
+      {/* Matrix Glow Animation Background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-animated opacity-20 blur-3xl" />
+      </div>
       <div className="container mx-auto max-w-4xl px-6 sm:px-8">
         {/* Header */}
         <motion.section 
@@ -61,18 +65,18 @@ export default function EnterpriseMicroservicesPlatform() {
                   legacy infrastructure into a modern, scalable platform serving <strong>50,000+ concurrent users</strong> 
                   with zero-downtime deployments.
                 </p>
-                <div className="flex flex-wrap justify-center gap-6 mt-8">
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm min-w-[200px]">
-                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">$2M</div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">Annual Cost Savings</div>
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-stretch mt-8">
+                  <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
+                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">$2M</div>
+                    <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Annual Cost Savings</div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm min-w-[200px]">
-                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">99.9%</div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">System Uptime</div>
+                  <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
+                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">99.9%</div>
+                    <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">System Uptime</div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm min-w-[200px]">
-                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">70%</div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">Faster Deployments</div>
+                  <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
+                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">70%</div>
+                    <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Faster Deployments</div>
                   </div>
                 </div>
               </div>
@@ -81,12 +85,12 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Architecture Overview */}
           <Section spacing="xl" animate>
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Architecture Overview</h2>
+            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">Architecture Overview</h2>
               
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Infrastructure Foundation</h3>
+              <div className="grid md:grid-cols-2 gap-6 place-items-stretch mb-8">
+              <div className="space-y-4 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 h-full flex flex-col">
+                <h3 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Infrastructure Foundation</h3>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                   <li className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
@@ -107,8 +111,8 @@ export default function EnterpriseMicroservicesPlatform() {
                 </ul>
               </div>
               
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Security & Compliance</h3>
+              <div className="space-y-4 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 h-full flex flex-col">
+                <h3 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Security & Compliance</h3>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                   <li className="flex items-center">
                     <Shield className="w-5 h-5 text-blue-500 mr-2" />
@@ -134,15 +138,15 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Microservices Architecture */}
           <Section spacing="xl" animate>
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Microservices Architecture</h2>
+            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">Microservices Architecture</h2>
             
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 md:p-8 mb-6">
-              <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Service Categories</h3>
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 md:p-8 mb-6 shadow-md">
+              <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-6 text-gray-900 dark:text-white text-center">Service Categories</h3>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">API Services</h4>
+                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">API Services</h4>
                   <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                     <li>• Identity & Authentication Service</li>
                     <li>• Banking & Financial Operations</li>
@@ -152,7 +156,7 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Internal Services</h4>
+                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Internal Services</h4>
                   <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                     <li>• Account Management</li>
                     <li>• Key Management Service</li>
@@ -162,7 +166,7 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Integration Services</h4>
+                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Integration Services</h4>
                   <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                     <li>• Exchange Rate Service</li>
                     <li>• Transfer Processing</li>
@@ -172,7 +176,7 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Portal Services</h4>
+                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Portal Services</h4>
                   <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                     <li>• Organization Portal</li>
                     <li>• Payments Portal</li>
@@ -182,9 +186,9 @@ export default function EnterpriseMicroservicesPlatform() {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
-              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-4 text-center">Key Technical Achievements</h4>
-              <div className="grid md:grid-cols-2 gap-4 text-sm">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl p-6 md:p-8 shadow-md">
+              <h4 className="text-lg md:text-xl font-semibold tracking-tight text-blue-900 dark:text-blue-100 mb-6 text-center">Key Technical Achievements</h4>
+              <div className="grid md:grid-cols-2 gap-6 text-sm">
                 <div>
                   <p className="text-blue-800 dark:text-blue-200 mb-2"><strong>Zero-Downtime Deployments:</strong></p>
                   <p className="text-blue-700 dark:text-blue-300">Rolling update strategy with maxUnavailable: 0 ensures continuous service availability</p>
@@ -208,12 +212,12 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* GitOps Implementation */}
           <Section spacing="xl" animate>
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">GitOps Implementation</h2>
+            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">GitOps Implementation</h2>
               
               <div className="space-y-6">
-              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
+              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-all duration-300">
+                <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white flex items-center">
                   <GitBranch className="w-6 h-6 text-green-600 mr-3" />
                   ArgoCD Deployment & Management
                 </h3>
@@ -241,8 +245,8 @@ export default function EnterpriseMicroservicesPlatform() {
                 </ul>
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
+              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-all duration-300">
+                <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white flex items-center">
                   <Database className="w-6 h-6 text-purple-600 mr-3" />
                   External Secrets Integration
                 </h3>
@@ -262,12 +266,12 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Monitoring & Observability */}
           <Section spacing="xl" animate>
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Monitoring & Observability</h2>
+            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">Monitoring & Observability</h2>
               
-              <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
+              <div className="grid md:grid-cols-2 gap-6 place-items-stretch">
+              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white flex items-center">
                   <Monitor className="w-6 h-6 text-orange-600 mr-3" />
                   Prometheus & Grafana Stack
                 </h3>
@@ -291,8 +295,8 @@ export default function EnterpriseMicroservicesPlatform() {
                 </ul>
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
+              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white flex items-center">
                   <Cloud className="w-6 h-6 text-blue-600 mr-3" />
                   AWS CloudWatch Integration
                 </h3>
@@ -321,34 +325,34 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Results & Impact */}
           <Section spacing="xl" animate>
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Results & Impact</h2>
+            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white text-center">Results & Impact</h2>
               
-              <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-stretch mb-8">
+              <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
                 <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">99.9%</div>
-                <div className="text-gray-700 dark:text-gray-300 font-semibold">Uptime Achieved</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Across all environments</div>
+                <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">Uptime Achieved</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Across all environments</div>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
+              <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
                 <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">0</div>
-                <div className="text-gray-700 dark:text-gray-300 font-semibold">Downtime Deployments</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Zero-downtime strategy</div>
+                <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">Downtime Deployments</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Zero-downtime strategy</div>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
+              <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 md:p-8 text-center shadow-md hover:shadow-lg transition-all duration-300 min-h-[180px]">
                 <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">80%</div>
-                <div className="text-gray-700 dark:text-gray-300 font-semibold">MTTR Reduction</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Mean Time To Recovery</div>
+                <div className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">MTTR Reduction</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Mean Time To Recovery</div>
               </div>
             </div>
 
-            <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-lg p-6 md:p-8">
-              <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Key Business Benefits</h3>
+            <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-md">
+              <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-6 text-gray-900 dark:text-white text-center">Key Business Benefits</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Operational Excellence</h4>
+                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Operational Excellence</h4>
                   <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                     <li>• Automated deployments reduced manual errors by 95%</li>
                     <li>• Infrastructure as Code enabled rapid environment provisioning</li>
@@ -357,7 +361,7 @@ export default function EnterpriseMicroservicesPlatform() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Developer Experience</h4>
+                  <h4 className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Developer Experience</h4>
                   <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                     <li>• GitOps workflow simplified deployment processes</li>
                     <li>• Environment parity reduced development friction</li>
@@ -372,9 +376,9 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Conclusion */}
           <Section spacing="xl" animate>
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-10">
-                <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center">Conclusion</h2>
+            <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
+              <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 md:p-10 shadow-md">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white text-center">Conclusion</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-center">
                   This enterprise microservices platform represents a comprehensive solution for modern cloud-native applications. 
                   By leveraging Infrastructure as Code principles, advanced GitOps workflows, and enterprise-grade security practices, 
