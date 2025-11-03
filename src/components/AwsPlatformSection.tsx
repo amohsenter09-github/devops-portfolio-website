@@ -115,7 +115,6 @@ export default function AwsPlatformSection() {
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">Data Platform Architecture</h2>
               <p className="text-gray-600 leading-relaxed text-sm mb-4">
                 This diagram illustrates a <strong className="text-gray-900">real-time data ingestion and processing platform</strong> built on AWS, 
                 integrating multiple microservices, SaaS vendors, and a modern data stack.
