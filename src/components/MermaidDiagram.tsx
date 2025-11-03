@@ -132,7 +132,8 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
   const transformRef = useRef<ReactZoomPanPinchRef | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [svgLoaded, setSvgLoaded] = useState(false);
-  const [zoomLevel, setZoomLevel] = useState(1.1);
+  const [zoomLevel, setZoomLevel] = useState(1.0);
+  const [initialScale, setInitialScale] = useState(1.0);
 
   useEffect(() => {
     if (!mermaidRef.current || !chart) return;
@@ -162,21 +163,52 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
     setError(null);
     setSvgLoaded(false);
 
-    mermaid.render(id, chart)
-      .then((result) => {
-        if (mermaidRef.current) {
-          mermaidRef.current.innerHTML = result.svg;
-          // Make SVG interactive
-          const svg = mermaidRef.current.querySelector('svg');
-          if (svg) {
-            svg.style.width = '100%';
-            svg.style.height = 'auto';
-            svg.style.maxWidth = 'none';
-            svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-          }
-          setSvgLoaded(true);
-        }
-      })
+            mermaid.render(id, chart)
+              .then((result) => {
+                if (mermaidRef.current && transformRef.current) {
+                  mermaidRef.current.innerHTML = result.svg;
+                  // Make SVG interactive
+                  const svg = mermaidRef.current.querySelector('svg');
+                  if (svg) {
+                    svg.style.width = '100%';
+                    svg.style.height = 'auto';
+                    svg.style.maxWidth = 'none';
+                    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                    
+                    // Wait for SVG to render, then calculate scale to fit
+                    setTimeout(() => {
+                      if (svg && transformRef.current && mermaidRef.current) {
+                        // Get the actual SVG dimensions
+                        const svgBox = svg.getBBox();
+                        const svgWidth = svg.viewBox?.baseVal?.width || svgBox.width || 800;
+                        const svgHeight = svg.viewBox?.baseVal?.height || svgBox.height || 600;
+                        
+                        // Get container dimensions (the div with border)
+                        const container = mermaidRef.current.closest('div[class*="border"]');
+                        const containerWidth = container?.clientWidth || 800;
+                        const containerHeight = container?.clientHeight || 700;
+                        const padding = 60; // Account for padding on all sides
+                        
+                        // Calculate scale to fit the entire diagram within container
+                        const scaleX = (containerWidth - padding) / svgWidth;
+                        const scaleY = (containerHeight - padding) / svgHeight;
+                        const calculatedScale = Math.min(scaleX, scaleY, 0.9); // Cap at 90% to ensure it fits
+                        
+                        // Center and scale the diagram to fit
+                        transformRef.current.setTransform(
+                          0, // center X
+                          0, // center Y
+                          calculatedScale
+                        );
+                        
+                        setInitialScale(calculatedScale);
+                        setZoomLevel(calculatedScale);
+                      }
+                    }, 150);
+                  }
+                  setSvgLoaded(true);
+                }
+              })
       .catch((error) => {
         if (process.env.NODE_ENV === 'development') {
           console.error('Error rendering Mermaid diagram:', error);
@@ -201,18 +233,22 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
         </div>
       )}
       <div 
-        className="w-full relative border border-gray-200 rounded-lg overflow-hidden min-h-[500px] h-[600px]"
+        className="w-full relative border border-gray-200 rounded-lg overflow-hidden min-h-[600px] h-[700px]"
       >
         <TransformWrapper
           ref={transformRef}
-          initialScale={1.1}
-          minScale={0.5}
+          initialScale={1.0}
+          minScale={0.2}
           maxScale={3}
           panning={{ disabled: false }}
           wheel={{ step: 0.1 }}
           doubleClick={{ disabled: true }}
           limitToBounds={false}
           centerOnInit={true}
+          centerZoomedOut={true}
+          onInit={(ref) => {
+            // This will be called after initial render, but we'll use setTimeout in the render callback instead
+          }}
           onTransformed={(ref, state) => {
             if (ref && state) {
               setZoomLevel(state.scale);
@@ -220,6 +256,18 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
           }}
         >
           {({ zoomIn, zoomOut, resetTransform }) => {
+            // Enhanced reset function that resets to the calculated fit scale
+            const handleReset = () => {
+              if (transformRef.current) {
+                transformRef.current.setTransform(
+                  0,
+                  0,
+                  initialScale
+                );
+                setZoomLevel(initialScale);
+              }
+            };
+            
             // Pan functions using setTransform
             const handlePanUp = () => {
               if (transformRef.current) {
@@ -277,7 +325,7 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
                   <Controls
                     zoomIn={zoomIn}
                     zoomOut={zoomOut}
-                    resetTransform={resetTransform}
+                    resetTransform={handleReset}
                     panUp={handlePanUp}
                     panDown={handlePanDown}
                     panLeft={handlePanLeft}
