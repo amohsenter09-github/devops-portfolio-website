@@ -6,7 +6,7 @@ import MermaidDiagram from '@/components/MermaidDiagram';
 
 export default function AwsPlatformSection() {
   return (
-    <section className="py-20 md:py-32 w-full flex items-center justify-center bg-white">
+    <section className="py-20 md:py-32 w-full flex items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* ===== DESCRIPTION - Left Side with Vertical Animation ===== */}
@@ -89,13 +89,18 @@ export default function AwsPlatformSection() {
           </motion.div>
 
           {/* ===== DIAGRAM CARD ===== */}
-          <div className="flex-1 p-4 bg-white pt-20">
-            <AnimatedAwsInfra />
+          <div className="flex-1 pt-20">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
+              <AnimatedAwsInfra />
+            </div>
           </div>
         </div>
 
-        {/* ===== SECTION DIVIDER ===== */}
-        <div className="max-w-5xl mx-auto my-20 border-t border-gray-200" />
+        {/* ===== SECTION DIVIDER WITH FADING SPACE ===== */}
+        <div className="max-w-5xl mx-auto my-24 md:my-32">
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+          <div className="h-12 md:h-16"></div>
+        </div>
 
         {/* ===== MERMAID DIAGRAM SECTION ===== */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start mt-12">
@@ -186,6 +191,7 @@ export default function AwsPlatformSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true, margin: "-50px" }}
+              className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8"
             >
               <MermaidDiagram
                 chart={`graph TB
@@ -307,8 +313,11 @@ export default function AwsPlatformSection() {
           </div>
         </div>
         
-        {/* ===== SECTION DIVIDER ===== */}
-        <div className="max-w-5xl mx-auto my-20 border-t border-gray-200" />
+        {/* ===== SECTION DIVIDER WITH FADING SPACE ===== */}
+        <div className="max-w-5xl mx-auto my-24 md:my-32">
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+          <div className="h-12 md:h-16"></div>
+        </div>
 
         {/* ===== AWS NATIVE MLOPS PIPELINE SECTION ===== */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start mt-12">
@@ -395,6 +404,7 @@ export default function AwsPlatformSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true, margin: "-50px" }}
+              className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8"
             >
               <MermaidDiagram
                 chart={`graph TB
@@ -520,8 +530,11 @@ export default function AwsPlatformSection() {
           </div>
         </div>
         
-        {/* ===== SECTION DIVIDER ===== */}
-        <div className="max-w-5xl mx-auto my-20 border-t border-gray-200" />
+        {/* ===== SECTION DIVIDER WITH FADING SPACE ===== */}
+        <div className="max-w-5xl mx-auto my-24 md:my-32">
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+          <div className="h-12 md:h-16"></div>
+        </div>
         
         {/* ===== ANIMATED REDIRECTION BUTTON - Positioned under description ===== */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">

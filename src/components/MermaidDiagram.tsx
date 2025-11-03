@@ -215,31 +215,30 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
                         const containerWidth = containerElement?.clientWidth || 800;
                         const containerHeight = containerElement?.clientHeight || 700;
                         
-                        // Calculate scale to maximize diagram visibility
-                        // Use minimal padding to allow larger diagram display
-                        const padding = 30;
+                        // Calculate scale to fit entire diagram in frame, then scale to 140%
+                        const padding = 40; // Padding for borders
                         const scaleX = (containerWidth - padding) / svgWidth;
                         const scaleY = (containerHeight - padding) / svgHeight;
                         
-                        // Calculate the best fit scale - prefer filling the container
-                        const calculatedScale = Math.min(scaleX, scaleY);
+                        // Calculate the scale needed to fit the entire diagram
+                        const fitScale = Math.min(scaleX, scaleY);
                         
-                        // Ensure diagram is large enough to be readable
-                        // If calculated scale is too small, scale up to at least 0.7
-                        // If calculated scale is good, allow up to 1.5 for better visibility
-                        const finalScale = calculatedScale < 0.7 
-                          ? Math.max(calculatedScale, 0.7) 
-                          : Math.min(calculatedScale, 1.5);
+                        // Start at 140% (1.4) of the fit scale so diagram fills frame nicely
+                        // This ensures entire diagram is visible but at a good readable size
+                        const finalScale = fitScale * 1.4;
                         
-                        // Center and scale the diagram to fit
+                        // Cap at reasonable limits (min 0.5, max 2.0)
+                        const clampedScale = Math.max(0.5, Math.min(finalScale, 2.0));
+                        
+                        // Center and scale the diagram to fit at 140% of fit scale
                         transformRef.current.setTransform(
                           0, // center X
                           0, // center Y
-                          finalScale
+                          clampedScale
                         );
                         
-                        setInitialScale(finalScale);
-                        setZoomLevel(finalScale);
+                        setInitialScale(clampedScale);
+                        setZoomLevel(clampedScale);
                       }
                     }, 200);
                   }
@@ -258,7 +257,7 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
   }, [chart]);
 
   return (
-    <div className="w-full bg-white rounded-xl p-4 md:p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 relative">
+    <div className="w-full relative">
       {title && (
         <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-800 text-center">
           {title}
