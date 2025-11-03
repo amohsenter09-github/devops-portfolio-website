@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import BlogPostCard from "@/components/BlogPostCard";
+import RobotLogo from "@/components/RobotLogo";
 import { blogPosts } from "@/data/blogPosts";
 
 export default function BlogPage() {
@@ -26,7 +27,14 @@ export default function BlogPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 md:py-24 w-full">
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 md:py-24 w-full relative">
+      {/* Robot Logo - Top Right */}
+      <div className="absolute top-8 right-8 md:top-12 md:right-12 z-10">
+        <div className="scale-75 md:scale-100">
+          <RobotLogo />
+        </div>
+      </div>
+      
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center md:justify-center lg:justify-center">
           <div className="w-full max-w-4xl md:translate-x-8 lg:translate-x-16">
