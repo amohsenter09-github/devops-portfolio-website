@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, CheckCircle, Zap, Shield, Database, Cloud, GitBranch, Monitor, Code, BarChart3, Search } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, CheckCircle, Zap, Shield, Database, Cloud, GitBranch, Monitor } from "lucide-react";
 import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function EnterpriseMicroservicesPlatform() {
@@ -26,7 +26,7 @@ export default function EnterpriseMicroservicesPlatform() {
             </Link>
           </div>
           
-          <div className="flex items-center justify-center mb-6 text-sm text-gray-700 dark:text-gray-300">
+          <div className="flex items-center justify-center mb-6 text-sm text-gray-800 dark:text-gray-200 font-medium">
             <Calendar size={16} className="mr-2" />
             January 15, 2024
             <Clock size={16} className="ml-4 mr-2" />
@@ -36,7 +36,7 @@ export default function EnterpriseMicroservicesPlatform() {
           <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
             Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
           </h1>
-          <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed mb-6 text-center">
+          <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100 leading-relaxed mb-6 text-center font-medium">
             A comprehensive case study of building a production-ready microservices platform with 12+ services, 
             complete GitOps automation, and enterprise-grade security across multiple AWS environments.
           </p>
@@ -315,151 +315,6 @@ export default function EnterpriseMicroservicesPlatform() {
                   </li>
                 </ul>
               </div>
-              </div>
-            </div>
-          </Section>
-
-          {/* Implementation Details */}
-          <Section spacing="xl" animate>
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center flex items-center justify-center">
-                <Code className="w-7 h-7 text-cyan-600 mr-3" />
-                Implementation Details
-              </h2>
-              
-              <div className="space-y-8">
-                {/* Prometheus Configuration */}
-                <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
-                    <BarChart3 className="text-cyan-600" size={18} />
-                    Prometheus Configuration
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4 text-center">
-                    Used the official <code className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-cyan-700 dark:text-cyan-400 rounded-md text-xs font-mono font-semibold">kube-prometheus-stack</code> Helm chart with custom retention, 
-                    multi-cluster federation, and ServiceMonitor CRDs for application metrics.
-                  </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left">
-                    {[
-                      "Custom retention policies (30 days for high-priority, 7 days for standard)",
-                      "Multi-cluster federation for centralized metric aggregation",
-                      "ServiceMonitor CRDs for Kubernetes-native service discovery",
-                      "Recording rules for pre-computed aggregations and performance",
-                      "High availability setup with Thanos for long-term storage"
-                    ].map((item, idx) => (
-                      <motion.li
-                        key={item}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.05, duration: 0.3 }}
-                        className="flex items-start gap-2"
-                      >
-                        <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs">▸</span>
-                        <span>{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Grafana Dashboards */}
-                <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
-                    <BarChart3 className="text-cyan-600" size={18} />
-                    Grafana Dashboards
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4 text-center">
-                    Deployed via ArgoCD Helm release, using pre-baked dashboards from JSON templates stored in Git. 
-                    Integrated with SSO for RBAC access.
-                  </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left">
-                    {[
-                      "Infrastructure monitoring dashboards for CPU, memory, and network metrics",
-                      "Application performance metrics with custom business KPIs",
-                      "Custom alerting rules with severity-based routing",
-                      "Multi-environment views (dev, staging, production)",
-                      "Role-based access control (RBAC) with OAuth integration",
-                      "Dashboard versioning via GitOps workflows"
-                    ].map((item, idx) => (
-                      <motion.li
-                        key={item}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.05, duration: 0.3 }}
-                        className="flex items-start gap-2"
-                      >
-                        <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs">▸</span>
-                        <span>{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Loki + Promtail */}
-                <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
-                    <Database className="text-cyan-600" size={18} />
-                    Loki + Promtail
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4 text-center">
-                    Configured via Helm, ingesting EKS container logs and storing compressed logs on S3 for long-term retention 
-                    and cost optimization.
-                  </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left">
-                    {[
-                      "Container log ingestion from EKS pods via Promtail DaemonSet",
-                      "Log compression and indexing for efficient querying",
-                      "S3 backend for long-term log retention (90 days)",
-                      "Label-based log filtering and routing",
-                      "Integration with Grafana for unified log visualization"
-                    ].map((item, idx) => (
-                      <motion.li
-                        key={item}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.05, duration: 0.3 }}
-                        className="flex items-start gap-2"
-                      >
-                        <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs">▸</span>
-                        <span>{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Jaeger Distributed Tracing */}
-                <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
-                    <Search className="text-cyan-600" size={18} />
-                    Jaeger Distributed Tracing
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 mb-4 text-center">
-                    Deployed using the Jaeger Operator chart, integrated with application traces through OpenTelemetry SDK for 
-                    end-to-end request visibility across microservices.
-                  </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left">
-                    {[
-                      "Jaeger Operator deployed via Helm chart",
-                      "OpenTelemetry SDK integration in application code",
-                      "Trace sampling configuration (10% for production, 100% for staging)",
-                      "Service dependency mapping and performance analysis",
-                      "Integration with Grafana for trace visualization"
-                    ].map((item, idx) => (
-                      <motion.li
-                        key={item}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.05, duration: 0.3 }}
-                        className="flex items-start gap-2"
-                      >
-                        <span className="text-cyan-600 dark:text-cyan-400 mt-1 font-bold text-xs">▸</span>
-                        <span>{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             </div>
           </Section>
