@@ -15,7 +15,7 @@ export default function EnterpriseMicroservicesPlatform() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="w-full flex justify-start mb-8">
             <Link 
               href="/blog"
@@ -26,22 +26,22 @@ export default function EnterpriseMicroservicesPlatform() {
             </Link>
           </div>
           
-          <div className="flex items-center justify-center mb-6 text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex items-center justify-start mb-6 text-sm text-gray-500 dark:text-gray-400">
             <Calendar size={16} className="mr-2" />
             January 15, 2024
             <Clock size={16} className="ml-4 mr-2" />
             15 min read
           </div>
           
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white text-center">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
             Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed text-center max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
             A comprehensive case study of building a production-ready microservices platform with 12+ services, 
             complete GitOps automation, and enterprise-grade security across multiple AWS environments.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-2 mt-6">
+          <div className="flex flex-wrap gap-2 mt-6">
             {["Terraform", "Kubernetes", "ArgoCD", "Microservices", "AWS", "GitOps", "Security", "Monitoring"].map((tag) => (
               <span 
                 key={tag}
@@ -74,17 +74,17 @@ export default function EnterpriseMicroservicesPlatform() {
                   with zero-downtime deployments.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 mt-6 max-w-3xl mx-auto">
-                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
+                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-800 rounded-lg p-4 md:p-5 text-center shadow-sm">
                     <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">$2M</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Annual Cost Savings</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">Annual Cost Savings</div>
                   </div>
-                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
+                  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4 md:p-5 text-center shadow-sm">
                     <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">System Uptime</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">System Uptime</div>
                   </div>
-                  <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-4 md:p-5 text-center">
+                  <div className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/30 dark:to-violet-900/30 border border-purple-200 dark:border-purple-800 rounded-lg p-4 md:p-5 text-center shadow-sm">
                     <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">70%</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Faster Deployments</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">Faster Deployments</div>
                   </div>
                 </div>
               </div>
