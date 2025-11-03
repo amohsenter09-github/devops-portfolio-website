@@ -26,28 +26,28 @@ export default function EnterpriseMicroservicesPlatform() {
             </Link>
           </div>
           
-          <div className="flex items-center justify-start mb-6 text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex items-center justify-center mb-6 text-sm text-gray-600 dark:text-gray-400">
             <Calendar size={16} className="mr-2" />
             January 15, 2024
             <Clock size={16} className="ml-4 mr-2" />
             15 min read
           </div>
           
-          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100 text-center">
             Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
           </h1>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+          <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-center">
             A comprehensive case study of building a production-ready microservices platform with 12+ services, 
             complete GitOps automation, and enterprise-grade security across multiple AWS environments.
           </p>
           
-          <div className="flex flex-wrap gap-2 mt-6">
+          <div className="flex flex-wrap justify-center gap-2 mt-6">
             {["Terraform", "Kubernetes", "ArgoCD", "Microservices", "AWS", "GitOps", "Security", "Monitoring"].map((tag) => (
               <span 
                 key={tag}
-                className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full"
+                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 text-sm rounded-full font-medium shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
               >
-                <Tag size={12} className="inline mr-1" />
+                <Tag size={14} className="inline mr-1.5" />
                 {tag}
               </span>
             ))}
@@ -74,17 +74,17 @@ export default function EnterpriseMicroservicesPlatform() {
                   with zero-downtime deployments.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 mt-6">
-                  <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 md:p-5 text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">$2M</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Annual Cost Savings</div>
+                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm">
+                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">$2M</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Annual Cost Savings</div>
                   </div>
-                  <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 md:p-5 text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">System Uptime</div>
+                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm">
+                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">99.9%</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">System Uptime</div>
                   </div>
-                  <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4 md:p-5 text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">70%</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Faster Deployments</div>
+                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm">
+                    <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">70%</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Faster Deployments</div>
                   </div>
                 </div>
               </div>
@@ -482,20 +482,20 @@ export default function EnterpriseMicroservicesPlatform() {
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Results & Impact</h2>
               
               <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">99.9%</div>
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
+                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">99.9%</div>
                 <div className="text-gray-700 dark:text-gray-300 font-semibold">Uptime Achieved</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Across all environments</div>
               </div>
               
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">0</div>
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
+                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">0</div>
                 <div className="text-gray-700 dark:text-gray-300 font-semibold">Downtime Deployments</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Zero-downtime strategy</div>
               </div>
               
-              <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">80%</div>
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center shadow-sm">
+                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">80%</div>
                 <div className="text-gray-700 dark:text-gray-300 font-semibold">MTTR Reduction</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Mean Time To Recovery</div>
               </div>
@@ -534,10 +534,10 @@ export default function EnterpriseMicroservicesPlatform() {
               
               <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Infrastructure</h3>
-                <div className="flex flex-wrap gap-2">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center md:text-left">Infrastructure</h3>
+                <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                   {["Terraform", "AWS EKS", "Aurora PostgreSQL", "ElastiCache Redis", "ALB", "Route53", "ACM", "S3"].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+                    <span key={tech} className="px-4 py-2 bg-blue-600 dark:bg-blue-700 text-white text-sm rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">
                       {tech}
                     </span>
                   ))}
@@ -545,10 +545,10 @@ export default function EnterpriseMicroservicesPlatform() {
               </div>
               
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Platform & Tools</h3>
-                <div className="flex flex-wrap gap-2">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center md:text-left">Platform & Tools</h3>
+                <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                   {["Kubernetes", "ArgoCD", "Kustomize", "External Secrets", "External DNS", "Temporal", "Prometheus", "Grafana"].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">
+                    <span key={tech} className="px-4 py-2 bg-green-600 dark:bg-green-700 text-white text-sm rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">
                       {tech}
                     </span>
                   ))}
