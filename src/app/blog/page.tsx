@@ -27,24 +27,28 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 md:py-24 w-full">
-      <div className="max-w-4xl w-full px-4 sm:px-6 lg:px-8 mx-auto md:ml-[8%] lg:ml-[12%]">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 md:mb-16 text-center"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Engineering Blog
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Case studies, tutorials, and insights on cloud infrastructure, DevOps automation, and platform engineering
-          </p>
-        </motion.div>
-        <div className="space-y-10 md:space-y-16">
-          {posts.map((post, index) => (
-            <BlogPostCard key={post.slug} post={post} index={index} />
-          ))}
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-center md:justify-center lg:justify-center">
+          <div className="w-full max-w-4xl md:translate-x-8 lg:translate-x-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-12 md:mb-16 text-center"
+            >
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Engineering Blog
+              </h1>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Case studies, tutorials, and insights on cloud infrastructure, DevOps automation, and platform engineering
+              </p>
+            </motion.div>
+            <div className="space-y-10 md:space-y-16">
+              {posts.map((post, index) => (
+                <BlogPostCard key={post.slug} post={post} index={index} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </main>
