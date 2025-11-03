@@ -3,14 +3,7 @@
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-type BlogPost = {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  tags?: string[];
-};
+import type { BlogPost } from "@/data/blogPosts";
 
 export default function BlogPostCard({ post, index }: { post: BlogPost; index: number }) {
   return (

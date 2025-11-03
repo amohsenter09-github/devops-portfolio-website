@@ -11,8 +11,7 @@ export default function AwsPlatformSection() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* ===== DESCRIPTION - Left Side with Vertical Animation ===== */}
           <motion.div
-            className="lg:w-1/3 flex-shrink-0"
-            style={{ paddingTop: '80px' }}
+            className="lg:w-1/3 flex-shrink-0 pt-20"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -90,7 +89,7 @@ export default function AwsPlatformSection() {
           </motion.div>
 
           {/* ===== DIAGRAM CARD ===== */}
-          <div className="flex-1 p-4 bg-white" style={{ paddingTop: '80px' }}>
+          <div className="flex-1 p-4 bg-white pt-20">
             <AnimatedAwsInfra />
           </div>
         </div>
@@ -102,8 +101,7 @@ export default function AwsPlatformSection() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start mt-12">
           {/* Description for Mermaid Diagram */}
           <motion.div
-            className="lg:w-1/3 flex-shrink-0"
-            style={{ paddingTop: '80px' }}
+            className="lg:w-1/3 flex-shrink-0 pt-20"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -182,7 +180,7 @@ export default function AwsPlatformSection() {
           </motion.div>
 
           {/* Mermaid Diagram Card */}
-          <div className="flex-1" style={{ paddingTop: '80px' }}>
+          <div className="flex-1 pt-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -316,8 +314,7 @@ export default function AwsPlatformSection() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start mt-12">
           {/* Description for MLOps Pipeline Diagram */}
           <motion.div
-            className="lg:w-1/3 flex-shrink-0"
-            style={{ paddingTop: '80px' }}
+            className="lg:w-1/3 flex-shrink-0 pt-20"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -392,7 +389,7 @@ export default function AwsPlatformSection() {
           </motion.div>
 
           {/* MLOps Pipeline Diagram Card */}
-          <div className="flex-1" style={{ paddingTop: '80px' }}>
+          <div className="flex-1 pt-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

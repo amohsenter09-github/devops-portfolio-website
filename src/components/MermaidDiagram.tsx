@@ -178,7 +178,9 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
         }
       })
       .catch((error) => {
-        console.error('Error rendering Mermaid diagram:', error);
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Error rendering Mermaid diagram:', error);
+        }
         setError('Failed to render diagram');
         if (mermaidRef.current) {
           mermaidRef.current.innerHTML = '<p className="text-red-500 text-center p-4">Error rendering diagram</p>';
@@ -199,8 +201,7 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
         </div>
       )}
       <div 
-        className="w-full relative border border-gray-200 rounded-lg overflow-hidden"
-        style={{ minHeight: '500px', height: '600px' }}
+        className="w-full relative border border-gray-200 rounded-lg overflow-hidden min-h-[500px] h-[600px]"
       >
         <TransformWrapper
           ref={transformRef}
@@ -264,30 +265,12 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
             return (
               <>
                 <TransformComponent
-                  wrapperStyle={{
-                    width: '100%',
-                    height: '100%',
-                    cursor: 'grab',
-                  }}
-                  contentStyle={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
+                  wrapperClass="w-full h-full cursor-grab"
+                  contentClass="w-full h-full flex items-center justify-center"
                 >
                   <div 
                     ref={mermaidRef} 
-                    className="mermaid-container"
-                    style={{ 
-                      width: '100%', 
-                      height: '100%',
-                      display: 'flex', 
-                      justifyContent: 'center', 
-                      alignItems: 'center',
-                      pointerEvents: 'auto'
-                    }}
+                    className="mermaid-container w-full h-full flex justify-center items-center"
                   />
                 </TransformComponent>
                 {svgLoaded && !error && (
