@@ -61,30 +61,30 @@ export default function EnterpriseMicroservicesPlatform() {
           
           {/* Executive Summary */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
                 <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center flex items-center justify-center">
                   <Zap className="w-6 h-6 text-blue-600 mr-3" />
                   Executive Summary
                 </h2>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-center max-w-3xl mx-auto">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-center">
                   This enterprise microservices platform project delivered <strong>$2M in annual cost savings</strong> and 
                   <strong> 99.9% uptime</strong> for a Fortune 500 financial services client. The solution transformed their 
                   legacy infrastructure into a modern, scalable platform serving <strong>50,000+ concurrent users</strong> 
                   with zero-downtime deployments.
                 </p>
-                <div className="grid md:grid-cols-3 gap-4 mt-6 max-w-3xl mx-auto">
-                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-800 rounded-lg p-4 md:p-5 text-center shadow-sm">
+                <div className="grid md:grid-cols-3 gap-4 mt-6">
+                  <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 md:p-5 text-center">
                     <div className="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">$2M</div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">Annual Cost Savings</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Annual Cost Savings</div>
                   </div>
-                  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4 md:p-5 text-center shadow-sm">
+                  <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 md:p-5 text-center">
                     <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">System Uptime</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">System Uptime</div>
                   </div>
-                  <div className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/30 dark:to-violet-900/30 border border-purple-200 dark:border-purple-800 rounded-lg p-4 md:p-5 text-center shadow-sm">
+                  <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4 md:p-5 text-center">
                     <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">70%</div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">Faster Deployments</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">Faster Deployments</div>
                   </div>
                 </div>
               </div>
@@ -93,10 +93,10 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Architecture Overview */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Architecture Overview</h2>
               
-              <div className="grid md:grid-cols-2 gap-8 mb-8 max-w-3xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Infrastructure Foundation</h3>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-300">
