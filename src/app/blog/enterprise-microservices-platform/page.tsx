@@ -7,7 +7,7 @@ import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function EnterpriseMicroservicesPlatform() {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-100">
       <div className="container mx-auto max-w-4xl px-6 sm:px-8">
         {/* Header */}
         <motion.section 
@@ -364,37 +364,6 @@ export default function EnterpriseMicroservicesPlatform() {
                     <li>• Self-service infrastructure provisioning</li>
                     <li>• Comprehensive documentation and runbooks</li>
                   </ul>
-                </div>
-              </div>
-              </div>
-            </div>
-          </Section>
-
-          {/* Technical Stack */}
-          <Section spacing="xl" animate>
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Technical Stack</h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center md:text-left">Infrastructure</h3>
-                <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                  {["Terraform", "AWS EKS", "Aurora PostgreSQL", "ElastiCache Redis", "ALB", "Route53", "ACM", "S3"].map((tech) => (
-                    <span key={tech} className="px-4 py-2 bg-blue-600 dark:bg-blue-700 text-white text-sm rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center md:text-left">Platform & Tools</h3>
-                <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                  {["Kubernetes", "ArgoCD", "Kustomize", "External Secrets", "External DNS", "Temporal", "Prometheus", "Grafana"].map((tech) => (
-                    <span key={tech} className="px-4 py-2 bg-green-600 dark:bg-green-700 text-white text-sm rounded-full font-medium shadow-sm hover:shadow-md transition-shadow duration-200">
-                      {tech}
-                    </span>
-                  ))}
                 </div>
               </div>
               </div>
