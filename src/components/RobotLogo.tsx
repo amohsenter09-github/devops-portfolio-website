@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function RobotLogo() {
+export default function RobotLogo({ showText = true }: { showText?: boolean }) {
   return (
     <div className="flex items-center justify-center w-full">
       <motion.div
@@ -13,7 +13,7 @@ export default function RobotLogo() {
       >
         {/* Robotic/AI Logo Icon */}
         <motion.div
-          className="relative mb-4"
+          className={`relative ${showText ? 'mb-4' : 'mb-0'}`}
           animate={{
             scale: [1, 1.03, 1],
             y: [0, -4, 0],
@@ -167,46 +167,50 @@ export default function RobotLogo() {
           />
         </motion.div>
 
-        {/* Logo Text */}
-        <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-gray-900 tracking-tight"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
-        >
-          <motion.span
-            className="text-cyan-600"
-            animate={{
-              opacity: [0.7, 1, 0.7],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            ~
-          </motion.span>
-          I_am_loveing_infra_I_build_it
-        </motion.h1>
+        {/* Logo Text - Only show if showText is true */}
+        {showText && (
+          <>
+            <motion.h1
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono font-bold text-gray-900 tracking-tight"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+            >
+              <motion.span
+                className="text-cyan-600"
+                animate={{
+                  opacity: [0.7, 1, 0.7],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                ~
+              </motion.span>
+              I_am_loveing_infra_I_build_it
+            </motion.h1>
 
-        {/* Subtle Underline */}
-        <motion.div
-          className="h-0.5 w-20 md:w-28 bg-gradient-to-r from-transparent via-cyan-500 to-transparent rounded-full mt-3"
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: "112px", opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-        />
+            {/* Subtle Underline */}
+            <motion.div
+              className="h-0.5 w-20 md:w-28 bg-gradient-to-r from-transparent via-cyan-500 to-transparent rounded-full mt-3"
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "112px", opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+            />
 
-        {/* Fading Space Separator */}
-        <motion.div
-          className="mt-6 md:mt-8 w-full max-w-md mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 1 }}
-        >
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-        </motion.div>
+            {/* Fading Space Separator */}
+            <motion.div
+              className="mt-6 md:mt-8 w-full max-w-md mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7, duration: 1 }}
+            >
+              <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+            </motion.div>
+          </>
+        )}
       </motion.div>
     </div>
   );

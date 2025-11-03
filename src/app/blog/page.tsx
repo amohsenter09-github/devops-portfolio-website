@@ -28,10 +28,10 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 md:py-24 w-full relative">
-      {/* Robot Logo - Top Right */}
-      <div className="absolute top-8 right-8 md:top-12 md:right-12 z-10">
-        <div className="scale-75 md:scale-100">
-          <RobotLogo />
+      {/* Robot Logo - Very Far Top Right */}
+      <div className="absolute top-4 right-4 md:top-6 md:right-6 z-10">
+        <div className="scale-50 md:scale-75">
+          <RobotLogo showText={false} />
         </div>
       </div>
       
