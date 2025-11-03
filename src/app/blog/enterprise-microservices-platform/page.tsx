@@ -15,7 +15,7 @@ export default function EnterpriseMicroservicesPlatform() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center w-full">
+        <div className="container mx-auto max-w-4xl px-6 sm:px-8">
           <div className="w-full flex justify-center mb-8">
             <Link 
               href="/blog"
@@ -33,10 +33,10 @@ export default function EnterpriseMicroservicesPlatform() {
             15 min read
           </div>
           
-          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
             Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
           </h1>
-          <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100 leading-relaxed mb-6 font-medium">
+          <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100 leading-relaxed mb-6 font-medium text-center">
             A comprehensive case study of building a production-ready microservices platform with 12+ services, 
             complete GitOps automation, and enterprise-grade security across multiple AWS environments.
           </p>
@@ -49,7 +49,7 @@ export default function EnterpriseMicroservicesPlatform() {
           
           {/* Executive Summary */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center w-full">
+            <div className="container mx-auto max-w-4xl px-6 sm:px-8 py-8 text-center">
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
                 <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center justify-center">
                   <Zap className="w-6 h-6 text-blue-600 mr-3" />
