@@ -33,10 +33,10 @@ export default function EnterpriseMicroservicesPlatform() {
             15 min read
           </div>
           
-          <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
           </h1>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
             A comprehensive case study of building a production-ready microservices platform with 12+ services, 
             complete GitOps automation, and enterprise-grade security across multiple AWS environments.
           </p>
@@ -146,10 +146,10 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Microservices Architecture */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Microservices Architecture</h2>
             
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 md:p-8 mb-6 max-w-3xl mx-auto">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 md:p-8 mb-6">
               <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Service Categories</h3>
               
               <div className="grid md:grid-cols-2 gap-6">
@@ -194,9 +194,9 @@ export default function EnterpriseMicroservicesPlatform() {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8 max-w-3xl mx-auto">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
               <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-4 text-center">Key Technical Achievements</h4>
-              <div className="grid md:grid-cols-2 gap-4 text-sm max-w-2xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
                 <div>
                   <p className="text-blue-800 dark:text-blue-200 mb-2"><strong>Zero-Downtime Deployments:</strong></p>
                   <p className="text-blue-700 dark:text-blue-300">Rolling update strategy with maxUnavailable: 0 ensures continuous service availability</p>
@@ -220,11 +220,11 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* GitOps Implementation */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">GitOps Implementation</h2>
               
-              <div className="space-y-6 max-w-3xl mx-auto">
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <div className="space-y-6">
+              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
                   <GitBranch className="w-6 h-6 text-green-600 mr-3" />
                   ArgoCD Deployment & Management
@@ -253,7 +253,7 @@ export default function EnterpriseMicroservicesPlatform() {
                 </ul>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
                   <Database className="w-6 h-6 text-purple-600 mr-3" />
                   External Secrets Integration
@@ -274,11 +274,11 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Monitoring & Observability */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Monitoring & Observability</h2>
               
-              <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
                   <Monitor className="w-6 h-6 text-orange-600 mr-3" />
                   Prometheus & Grafana Stack
@@ -303,7 +303,7 @@ export default function EnterpriseMicroservicesPlatform() {
                 </ul>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
                   <Cloud className="w-6 h-6 text-blue-600 mr-3" />
                   AWS CloudWatch Integration
@@ -333,15 +333,15 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Implementation Details */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center flex items-center justify-center">
                 <Code className="w-7 h-7 text-cyan-600 mr-3" />
                 Implementation Details
               </h2>
               
-              <div className="space-y-8 max-w-3xl mx-auto">
+              <div className="space-y-8">
                 {/* Prometheus Configuration */}
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
                     <BarChart3 className="text-cyan-600" size={18} />
                     Prometheus Configuration
@@ -350,7 +350,7 @@ export default function EnterpriseMicroservicesPlatform() {
                     Used the official <code className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-cyan-700 dark:text-cyan-400 rounded-md text-xs font-mono font-semibold">kube-prometheus-stack</code> Helm chart with custom retention, 
                     multi-cluster federation, and ServiceMonitor CRDs for application metrics.
                   </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left max-w-2xl mx-auto">
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left">
                     {[
                       "Custom retention policies (30 days for high-priority, 7 days for standard)",
                       "Multi-cluster federation for centralized metric aggregation",
@@ -374,7 +374,7 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
 
                 {/* Grafana Dashboards */}
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
                     <BarChart3 className="text-cyan-600" size={18} />
                     Grafana Dashboards
@@ -383,7 +383,7 @@ export default function EnterpriseMicroservicesPlatform() {
                     Deployed via ArgoCD Helm release, using pre-baked dashboards from JSON templates stored in Git. 
                     Integrated with SSO for RBAC access.
                   </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left max-w-2xl mx-auto">
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left">
                     {[
                       "Infrastructure monitoring dashboards for CPU, memory, and network metrics",
                       "Application performance metrics with custom business KPIs",
@@ -408,7 +408,7 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
 
                 {/* Loki + Promtail */}
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
                     <Database className="text-cyan-600" size={18} />
                     Loki + Promtail
@@ -417,7 +417,7 @@ export default function EnterpriseMicroservicesPlatform() {
                     Configured via Helm, ingesting EKS container logs and storing compressed logs on S3 for long-term retention 
                     and cost optimization.
                   </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left max-w-2xl mx-auto">
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left">
                     {[
                       "Container log ingestion from EKS pods via Promtail DaemonSet",
                       "Log compression and indexing for efficient querying",
@@ -441,7 +441,7 @@ export default function EnterpriseMicroservicesPlatform() {
                 </div>
 
                 {/* Jaeger Distributed Tracing */}
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-base md:text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center justify-center gap-2">
                     <Search className="text-cyan-600" size={18} />
                     Jaeger Distributed Tracing
@@ -450,7 +450,7 @@ export default function EnterpriseMicroservicesPlatform() {
                     Deployed using the Jaeger Operator chart, integrated with application traces through OpenTelemetry SDK for 
                     end-to-end request visibility across microservices.
                   </p>
-                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left max-w-2xl mx-auto">
+                  <ul className="space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300 text-left">
                     {[
                       "Jaeger Operator deployed via Helm chart",
                       "OpenTelemetry SDK integration in application code",
@@ -478,32 +478,32 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Results & Impact */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Results & Impact</h2>
               
-              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 text-center">
+              <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">99.9%</div>
                 <div className="text-gray-700 dark:text-gray-300 font-semibold">Uptime Achieved</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Across all environments</div>
               </div>
               
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 text-center">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">0</div>
                 <div className="text-gray-700 dark:text-gray-300 font-semibold">Downtime Deployments</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Zero-downtime strategy</div>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6 text-center">
+              <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">80%</div>
                 <div className="text-gray-700 dark:text-gray-300 font-semibold">MTTR Reduction</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Mean Time To Recovery</div>
               </div>
             </div>
 
-            <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-lg p-6 md:p-8 max-w-3xl mx-auto">
+            <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-lg p-6 md:p-8">
               <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white text-center">Key Business Benefits</h3>
-              <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Operational Excellence</h4>
                   <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
@@ -529,10 +529,10 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Technical Stack */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">Technical Stack</h2>
               
-              <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Infrastructure</h3>
                 <div className="flex flex-wrap gap-2">
@@ -560,8 +560,8 @@ export default function EnterpriseMicroservicesPlatform() {
 
           {/* Conclusion */}
           <Section spacing="xl" animate>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-10 max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <div className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-10">
                 <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center">Conclusion</h2>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-center">
                   This enterprise microservices platform represents a comprehensive solution for modern cloud-native applications. 
