@@ -27,7 +27,7 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 md:py-24 w-full">
-      <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl w-full px-4 sm:px-6 lg:px-8 mx-auto md:ml-auto md:mr-8 lg:mr-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
