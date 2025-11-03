@@ -223,9 +223,9 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
                         // Calculate the scale needed to fit the entire diagram
                         const fitScale = Math.min(scaleX, scaleY);
                         
-                        // Start at 140% (1.4) of the fit scale so diagram fills frame nicely
-                        // This ensures entire diagram is visible but at a good readable size
-                        const finalScale = fitScale * 1.4;
+                        // Start at 75% (0.75) zoom for better initial view
+                        // This ensures entire diagram is visible at a comfortable size
+                        const finalScale = fitScale * 0.75;
                         
                         // Cap at reasonable limits (min 0.5, max 2.0)
                         const clampedScale = Math.max(0.5, Math.min(finalScale, 2.0));
