@@ -63,7 +63,45 @@ const colors = {
   regionTag: "#9ca3af",
 };
 
-function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isVisible: boolean }) {
+// Function to calculate a curved path that routes around nodes
+function calculateCurvedPath(from: [number, number], to: [number, number]): string {
+  const [x1, y1] = from;
+  const [x2, y2] = to;
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+  
+  // Calculate control points for a smooth bezier curve
+  // Use perpendicular offset to create curves that go around obstacles
+  const offset = Math.min(distance * 0.3, 150); // Maximum curve offset
+  
+  // Determine curve direction based on arrow direction
+  // For horizontal arrows, curve vertically; for vertical arrows, curve horizontally
+  const isMoreHorizontal = Math.abs(dx) > Math.abs(dy);
+  
+  let cp1x: number, cp1y: number, cp2x: number, cp2y: number;
+  
+  if (isMoreHorizontal) {
+    // Horizontal arrow - curve up or down to avoid cards
+    const curveDirection = dy > 0 ? -offset : offset; // Curve opposite to direction
+    cp1x = x1 + dx * 0.4;
+    cp1y = y1 + curveDirection * 0.6;
+    cp2x = x1 + dx * 0.6;
+    cp2y = y2 - curveDirection * 0.6;
+  } else {
+    // Vertical arrow - curve left or right to avoid cards
+    const curveDirection = dx > 0 ? -offset : offset; // Curve opposite to direction
+    cp1x = x1 + curveDirection * 0.6;
+    cp1y = y1 + dy * 0.4;
+    cp2x = x2 - curveDirection * 0.6;
+    cp2y = y1 + dy * 0.6;
+  }
+  
+  // Create a smooth bezier curve path
+  return `M ${x1} ${y1} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${x2} ${y2}`;
+}
+
+function CleanArrow({ edge, index, isVisible, nodes: _nodes }: { edge: Edge; index: number; isVisible: boolean; nodes: Node[] }) {
   const { from, to, label, flowType = "traffic" } = edge;
   const markerId = `arrowhead-${edge.id}`;
   
@@ -71,11 +109,12 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
   let strokeDashArray: string;
   let strokeWidth: number;
   
+  // All arrows are now dotted
   switch (flowType) {
     case "traffic":
       arrowColor = colors.traffic;
-      strokeDashArray = "none";
-      strokeWidth = 3;
+      strokeDashArray = "8 4"; // Dotted for traffic too
+      strokeWidth = 2.5;
       break;
     case "deployment":
       arrowColor = colors.deployment;
@@ -84,15 +123,19 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
       break;
     case "monitoring":
       arrowColor = colors.monitoring;
-      strokeDashArray = "4 4";
+      strokeDashArray = "8 4";
       strokeWidth = 2.5;
       break;
     default:
       arrowColor = colors.traffic;
-      strokeDashArray = "none";
-      strokeWidth = 3;
+      strokeDashArray = "8 4"; // Dotted by default
+      strokeWidth = 2.5;
   }
   
+  // Calculate curved path that routes around nodes
+  const pathData = calculateCurvedPath(from, to);
+  
+  // Calculate midpoint for label positioning along curve
   const midX = (from[0] + to[0]) / 2;
   const midY = (from[1] + to[1]) / 2;
   
@@ -123,45 +166,74 @@ function CleanArrow({ edge, index, isVisible }: { edge: Edge; index: number; isV
         </filter>
       </defs>
       
-      <line
-        x1={from[0]}
-        y1={from[1]}
-        x2={to[0]}
-        y2={to[1]}
+      {/* Curved path instead of straight line */}
+      <motion.path
+        d={pathData}
+        fill="none"
         stroke={arrowColor}
         strokeWidth={strokeWidth}
         strokeDasharray={strokeDashArray}
         markerEnd={`url(#${markerId})`}
         opacity={0.85}
         filter={flowType === "traffic" ? `url(#glow-${edge.id})` : undefined}
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.85 }}
+        transition={{
+          pathLength: { duration: 0.8, ease: "easeOut" },
+          opacity: { duration: 0.5 }
+        }}
       />
       
+      {/* Animated circle that follows the curved path */}
       {isVisible && (
-        <motion.g
-          initial={{ x: from[0], y: from[1] }}
-          animate={{ x: to[0], y: to[1] }}
-          transition={{
-            duration: 4 + pathLength / 80,
-            repeat: Infinity,
-            ease: "linear",
-            delay: index * 0.2,
-          }}
-        >
-          <motion.circle
-            r={flowType === "traffic" ? 6 : 5}
+        <g>
+          <defs>
+            <path id={`motion-path-${edge.id}`} d={pathData} fill="none" />
+          </defs>
+          <circle
+            r={5}
             fill={arrowColor}
-            animate={{
-              r: flowType === "traffic" ? [6, 8, 6] : [5, 7, 5],
-              opacity: [1, 0.7, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <circle r={flowType === "traffic" ? 10 : 8} fill={arrowColor} opacity={0.2} />
-        </motion.g>
+            opacity={0.9}
+          >
+            <animateMotion
+              dur={`${4 + pathLength / 80}s`}
+              repeatCount="indefinite"
+              begin={`${index * 0.2}s`}
+              calcMode="linear"
+              keyPoints="0;1"
+              keyTimes="0;1"
+            >
+              <mpath href={`#motion-path-${edge.id}`} />
+            </animateMotion>
+            <animate
+              attributeName="r"
+              values="5;7;5"
+              dur="2s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="1;0.7;1"
+              dur="2s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          {/* Glow effect */}
+          <circle
+            r={8}
+            fill={arrowColor}
+            opacity={0.2}
+          >
+            <animateMotion
+              dur={`${4 + pathLength / 80}s`}
+              repeatCount="indefinite"
+              begin={`${index * 0.2}s`}
+              calcMode="linear"
+            >
+              <mpath href={`#motion-path-${edge.id}`} />
+            </animateMotion>
+          </circle>
+        </g>
       )}
       
       {label && (
@@ -586,7 +658,7 @@ export default function AnimatedAwsInfra() {
               <rect width="100%" height="100%" fill={colors.bg} />
               {nodes.map((node, index) => renderNode(node, index))}
               {isInView && edges.map((edge, index) => (
-                <CleanArrow key={edge.id} edge={edge} index={index} isVisible={isInView} />
+                <CleanArrow key={edge.id} edge={edge} index={index} isVisible={isInView} nodes={nodes} />
               ))}
             </svg>
           </div>
