@@ -311,6 +311,220 @@ export default function AwsPlatformSection() {
         
         {/* ===== SECTION DIVIDER ===== */}
         <div className="max-w-5xl mx-auto my-20 border-t border-gray-200" />
+
+        {/* ===== AWS NATIVE MLOPS PIPELINE SECTION ===== */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start mt-12">
+          {/* Description for MLOps Pipeline Diagram */}
+          <motion.div
+            className="lg:w-1/3 flex-shrink-0"
+            style={{ paddingTop: '80px' }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                This architecture represents a <strong className="text-gray-900">comprehensive, production-grade MLOps pipeline</strong> built entirely on AWS native services. 
+                The design follows <strong className="text-gray-900">MLOps best practices</strong> for model lifecycle management, from experimentation and training 
+                to deployment and continuous monitoring, ensuring reproducibility, scalability, and operational excellence.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                The pipeline begins with <strong className="text-gray-900">SageMaker Studio</strong>, providing collaborative Jupyter notebooks and integrated development 
+                environments for data scientists. <strong className="text-gray-900">SageMaker Experiments</strong> automatically tracks every training run, capturing 
+                hyperparameters, metrics, and artifacts to enable reproducible experiments. The <strong className="text-gray-900">training layer</strong> supports distributed 
+                training jobs, automated hyperparameter tuning, and AutoML capabilities, allowing teams to optimize model performance efficiently.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                <strong className="text-gray-900">Model management</strong> is handled through <strong className="text-gray-900">SageMaker Model Registry</strong>, which provides 
+                version control, approval workflows, and model lineage tracking. Model artifacts are stored in <strong className="text-gray-900">S3</strong>, while container images 
+                are managed in <strong className="text-gray-900">ECR</strong>, enabling consistent deployment across environments. The <strong className="text-gray-900">deployment layer</strong> 
+                offers multiple serving options: real-time endpoints for low-latency inference, batch transform for large-scale predictions, and serverless APIs via 
+                Lambda and API Gateway for cost-effective, event-driven inference.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                <strong className="text-gray-900">Monitoring and governance</strong> are critical for production ML systems: <strong className="text-gray-900">CloudWatch</strong> 
+                captures real-time metrics, logs, and performance indicators. <strong className="text-gray-900">SageMaker Clarify</strong> analyzes model predictions for 
+                bias, fairness, and explainability, ensuring ethical AI practices. <strong className="text-gray-900">SageMaker Model Monitor</strong> continuously detects 
+                data drift and concept drift, automatically triggering retraining workflows when models degrade.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-gray-600 leading-relaxed text-sm">
+                The <strong className="text-gray-900">orchestration layer</strong> coordinates the entire ML lifecycle: <strong className="text-gray-900">SageMaker Pipelines</strong> 
+                define reusable ML workflows with built-in data processing, training, and validation steps. <strong className="text-gray-900">Step Functions</strong> orchestrates 
+                complex multi-step workflows across services, while <strong className="text-gray-900">EventBridge</strong> enables event-driven automation, triggering 
+                pipelines based on model drift alerts, scheduled retraining, or data availability events. This architecture ensures <strong className="text-gray-900">automated, 
+                scalable, and reliable ML operations</strong> from development to production.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* MLOps Pipeline Diagram Card */}
+          <div className="flex-1" style={{ paddingTop: '80px' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <MermaidDiagram
+                chart={`graph TB
+
+    subgraph "AWS Native MLOps Pipeline"
+
+        subgraph "Data & Features"
+
+            S3DATA[S3 Data Lake<br/>Training Data]
+
+            S3FEATURE[S3 Feature Store<br/>Parquet/CSV]
+
+        end
+
+        
+
+        subgraph "Development & Experimentation"
+
+            SAGEMAKER[SageMaker Studio<br/>Notebooks]
+
+            SMEXPERIMENT[SageMaker Experiments<br/>Tracking]
+
+        end
+
+        
+
+        subgraph "Training & Optimization"
+
+            SMTRAIN[SageMaker Training Jobs<br/>Distributed Training]
+
+            SMTUNING[SageMaker Hyperparameter<br/>Tuning Jobs]
+
+            SMAUTO[SageMaker AutoML<br/>Autopilot]
+
+        end
+
+        
+
+        subgraph "Model Management"
+
+            SMREGISTRY[SageMaker Model Registry<br/>Versioning]
+
+            ECR[ECR<br/>Container Registry]
+
+            S3MODEL[S3 Model Artifacts]
+
+        end
+
+        
+
+        subgraph "Deployment & Serving"
+
+            SMENDPOINT[SageMaker Real-time<br/>Endpoints]
+
+            SMBATCH[SageMaker Batch<br/>Transform]
+
+            LAMBDA[Lambda + API Gateway<br/>Serverless API]
+
+        end
+
+        
+
+        subgraph "Monitoring & Governance"
+
+            CWMETRICS[CloudWatch<br/>Metrics & Logs]
+
+            SMCLARIFY[SageMaker Clarify<br/>Bias/Explainability]
+
+            SMDRIFT[SageMaker Model Monitor<br/>Drift Detection]
+
+        end
+
+        
+
+        subgraph "Orchestration"
+
+            SMPIPELINE[SageMaker Pipelines<br/>ML Workflows]
+
+            STEP[Step Functions<br/>Orchestration]
+
+            EVENT[EventBridge<br/>Event-driven]
+
+        end
+
+    end
+
+    S3DATA -->|Training Data| SAGEMAKER
+
+    SAGEMAKER -->|Experiments| SMEXPERIMENT
+
+    SMEXPERIMENT -->|Training Jobs| SMTRAIN
+
+    SMTRAIN -->|Hyperparameter Tuning| SMTUNING
+
+    SMTUNING -->|Model Artifacts| S3MODEL
+
+    S3MODEL -->|Register Model| SMREGISTRY
+
+    SMREGISTRY -->|Container Image| ECR
+
+    SMREGISTRY -->|Deploy| SMENDPOINT
+
+    SMENDPOINT -->|Real-time Inference| LAMBDA
+
+    SMREGISTRY -->|Batch Jobs| SMBATCH
+
+    SMENDPOINT -->|Monitoring| CWMETRICS
+
+    CWMETRICS -->|Bias Analysis| SMCLARIFY
+
+    SMCLARIFY -->|Drift Detection| SMDRIFT
+
+    SMDRIFT -->|Retrain Trigger| EVENT
+
+    EVENT -->|Orchestrate| SMPIPELINE
+
+    SMPIPELINE -->|Coordinate| STEP
+
+    STEP -->|Execute| SMTRAIN`}
+                title="AWS Native MLOps Pipeline Architecture"
+              />
+            </motion.div>
+          </div>
+        </div>
+        
+        {/* ===== SECTION DIVIDER ===== */}
+        <div className="max-w-5xl mx-auto my-20 border-t border-gray-200" />
         
         {/* ===== ANIMATED REDIRECTION BUTTON - Positioned under description ===== */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
