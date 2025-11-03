@@ -174,13 +174,19 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
                   // Make SVG interactive
                   const svg = mermaidRef.current.querySelector('svg');
                   if (svg) {
-                    // Remove default Mermaid sizing constraints
-                    svg.removeAttribute('width');
-                    svg.removeAttribute('height');
-                    svg.style.width = '100%';
+                    // Set explicit dimensions for better rendering
+                    // Keep viewBox but ensure SVG has proper dimensions
+                    const viewBox = svg.viewBox?.baseVal;
+                    if (viewBox && viewBox.width > 0 && viewBox.height > 0) {
+                      // Set explicit width/height based on viewBox for better initial rendering
+                      svg.setAttribute('width', String(viewBox.width));
+                      svg.setAttribute('height', String(viewBox.height));
+                    }
+                    svg.style.width = 'auto';
                     svg.style.height = 'auto';
                     svg.style.maxWidth = 'none';
-                    svg.setAttribute('preserveAspectRatio', 'none');
+                    svg.style.maxHeight = 'none';
+                    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
                     
                     // Wait for SVG to render, then calculate scale to fit
                     setTimeout(() => {
@@ -209,14 +215,21 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
                         const containerWidth = containerElement?.clientWidth || 800;
                         const containerHeight = containerElement?.clientHeight || 700;
                         
-                        // Calculate scale to fit the entire diagram within container with padding
-                        const padding = 40;
+                        // Calculate scale to maximize diagram visibility
+                        // Use minimal padding to allow larger diagram display
+                        const padding = 30;
                         const scaleX = (containerWidth - padding) / svgWidth;
                         const scaleY = (containerHeight - padding) / svgHeight;
-                        const calculatedScale = Math.min(scaleX, scaleY, 1.0); // Cap at 100% max
                         
-                        // Ensure minimum scale to prevent diagram from being too small
-                        const finalScale = Math.max(calculatedScale, 0.5);
+                        // Calculate the best fit scale - prefer filling the container
+                        const calculatedScale = Math.min(scaleX, scaleY);
+                        
+                        // Ensure diagram is large enough to be readable
+                        // If calculated scale is too small, scale up to at least 0.7
+                        // If calculated scale is good, allow up to 1.5 for better visibility
+                        const finalScale = calculatedScale < 0.7 
+                          ? Math.max(calculatedScale, 0.7) 
+                          : Math.min(calculatedScale, 1.5);
                         
                         // Center and scale the diagram to fit
                         transformRef.current.setTransform(
@@ -267,7 +280,7 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
         <TransformWrapper
           ref={transformRef}
           initialScale={1.0}
-          minScale={0.2}
+          minScale={0.3}
           maxScale={3}
           panning={{ disabled: false }}
           wheel={{ step: 0.1 }}
