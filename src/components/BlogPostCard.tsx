@@ -27,7 +27,7 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
     >
       <Link href={`/blog/${post.slug}`} className="block w-full group">
         <motion.div
-          className="relative bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden cursor-pointer"
+          className="relative bg-white dark:bg-gray-50 rounded-xl border border-gray-200 dark:border-gray-300 overflow-hidden cursor-pointer shadow-sm"
           whileHover={{ 
             y: -6,
             scale: 1.02,
@@ -76,15 +76,15 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
               whileHover={{ x: 3 }}
               transition={{ duration: 0.2 }}
             >
-              <Calendar size={15} className="text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-200" />
-              <span className="text-xs text-gray-500 dark:text-gray-400 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+              <Calendar size={15} className="text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
+              <span className="text-xs text-gray-500 font-medium group-hover:text-blue-600 transition-colors duration-200">
                 {post.date}
               </span>
             </motion.div>
 
             {/* Title - Enhanced with animation */}
             <motion.h2 
-              className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
+              className="text-lg md:text-xl font-semibold text-gray-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors duration-300"
               whileHover={{ x: 4 }}
               transition={{ duration: 0.3 }}
             >
@@ -93,7 +93,7 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
 
             {/* Description - Better line height and spacing */}
             <motion.p 
-              className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-7 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300"
+              className="text-sm md:text-base text-gray-600 leading-relaxed mb-7 group-hover:text-gray-700 transition-colors duration-300"
               whileHover={{ x: 2 }}
               transition={{ duration: 0.3 }}
             >
@@ -109,7 +109,7 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
                 {post.tags.slice(0, 5).map((tag, tagIndex) => (
                   <motion.span
                     key={tag}
-                    className="px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600"
+                    className="px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 text-gray-700 border border-gray-200"
                     whileHover={{
                       scale: 1.08,
                       backgroundColor: "rgb(219, 234, 254)",
@@ -133,7 +133,7 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
 
             {/* Read Article Link - More prominent and attractive */}
             <motion.div 
-              className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm md:text-base group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300"
+              className="flex items-center gap-2 text-blue-600 font-semibold text-sm md:text-base group-hover:text-blue-700 transition-colors duration-300"
               whileHover={{ x: 6, gap: 8 }}
               transition={{ 
                 duration: 0.3,
@@ -143,7 +143,7 @@ export default function BlogPostCard({ post, index }: { post: BlogPost; index: n
               <span className="relative">
                 Read Article
                 <motion.span
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 origin-left"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 origin-left"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.3 }}
