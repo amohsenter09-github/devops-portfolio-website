@@ -49,30 +49,30 @@ export default function EnterpriseMicroservicesPlatform() {
           
           {/* Executive Summary */}
           <Section spacing="xl" animate>
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-4xl mx-auto px-4 py-8 text-center">
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
-                <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center flex items-center justify-center">
+                <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center justify-center">
                   <Zap className="w-6 h-6 text-blue-600 mr-3" />
                   Executive Summary
                 </h2>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-center">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                   This enterprise microservices platform project delivered <strong>$2M in annual cost savings</strong> and 
                   <strong> 99.9% uptime</strong> for a Fortune 500 financial services client. The solution transformed their 
                   legacy infrastructure into a modern, scalable platform serving <strong>50,000+ concurrent users</strong> 
                   with zero-downtime deployments.
                 </p>
-                <div className="grid md:grid-cols-3 gap-4 mt-6">
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm">
+                <div className="flex flex-wrap justify-center gap-6 mt-8">
+                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm min-w-[200px]">
                     <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">$2M</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Annual Cost Savings</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">Annual Cost Savings</div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm">
+                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm min-w-[200px]">
                     <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">99.9%</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">System Uptime</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">System Uptime</div>
                   </div>
-                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm">
+                  <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 text-center shadow-sm min-w-[200px]">
                     <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">70%</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Faster Deployments</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">Faster Deployments</div>
                   </div>
                 </div>
               </div>
