@@ -8,48 +8,48 @@ import { ArticleLayout, Section } from "@/components/Layout";
 export default function EnterpriseMicroservicesPlatform() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100">
-      {/* Header */}
-      <motion.section 
-        className="py-16 sm:py-20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="container mx-auto max-w-4xl px-6 sm:px-8">
-          <div className="w-full flex justify-center mb-8">
-            <Link 
-              href="/blog"
-              className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
-            >
-              <ArrowLeft size={20} className="mr-2" />
-              Back to Blog
-            </Link>
+      <div className="container mx-auto max-w-4xl px-6 sm:px-8">
+        {/* Header */}
+        <motion.section 
+          className="py-16 sm:py-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="w-full">
+            <div className="w-full flex justify-center mb-8">
+              <Link 
+                href="/blog"
+                className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                <ArrowLeft size={20} className="mr-2" />
+                Back to Blog
+              </Link>
+            </div>
+            
+            <div className="flex items-center justify-center mb-6 text-sm text-gray-800 dark:text-gray-200 font-medium">
+              <Calendar size={16} className="mr-2" />
+              January 15, 2024
+              <Clock size={16} className="ml-4 mr-2" />
+              15 min read
+            </div>
+            
+            <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
+              Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
+            </h1>
+            <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100 leading-relaxed mb-6 font-medium text-center">
+              A comprehensive case study of building a production-ready microservices platform with 12+ services, 
+              complete GitOps automation, and enterprise-grade security across multiple AWS environments.
+            </p>
           </div>
-          
-          <div className="flex items-center justify-center mb-6 text-sm text-gray-800 dark:text-gray-200 font-medium">
-            <Calendar size={16} className="mr-2" />
-            January 15, 2024
-            <Clock size={16} className="ml-4 mr-2" />
-            15 min read
-          </div>
-          
-          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
-            Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
-          </h1>
-          <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100 leading-relaxed mb-6 font-medium text-center">
-            A comprehensive case study of building a production-ready microservices platform with 12+ services, 
-            complete GitOps automation, and enterprise-grade security across multiple AWS environments.
-          </p>
-        </div>
-      </motion.section>
+        </motion.section>
 
-      {/* Content using ArticleLayout for proper centering */}
-      <div className="bg-white">
+        {/* Content using ArticleLayout for proper centering */}
         <ArticleLayout maxWidth="4xl" spacing="relaxed">
           
           {/* Executive Summary */}
           <Section spacing="xl" animate>
-            <div className="container mx-auto max-w-4xl px-6 sm:px-8 py-8 text-center">
+            <div className="w-full py-8 text-center">
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 md:p-8">
                 <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center justify-center">
                   <Zap className="w-6 h-6 text-blue-600 mr-3" />
