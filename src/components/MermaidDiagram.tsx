@@ -215,7 +215,7 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
                         const containerWidth = containerElement?.clientWidth || 800;
                         const containerHeight = containerElement?.clientHeight || 700;
                         
-                        // Calculate scale to fit entire diagram in frame, then scale to 75%
+                        // Calculate scale to fit entire diagram in frame, then scale to 40%
                         const padding = 40; // Padding for borders
                         const scaleX = (containerWidth - padding) / svgWidth;
                         const scaleY = (containerHeight - padding) / svgHeight;
@@ -223,14 +223,14 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
                         // Calculate the scale needed to fit the entire diagram
                         const fitScale = Math.min(scaleX, scaleY);
                         
-                        // Start at 75% (0.75) zoom for better initial view
+                        // Start at 40% (0.4) zoom for better initial view
                         // This ensures entire diagram is visible at a comfortable size
-                        const finalScale = fitScale * 0.75;
+                        const finalScale = fitScale * 0.4;
                         
-                        // Cap at reasonable limits (min 0.5, max 2.0)
-                        const clampedScale = Math.max(0.5, Math.min(finalScale, 2.0));
+                        // Cap at reasonable limits (min 0.3, max 2.0)
+                        const clampedScale = Math.max(0.3, Math.min(finalScale, 2.0));
                         
-                        // Center and scale the diagram to fit at 75% of fit scale
+                        // Center and scale the diagram to fit at 40% of fit scale
                         transformRef.current.setTransform(
                           0, // center X
                           0, // center Y
