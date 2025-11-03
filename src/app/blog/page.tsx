@@ -1,7 +1,10 @@
+"use client";
+
+import { motion } from "framer-motion";
 import BlogPostCard from "@/components/BlogPostCard";
 import { blogPosts } from "@/data/blogPosts";
 
-export default async function BlogPage() {
+export default function BlogPage() {
   // IMPORTANT: Display posts in the EXACT order they are defined in blogPosts array
   // NO sorting - order is manually controlled in blogPosts.ts
   // Order: 1. Enterprise Microservices, 2. Deploy K8s GitOps, 3. Observability Stack, 4. MLOps Pipelines
@@ -23,8 +26,21 @@ export default async function BlogPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 md:py-24 w-full flex items-center justify-center">
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 md:py-24 w-full">
       <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 md:mb-16 text-center"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Engineering Blog
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Case studies, tutorials, and insights on cloud infrastructure, DevOps automation, and platform engineering
+          </p>
+        </motion.div>
         <div className="space-y-10 md:space-y-16">
           {posts.map((post, index) => (
             <BlogPostCard key={post.slug} post={post} index={index} />

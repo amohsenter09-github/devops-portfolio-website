@@ -1,12 +1,46 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, GitBranch, Server, Shield, Zap, AlertCircle } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Code, GitBranch, Server, Shield, Zap } from "lucide-react";
 import { ArticleLayout, Section } from "@/components/Layout";
 
 export default function GitOpsArchitecturePost() {
   return (
     <ArticleLayout maxWidth="4xl" spacing="relaxed">
+      {/* Breadcrumbs */}
+      <nav aria-label="Breadcrumbs" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <ol className="flex items-center gap-2 text-sm text-gray-600">
+          <li>
+            <Link href="/" className="hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 rounded">
+              Home
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li>
+            <Link href="/blog" className="hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 rounded">
+              Blog
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li className="text-gray-900 font-medium" aria-current="page">
+            Deploy Your Apps on K8s the GitOps Way
+          </li>
+        </ol>
+      </nav>
+
+      {/* Back to Blog Link */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <Link 
+          href="/blog"
+          className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 rounded"
+          aria-label="Back to blog"
+        >
+          <ArrowLeft size={16} />
+          Back to Blog
+        </Link>
+      </div>
       
       {/* Implementation Details */}
       <Section spacing="xl" withDivider animate>
