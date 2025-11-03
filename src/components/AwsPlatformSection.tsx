@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import AnimatedAwsInfra from '@/components/AnimatedAwsInfra';
+import MermaidDiagram from '@/components/MermaidDiagram';
 
 export default function AwsPlatformSection() {
   return (
@@ -94,6 +95,112 @@ export default function AwsPlatformSection() {
           </div>
         </div>
 
+        {/* ===== SECTION DIVIDER ===== */}
+        <div className="max-w-5xl mx-auto my-20 border-t border-gray-200" />
+
+        {/* ===== MERMAID DIAGRAM SECTION ===== */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start mt-12">
+          {/* Description for Mermaid Diagram */}
+          <motion.div
+            className="lg:w-1/3 flex-shrink-0"
+            style={{ paddingTop: '80px' }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">Data Platform Architecture</h2>
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                This diagram illustrates a <strong className="text-gray-900">real-time data ingestion and processing platform</strong> built on AWS, 
+                integrating multiple microservices, SaaS vendors, and a modern data stack.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                The architecture uses <strong className="text-gray-900">Debezium CDC</strong> to capture changes from Aurora Postgres databases, 
+                streams them through <strong className="text-gray-900">Kafka/MSK</strong>, and loads data into <strong className="text-gray-900">Snowflake</strong> 
+                via Snowpipe Streaming.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                <strong className="text-gray-900">Temporal workers</strong> orchestrate DLT ingestion jobs for vendor APIs 
+                (HubSpot, Google Ads, LinkedIn Ads, Chargebee, Modern Treasury), while a <strong className="text-gray-900">Webhook Gateway</strong> 
+                receives real-time events from SaaS providers.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-gray-600 leading-relaxed text-sm">
+                Data flows through <strong className="text-gray-900">RAW_BRONZE → REFINED_SILVER → MARTS_GOLD</strong> layers in Snowflake, 
+                transformed via <strong className="text-gray-900">dbt</strong>, and visualized in <strong className="text-gray-900">Sigma dashboards</strong> 
+                for analytics and business intelligence.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* Mermaid Diagram Card */}
+          <div className="flex-1" style={{ paddingTop: '80px' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <MermaidDiagram
+                chart={`flowchart LR
+  subgraph "EKS (staging)"
+    TW[Temporal workers]
+    DLT1["DLT container\\n(source=HubSpot/Ads/CB/MT)"]
+  end
+  subgraph MSK
+    DBZ[Debezium on MSK Connect]
+    K[(Kafka topics)]
+    SNKS[[Snowflake Kafka Sink/Snowpipe Streaming]]
+  end
+  subgraph Vendors
+    MT[Modern Treasury API]
+    HS[HubSpot API]
+    ADS[Google/LinkedIn Ads]
+    CB[Chargebee API]
+    WH[Webhook Gateway]
+  end
+  PG[(Aurora Postgres svc_*)]
+
+  PG--WAL-->DBZ-->K-->SNKS-->RAW[(Snowflake RAW_BRONZE)]
+  TW--schedule-->DLT1-->RAW
+  WH--Temporal signal-->TW
+  MT--API pull-->DLT1
+  HS--API pull-->DLT1
+  ADS--API pull-->DLT1
+  CB--API pull-->DLT1
+  RAW-->SILVER[(REFINED_SILVER via dbt)]-->GOLD[(MARTS_GOLD)]-->SIGMA`}
+                title="Data Pipeline Architecture"
+              />
+            </motion.div>
+          </div>
+        </div>
+        
         {/* ===== SECTION DIVIDER ===== */}
         <div className="max-w-5xl mx-auto my-20 border-t border-gray-200" />
         
