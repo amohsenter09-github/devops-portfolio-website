@@ -39,9 +39,6 @@ export default function BlogPage() {
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Engineering Blog
               </h1>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Case studies, tutorials, and insights on cloud infrastructure, DevOps automation, and platform engineering
-              </p>
             </motion.div>
             <div className="space-y-10 md:space-y-16">
               {posts.map((post, index) => (
