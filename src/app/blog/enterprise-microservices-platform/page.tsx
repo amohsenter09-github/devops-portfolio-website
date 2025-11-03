@@ -15,7 +15,7 @@ export default function EnterpriseMicroservicesPlatform() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
           <div className="w-full flex justify-center mb-8">
             <Link 
               href="/blog"
@@ -33,10 +33,10 @@ export default function EnterpriseMicroservicesPlatform() {
             15 min read
           </div>
           
-          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
+          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             Enterprise Microservices Platform: Terraform-Managed Multi-Environment Architecture
           </h1>
-          <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100 leading-relaxed mb-6 text-center font-medium">
+          <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100 leading-relaxed mb-6 font-medium">
             A comprehensive case study of building a production-ready microservices platform with 12+ services, 
             complete GitOps automation, and enterprise-grade security across multiple AWS environments.
           </p>
