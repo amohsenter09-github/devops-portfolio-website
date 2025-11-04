@@ -36,7 +36,7 @@ export default function BlogPage() {
       </div>
       
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center md:justify-center lg:justify-center">
+        <div className="flex justify-center">
           <div className="w-full max-w-4xl md:translate-x-8 lg:translate-x-16">
             <div className="space-y-10 md:space-y-16">
               {posts.map((post, index) => (

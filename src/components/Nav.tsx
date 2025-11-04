@@ -12,10 +12,10 @@ export default function Nav() {
 
   return (
     <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-      <nav className="mx-auto max-w-6xl px-6 sm:px-8 py-5 relative min-h-[60px]">
-        {/* Navigation Links - Absolutely Centered */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="flex flex-wrap justify-center gap-5 sm:gap-8 items-center">
+      <nav className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 sm:py-5 relative min-h-[60px]">
+        {/* Navigation Links - Responsive Layout */}
+        <div className="flex items-center justify-center w-full">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-5 md:gap-8 items-center">
             <Link 
               href="/" 
               className={`text-sm sm:text-base font-medium tracking-wide transition-all px-4 py-1 rounded-full lowercase ${
@@ -118,8 +118,8 @@ export default function Nav() {
           </div>
         </div>
 
-        {/* Right side icons - Absolutely positioned */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-4 sm:gap-5">
+        {/* Right side icons - Responsive positioning */}
+        <div className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 flex items-center gap-3 sm:gap-4 md:gap-5">
           <a
             href={site.contact.linkedin}
             target="_blank"

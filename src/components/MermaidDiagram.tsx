@@ -274,7 +274,7 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
           className="w-full relative border border-gray-200 rounded-lg overflow-hidden"
           style={{ 
             height: 'calc(100vh - 200px)',
-            minHeight: '600px',
+            minHeight: '400px',
             maxHeight: '900px'
           }}
         >
