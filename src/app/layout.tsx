@@ -4,6 +4,12 @@ export const metadata = {
   keywords: ["DevOps", "Cloud Infrastructure", "AWS", "Kubernetes", "Terraform", "GitOps", "Infrastructure as Code", "CI/CD", "MLOps"],
   authors: [{ name: "Amr Fathy" }],
   creator: "Amr Fathy",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -66,7 +72,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth light" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth light overflow-x-hidden" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -93,7 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className={`${inter.className} ${inter.variable} ${jetbrainsMono.variable} antialiased bg-white`}>
+      <body className={`${inter.className} ${inter.variable} ${jetbrainsMono.variable} antialiased bg-white overflow-x-hidden`}>
         {/* Skip to content link for accessibility */}
         <a 
           href="#main-content" 
