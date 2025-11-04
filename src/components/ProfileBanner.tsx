@@ -6,8 +6,6 @@ import {
   SiKubernetes, 
   SiGooglecloud,
   SiDocker,
-  SiTerraform,
-  SiGit
 } from "react-icons/si";
 import { Cloud, Settings, Container, GitBranch } from "lucide-react";
 

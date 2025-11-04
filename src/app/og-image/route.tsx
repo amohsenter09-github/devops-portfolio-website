@@ -3,17 +3,8 @@ import { ImageResponse } from 'next/og';
 // Route segment config
 export const runtime = 'edge';
 
-// Image metadata
-export const alt = 'InfraCore — Enterprise Infrastructure Solutions';
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
-export const contentType = 'image/png';
-
 // Image generation
-export default async function Image() {
+export async function GET() {
   return new ImageResponse(
     (
       <div
@@ -170,7 +161,8 @@ export default async function Image() {
       </div>
     ),
     {
-      ...size,
+      width: 1200,
+      height: 630,
     }
   );
 }

@@ -289,16 +289,16 @@ export default function MermaidDiagram({ chart, title }: MermaidDiagramProps) {
           limitToBounds={false}
           centerOnInit={true}
           centerZoomedOut={true}
-          onInit={(ref) => {
+          onInit={(_ref) => {
             // This will be called after initial render, but we'll use setTimeout in the render callback instead
           }}
-          onTransformed={(ref, state) => {
-            if (ref && state) {
+          onTransformed={(_ref, state) => {
+            if (state) {
               setZoomLevel(state.scale);
             }
           }}
         >
-          {({ zoomIn, zoomOut, resetTransform }) => {
+          {({ zoomIn, zoomOut, resetTransform: _resetTransform }) => {
             // Enhanced reset function that resets to the calculated fit scale
             const handleReset = () => {
               if (transformRef.current) {
