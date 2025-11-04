@@ -7,15 +7,31 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://amrfathy.dev",
+    url: "https://infra-ai-art.delivery",
     title: "InfraCore — Enterprise Infrastructure Solutions",
     description: "Professional DevOps and infrastructure automation services. AWS, Kubernetes, Terraform, GitOps, and Infrastructure as Code solutions.",
     siteName: "InfraCore",
+    images: [
+      {
+        url: "https://infra-ai-art.delivery/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "InfraCore — Enterprise Infrastructure Solutions",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "InfraCore — Enterprise Infrastructure Solutions",
     description: "Professional DevOps and infrastructure automation services. AWS, Kubernetes, Terraform, GitOps, and Infrastructure as Code solutions.",
+    images: [
+      {
+        url: "https://infra-ai-art.delivery/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "InfraCore — Enterprise Infrastructure Solutions",
+      },
+    ],
   },
   robots: {
     index: true,
@@ -60,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@type": "Person",
               name: "Amr Fathy",
               jobTitle: "Senior DevOps & Cloud Platform Engineer",
-              url: "https://amrfathy.dev",
+              url: "https://infra-ai-art.delivery",
               sameAs: [
                 "https://linkedin.com/in/amr-fathy-4a826a77"
               ],
