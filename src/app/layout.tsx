@@ -13,7 +13,7 @@ export const metadata = {
     siteName: "InfraCore",
     images: [
       {
-        url: "https://infra-ai-art.delivery/og-image.png",
+        url: "https://infra-ai-art.delivery/og-image",
         width: 1200,
         height: 630,
         alt: "InfraCore — Enterprise Infrastructure Solutions",
@@ -26,7 +26,7 @@ export const metadata = {
     description: "Professional DevOps and infrastructure automation services. AWS, Kubernetes, Terraform, GitOps, and Infrastructure as Code solutions.",
     images: [
       {
-        url: "https://infra-ai-art.delivery/og-image.png",
+        url: "https://infra-ai-art.delivery/og-image",
         width: 1200,
         height: 630,
         alt: "InfraCore — Enterprise Infrastructure Solutions",
