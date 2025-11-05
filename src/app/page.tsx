@@ -199,19 +199,19 @@ export default function Home() {
       </section>
 
       {/* Credentials & Trust Signals */}
-      <section className="py-16 md:py-20 w-full flex items-center justify-center bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 w-full flex items-center justify-center bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
-            <span className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium shadow-sm">AWS Certified</span>
-            <span className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium shadow-sm">Kubernetes Expert</span>
-            <span className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium shadow-sm">Security Best Practices</span>
-            <span className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm font-medium shadow-sm">GitOps Specialist</span>
+          <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6">
+            <span className="px-3 sm:px-4 py-2 bg-white text-gray-700 rounded-full text-xs sm:text-sm font-medium shadow-sm">AWS Certified</span>
+            <span className="px-3 sm:px-4 py-2 bg-white text-gray-700 rounded-full text-xs sm:text-sm font-medium shadow-sm">Kubernetes Expert</span>
+            <span className="px-3 sm:px-4 py-2 bg-white text-gray-700 rounded-full text-xs sm:text-sm font-medium shadow-sm">Security Best Practices</span>
+            <span className="px-3 sm:px-4 py-2 bg-white text-gray-700 rounded-full text-xs sm:text-sm font-medium shadow-sm">GitOps Specialist</span>
           </div>
         </div>
       </section>
 
       {/* Client Recommendations - Compact */}
-      <section id="recommendations" className="py-20 md:py-24 w-full flex items-center justify-center bg-white">
+      <section id="recommendations" className="py-12 sm:py-16 md:py-20 lg:py-24 w-full flex items-center justify-center bg-white">
         <Recommendations />
       </section>
     </div>

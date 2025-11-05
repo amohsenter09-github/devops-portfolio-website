@@ -49,7 +49,7 @@ function RecommendationCard({ recommendation, index }: RecommendationCardProps) 
       className="cursor-pointer"
     >
       <motion.div 
-        className="h-full rounded-xl bg-white border border-gray-200 p-6 lg:p-7 flex flex-col relative overflow-hidden group"
+        className="h-full rounded-xl bg-white border border-gray-200 p-4 sm:p-6 lg:p-7 flex flex-col relative overflow-hidden group"
         style={{
           boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
         }}
@@ -271,10 +271,10 @@ export default function Recommendations() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       {/* Vertical Tab Layout: Left Panel + Right Content - Compact */}
-      <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 min-h-[500px]">
+      <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-10 min-h-[400px] sm:min-h-[500px]">
         {/* Left Sidebar - Vertical Tabs */}
         <div className="flex-shrink-0 w-full lg:w-72">
-          <div className="flex lg:flex-col gap-3 lg:gap-4 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 lg:sticky lg:top-24">
+          <div className="flex lg:flex-col gap-2 sm:gap-3 lg:gap-4 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 lg:sticky lg:top-24 -mx-4 sm:-mx-6 lg:mx-0 px-4 sm:px-6 lg:px-0">
             {tabLabels.map((tab, index) => {
               const isActive = displayTab === tab.key;
               return (
@@ -285,8 +285,8 @@ export default function Recommendations() {
                   onClick={() => setActiveTab(tab.key)}
                   className={`
                     relative flex items-center justify-between lg:justify-start w-full lg:w-auto
-                    px-4 lg:px-5 py-3 lg:py-4 rounded-lg lg:rounded-r-lg lg:rounded-l-none
-                    text-sm font-semibold transition-all duration-300 whitespace-nowrap
+                    px-3 sm:px-4 lg:px-5 py-2.5 sm:py-3 lg:py-4 rounded-lg lg:rounded-r-lg lg:rounded-l-none
+                    text-xs sm:text-sm font-semibold transition-all duration-300 whitespace-nowrap min-h-[44px]
                     ${isActive 
                       ? "bg-cyan-600 text-white shadow-lg shadow-cyan-600/30 lg:translate-x-2" 
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200 lg:hover:translate-x-1"
@@ -339,7 +339,7 @@ export default function Recommendations() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
           >
             {currentRecommendations.map((recommendation, index) => (
               <RecommendationCard
