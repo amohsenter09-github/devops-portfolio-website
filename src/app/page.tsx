@@ -12,25 +12,25 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center text-center w-full py-20 md:py-32">
+      <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center text-center w-full py-12 sm:py-16 md:py-20 lg:py-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           {/* Robot Logo - Centered */}
-          <div className="mb-12 md:mb-16">
+          <div className="mb-8 sm:mb-12 md:mb-16">
             <RobotLogo />
           </div>
 
           {/* Professional Tagline */}
           <motion.div
-            className="mb-12 md:mb-16"
+            className="mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <div className="w-full flex flex-wrap justify-center items-center gap-3 md:gap-5 mb-12 md:mb-16">
+            <div className="w-full flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-5 mb-8 sm:mb-12 md:mb-16">
               {["Cloud Replatforming", "GitOps Automation", "Observability Solutions"].map((badge, index) => (
                 <motion.span
                   key={badge}
-                  className="px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-all duration-300 cursor-default"
+                  className="px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 bg-white border border-gray-200 rounded-full text-xs sm:text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-all duration-300 cursor-default"
                   initial={{ opacity: 0, y: 10, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{
@@ -101,10 +101,10 @@ export default function Home() {
       </section>
 
       {/* Combined Metrics Section - Designed */}
-      <section className="py-20 md:py-32 w-full flex items-center justify-center bg-white">
+      <section className="py-12 sm:py-16 md:py-24 lg:py-32 w-full flex items-center justify-center bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -112,82 +112,82 @@ export default function Home() {
           >
             {/* Metric 1: Years Experience */}
             <motion.div 
-              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="group text-center p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-cyan-100 to-cyan-50 flex items-center justify-center group-hover:from-cyan-200 group-hover:to-cyan-100 transition-colors">
-                <Clock className="w-6 h-6 text-cyan-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-100 to-cyan-50 flex items-center justify-center group-hover:from-cyan-200 group-hover:to-cyan-100 transition-colors">
+                <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-600" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">
                 <AnimatedCounter end={15} duration={2} />+
               </div>
-              <div className="text-xs md:text-sm text-gray-600 font-medium">Years Experience</div>
+              <div className="text-xs sm:text-sm text-gray-600 font-medium">Years Experience</div>
             </motion.div>
 
             {/* Metric 2: Annual Savings */}
             <motion.div 
-              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="group text-center p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center group-hover:from-green-200 group-hover:to-green-100 transition-colors">
-                <DollarSign className="w-6 h-6 text-green-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center group-hover:from-green-200 group-hover:to-green-100 transition-colors">
+                <DollarSign className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">$2M+</div>
-              <div className="text-xs md:text-sm text-gray-600 font-medium">Annual Savings</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">$2M+</div>
+              <div className="text-xs sm:text-sm text-gray-600 font-medium">Annual Savings</div>
             </motion.div>
 
             {/* Metric 3: Uptime SLA */}
             <motion.div 
-              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="group text-center p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-100 transition-colors">
-                <Shield className="w-6 h-6 text-blue-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-100 transition-colors">
+                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">99.9%</div>
-              <div className="text-xs md:text-sm text-gray-600 font-medium">Uptime SLA</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">99.9%</div>
+              <div className="text-xs sm:text-sm text-gray-600 font-medium">Uptime SLA</div>
             </motion.div>
 
             {/* Metric 4: Faster Deployments */}
             <motion.div 
-              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="group text-center p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center group-hover:from-purple-200 group-hover:to-purple-100 transition-colors">
-                <Zap className="w-6 h-6 text-purple-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-lg sm:rounded-xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center group-hover:from-purple-200 group-hover:to-purple-100 transition-colors">
+                <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">80%</div>
-              <div className="text-xs md:text-sm text-gray-600 font-medium">Faster Deployments</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">80%</div>
+              <div className="text-xs sm:text-sm text-gray-600 font-medium">Faster Deployments</div>
             </motion.div>
 
             {/* Metric 5: Enterprise */}
             <motion.div 
-              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="group text-center p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center group-hover:from-orange-200 group-hover:to-orange-100 transition-colors">
-                <Building2 className="w-6 h-6 text-orange-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-lg sm:rounded-xl bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center group-hover:from-orange-200 group-hover:to-orange-100 transition-colors">
+                <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">Enterprise</div>
-              <div className="text-xs md:text-sm text-gray-600 font-medium">Cloud Delivery</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">Enterprise</div>
+              <div className="text-xs sm:text-sm text-gray-600 font-medium">Cloud Delivery</div>
             </motion.div>
 
             {/* Metric 6: Platform Reliability */}
             <motion.div 
-              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="group text-center p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-cyan-100 to-cyan-50 flex items-center justify-center group-hover:from-cyan-200 group-hover:to-cyan-100 transition-colors">
-                <TrendingUp className="w-6 h-6 text-cyan-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-100 to-cyan-50 flex items-center justify-center group-hover:from-cyan-200 group-hover:to-cyan-100 transition-colors">
+                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-600" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">99.9%</div>
-              <div className="text-xs md:text-sm text-gray-600 font-medium">Platform Reliability</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">99.9%</div>
+              <div className="text-xs sm:text-sm text-gray-600 font-medium">Platform Reliability</div>
             </motion.div>
           </motion.div>
 
